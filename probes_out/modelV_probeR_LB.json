@@ -1,0 +1,237 @@
+{
+  "probe": "R (LB reading) -- required void history f_v(z) through Model V dressed geometry under the rate-ratio lapse (R1 gate)",
+  "reading": "KINEMATIC (lapse-B / rate-ratio): force f_v(z), compute dressed observables; integrability NOT enforced -- the LB sibling of the LA Probe R (modelV_probeR.json)",
+  "lapse": "rate_ratio",
+  "data": "harness.sn_chi2 (1580 SNe, full stat+sys cov, offset marginalised) + harness.bao_cmb_chi2 (DESI DR1 + Planck acoustic point, alpha marginalised, rd=147.09)",
+  "z_nodes": [
+    0.0,
+    0.3,
+    0.7,
+    1.3,
+    2.33
+  ],
+  "references_same_data": {
+    "LCDM": 1402.2372,
+    "w0waCDM": 1398.2856,
+    "tracker": 1469.2926,
+    "free_E": 1391.8498
+  },
+  "thresholds": {
+    "reconciles_le": 1412.2372,
+    "disfavoured_le": 1427.2372,
+    "amplitude_dead_ge": 1469.2926
+  },
+  "ngrid_fit": 3000,
+  "ngrid_band": 1000,
+  "ngrid_fine": 30000,
+  "n_restarts": 12,
+  "time_limited": false,
+  "time_limited_note": "false = the multistart ran all restarts to completion and the per-node band finished; true = the wall-clock (PROBER_MAXSEC) cut the band short (bands computed so far are reported, the rest omitted) -- reported at full volume per program rule",
+  "sanity_anchors": {
+    "tracker_exact_via_oracle_LB": {
+      "chi2": 1469.2929236129858,
+      "chi2_SN": 1431.6480435729027,
+      "chi2_BAOCMB": 37.64488004008308,
+      "H0_dressed": 63.14195416570411,
+      "ref": 1469.2926,
+      "note": "full oracle f_v(z) through the general solver under rate_ratio (LB); LB==LA on the tracker, so this reproduces the committed 1469.29"
+    },
+    "tracker_joint_LB": 1469.2929236129858,
+    "tracker_joint_LB_ref": 1469.2926,
+    "tracker_joint_LB_abs_err": 0.0003236129857668857,
+    "tracker_joint_LB_PASS": true,
+    "tracker_node_start": {
+      "chi2": 1490.921217889525,
+      "fv_nodes": [
+        0.6426,
+        0.5618,
+        0.47151,
+        0.36767,
+        0.25191
+      ],
+      "note": "tracker f_v sampled at the 5 nodes + tracker bridge, under LB (a seed / diagnostic, NOT the standing control). Its residual vs 1469.29 is the 5-node PCHIP representation error, AMPLIFIED under LB (~21 vs ~2 under LA) because the rate-ratio lapse is f_v'-dependent and the PCHIP node derivatives differ from the smooth tracker's. The dense-oracle anchor (tracker_exact_via_oracle_LB) is the control and reproduces 1469.29"
+    },
+    "lcdm_projected_start": {
+      "chi2": 1522.075821556151,
+      "fv_nodes": [
+        0.64956,
+        0.54512,
+        0.43293,
+        0.31447,
+        0.18808
+      ],
+      "dist_shape_rms": 3.5097765201352815e-05,
+      "note": "f_v nodes pre-fit to LCDM D_M(z) shape (algebraic shape-match), evaluated under LB"
+    },
+    "reproduced": true
+  },
+  "V": {
+    "lapse": "rate_ratio",
+    "chi2_min": 1406.9220895846374,
+    "chi2_min_fitgrid": 1406.8986695185304,
+    "chi2_SN": 1394.410823509097,
+    "chi2_BAOCMB": 12.511266075540334,
+    "alpha": 39.89972957072454,
+    "fv0": 0.5878612293793102,
+    "H0_dressed": 58.92293587122526,
+    "H0_dressed_gdress": 58.92293587122526,
+    "H0_dressed_Hd0": 67.05141308638385,
+    "Hbar0": 51.081965896102375,
+    "g_dress": 1.1534978115578196,
+    "Hd_z0": 1.3126239742370596,
+    "gamma_bar0_LB": 1.3236247572964668,
+    "z_nodes": [
+      0.0,
+      0.3,
+      0.7,
+      1.3,
+      2.33
+    ],
+    "fv_nodes": [
+      0.58786,
+      0.49709,
+      0.38473,
+      0.2503,
+      0.12145
+    ],
+    "n_restarts": 12,
+    "de_used": false,
+    "ngrid_fit": 3000,
+    "ngrid_fine": 30000
+  },
+  "fv_req_band_dchi2_le1": {
+    "z=0": [
+      0.5863424466257657,
+      0.6173433124732666
+    ],
+    "z=0.3": [
+      0.4955669533460243,
+      0.5315582055772027
+    ],
+    "z=0.7": [
+      0.3830149249750215,
+      0.38627053052940524
+    ],
+    "z=1.3": [
+      0.2483715857413297,
+      0.2519520062063618
+    ],
+    "z=2.33": [
+      0.10110468748146798,
+      0.1816410903605505
+    ]
+  },
+  "fv_req_band_time_limited": false,
+  "derived_backreaction_V": {
+    "z": [
+      0.0,
+      0.1,
+      0.3,
+      0.5,
+      0.7,
+      1.0,
+      1.3,
+      1.8,
+      2.33
+    ],
+    "fv": [
+      0.58786,
+      0.55696,
+      0.49709,
+      0.43888,
+      0.38473,
+      0.31103,
+      0.2503,
+      0.17422,
+      0.12145
+    ],
+    "Hw_over_Hbar0": [
+      0.77284,
+      0.86489,
+      1.05957,
+      1.27605,
+      1.51376,
+      1.91835,
+      2.38058,
+      3.23668,
+      4.40888
+    ],
+    "Hv_minus_Hw_over_Hbar0": [
+      0.4255,
+      0.49472,
+      0.64961,
+      0.82088,
+      1.01365,
+      1.33656,
+      1.69243,
+      2.44245,
+      2.63658
+    ],
+    "Hbar_over_Hbar0": [
+      1.02297,
+      1.14043,
+      1.38249,
+      1.63631,
+      1.90374,
+      2.33405,
+      2.80419,
+      3.66219,
+      4.72911
+    ],
+    "Q_over_Hbar0sq": [
+      0.263188,
+      0.362363,
+      0.632974,
+      0.995655,
+      1.459312,
+      2.296809,
+      3.224909,
+      5.149398,
+      4.450524
+    ],
+    "void_expansion_excess": [
+      0.41594,
+      0.4338,
+      0.46989,
+      0.50166,
+      0.53245,
+      0.57263,
+      0.60353,
+      0.66694,
+      0.55752
+    ],
+    "note": "LB (rate-ratio) kinematics: (H_v-H_w) and Q are exact kinematic identities of the forced f_v(z) (sec 1.1); the tau(z) map is the LB backward-RK4 solution's, so these differ from the LA curves off the tracker. 'void_expansion_excess'=(H_v-H_w)/<H> is a dimensionless kinematic depth proxy; a matter-density delta_v(z) is NOT uniquely determined kinematically."
+  },
+  "two_scale_excess_z0_LB": 0.17683285688029907,
+  "two_scale_z0_LB": {
+    "fv0": 0.5878612293793102,
+    "tau0": 0.8626204097931035,
+    "fvp_dtau": 0.3092676448241328,
+    "Hw_over_Hbar0": 0.7728389672887109,
+    "Hv_over_Hbar0": 1.1983344389865043,
+    "Hbar_over_Hbar0": 1.022971258376305,
+    "Hv_minus_Hw_over_Hbar0": 0.4254954716977933,
+    "gamma_bar0_LB": 1.3236247572964668,
+    "gamma_bar_dot_LB": 0.04140610935253841,
+    "Hdress_over_Hbar0": 1.3126239742370596,
+    "Hvoid_app_over_Hbar0": 1.5447390216109709,
+    "E_dress_void_PRIMARY": 0.17683285688029907,
+    "E_bare_void": 0.17142532517339892,
+    "E_contrast_HvHw_over_Hbar": 0.4159407883787021,
+    "E_lapse_boost": 0.3236247572964668,
+    "note": "LB two-scale excess at z=0; gamma_bar0 (present lapse, shot) and Hd0 (dressed present rate) taken from the LB solution. E_dress_void_PRIMARY = gamma_bar0*(H_v-Hbar)/Hd0 is the field paper-3 b_pred reads."
+  },
+  "R1": {
+    "chi2_min_V": 1406.9220895846374,
+    "chi2_decomposition": "SN 1394.4108 + BAO+CMB 12.5113",
+    "H0_dressed": 58.92293587122526,
+    "H0_dressed_full_Hd0": 67.05141308638385,
+    "Hbar0": 51.081965896102375,
+    "gamma_bar0_LB": 1.3236247572964668,
+    "H0_direction": "timescape-direction (down, ~61)",
+    "verdict": "RECONCILES_mechanism_flexible",
+    "reasoning": "LB (rate-ratio lapse) reading. chi2_min_V=1406.92 (Delta_vs_LCDM=+4.68). Thresholds: reconciles<=1412.24 (LCDM+10), disfavoured<=1427.24 (LCDM+25), refuted above, amplitude-dead>=1469.29 (tracker). Free-E(z) reached 1391.85 and LCDM 1402.24 on the same data; the one-parameter tracker sat at 1469.29. Dressed H0=58.92 (g_dress convention -> timescape-direction (down, ~61)); full LB present dressed rate Hd(0)*Hbar0=67.05 (LCDM-band (~68)) with self-consistent present lapse gamma_bar0_LB=1.3236 (vs tracker (2+fv0)/2=1.2939). Bare Hbar0=51.08. Standing control: tracker joint under LB=1469.2929 (ref 1469.2926, PASS=True).",
+    "sanity_starts_ok": true
+  },
+  "runtime_s": 1335.5
+}
