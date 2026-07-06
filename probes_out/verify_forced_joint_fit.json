@@ -1,0 +1,526 @@
+{
+  "probe": "ADVERSARIAL verification of forced_joint_fit.json (independent re-implementation)",
+  "method": "Rebuilt f_v^obs, forced Model-V geometry (modelv_theory.modelv_solve, algebraic), harness.sn_chi2, from-scratch DR2 BAO+CMB chi2, independent LCDM refit + BIC bars. forced_joint_fit.py NOT imported.",
+  "verdict": "SURVIVES",
+  "n_checks_pass": 42,
+  "n_checks_total": 42,
+  "headline": {
+    "forced_chi2_dr2": 2845.6305977874435,
+    "forced_chi2_dr1": 2213.7053402690217,
+    "chi2_SN_full_cov": 1869.3149267435074,
+    "chi2_BAOCMB_dr2": 976.3156710439362,
+    "chi2_BAOCMB_dr1": 344.3904135255143,
+    "chi2_LCDM_dr2": 1399.805009110365,
+    "chi2_LCDM_dr1": 1402.2371683046222,
+    "bic_bar_dr2": 1407.1790109697151,
+    "bic_bar_dr1": 1409.6105426145323,
+    "miss_by_dr2": 1438.4515868177284,
+    "miss_by_dr1": 804.0947976544894,
+    "clears_bar_dr2": false,
+    "clears_bar_dr1": false,
+    "fv0": 0.643279949444014,
+    "dz_resid": 3.3334361937420454e-09
+  },
+  "fvobs_nodes": [
+    0.643279949444014,
+    0.6229320569236853,
+    0.6009407462040413,
+    0.577925237079892,
+    0.5550878767923513
+  ],
+  "fvobs_max_node_diff_vs_json": 2.5379595869345906e-07,
+  "fvobs_validation_maxdiff_vs_telescope": 0.0,
+  "cov_ladder": {
+    "full_cov": {
+      "Om_dr2": 0.3037490998589843,
+      "Om_dr1": 0.30480667016988733,
+      "chi2_SN": 1869.3149267435074,
+      "chi2_LCDM_dr2": 1399.805009110365,
+      "chi2_LCDM_dr1": 1402.2371683046222,
+      "forced_chi2_dr2": 2845.6305977874435,
+      "forced_chi2_dr1": 2213.7053402690217,
+      "bic_bar_dr2": 1407.1790109697151,
+      "bic_bar_dr1": 1409.6105426145323,
+      "miss_by_dr2": 1438.4515868177284,
+      "miss_by_dr1": 804.0947976544894,
+      "clears_bar_dr2": false,
+      "clears_bar_dr1": false
+    },
+    "diagonal_cov": {
+      "Om_dr2": 0.30685182124784055,
+      "Om_dr1": 0.31235154486332695,
+      "chi2_SN": 2185.6316924616694,
+      "chi2_LCDM_dr2": 1342.5857896395028,
+      "chi2_LCDM_dr1": 1343.8806816847064,
+      "forced_chi2_dr2": 3161.9473635056056,
+      "forced_chi2_dr1": 2530.0221059871837,
+      "bic_bar_dr2": 1349.9597914988528,
+      "bic_bar_dr1": 1351.2540559946165,
+      "miss_by_dr2": 1811.9875720067528,
+      "miss_by_dr1": 1178.7680499925673,
+      "clears_bar_dr2": false,
+      "clears_bar_dr1": false
+    },
+    "tripp_diag": {
+      "Om_dr2": 0.30466543976090005,
+      "Om_dr1": 0.30724720107198467,
+      "chi2_SN": 1150.259339403361,
+      "chi2_LCDM_dr2": 711.1646986128762,
+      "chi2_LCDM_dr1": 713.411985849496,
+      "forced_chi2_dr2": 2126.5750104472972,
+      "forced_chi2_dr1": 1494.6497529288754,
+      "bic_bar_dr2": 718.5387004722264,
+      "bic_bar_dr1": 720.7853601594061,
+      "miss_by_dr2": 1408.0363099750707,
+      "miss_by_dr1": 773.8643927694693,
+      "clears_bar_dr2": false,
+      "clears_bar_dr1": false
+    }
+  },
+  "cov_ladder_miss_by_dr2_full_diag_tripp": [
+    1438.4515868177284,
+    1811.9875720067528,
+    1408.0363099750707
+  ],
+  "cov_ladder_ref_miss_by": [
+    1438.45,
+    1811.99,
+    1408.04
+  ],
+  "cov_ladder_all_clear_dr2": false,
+  "cov_ladder_all_clear_dr1": false,
+  "dr1_independent_rebuild_matches_harness": 0.0,
+  "sanity_miss": true,
+  "checks": [
+    {
+      "check": "fvobs_nodes_vs_committed_json",
+      "mine": [
+        0.643279949444014,
+        0.6229320569236853,
+        0.6009407462040413,
+        0.577925237079892,
+        0.5550878767923513
+      ],
+      "committed": [
+        0.64328,
+        0.622932,
+        0.600941,
+        0.577925,
+        0.555088
+      ],
+      "abs_diff": 2.5379595869345906e-07,
+      "tol": 1e-06,
+      "pass_": true,
+      "note": "Phi(sigma0*D(z)/2), sigma0=0.7344797420, indep growth D(z)"
+    },
+    {
+      "check": "fvobs_validation_vs_telescope_committed_nodes",
+      "mine": 0.0,
+      "committed": 0.0,
+      "abs_diff": 0.0,
+      "tol": 1e-09,
+      "pass_": true,
+      "note": "z=0,0.3,0.7 below-mean primary nodes maxdiff"
+    },
+    {
+      "check": "chi2_SN_full_cov",
+      "mine": 1869.3149267435074,
+      "committed": 1869.3149267435074,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.001,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "chi2_BAOCMB_dr2",
+      "mine": 976.3156710439362,
+      "committed": 976.3156710439362,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.01,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "chi2_BAOCMB_dr1_harness",
+      "mine": 344.3904135255143,
+      "committed": 344.3904135255143,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.001,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "chi2_BAOCMB_dr1_independent_rebuild",
+      "mine": 344.3904135255143,
+      "committed": 344.3904135255143,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.001,
+      "pass_": true,
+      "note": "rebuilt from timescape_baocmb.BAO + harness Planck point"
+    },
+    {
+      "check": "forced_chi2_dr2",
+      "mine": 2845.6305977874435,
+      "committed": 2845.6305977874435,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.01,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "forced_chi2_dr1",
+      "mine": 2213.7053402690217,
+      "committed": 2213.7053402690217,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.01,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "fv0",
+      "mine": 0.643279949444014,
+      "committed": 0.643279949444014,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 1e-06,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "alpha_dr2",
+      "mine": 40.10906811675646,
+      "committed": 40.10906811675646,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.001,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "N_dr2",
+      "mine": 1594.0,
+      "committed": 1594.0,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "N_dr1",
+      "mine": 1593.0,
+      "committed": 1593.0,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "lnN_dr2",
+      "mine": 7.374001859350161,
+      "committed": 7.374001859350161,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 1e-06,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "lnN_dr1",
+      "mine": 7.373374309910049,
+      "committed": 7.373374309910049,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 1e-06,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "full_cov:chi2_SN",
+      "mine": 1869.3149267435074,
+      "committed": 1869.3149267435074,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.01,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "full_cov:chi2_LCDM_dr2",
+      "mine": 1399.805009110365,
+      "committed": 1399.805009110365,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.05,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "full_cov:chi2_LCDM_dr1",
+      "mine": 1402.2371683046222,
+      "committed": 1402.2371683046222,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.05,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "full_cov:bic_bar_dr2",
+      "mine": 1407.1790109697151,
+      "committed": 1407.1790109697151,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.05,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "full_cov:miss_by_dr2",
+      "mine": 1438.4515868177284,
+      "committed": 1438.4515868177284,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.05,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "full_cov:miss_by_dr1",
+      "mine": 804.0947976544894,
+      "committed": 804.0947976544894,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.05,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "full_cov:clears_bar_dr2",
+      "mine": false,
+      "committed": false,
+      "abs_diff": 0.0,
+      "tol": 0,
+      "pass_": true,
+      "note": "expected False (miss)"
+    },
+    {
+      "check": "diagonal_cov:chi2_SN",
+      "mine": 2185.6316924616694,
+      "committed": 2185.6316924616694,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.01,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "diagonal_cov:chi2_LCDM_dr2",
+      "mine": 1342.5857896395028,
+      "committed": 1342.5857896395028,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.05,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "diagonal_cov:chi2_LCDM_dr1",
+      "mine": 1343.8806816847064,
+      "committed": 1343.8806816847064,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.05,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "diagonal_cov:bic_bar_dr2",
+      "mine": 1349.9597914988528,
+      "committed": 1349.9597914988528,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.05,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "diagonal_cov:miss_by_dr2",
+      "mine": 1811.9875720067528,
+      "committed": 1811.9875720067528,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.05,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "diagonal_cov:miss_by_dr1",
+      "mine": 1178.7680499925673,
+      "committed": 1178.7680499925673,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.05,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "diagonal_cov:clears_bar_dr2",
+      "mine": false,
+      "committed": false,
+      "abs_diff": 0.0,
+      "tol": 0,
+      "pass_": true,
+      "note": "expected False (miss)"
+    },
+    {
+      "check": "tripp_diag:chi2_SN",
+      "mine": 1150.259339403361,
+      "committed": 1150.259339403361,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.01,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "tripp_diag:chi2_LCDM_dr2",
+      "mine": 711.1646986128762,
+      "committed": 711.1646986128762,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.05,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "tripp_diag:chi2_LCDM_dr1",
+      "mine": 713.411985849496,
+      "committed": 713.411985846702,
+      "abs_diff": 2.7939677238464355e-09,
+      "rel_diff": 3.916345364635917e-12,
+      "tol": 0.05,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "tripp_diag:bic_bar_dr2",
+      "mine": 718.5387004722264,
+      "committed": 718.5387004722264,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.05,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "tripp_diag:miss_by_dr2",
+      "mine": 1408.0363099750707,
+      "committed": 1408.0363099750707,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.05,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "tripp_diag:miss_by_dr1",
+      "mine": 773.8643927694693,
+      "committed": 773.8643927722633,
+      "abs_diff": 2.7939677238464355e-09,
+      "rel_diff": 3.6104099761424977e-12,
+      "tol": 0.05,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "tripp_diag:clears_bar_dr2",
+      "mine": false,
+      "committed": false,
+      "abs_diff": 0.0,
+      "tol": 0,
+      "pass_": true,
+      "note": "expected False (miss)"
+    },
+    {
+      "check": "headline:chi2_LCDM_dr2",
+      "mine": 1399.805009110365,
+      "committed": 1399.805009110365,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.05,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "headline:chi2_LCDM_dr1",
+      "mine": 1402.2371683046222,
+      "committed": 1402.2371683046222,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.05,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "headline:bic_bar_dr2",
+      "mine": 1407.1790109697151,
+      "committed": 1407.1790109697151,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.05,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "headline:bic_bar_dr1",
+      "mine": 1409.6105426145323,
+      "committed": 1409.6105426145323,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.05,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "headline:miss_by_dr2",
+      "mine": 1438.4515868177284,
+      "committed": 1438.4515868177284,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.05,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "headline:miss_by_dr1",
+      "mine": 804.0947976544894,
+      "committed": 804.0947976544894,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0,
+      "tol": 0.05,
+      "pass_": true,
+      "note": ""
+    },
+    {
+      "check": "SANITY_forced_shallow_MISSES_bar_large_margin",
+      "mine": {
+        "all_clear_dr2": false,
+        "all_clear_dr1": false,
+        "headline_miss_by_dr2": 1438.4515868177284
+      },
+      "committed": "MISS by >1000 chi2 in every row (SHAPE-UNAVAILABLE)",
+      "abs_diff": 0.0,
+      "tol": 0,
+      "pass_": true,
+      "note": "REFUTED if it unexpectedly CLEARS the bar"
+    }
+  ]
+}

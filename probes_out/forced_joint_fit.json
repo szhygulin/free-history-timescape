@@ -1,0 +1,160 @@
+{
+  "probe": "Forced zero-shape-parameter joint fit -- survey f_v^obs(z) FIXED through Model V dressed geometry vs the BIC bar (roadmap sec 5)",
+  "reading": "KINEMATIC (force f_v(z)=f_v^obs; profile only SN offset + BAO alpha; ZERO fitted cosmological parameters)",
+  "data": {
+    "sn": "harness.sn_chi2 (1580 Pantheon+ SNe, full stat+sys cov, offset marginalised)",
+    "bao_cmb_dr2": "DESI DR2 (probes_out/desi_dr2_rows.json, 13 BAO) + Planck acoustic point (DM/rd=94.31613, err=0.05), alpha marginalised, rd=147.09",
+    "bao_cmb_dr1": "harness.bao_cmb_chi2 (DESI DR1, 12 BAO + Planck acoustic point, alpha marginalised, rd=147.09)",
+    "note": "DR2 chi2 mirrors harness.bao_cmb_chi2 exactly (same alpha marginalisation, same block-diagonal build_cov, same CMB value); only the DESI rows differ."
+  },
+  "fvobs_history": {
+    "definition": "f_v^obs(z) = Phi(sigma0*D(z)/2), sigma0=0.734480 (2M++ 4 Mpc/h anchor), flat-LCDM growth D(z), Om=0.315. Survey-measured; FIXED (zero shape params).",
+    "z_nodes": [
+      0.0,
+      0.3,
+      0.7,
+      1.3,
+      2.33
+    ],
+    "D_of_z": [
+      1.0,
+      0.852823,
+      0.696501,
+      0.535314,
+      0.37721
+    ],
+    "sigma_Rs4": [
+      0.73448,
+      0.626381,
+      0.511566,
+      0.393177,
+      0.277053
+    ],
+    "fv_nodes": [
+      0.64328,
+      0.622932,
+      0.600941,
+      0.577925,
+      0.555088
+    ],
+    "source": "probes_out/telescope_fvobs.json PRIMARY_below_mean_Rs4 (z=0,0.3,0.7 committed; z=1.3,2.33 same growth model), below-mean primary route",
+    "validation_vs_telescope": {
+      "z=0": {
+        "computed": 0.643279949444014,
+        "committed": 0.643279949444014,
+        "abs_diff": 0.0
+      },
+      "z=0.3": {
+        "computed": 0.6229320569236853,
+        "committed": 0.6229320569236853,
+        "abs_diff": 0.0
+      },
+      "z=0.7": {
+        "computed": 0.6009407462040413,
+        "committed": 0.6009407462040413,
+        "abs_diff": 0.0
+      }
+    },
+    "max_abs_diff_vs_committed": 0.0,
+    "note": "near-constant, on the below-mean floor f_v>=1/2 -- lacks the steep decline the joint likelihood needs (cf. Probe-R free-fit nodes ~[0.64,0.53,0.40,0.26,0.17])."
+  },
+  "forced_fit": {
+    "lapse_LA": {
+      "lapse": "algebraic (primary)",
+      "chi2_SN": 1869.3149267435074,
+      "chi2_BAOCMB_dr2": 976.3156710439362,
+      "chi2_BAOCMB_dr1": 344.3904135255143,
+      "forced_chi2_dr2": 2845.6305977874435,
+      "forced_chi2_dr1": 2213.7053402690217,
+      "alpha_dr2": 40.10906811675646,
+      "alpha_dr1": 40.10162947736906,
+      "fv0": 0.643279949444014,
+      "H0_dressed": 60.54246299938493,
+      "H0_dressed_Hd0": 52.97587037460473,
+      "Hbar0": 50.81535724695566,
+      "dz_resid": 3.3334361937420454e-09
+    },
+    "lapse_LB": {
+      "applicable": false,
+      "error": "FloatingPointError('rate_ratio gamma_bar0 shot found no bracket')",
+      "note": "The rate-ratio (LB) lapse solves a self-consistent gamma_bar0 shot so that tau(0)=tau0; LB COINCIDES with LA to machine precision on tracker-like (reconciling) histories. For the shallow, near-constant f_v^obs the backward-RK4 shot finds no bracket -- the flat history is too far from a valid dressed geometry for the LB self-consistency to close. LA is the operative (primary) lapse; the verdict rests on it."
+    },
+    "ngrid": 30000
+  },
+  "bic_test": {
+    "headline": "full_cov / LA / DR2",
+    "N_dr2": 1594,
+    "N_dr1": 1593,
+    "lnN_dr2": 7.374001859350161,
+    "lnN_dr1": 7.373374309910049,
+    "param_accounting": "forced model has 0 cosmological params (f_v FIXED) vs LCDM's 1 (Omega_m); shared nuisances (SN offset, BAO alpha) cancel in the BIC count. Forced wins iff chi2_forced <= chi2_LCDM + ln N.",
+    "forced_chi2_dr2": 2845.6305977874435,
+    "forced_chi2_dr1": 2213.7053402690217,
+    "chi2_LCDM_dr2": 1399.805009110365,
+    "chi2_LCDM_dr1": 1402.2371683046222,
+    "bic_bar_dr2": 1407.1790109697151,
+    "bic_bar_dr1": 1409.6105426145323,
+    "clears_bar_dr2": false,
+    "clears_bar_dr1": false,
+    "miss_by_dr2": 1438.4515868177284,
+    "miss_by_dr1": 804.0947976544894,
+    "reference_bars_expected": {
+      "dr2": "LCDM ~1399.81 + 7.37 = ~1407.2",
+      "dr1": "LCDM ~1402.24 + 7.37 = ~1409.6"
+    }
+  },
+  "cov_ladder": {
+    "full_cov": {
+      "cov": "full_cov",
+      "chi2_SN": 1869.3149267435074,
+      "chi2_BAOCMB_dr2": 976.3156710439362,
+      "chi2_BAOCMB_dr1": 344.3904135255143,
+      "forced_chi2_dr2": 2845.6305977874435,
+      "forced_chi2_dr1": 2213.7053402690217,
+      "chi2_LCDM_dr2": 1399.805009110365,
+      "chi2_LCDM_dr1": 1402.2371683046222,
+      "bic_bar_dr2": 1407.1790109697151,
+      "bic_bar_dr1": 1409.6105426145323,
+      "miss_by_dr2": 1438.4515868177284,
+      "miss_by_dr1": 804.0947976544894,
+      "clears_bar_dr2": false,
+      "clears_bar_dr1": false
+    },
+    "diagonal_cov": {
+      "cov": "diagonal_cov",
+      "chi2_SN": 2185.6316924616694,
+      "chi2_BAOCMB_dr2": 976.3156710439362,
+      "chi2_BAOCMB_dr1": 344.3904135255143,
+      "forced_chi2_dr2": 3161.9473635056056,
+      "forced_chi2_dr1": 2530.0221059871837,
+      "chi2_LCDM_dr2": 1342.5857896395028,
+      "chi2_LCDM_dr1": 1343.8806816847064,
+      "bic_bar_dr2": 1349.9597914988528,
+      "bic_bar_dr1": 1351.2540559946165,
+      "miss_by_dr2": 1811.9875720067528,
+      "miss_by_dr1": 1178.7680499925673,
+      "clears_bar_dr2": false,
+      "clears_bar_dr1": false
+    },
+    "tripp_diag": {
+      "cov": "tripp_diag",
+      "chi2_SN": 1150.259339403361,
+      "chi2_BAOCMB_dr2": 976.3156710439362,
+      "chi2_BAOCMB_dr1": 344.3904135255143,
+      "forced_chi2_dr2": 2126.5750104472972,
+      "forced_chi2_dr1": 1494.6497529288754,
+      "chi2_LCDM_dr2": 711.1646986128762,
+      "chi2_LCDM_dr1": 713.411985846702,
+      "bic_bar_dr2": 718.5387004722264,
+      "bic_bar_dr1": 720.7853601566121,
+      "miss_by_dr2": 1408.0363099750707,
+      "miss_by_dr1": 773.8643927722633,
+      "clears_bar_dr2": false,
+      "clears_bar_dr1": false
+    }
+  },
+  "cov_ladder_note": "Each row refits LCDM under the SAME SN covariance treatment and tests forced vs its OWN bar; the BAO+CMB part is cov-invariant. diagonal_cov drops off-diagonal (systematic) correlations; tripp_diag uses the Tripp-standardised stat-only per-SN error (m_b_corr_err_DIAG). The absolute chi2 scale shifts with the treatment, but the forced history MISSES the bar by >1400 (DR2) / >770 (DR1) chi2 points in every row -- the verdict is covariance-robust.",
+  "interpretation": "The survey-measured void history f_v^obs(z), fed with ZERO tuning into the joint SN+BAO+CMB likelihood through the Model V dressed geometry, MISSES the BIC bar by 1438 chi2 points on DR2 (804 on DR1): forced_chi2=2845.6 vs bar=1407.2. Because the forced model has one FEWER parameter than LCDM, the bar is the most generous a BIC comparison allows, and the shallow ~constant f_v^obs~0.6 still fails it badly. This is the FIT-SPACE corroboration of the telescope's SHAPE-UNAVAILABLE verdict: the actual void population the surveys see cannot supply the backreaction the Hubble diagram wants -- not merely at one redshift (the floor theorem), but as a whole-history joint fit. Robust across the SN covariance ladder (full/diagonal/Tripp) and across DR1/DR2.",
+  "verdict": "FORCED_FVOBS_FAILS_BIC_BAR",
+  "runtime_s": 5.0
+}
