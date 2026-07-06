@@ -1,0 +1,238 @@
+{
+  "probe": "R -- required void history f_v(z) through Model V dressed geometry (R1 gate)",
+  "reading": "KINEMATIC (force f_v(z), compute dressed observables; integrability NOT enforced -- mirrors the free-E(z) T1 test in f_v-space)",
+  "data": "harness.sn_chi2 (1580 SNe, full stat+sys cov, offset marginalised) + harness.bao_cmb_chi2 (DESI DR1 + Planck acoustic point, alpha marginalised, rd=147.09)",
+  "z_nodes": [
+    0.0,
+    0.3,
+    0.7,
+    1.3,
+    2.33
+  ],
+  "references_same_data": {
+    "LCDM": 1402.2372,
+    "w0waCDM": 1398.2856,
+    "tracker": 1469.2926,
+    "free_E": 1391.8498
+  },
+  "thresholds": {
+    "reconciles_le": 1412.2372,
+    "disfavoured_le": 1427.2372,
+    "amplitude_dead_ge": 1469.2926
+  },
+  "sanity_anchors": {
+    "tracker_exact_via_oracle": {
+      "chi2": 1469.2929031155072,
+      "chi2_SN": 1431.6480460464954,
+      "chi2_BAOCMB": 37.64485706901178,
+      "H0_dressed": 63.141951773586506,
+      "ref": 1469.2926,
+      "note": "full oracle f_v(z) through the general solver"
+    },
+    "tracker_node_start": {
+      "chi2": 1471.6497247000225,
+      "fv_nodes": [
+        0.6426,
+        0.5618,
+        0.47151,
+        0.36767,
+        0.25191
+      ],
+      "note": "tracker f_v sampled at the 5 nodes + tracker bridge; residual vs 1469.29 is 5-node PCHIP representation error"
+    },
+    "lcdm_projected_start": {
+      "chi2": 1410.2738463985734,
+      "fv_nodes": [
+        0.64956,
+        0.54511,
+        0.43293,
+        0.31446,
+        0.18808
+      ],
+      "dist_shape_rms": 3.509729416423828e-05,
+      "note": "f_v nodes pre-fit to LCDM D_M(z) shape"
+    },
+    "reproduced": true
+  },
+  "V": {
+    "lapse": "algebraic",
+    "chi2_min": 1396.0591621473432,
+    "chi2_min_fitgrid": 1396.0591736398637,
+    "chi2_SN": 1386.269718207419,
+    "chi2_BAOCMB": 9.78944393992424,
+    "alpha": 37.88797860347935,
+    "fv0": 0.6401279536221243,
+    "H0_dressed": 63.97117069046785,
+    "H0_dressed_gdress": 63.97117069046785,
+    "H0_dressed_Hd0": 67.64800086139489,
+    "Hbar0": 53.794282522327265,
+    "g_dress": 1.1891815949755753,
+    "Hd_z0": 1.257531426937754,
+    "z_nodes": [
+      0.0,
+      0.3,
+      0.7,
+      1.3,
+      2.33
+    ],
+    "fv_nodes": [
+      0.64013,
+      0.53112,
+      0.39578,
+      0.27945,
+      0.19359
+    ],
+    "n_restarts": 44,
+    "de_used": false,
+    "ngrid_fit": 6000,
+    "ngrid_fine": 30000
+  },
+  "V0": {
+    "lapse": "none",
+    "chi2_min": 1396.4880358842202,
+    "chi2_min_fitgrid": 1396.488025644794,
+    "chi2_SN": 1384.7223195508122,
+    "chi2_BAOCMB": 11.765716333407909,
+    "alpha": 34.84032871114401,
+    "fv0": 0.3829188865906813,
+    "H0_dressed": 67.25375088333458,
+    "H0_dressed_gdress": 60.998944083109635,
+    "H0_dressed_Hd0": 67.25375088333458,
+    "Hbar0": 58.4999252473624,
+    "g_dress": 1.0427183252829868,
+    "Hd_z0": 1.1496382362705133,
+    "z_nodes": [
+      0.0,
+      0.3,
+      0.7,
+      1.3,
+      2.33
+    ],
+    "fv_nodes": [
+      0.38292,
+      0.25043,
+      0.12798,
+      0.07152,
+      0.01699
+    ],
+    "n_restarts": 44,
+    "de_used": false,
+    "ngrid_fit": 6000,
+    "ngrid_fine": 30000
+  },
+  "fv_req_band_dchi2_le1": {
+    "z=0": [
+      0.6382035628678454,
+      0.6412762899274248
+    ],
+    "z=0.3": [
+      0.5207412856123229,
+      0.5334329084919353
+    ],
+    "z=0.7": [
+      0.3843953251142039,
+      0.4068078899669497
+    ],
+    "z=1.3": [
+      0.23139148068100684,
+      0.3182208616544595
+    ],
+    "z=2.33": [
+      0.14819674287808113,
+      0.2314134334741064
+    ]
+  },
+  "derived_backreaction_V": {
+    "z": [
+      0.0,
+      0.1,
+      0.3,
+      0.5,
+      0.7,
+      1.0,
+      1.3,
+      1.8,
+      2.33
+    ],
+    "fv": [
+      0.64013,
+      0.60304,
+      0.53112,
+      0.45845,
+      0.39578,
+      0.32784,
+      0.27945,
+      0.23115,
+      0.19359
+    ],
+    "Hw_over_Hbar0": [
+      0.75754,
+      0.84999,
+      1.04793,
+      1.26253,
+      1.49907,
+      1.89363,
+      2.32772,
+      3.12564,
+      4.06043
+    ],
+    "Hv_minus_Hw_over_Hbar0": [
+      0.51562,
+      0.58638,
+      0.74783,
+      1.02208,
+      0.94604,
+      1.16405,
+      1.078,
+      1.27717,
+      2.00411
+    ],
+    "Hbar_over_Hbar0": [
+      1.0876,
+      1.2036,
+      1.44512,
+      1.73111,
+      1.87349,
+      2.27526,
+      2.62896,
+      3.42087,
+      4.4484
+    ],
+    "Q_over_Hbar0sq": [
+      0.367467,
+      0.493865,
+      0.835633,
+      1.556145,
+      1.284162,
+      1.791567,
+      1.403953,
+      1.739352,
+      3.762113
+    ],
+    "void_expansion_excess": [
+      0.47409,
+      0.48719,
+      0.51749,
+      0.59042,
+      0.50496,
+      0.51161,
+      0.41005,
+      0.37335,
+      0.45052
+    ],
+    "note": "(H_v-H_w) and Q are exact kinematic identities of the forced f_v(z) (sec 1.1). 'void_expansion_excess'=(H_v-H_w)/<H> is a dimensionless kinematic depth proxy; a matter-density delta_v(z) is NOT uniquely determined in the kinematic reading (it needs the integrability/dynamical closure) -- reported as a follow-up, not here."
+  },
+  "R1": {
+    "chi2_min_V": 1396.0591621473432,
+    "chi2_min_V0_nolapse": 1396.4880358842202,
+    "chi2_decomposition": "SN 1386.2697 + BAO+CMB 9.7894",
+    "H0_dressed": 63.97117069046785,
+    "H0_dressed_full_Hd0": 67.64800086139489,
+    "Hbar0": 53.794282522327265,
+    "H0_direction": "timescape-direction (down, ~61)",
+    "verdict": "RECONCILES_mechanism_flexible",
+    "reasoning": "chi2_min_V=1396.06 (Delta_vs_LCDM=-6.18). Thresholds: reconciles<= 1412.24 (LCDM+10), disfavoured<=1427.24 (LCDM+25), refuted above, amplitude-dead>=1469.29 (tracker). Free-E(z) reached 1391.85 and LCDM 1402.24 on the same data; the one-parameter tracker sat at 1469.29. Dressed H0=63.97 (g_dress convention -> timescape-direction (down, ~61)); full present dressed rate Hd(0)*Hbar0=67.65 (LCDM-band (~68)) -- the two split by the loosely-pinned present void-growth slope f_v'(0); NEITHER lands in the Bolejko-up (~73) direction. Bare Hbar0=53.79. no-lapse control V0 chi2_min=1396.49.",
+    "sanity_starts_ok": true
+  },
+  "runtime_s": 121.6
+}

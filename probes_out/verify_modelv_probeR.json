@@ -1,0 +1,46 @@
+{
+  "tracker_anchor": {
+    "joint": 1469.2929031155072,
+    "ref": 1469.2926,
+    "abs_err": 0.0003031155072221736,
+    "PASS": true
+  },
+  "checkpoint_bestfit": {
+    "fv_nodes": [
+      0.6401,
+      0.5311,
+      0.3958,
+      0.2794,
+      0.1936
+    ],
+    "joint": 1396.0591621473432,
+    "chi2_SN": 1386.269718207419,
+    "chi2_BAOCMB": 9.78944393992424,
+    "fv0": 0.6401279536221243
+  },
+  "independent_multistart": {
+    "n_starts": 16,
+    "best_joint_fitgrid": 1396.059158329852,
+    "best_joint_headline": 1396.059162209276,
+    "fv_nodes": [
+      0.6401,
+      0.5311,
+      0.3958,
+      0.2795,
+      0.1936
+    ],
+    "fv0": 0.6401280802605928,
+    "beat_checkpoint": false
+  },
+  "R1": {
+    "chi2_min_V": 1396.0591621473432,
+    "chi2_V0_nolapse_at_best": 3161.40671605384,
+    "delta_vs_LCDM": -6.178037852656871,
+    "verdict": "RECONCILES_mechanism_flexible",
+    "thresholds": {
+      "reconciles_le": 1412.2372,
+      "disfavoured_le": 1427.2372,
+      "amplitude_dead_ge": 1469.2926
+    }
+  }
+}
