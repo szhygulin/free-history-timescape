@@ -1,0 +1,132 @@
+{
+  "probe": "verify_R2_final -- independent adversarial recompute of R2_final.json (no import of R2_final.py)",
+  "method": "recomputed Phi(sigma/2), decline ratios, band-membership, floor sigma from sigma0 + LCDM D(z); erf-based Phi and bisection Phi_inv (no scipy).",
+  "inputs_read": [
+    "telescope_fvobs.json",
+    "modelV_probeR.json",
+    "modelV_probeR_LB.json",
+    "mapping_decline_forecast.json",
+    "R2.json",
+    "R2_final.json"
+  ],
+  "checks": {
+    "check1_part1_level": {
+      "band_used": [
+        0.6142592614519756,
+        0.6723006374360525
+      ],
+      "band_symmetric_about_below_mean_central": true,
+      "band_mid": 0.643279949444014,
+      "below_mean_central": 0.643279949444014,
+      "LA_fv0": 0.6401279536221243,
+      "LA_inside": true,
+      "LA_frac_height": 0.44569398522263637,
+      "LB_fv0": 0.5878612293793102,
+      "LB_inside": false,
+      "LB_frac_height": -0.4548140292178377,
+      "V0_fv0": 0.3829188865906813,
+      "V0_inside": false,
+      "V0_frac_height": -3.9857837781923093,
+      "matches_rf_band": true,
+      "matches_rf_LA_frac": true,
+      "PASS": true
+    },
+    "check2_part2_shape": {
+      "per_node": [
+        {
+          "z": 0.3,
+          "obs_fv_recomputed": 0.6229320569236851,
+          "obs_decline_ratio_recomputed": 0.968368526738762,
+          "req_band": [
+            0.8120388883725247,
+            0.8358350525260146
+          ],
+          "obs_above_req_hi": true
+        },
+        {
+          "z": 0.7,
+          "obs_fv_recomputed": 0.6009407462040413,
+          "obs_decline_ratio_recomputed": 0.9341823054230642,
+          "req_band": [
+            0.5994223256838438,
+            0.6374265416803832
+          ],
+          "obs_above_req_hi": true
+        },
+        {
+          "z": 1.3,
+          "obs_fv_recomputed": 0.577925237079892,
+          "obs_decline_ratio_recomputed": 0.8984039337451633,
+          "req_band": [
+            0.36082962104710614,
+            0.4986196884023889
+          ],
+          "obs_above_req_hi": true
+        },
+        {
+          "z": 2.33,
+          "obs_fv_recomputed": 0.5550878767923513,
+          "obs_decline_ratio_recomputed": 0.8629025003377037,
+          "req_band": [
+            0.23109655729647047,
+            0.36260128732942504
+          ],
+          "obs_above_req_hi": true
+        }
+      ],
+      "all_z_gt0_above_req_hi": true,
+      "obs_total_decline_x": 1.1588794789778012,
+      "req_total_decline_x": 3.3066274084405185,
+      "obs_fv_matches_telescope_z03": true,
+      "obs_fv_matches_telescope_z07": true,
+      "obs_ratio_matches_rf_z03": true,
+      "obs_ratio_matches_rf_z07": true,
+      "obs_total_matches_rf": true,
+      "PASS": true
+    },
+    "check3_z07_floor": {
+      "req_fv07": 0.39578,
+      "obs_fv07_recomputed": 0.6009407462040413,
+      "gap_absolute": 0.20516074620404123,
+      "gap_relative": 0.5183706761434161,
+      "sigma_needed_for_req_fv": -0.5285708248307281,
+      "req_fv_below_half": true,
+      "floor_impossible": true,
+      "fv07_Rs8": 0.5596078880134899,
+      "gap_abs_Rs8": 0.1638278880134899,
+      "Rs_range": [
+        0.5596078880134899,
+        0.6539277728423263
+      ],
+      "Rs_floor_holds_all_ge_half": true,
+      "matches_rf_gap_abs": true,
+      "matches_rf_gap_rel": true,
+      "matches_rf_sigma_needed": true,
+      "PASS": true
+    },
+    "check4_verdict_token": {
+      "verdict": "SHAPE-UNAVAILABLE",
+      "verdict_is_pre_registered": true,
+      "vocab_matches_pre_registered": true,
+      "part1_uses_narrow_below_mean_lower_edge": true,
+      "narrow_lower": 0.6142592614519756,
+      "wide_lower": 0.2215208615359882,
+      "LB_would_pass_under_wide_band": true,
+      "V0_would_pass_under_wide_band": true,
+      "discrimination_requires_narrow_band": true,
+      "deep_void_edge_fv0": 0.41395890143755104,
+      "deep_void_edge_fails_part1_level": true,
+      "supersedes_old": true,
+      "PASS": true
+    },
+    "check_bonus_Q": {
+      "prefactor_req": 0.2391381916,
+      "prefactor_obs": 0.23981096575577132,
+      "ratio_obs_over_req": 1.0028133279392555,
+      "Q_req_z07_over_Hbar0sq": 1.284162,
+      "matches_rf_ratio": true,
+      "matches_rf_Qreq": true
+    }
+  },
+  "verdict_of_verification": "SURVIVES"
+}

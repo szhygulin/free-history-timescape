@@ -1,0 +1,318 @@
+{
+  "probe": "R2-final -- FINAL telescope-forced availability verdict (paper 2)",
+  "supersedes": {
+    "artifact": "probes_out/R2.json",
+    "old_verdict": "MARGINAL_top_edge",
+    "why": "R2.json's MARGINAL_top_edge rode the too-wide 2M++ *definition* band [0.222,0.672] (envelope test, necessarily-true, unfalsifiable). R2-final replaces it with the pre-registered TWO-PART test (NOTES_mapping.md sec 5): a bias-independent z=0 level gate + a derived-mapping decline-ratio gate at the level-anchored eps=0, evaluated on the Wave-2A telescope measurement."
+  },
+  "reading_convention": "KINEMATIC (f_v^req is what backreaction the Hubble diagram wants, not a proven dynamical solution; Buchert integrability not enforced).",
+  "z_nodes": [
+    0.0,
+    0.3,
+    0.7,
+    1.3,
+    2.33
+  ],
+  "two_part_test": {
+    "part1_level_z0": {
+      "definition": "bias-independent below-mean f_v(0)=P(delta<0); PASS iff f_v^req(0) inside the measured below-mean band. (M1) delta<0 <=> H_local>Hbar is bias-free at the sign, so this level is the one definition-free anchor.",
+      "measured_below_mean_band": [
+        0.6142592614519756,
+        0.6723006374360525
+      ],
+      "measured_below_mean_central": 0.643279949444014,
+      "measured_source": "telescope_fvobs.json below_mean_z0_anchor (2M++ sigma0, Phase-D reliable-volume band reused by Wave-2A; z=0 not re-measured).",
+      "per_reading": [
+        {
+          "reading": "LA",
+          "lapse": "algebraic",
+          "fv0_req": 0.6401279536221243,
+          "inside_below_mean_band": true,
+          "frac_height_in_band": 0.4457,
+          "status": "PASS",
+          "note": "0.640 mid-band -> the z=0 LEVEL is available at the bias-independent below-mean edge."
+        },
+        {
+          "reading": "LB",
+          "lapse": "rate_ratio",
+          "fv0_req": 0.5878612293793102,
+          "inside_below_mean_band": false,
+          "frac_height_in_band": -0.4548,
+          "status": "LEVEL-FAIL",
+          "band_widths_below_lower": 0.4548,
+          "note": "0.588 sits BELOW the band lower edge 0.614 -> LB fails Part 1 by level."
+        },
+        {
+          "reading": "V0",
+          "lapse": "none",
+          "fv0_req": 0.3829188865906813,
+          "inside_below_mean_band": false,
+          "frac_height_in_band": -3.9858,
+          "status": "FAIL",
+          "band_widths_below_lower": 3.9858,
+          "note": "0.383 sits far below the band -> V0 fails Part 1 by level (below 0.5 everywhere past z=0)."
+        }
+      ],
+      "discriminates": true,
+      "discriminates_note": "the z=0 below-mean measurement SELECTS LA (supplies 0.640) and REJECTS LB (0.588, below the lower edge) and V0 (0.383, far below): the readings are discriminated by the level alone (roadmap sec 5.3).",
+      "readings_passing_part1": [
+        "LA"
+      ]
+    },
+    "part2_shape_decline": {
+      "gate_anchoring": {
+        "primary": "level-anchored eps=0 (below-mean); a SINGLE edge, band width 0 -- the Part-2 prediction is one curve, not a band. The single mapping parameter eps is fixed by the Part-1 z=0 level (non-circular; NOTES_mapping.md sec 4).",
+        "deep_void_edge_role": "EXPOSITION ONLY. The fixed-density / deep-void anchor (eps set by a physical void barrier) matches the required decline SHAPE but at f_v(0)=0.414, failing the Part-1 level -- it is NEVER an alternate pass route. No single eps occupies both the (0.640 level) and the (x3.31 shape) corner (NOTES_mapping.md sec 2.2/3/4).",
+        "evaluated_against": "LA required decline-ratio band (the only reading passing Part 1)."
+      },
+      "measured_source": "telescope_fvobs.json PRIMARY_below_mean_Rs4 (eps=0, R_s=4 Mpc/h); == mapping_decline_forecast.json eps_sweep[eps=0], whose LCDM D(z) growth is validated by the measured CIC growth (sigma_m_ratio 0.765 vs D_ratio 0.829, reduced chi2 ~1).",
+      "required_source": "mapping_decline_forecast.json required.decline_ratio_{lo,hi} (LA history).",
+      "per_node": [
+        {
+          "z": 0.3,
+          "obs_fv_below_mean": 0.6229320569236853,
+          "obs_decline_ratio": 0.9683685267387622,
+          "req_fv": 0.53112,
+          "req_decline_ratio": 0.8297064658741194,
+          "req_decline_ratio_band": [
+            0.8120388883725247,
+            0.8358350525260146
+          ],
+          "obs_inside_req_band": false,
+          "obs_above_req_hi": true,
+          "status": "FAIL_flatter"
+        },
+        {
+          "z": 0.7,
+          "obs_fv_below_mean": 0.6009407462040413,
+          "obs_decline_ratio": 0.9341823054230642,
+          "req_fv": 0.39578,
+          "req_decline_ratio": 0.618280661740584,
+          "req_decline_ratio_band": [
+            0.5994223256838438,
+            0.6374265416803832
+          ],
+          "obs_inside_req_band": false,
+          "obs_above_req_hi": true,
+          "status": "FAIL_flatter"
+        },
+        {
+          "z": 1.3,
+          "obs_fv_below_mean": 0.577925237079892,
+          "obs_decline_ratio": 0.8984039337451633,
+          "req_fv": 0.27945,
+          "req_decline_ratio": 0.436551950385078,
+          "req_decline_ratio_band": [
+            0.36082962104710614,
+            0.4986196884023889
+          ],
+          "obs_inside_req_band": false,
+          "obs_above_req_hi": true,
+          "status": "FAIL_flatter"
+        },
+        {
+          "z": 2.33,
+          "obs_fv_below_mean": 0.5550878767923513,
+          "obs_decline_ratio": 0.8629025003377037,
+          "req_fv": 0.19359,
+          "req_decline_ratio": 0.302422945339228,
+          "req_decline_ratio_band": [
+            0.23109655729647047,
+            0.36260128732942504
+          ],
+          "obs_inside_req_band": false,
+          "obs_above_req_hi": true,
+          "status": "FAIL_flatter"
+        }
+      ],
+      "all_z_gt0_nodes_above_req_hi": true,
+      "obs_total_decline_x": 1.1589,
+      "req_total_decline_x": 3.3066274084405185,
+      "status": "FAIL",
+      "status_note": "the measured below-mean decline is FLATTER than required (sits at the floor) and exceeds the required-hi edge at EVERY z>0 node -- most decisively at the directly-measurable z~0.7 node. The observed void population cannot supply the required x3.31 decline."
+    }
+  },
+  "z07_gap": {
+    "z": 0.7,
+    "obs_fv_below_mean": 0.6009407462040413,
+    "req_fv": 0.39578,
+    "gap_absolute": 0.20516074620404123,
+    "gap_relative": 0.5183706761434161,
+    "obs_decline_ratio": 0.9341823054230642,
+    "req_decline_ratio": 0.618280661740584,
+    "req_decline_ratio_band": [
+      0.5994223256838438,
+      0.6374265416803832
+    ],
+    "obs_ratio_above_req_hi_band": true,
+    "floor_theorem": {
+      "sigma_needed_for_req_fv": -0.528570824830728,
+      "impossible": true,
+      "statement": "f_v^req(0.7)=0.396 < 0.5, but the below-mean fraction Phi(sigma/2) >= 0.5 for ANY real field (sigma>0). Reaching 0.396 needs sigma<0. The gap is therefore DEFINITIONALLY unbridgeable by the below-mean (eps=0) mapping, independent of the measured sigma value (NOTES_mapping.md sec 3 near-theorem, roadmap 4a floor). SHAPE-UNAVAILABLE."
+    },
+    "conservative_Rs_bound": {
+      "fv07_Rs8": 0.5596078880134899,
+      "gap_abs_Rs8": 0.1638278880134899,
+      "note": "even the most conservative smoothing R_s=8 Mpc/h gives f_v(0.7)=0.560, still 0.164 above the required 0.396 and still >= 0.5 (floor)."
+    },
+    "note": "gap in absolute f_v is 0.205 (52% relative). The verdict does NOT rest on a sigma count (statistical+bias error ~0.006 would give tens of sigma); it rests on the floor theorem, which is bias- and growth-independent."
+  },
+  "Q_backreaction_contrast": {
+    "backreaction_identity": "Q = 6 f_v (1-f_v) (H_v-H_w)^2  (K3); H_v-H_w is sourced by the DECLINE of f_v, so a flat f_v(z) sources little backreaction.",
+    "Q_req_over_Hbar0sq_grid_z": [
+      0.0,
+      0.1,
+      0.3,
+      0.5,
+      0.7,
+      1.0,
+      1.3,
+      1.8,
+      2.33
+    ],
+    "Q_req_over_Hbar0sq": [
+      0.367467,
+      0.493865,
+      0.835633,
+      1.556145,
+      1.284162,
+      1.791567,
+      1.403953,
+      1.739352,
+      3.762113
+    ],
+    "Q_req_over_Hbar0sq_z07": 1.284162,
+    "void_expansion_excess_req_z07": 0.50496,
+    "prefactor_fv_1_minus_fv_z07": {
+      "req": 0.2391381916,
+      "obs": 0.23981096575577132,
+      "ratio_obs_over_req": 1.0028133279392555
+    },
+    "note": "at z=0.7 the geometric prefactor f_v(1-f_v) is near-DEGENERATE (req 0.2391 vs obs 0.2398, ratio 1.003) because obs 0.601 and req 0.396 straddle 0.5 symmetrically; the ENTIRE backreaction deficit therefore lives in (H_v-H_w)^2, which the flat observed decline (x1.16) cannot source. Full Q_obs(z) needs the two-scale solver (not re-run here), so Q_req(z) stands as the backreaction TARGET the observed voids miss."
+  },
+  "Rs_note": {
+    "definition": "f_v(0.7) across R_s in {2,4,8} Mpc/h (telescope_fvobs.json Rs_sensitivity_band).",
+    "fv_z07_range": [
+      0.5596078880134899,
+      0.6539277728423263
+    ],
+    "floor_holds": true,
+    "statement": "f_v(0.7) stays in [0.560, 0.654] across R_s=2..8 Mpc/h, all >= 0.5 -- so R_s CANNOT rescue the level-anchored decline. The floor is R_s-independent; smoothing choice is not an escape from SHAPE-UNAVAILABLE (mapping-review tightening)."
+  },
+  "lapse_reading_bands": {
+    "LA": {
+      "lapse": "algebraic",
+      "primary": true,
+      "fv0": 0.6401279536221243,
+      "fv_nodes": [
+        0.64013,
+        0.53112,
+        0.39578,
+        0.27945,
+        0.19359
+      ],
+      "total_decline_x": 3.3066,
+      "fv_req_band_dchi2_le1": {
+        "z=0": [
+          0.6382035628678454,
+          0.6412762899274248
+        ],
+        "z=0.3": [
+          0.5207412856123229,
+          0.5334329084919353
+        ],
+        "z=0.7": [
+          0.3843953251142039,
+          0.4068078899669497
+        ],
+        "z=1.3": [
+          0.23139148068100684,
+          0.3182208616544595
+        ],
+        "z=2.33": [
+          0.14819674287808113,
+          0.2314134334741064
+        ]
+      },
+      "part1": "PASS",
+      "part2": "FAIL_shape",
+      "role": "the primary reading: supplies the z=0 level (Part 1 PASS) but fails Part 2 by shape -> drives the SHAPE-UNAVAILABLE verdict."
+    },
+    "LB": {
+      "lapse": "rate_ratio",
+      "primary": false,
+      "fv0": 0.5878612293793102,
+      "fv_nodes": [
+        0.58786,
+        0.49709,
+        0.38473,
+        0.2503,
+        0.12145
+      ],
+      "total_decline_x": 4.8403,
+      "fv_req_band_dchi2_le1": {
+        "z=0": [
+          0.5863424466257657,
+          0.6173433124732666
+        ],
+        "z=0.3": [
+          0.4955669533460243,
+          0.5315582055772027
+        ],
+        "z=0.7": [
+          0.3830149249750215,
+          0.38627053052940524
+        ],
+        "z=1.3": [
+          0.2483715857413297,
+          0.2519520062063618
+        ],
+        "z=2.33": [
+          0.10110468748146798,
+          0.1816410903605505
+        ]
+      },
+      "part1": "LEVEL-FAIL",
+      "part2": "moot (fails Part 1)",
+      "role": "fails Part 1 by level (0.588 below 0.614); its required decline is even steeper (x4.84), so Part 2 would fail harder -- moot, does not pass Part 1."
+    },
+    "V0": {
+      "lapse": "none",
+      "primary": false,
+      "fv0": 0.3829188865906813,
+      "fv_nodes": [
+        0.38292,
+        0.25043,
+        0.12798,
+        0.07152,
+        0.01699
+      ],
+      "total_decline_x": 22.538,
+      "fv_req_band_dchi2_le1": "unavailable (V0 is the no-lapse control; Probe R emits no dchi2<=1 band for it)",
+      "part1": "FAIL",
+      "part2": "moot (fails Part 1)",
+      "role": "no-lapse control; fails Part 1 far below the band (0.383) with the steepest required decline (x22.5) -- moot for Part 2."
+    }
+  },
+  "verdict": "SHAPE-UNAVAILABLE",
+  "verdict_reason": "Part 1 (z=0 LEVEL): f_v^req(0)=0.640 (LA) sits mid-band in the bias-independent below-mean band [0.614,0.672] -> PASS; the LEVEL is available at the below-mean edge. The z=0 measurement discriminates the readings: LB (0.588) and V0 (0.383) fail Part 1 by level. Part 2 (SHAPE, level-anchored eps=0 below-mean at fixed R_s=4): the measured decline ratio is FLATTER than required at EVERY z>0 node, exceeding the required-hi edge -- at the decisive z~0.7 node obs f_v=0.601 (ratio 0.934) vs required 0.396 (ratio 0.618, band [0.599,0.637]): a 0.205 absolute / 52% relative gap. By the floor theorem the below-mean fraction Phi(sigma/2)>=0.5 for any real field (sigma>0), so reaching 0.396 needs sigma<0 -- the gap is DEFINITIONALLY unbridgeable, R_s-independent ([0.560,0.654] across R_s=2..8). The level is available (Part 1) but the observed void population cannot supply the required x3.31 decline (Part 2): the observed voids cannot supply the backreaction the Hubble diagram wants. This is the branch the LCDM-growth forecast and the NOTES_mapping.md sec 3 near-theorem anticipate. f_v^req(z) stands as the model-independent target any backreaction proposal must hit.",
+  "verdict_vocabulary": {
+    "SUPPLIED": "Part 1 PASS AND Part 2 inside band at every node AND forced fit clears BIC bar -- NOT reached.",
+    "SHAPE-UNAVAILABLE": "Part 1 PASS but Part 2 decline flatter than required beyond the floor at z~0.7 -- THIS VERDICT.",
+    "MAPPING-UNDERIVABLE": "no principled f_v<->observable mapping without per-z freedom -- NOT triggered (the mapping is derived, single-parameter, anchored non-circularly at z=0)."
+  },
+  "provenance": {
+    "synthesizes": [
+      "probes_out/telescope_fvobs.json (Wave-2A measured below-mean f_v_obs(z), decline ratios, R_s-sensitivity band, floor theorem)",
+      "probes_out/modelV_probeR.json (LA required history fv0=0.640, dchi2<=1 bands, Q(z))",
+      "probes_out/modelV_probeR_LB.json (LB required history fv0=0.588, dchi2<=1 bands)",
+      "probes_out/mapping_decline_forecast.json (required decline-ratio bands; eps=0 level-anchored below-mean sweep)",
+      "probes_out/R2.json (superseded MARGINAL_top_edge; below-mean band source)"
+    ],
+    "specs": [
+      "NOTES_mapping.md sec 4b/5/6 (two-part test, level-anchored eps=0 gate, verdict vocabulary)",
+      "REASONING_AND_ROADMAP.md sec 4b/6 (level-vs-shape tension, decision tree)"
+    ],
+    "no_raw_data_touched": true
+  }
+}
