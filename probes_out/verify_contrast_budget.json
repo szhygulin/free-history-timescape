@@ -1,0 +1,455 @@
+{
+  "probe": "verify_contrast_budget -- adversarial re-solve of contrast_budget.json (audit sec.2, A2)",
+  "method": "independent delta->h via (Q) energy-integral quadrature and (R) hand-rolled RK4 on a''=-M/a^2; both compared to the committed parametric+brentq map. Field, required curve, two-sided assembly and verdict independently recomputed.",
+  "integrator_cross_check": {
+    "map": {
+      "void": [
+        {
+          "delta": -0.3,
+          "h_param": 1.106615558128388,
+          "h_quadrature": 1.106615561605311,
+          "h_ivp_dop853": 1.106615558130606,
+          "abs_err_quad": 3.476922971756835e-09,
+          "abs_err_ivp": 2.2180035585961377e-12
+        },
+        {
+          "delta": -0.5,
+          "h_param": 1.1874521838170495,
+          "h_quadrature": 1.1874521849648216,
+          "h_ivp_dop853": 1.1874521838218044,
+          "abs_err_quad": 1.1477720995856089e-09,
+          "abs_err_ivp": 4.7548631698646204e-12
+        },
+        {
+          "delta": -0.8,
+          "h_param": 1.3361087210110663,
+          "h_quadrature": 1.3361087212006493,
+          "h_ivp_dop853": 1.3361087210174007,
+          "abs_err_quad": 1.8958301595262128e-10,
+          "abs_err_ivp": 6.334488489301293e-12
+        },
+        {
+          "delta": -0.9,
+          "h_param": 1.401299059454738,
+          "h_quadrature": 1.4012990595253203,
+          "h_ivp_dop853": 1.4012990594592614,
+          "abs_err_quad": 7.05822067459394e-11,
+          "abs_err_ivp": 4.523270646927813e-12
+        }
+      ],
+      "wall": [
+        {
+          "delta": 0.5,
+          "h_param": 0.8465029271464343,
+          "h_quadrature": 0.8465029271484762,
+          "h_ivp_dop853": 0.8465029271520379,
+          "abs_err_quad": 2.041922186890588e-12,
+          "abs_err_ivp": 5.603628672190553e-12
+        },
+        {
+          "delta": 0.536,
+          "h_param": 0.8362932326112429,
+          "h_quadrature": 0.8362932326133021,
+          "h_ivp_dop853": 0.8362932326123519,
+          "abs_err_quad": 2.0592416660747404e-12,
+          "abs_err_ivp": 1.1090017792980689e-12
+        },
+        {
+          "delta": 0.575,
+          "h_param": 0.8253384124086895,
+          "h_quadrature": 0.8253384124107866,
+          "h_ivp_dop853": 0.8253384124129092,
+          "abs_err_quad": 2.097100271214458e-12,
+          "abs_err_ivp": 4.2196246496928325e-12
+        },
+        {
+          "delta": 0.72,
+          "h_param": 0.7855159502978627,
+          "h_quadrature": 0.7855159503001484,
+          "h_ivp_dop853": 0.7855159503021918,
+          "abs_err_quad": 2.2857271630982723e-12,
+          "abs_err_ivp": 4.329092639920873e-12
+        },
+        {
+          "delta": 0.77,
+          "h_param": 0.7720953866524302,
+          "h_quadrature": 0.7720953866546957,
+          "h_ivp_dop853": 0.7720953866557276,
+          "abs_err_quad": 2.2655211040500944e-12,
+          "abs_err_ivp": 3.2974734054391774e-12
+        },
+        {
+          "delta": 0.8,
+          "h_param": 0.7641153278197295,
+          "h_quadrature": 0.7641153278221439,
+          "h_ivp_dop853": 0.7641153278292836,
+          "abs_err_quad": 2.414402011652328e-12,
+          "abs_err_ivp": 9.554135260714247e-12
+        },
+        {
+          "delta": 0.83,
+          "h_param": 0.7561880127019807,
+          "h_quadrature": 0.7561880127044506,
+          "h_ivp_dop853": 0.7561880127086482,
+          "abs_err_quad": 2.4699131628835858e-12,
+          "abs_err_ivp": 6.66755539668884e-12
+        },
+        {
+          "delta": 0.86,
+          "h_param": 0.7483122945864262,
+          "h_quadrature": 0.7483122945889185,
+          "h_ivp_dop853": 0.7483122945942161,
+          "abs_err_quad": 2.4922286456785514e-12,
+          "abs_err_ivp": 7.789879852282411e-12
+        },
+        {
+          "delta": 0.89,
+          "h_param": 0.7404870691355135,
+          "h_quadrature": 0.740487069138088,
+          "h_ivp_dop853": 0.74048706915038,
+          "abs_err_quad": 2.5744961718032755e-12,
+          "abs_err_ivp": 1.486644141124316e-11
+        }
+      ]
+    },
+    "map_max_abs_err_vs_parametric": 3.476922971756835e-09,
+    "integrators": "Q=energy-integral quadrature (cumulative_trapezoid, 1st-order); R=DOP853 solve_ivp (2nd-order ODE); both vs committed parametric+brentq",
+    "E_universality": "quadrature (delta,h) locus verified E-independent (void E in {0.3,1.0}, wall E in {-0.3,-1.0}) -> map is a pure function"
+  },
+  "turnaround": {
+    "delta_turnaround_ivp_event": 4.551652475622635,
+    "delta_turnaround_analytic": 4.551652475612764,
+    "abs_err": 9.871214956547192e-12
+  },
+  "empty_void_ceiling": {
+    "hv_delta_minus1_quad": 1.4976235479141995,
+    "hv_delta_minus1_param": 1.5,
+    "one_sided_excess_empty_void": 0.4976235479141995,
+    "note": "EdS empty-void ceiling: h_v(delta->-1)=3/2, one-sided excess (h_v-1)=0.5."
+  },
+  "required_check": {
+    "committed_required_central": [
+      0.47409,
+      0.48719,
+      0.51749,
+      0.59042,
+      0.50496,
+      0.51161,
+      0.41005,
+      0.37335,
+      0.45052
+    ],
+    "source_void_expansion_excess": [
+      0.47409,
+      0.48719,
+      0.51749,
+      0.59042,
+      0.50496,
+      0.51161,
+      0.41005,
+      0.37335,
+      0.45052
+    ],
+    "kinematic_identity_Hv_minus_Hw_over_Hbar": [
+      0.4740897388745863,
+      0.4871884346959123,
+      0.517486437112489,
+      0.5904188641969604,
+      0.5049613288568393,
+      0.5116118597435019,
+      0.41004807984906577,
+      0.37334654634639725,
+      0.4505237838323891
+    ],
+    "max_abs_committed_vs_source": 0.0,
+    "max_abs_identity_residual": 3.783832389137043e-06,
+    "band_lo": [
+      0.43393,
+      0.46236,
+      0.49252,
+      0.4682,
+      0.36791,
+      0.24262,
+      -0.0,
+      -0.00017,
+      -0.0
+    ],
+    "band_hi": [
+      0.55916,
+      0.54766,
+      0.53983,
+      0.68104,
+      0.60253,
+      0.8863,
+      0.50493,
+      0.83748,
+      0.57566
+    ]
+  },
+  "field_recompute_independent": {
+    "r100": {
+      "radius_Mpc_h": 100.0,
+      "N_measured": 1097911,
+      "N_zero_fill": 0,
+      "regional_mean_delta": 0.06442056335362094,
+      "f_void_delta_lt_0": 0.6142592614519756,
+      "f_wall_delta_gt_0": 0.3857407385480244,
+      "mean_delta_void": -0.4538436382488132,
+      "mean_delta_wall_volume_weighted": 0.8897121488667621,
+      "median_delta_wall": 0.5747655514983988,
+      "massbalance_delta_wall_cosmicmean0": 0.7227073269334916,
+      "hv_field_averaged": 1.1757957965774328,
+      "hw_field_averaged": 0.7637439242140838,
+      "frac_wall_cells_virialized": 0.01179195719571485,
+      "delta_wall_effective_for_expansion": 0.8014011371575342
+    },
+    "r200": {
+      "radius_Mpc_h": 200.0,
+      "N_measured": 6021153,
+      "N_zero_fill": 2761626,
+      "regional_mean_delta": 0.00877896360308216,
+      "f_void_delta_lt_0": 0.6723006374360525,
+      "f_wall_delta_gt_0": 0.3276993625639475,
+      "mean_delta_void": -0.40584600864221304,
+      "mean_delta_wall_volume_weighted": 0.8594142256201748,
+      "median_delta_wall": 0.5361871667974705,
+      "massbalance_delta_wall_cosmicmean0": 0.8326245378576019,
+      "hv_field_averaged": 1.1527072023374811,
+      "hw_field_averaged": 0.7718392649052078,
+      "frac_wall_cells_virialized": 0.010615124817041773,
+      "delta_wall_effective_for_expansion": 0.770959759639111
+    }
+  },
+  "field_recompute_diff_vs_committed": {
+    "r100": {
+      "regional_mean_delta": {
+        "mine": 0.06442056335362094,
+        "committed": 0.06442056335362094,
+        "abs_err": 0.0
+      },
+      "f_void_delta_lt_0": {
+        "mine": 0.6142592614519756,
+        "committed": 0.6142592614519756,
+        "abs_err": 0.0
+      },
+      "f_wall_delta_gt_0": {
+        "mine": 0.3857407385480244,
+        "committed": 0.3857407385480244,
+        "abs_err": 0.0
+      },
+      "mean_delta_void": {
+        "mine": -0.4538436382488132,
+        "committed": -0.4538436382488132,
+        "abs_err": 0.0
+      },
+      "mean_delta_wall_volume_weighted": {
+        "mine": 0.8897121488667621,
+        "committed": 0.8897121488667621,
+        "abs_err": 0.0
+      },
+      "median_delta_wall": {
+        "mine": 0.5747655514983988,
+        "committed": 0.5747655514983988,
+        "abs_err": 0.0
+      },
+      "massbalance_delta_wall_cosmicmean0": {
+        "mine": 0.7227073269334916,
+        "committed": 0.7227073269334916,
+        "abs_err": 0.0
+      },
+      "hv_field_averaged": {
+        "mine": 1.1757957965774328,
+        "committed": 1.1757957893985875,
+        "abs_err": 7.178845295996439e-09
+      },
+      "hw_field_averaged": {
+        "mine": 0.7637439242140838,
+        "committed": 0.7637436816675354,
+        "abs_err": 2.42546548401279e-07
+      },
+      "frac_wall_cells_virialized": {
+        "mine": 0.01179195719571485,
+        "committed": 0.01179195719571485,
+        "abs_err": 0.0
+      },
+      "delta_wall_effective_for_expansion": {
+        "mine": 0.8014011371575342,
+        "committed": 0.8014020468732806,
+        "abs_err": 9.09715746399975e-07
+      }
+    },
+    "r200": {
+      "regional_mean_delta": {
+        "mine": 0.00877896360308216,
+        "committed": 0.00877896360308216,
+        "abs_err": 0.0
+      },
+      "f_void_delta_lt_0": {
+        "mine": 0.6723006374360525,
+        "committed": 0.6723006374360525,
+        "abs_err": 0.0
+      },
+      "f_wall_delta_gt_0": {
+        "mine": 0.3276993625639475,
+        "committed": 0.3276993625639475,
+        "abs_err": 0.0
+      },
+      "mean_delta_void": {
+        "mine": -0.40584600864221304,
+        "committed": -0.40584600864221304,
+        "abs_err": 0.0
+      },
+      "mean_delta_wall_volume_weighted": {
+        "mine": 0.8594142256201748,
+        "committed": 0.8594142256201748,
+        "abs_err": 0.0
+      },
+      "median_delta_wall": {
+        "mine": 0.5361871667974705,
+        "committed": 0.5361871667974705,
+        "abs_err": 0.0
+      },
+      "massbalance_delta_wall_cosmicmean0": {
+        "mine": 0.8326245378576019,
+        "committed": 0.8326245378576019,
+        "abs_err": 0.0
+      },
+      "hv_field_averaged": {
+        "mine": 1.1527072023374811,
+        "committed": 1.1527073299823296,
+        "abs_err": 1.2764484846883306e-07
+      },
+      "hw_field_averaged": {
+        "mine": 0.7718392649052078,
+        "committed": 0.7718390609422554,
+        "abs_err": 2.0396295241642548e-07
+      },
+      "frac_wall_cells_virialized": {
+        "mine": 0.010615124817041773,
+        "committed": 0.010615124817041773,
+        "abs_err": 0.0
+      },
+      "delta_wall_effective_for_expansion": {
+        "mine": 0.770959759639111,
+        "committed": 0.7709605128491319,
+        "abs_err": 7.53210020909556e-07
+      }
+    }
+  },
+  "model_forced_fv": [
+    0.64013,
+    0.60304,
+    0.53112,
+    0.45845,
+    0.39578,
+    0.32784,
+    0.27945,
+    0.23115,
+    0.19359
+  ],
+  "z": [
+    0.0,
+    0.1,
+    0.3,
+    0.5,
+    0.7,
+    1.0,
+    1.3,
+    1.8,
+    2.33
+  ],
+  "available_recomputed": {
+    "wall_h_effective": 0.7677915945596459,
+    "field_averaged": {
+      "r100": {
+        "hv": 1.1757957965774328,
+        "hw": 0.7637439242140838,
+        "excess_z0": 0.4010195481821017,
+        "excess_z": [
+          0.40102,
+          0.40707,
+          0.41935,
+          0.43253,
+          0.44458,
+          0.45843,
+          0.46883,
+          0.47969,
+          0.48849
+        ]
+      },
+      "r200": {
+        "hv": 1.1527072023374811,
+        "hw": 0.7718392649052078,
+        "excess_z0": 0.37500132014444504,
+        "excess_z": [
+          0.375,
+          0.38029,
+          0.39098,
+          0.40242,
+          0.41283,
+          0.42474,
+          0.43366,
+          0.44293,
+          0.45043
+        ]
+      }
+    },
+    "field_averaged_two_sided_z0_band": [
+      0.37500132014444504,
+      0.4010195481821017
+    ],
+    "plan_central_excess_z": [
+      0.40491,
+      0.41108,
+      0.42361,
+      0.43706,
+      0.44937,
+      0.46352,
+      0.47416,
+      0.48527,
+      0.49428
+    ],
+    "plan_central_z0": 0.40491,
+    "void_only_EdSwall_delta_minus0p8_z0": 0.2765977987480058,
+    "empty_void_EdSwall_z0": 0.3787692272728994,
+    "deep_void_minus0p8_plus_field_wall_z0": 0.5022295281046537,
+    "best_case_measured_z0": 0.5678779737442269
+  },
+  "gap_required_minus_plan_central": {
+    "z": [
+      0.0,
+      0.1,
+      0.3,
+      0.5,
+      0.7,
+      1.0,
+      1.3,
+      1.8,
+      2.33
+    ],
+    "gap": [
+      0.06918,
+      0.07611,
+      0.09388,
+      0.15336,
+      0.05559,
+      0.04809,
+      -0.06411,
+      -0.11192,
+      -0.04376
+    ],
+    "gap_z0": 0.06918,
+    "gap_z0p5": 0.15336
+  },
+  "verdict_independent": "MARGINAL",
+  "verdict_committed": "MARGINAL",
+  "strike_agrees": true,
+  "verdict_reasoning": "Independent re-solve reproduces the committed delta->h map to 3.5e-09 (two decorrelated integrators), the turnaround to 9.9e-12, and every 2M++ field statistic. Required z0=0.4741 (band_lo=0.4339). Self-consistent field-averaged two-sided contrast = 0.375-0.401 (< band_lo), plan-central = 0.405 (short by 0.069), void-only(-0.8)=0.277 (decisive STANDS if walls not credited), but best-case measured (deepest lensing void -0.9 + densest wall) = 0.568 reaches/exceeds required. Neither cleanly refuted nor withdrawn -> MARGINAL, matching the committed verdict.",
+  "discrepancies": [],
+  "provenance": {
+    "field": "/home/szhygulin/dev/science/free-history-timescape/external_data/twompp_density.npy",
+    "required_source": "/home/szhygulin/dev/science/free-history-timescape/probes_out/modelV_probeR.json",
+    "committed": "/home/szhygulin/dev/science/free-history-timescape/probes_out/contrast_budget.json",
+    "script": "src/probes/verify_contrast_budget.py"
+  }
+}

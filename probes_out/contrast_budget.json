@@ -1,0 +1,495 @@
+{
+  "probe": "contrast_budget -- PLAN_void_content_audit.md sec.2 amendment A2 (two-sided)",
+  "question": "Can real (lensing/2M++-measured) void+wall contents supply the fitted void-wall expansion contrast (H_v-H_w)/<H> ~0.47 at z=0, which sits at the empty-void EdS ceiling of 0.5?",
+  "method": "EdS spherical / separate-universe: void=open patch, wall=closed pre-turnaround patch; available (H_v-H_w)/<H>=(h_v-h_w)/(f_v h_v+(1-f_v)h_w) with the model's forced f_v(z) and h=H/H_bg; two-sided (credits void emptiness AND wall overdensity).",
+  "spherical_model": {
+    "void": "1+delta=(9/2)(sinh e-e)^2/(cosh e-1)^3 ; h_v=(3/2)sinh e (sinh e-e)/(cosh e-1)^2",
+    "wall": "1+delta=(9/2)(e-sin e)^2/(1-cos e)^3 ; h_w=(3/2)sin e (e-sin e)/(1-cos e)^2",
+    "delta_turnaround": 4.551652475612764,
+    "empty_void_ceiling_hv_over_bg": 1.5,
+    "references": [
+      "Sheth & van de Weygaert 2004 (void spherical evolution)",
+      "Peebles 1980 / Gunn & Gott 1972 (spherical top-hat)",
+      "Clampitt & Jain 2015 DES (stacked void lensing, delta_m band)"
+    ]
+  },
+  "z": [
+    0.0,
+    0.1,
+    0.3,
+    0.5,
+    0.7,
+    1.0,
+    1.3,
+    1.8,
+    2.33
+  ],
+  "model_forced_fv": [
+    0.64013,
+    0.60304,
+    0.53112,
+    0.45845,
+    0.39578,
+    0.32784,
+    0.27945,
+    0.23115,
+    0.19359
+  ],
+  "wall_density_recompute": {
+    "r100": {
+      "radius_Mpc_h": 100.0,
+      "N_measured": 1097911,
+      "N_zero_fill": 0,
+      "regional_mean_delta": 0.06442056335362094,
+      "f_void_delta_lt_0": 0.6142592614519756,
+      "f_wall_delta_gt_0": 0.3857407385480244,
+      "mean_delta_void": -0.4538436382488132,
+      "mean_delta_wall_volume_weighted": 0.8897121488667621,
+      "median_delta_wall": 0.5747655514983988,
+      "massbalance_delta_wall_cosmicmean0": 0.7227073269334916,
+      "hv_field_averaged": 1.1757957893985875,
+      "hw_field_averaged": 0.7637436816675354,
+      "frac_wall_cells_virialized": 0.01179195719571485,
+      "delta_wall_effective_for_expansion": 0.8014020468732806
+    },
+    "r200": {
+      "radius_Mpc_h": 200.0,
+      "N_measured": 6021153,
+      "N_zero_fill": 2761626,
+      "regional_mean_delta": 0.00877896360308216,
+      "f_void_delta_lt_0": 0.6723006374360525,
+      "f_wall_delta_gt_0": 0.3276993625639475,
+      "mean_delta_void": -0.40584600864221304,
+      "mean_delta_wall_volume_weighted": 0.8594142256201748,
+      "median_delta_wall": 0.5361871667974705,
+      "massbalance_delta_wall_cosmicmean0": 0.8326245378576019,
+      "hv_field_averaged": 1.1527073299823296,
+      "hw_field_averaged": 0.7718390609422554,
+      "frac_wall_cells_virialized": 0.010615124817041773,
+      "delta_wall_effective_for_expansion": 0.7709605128491319
+    },
+    "band_delta_wall_massbalance": [
+      0.7227073269334916,
+      0.8326245378576019
+    ],
+    "band_delta_wall_volume_weighted": [
+      0.8594142256201748,
+      0.8897121488667621
+    ],
+    "band_delta_wall_median": [
+      0.5361871667974705,
+      0.5747655514983988
+    ],
+    "band_delta_wall_effective_for_expansion": [
+      0.7709605128491319,
+      0.8014020468732806
+    ],
+    "note": "delta is the contrast about the cosmic mean by construction. The volume-weighted mean over delta>0 (0.86-0.96) is inflated by the rare cluster tail (delta up to ~54); the diffuse-wall median (0.55-0.64) matches the plan's expected +0.5..+0.7. The physically self-consistent Buchert wall expansion is the volume-average of the LOCAL h_w (clusters past turnaround -> H=0), giving hw_field ~0.76-0.77, i.e. an effective single-top-hat delta_wall ~0.77-0.80."
+  },
+  "required": {
+    "z": [
+      0.0,
+      0.1,
+      0.3,
+      0.5,
+      0.7,
+      1.0,
+      1.3,
+      1.8,
+      2.33
+    ],
+    "central": [
+      0.47409,
+      0.48719,
+      0.51749,
+      0.59042,
+      0.50496,
+      0.51161,
+      0.41005,
+      0.37335,
+      0.45052
+    ],
+    "band_lo": [
+      0.43393,
+      0.46236,
+      0.49252,
+      0.4682,
+      0.36791,
+      0.24262,
+      -0.0,
+      -0.00017,
+      -0.0
+    ],
+    "band_hi": [
+      0.55916,
+      0.54766,
+      0.53983,
+      0.68104,
+      0.60253,
+      0.8863,
+      0.50493,
+      0.83748,
+      0.57566
+    ],
+    "source": "reproduced from modelV_probeR V.fv_nodes via modelv_probeR.derived_curves (max|repro-committed|=4.00e-05); band = LA (algebraic-lapse) per-node Delta-chi2<=1 envelope over 2^5 fv-node corners",
+    "band_note": "per-node-independent Delta-chi2<=1 corners -> conservatively WIDER than the joint band; the low-z lower edge is the falsifier bar."
+  },
+  "available_grid": [
+    {
+      "delta_void_central": -0.3,
+      "delta_void_band": [
+        -0.4,
+        -0.19999999999999998
+      ],
+      "h_v_central": 1.106615558128388,
+      "h_v_band": [
+        1.069455434119181,
+        1.1457992983285172
+      ],
+      "wall_effective": {
+        "h_w": 0.7677913694052416,
+        "excess_z": [
+          0.34409,
+          0.34854,
+          0.3575,
+          0.36704,
+          0.37568,
+          0.38552,
+          0.39285,
+          0.40045,
+          0.40656
+        ],
+        "excess_z0": 0.34409
+      },
+      "wall_median": {
+        "h_w": 0.8308089414513512,
+        "excess_z": [
+          0.27379,
+          0.2766,
+          0.28221,
+          0.28812,
+          0.29342,
+          0.29939,
+          0.30379,
+          0.30831,
+          0.31193
+        ],
+        "excess_z0": 0.27379
+      },
+      "wall_massbal": {
+        "h_w": 0.7700511516542714,
+        "excess_z": [
+          0.34152,
+          0.3459,
+          0.35472,
+          0.36411,
+          0.37261,
+          0.38229,
+          0.3895,
+          0.39696,
+          0.40297
+        ],
+        "excess_z0": 0.34152
+      },
+      "wall_EdS_void_only": {
+        "h_w": 1.0,
+        "excess_z": [
+          0.0998,
+          0.10017,
+          0.1009,
+          0.10165,
+          0.1023,
+          0.10301,
+          0.10353,
+          0.10405,
+          0.10446
+        ],
+        "excess_z0": 0.0998
+      },
+      "two_sided_excess_z0_band": [
+        0.30926,
+        0.37891
+      ]
+    },
+    {
+      "delta_void_central": -0.5,
+      "delta_void_band": [
+        -0.6,
+        -0.4
+      ],
+      "h_v_central": 1.1874521838170495,
+      "h_v_band": [
+        1.1457992983285172,
+        1.232226920143388
+      ],
+      "wall_effective": {
+        "h_w": 0.7677913694052416,
+        "excess_z": [
+          0.40491,
+          0.41108,
+          0.42361,
+          0.43706,
+          0.44937,
+          0.46352,
+          0.47416,
+          0.48527,
+          0.49428
+        ],
+        "excess_z0": 0.40491
+      },
+      "wall_median": {
+        "h_w": 0.8308089414513512,
+        "excess_z": [
+          0.33674,
+          0.341,
+          0.34957,
+          0.35868,
+          0.36693,
+          0.37631,
+          0.38329,
+          0.39052,
+          0.39634
+        ],
+        "excess_z0": 0.33674
+      },
+      "wall_massbal": {
+        "h_w": 0.7700511516542714,
+        "excess_z": [
+          0.40241,
+          0.40851,
+          0.42088,
+          0.43416,
+          0.4463,
+          0.46025,
+          0.47074,
+          0.48169,
+          0.49057
+        ],
+        "excess_z0": 0.40241
+      },
+      "wall_EdS_void_only": {
+        "h_w": 1.0,
+        "excess_z": [
+          0.16737,
+          0.16841,
+          0.17048,
+          0.17262,
+          0.17451,
+          0.1766,
+          0.17812,
+          0.17967,
+          0.18089
+        ],
+        "excess_z0": 0.16737
+      },
+      "two_sided_excess_z0_band": [
+        0.36981,
+        0.44046
+      ]
+    },
+    {
+      "delta_void_central": -0.8,
+      "delta_void_band": [
+        -0.9,
+        -0.7000000000000001
+      ],
+      "h_v_central": 1.3361087210110663,
+      "h_v_band": [
+        1.2811588403020788,
+        1.401299059454738
+      ],
+      "wall_effective": {
+        "h_w": 0.7677913694052416,
+        "excess_z": [
+          0.50223,
+          0.51176,
+          0.53132,
+          0.55266,
+          0.57249,
+          0.59565,
+          0.61333,
+          0.63206,
+          0.64742
+        ],
+        "excess_z0": 0.50223
+      },
+      "wall_median": {
+        "h_w": 0.8308089414513512,
+        "excess_z": [
+          0.43777,
+          0.44499,
+          0.4597,
+          0.47559,
+          0.4902,
+          0.50709,
+          0.51985,
+          0.53324,
+          0.54413
+        ],
+        "excess_z0": 0.43777
+      },
+      "wall_massbal": {
+        "h_w": 0.7700511516542714,
+        "excess_z": [
+          0.49987,
+          0.50932,
+          0.52868,
+          0.54981,
+          0.56943,
+          0.59234,
+          0.60982,
+          0.62833,
+          0.64351
+        ],
+        "excess_z0": 0.49987
+      },
+      "wall_EdS_void_only": {
+        "h_w": 1.0,
+        "excess_z": [
+          0.2766,
+          0.27946,
+          0.2852,
+          0.29123,
+          0.29665,
+          0.30275,
+          0.30725,
+          0.31188,
+          0.31558
+        ],
+        "excess_z0": 0.2766
+      },
+      "two_sided_excess_z0_band": [
+        0.46392,
+        0.54405
+      ]
+    }
+  ],
+  "available_field_averaged": {
+    "r100": {
+      "hv": 1.1757957893985875,
+      "hw": 0.7637436816675354,
+      "excess_z": [
+        0.40102,
+        0.40707,
+        0.41935,
+        0.43253,
+        0.44458,
+        0.45843,
+        0.46883,
+        0.47969,
+        0.4885
+      ],
+      "excess_z0": 0.40102
+    },
+    "r200": {
+      "hv": 1.1527073299823296,
+      "hw": 0.7718390609422554,
+      "excess_z": [
+        0.375,
+        0.38029,
+        0.39098,
+        0.40242,
+        0.41283,
+        0.42474,
+        0.43366,
+        0.44293,
+        0.45043
+      ],
+      "excess_z0": 0.375
+    },
+    "band_excess_z0": [
+      0.375,
+      0.40102
+    ]
+  },
+  "available_plan_central": {
+    "desc": "lensing void delta=-0.5 (h_v=1.1875) x field-effective wall (h_w=0.7678)",
+    "excess_z": [
+      0.40491,
+      0.41108,
+      0.42361,
+      0.43706,
+      0.44937,
+      0.46352,
+      0.47416,
+      0.48527,
+      0.49428
+    ]
+  },
+  "ceilings": {
+    "empty_void_EdS_wall": {
+      "desc": "delta_v=-1 (h_v=1.5), delta_w=0 (h_w=1); naive model reference",
+      "excess_z": [
+        0.37877,
+        0.38417,
+        0.39508,
+        0.40676,
+        0.4174,
+        0.42958,
+        0.4387,
+        0.4482,
+        0.45587
+      ],
+      "excess_z0": 0.37877
+    },
+    "best_case_measured": {
+      "desc": "deepest measured void center delta=-0.9 (h_v=1.4013) + densest measured vol-weighted wall (h_w=0.7406)",
+      "h_v": 1.401299059454738,
+      "h_w": 0.7405619159397883,
+      "excess_z": [
+        0.56788,
+        0.5801,
+        0.60535,
+        0.63321,
+        0.65937,
+        0.6903,
+        0.71415,
+        0.73967,
+        0.7608
+      ],
+      "excess_z0": 0.56788
+    }
+  },
+  "gap_required_minus_available_plan_central": {
+    "z": [
+      0.0,
+      0.1,
+      0.3,
+      0.5,
+      0.7,
+      1.0,
+      1.3,
+      1.8,
+      2.33
+    ],
+    "gap": [
+      0.06918,
+      0.07611,
+      0.09388,
+      0.15336,
+      0.05559,
+      0.04809,
+      -0.06411,
+      -0.11192,
+      -0.04376
+    ]
+  },
+  "verdict": "MARGINAL",
+  "verdict_reasoning": "At z=0 required (H_v-H_w)/<H>=0.474 (LA Delta-chi2<=1 band lo=0.434). Two-sided credit lifts the available contrast far above the void-only estimate (void-only delta=-0.8 gives 0.277), but the physically SELF-CONSISTENT field-averaged two-sided contrast (both sides from the actual 2M++ field, clusters past turnaround -> H=0) is only 0.375-0.401 (r200-r100) and the plan-central case (lensing void delta=-0.5 x field-effective wall) is 0.405 -- both SHORT of required by ~0.06-0.10. The shortfall is NOT decisive: pushing to the measured extremes (deepest lensing void center delta=-0.9 + densest measured wall) reaches 0.568, straddling/exceeding the required band. So the strike is neither cleanly refuted nor withdrawn -> MARGINAL, exactly the pre-registered contingency. Note the fixed-delta available rises with z as f_v falls and formally crosses required at high z, but that regime is unphysical (high-z voids are shallower); the valid comparison is z<~0.5, where it falls short.",
+  "preregistered": {
+    "expected_available": "0.25-0.45",
+    "expected_required": "0.45-0.5",
+    "expectation": "shortfall EXPECTED but NOT PRESUMED; may be MARGINAL not decisive",
+    "falsifier": "if two-sided contrast REACHES required band within measured densities -> WITHDRAWN",
+    "untouched": "R2 (availability / SHAPE-UNAVAILABLE) and WP-H2' (survey dilution)"
+  },
+  "provenance": {
+    "field": "/home/szhygulin/dev/science/free-history-timescape/external_data/twompp_density.npy",
+    "field_coord": "X=(i-128)*400/256, spacing 1.5625 Mpc/h, LG at [128,128,128]",
+    "required_source": "/home/szhygulin/dev/science/free-history-timescape/probes_out/modelV_probeR.json -> derived_backreaction_V",
+    "void_lensing": "Clampitt & Jain 2015 (DES) central delta_m in {-0.3,-0.5,-0.8} +/-0.1",
+    "wall_field": "2M++/Carrick+2015 delta_g* (bias-calibrated), mass balance over delta>0",
+    "normalization": "(h_v-h_w)/(f_v h_v+(1-f_v)h_w), h=H/H_bg; identical on both sides",
+    "script": "src/probes/contrast_budget.py"
+  }
+}
