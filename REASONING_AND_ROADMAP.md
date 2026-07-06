@@ -146,6 +146,15 @@ band at all nodes") is necessary but cannot falsify anything — the band [0.22,
    plus the NOTES equation-number audit against source PDFs.
 7. **Presentation discipline**: parameter-count column + kinematic-reading disclaimer with every
    χ² table (README table currently lacks the params column — pending fix).
+8. **V2 / depth-resolved closure (post-verdict addendum, 2026-07-06)**: all *kinematic*
+   multi-phase variants are closed by the **total-f_v collapse lemma** — under the kinematic
+   dressing (flat-dust walls; LA or LB lapse) the observables depend on the phase split only
+   through Σf_i, so the committed forced-fit verdict (`FORCED_FVOBS_FAILS_BIC_BAR`) already
+   covers every depth-resolved kinematic model. Fold the lemma and the Stage-0 Q-budget number
+   into this paper's discussion — they seal SHAPE-UNAVAILABLE against the "closure too crude"
+   rebuttal. The dynamical three-phase test itself is paper 3's WP-B: see
+   `PLAN_WPB_threephase.md` in the
+   [tensions repo](https://github.com/szhygulin/free-history-timescape-tensions).
 
 ## 6. Decision tree → publishable claims (pre-registered)
 
