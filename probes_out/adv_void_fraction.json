@@ -1,0 +1,58 @@
+{
+  "field": "/Users/s/dev/science/free-history-timescape/external_data/twompp_density.npy",
+  "coord": "X=(i-128)*400/256, spacing 1.5625, LG at [128,128,128]",
+  "r<100__center_dist_lt": {
+    "N_sphere": 1097911,
+    "N_zero_fill": 0,
+    "fill_fraction": 0.0,
+    "N_measured": 1097911,
+    "regional_mean_delta": 0.06442056335362094,
+    "frac_below_regional_mean": 0.643639602845768,
+    "frac_delta_lt_0": 0.6142592614519756,
+    "frac_delta_lt_-0.3": 0.44100478089754086,
+    "frac_delta_lt_-0.5": 0.283565789941079
+  },
+  "r<100__center_dist_le": {
+    "N_sphere": 1097917,
+    "N_zero_fill": 0,
+    "fill_fraction": 0.0,
+    "N_measured": 1097917,
+    "regional_mean_delta": 0.06441976396811092,
+    "frac_below_regional_mean": 0.6436397286862304,
+    "frac_delta_lt_0": 0.6142595478528887,
+    "frac_delta_lt_-0.3": 0.4410041924844956,
+    "frac_delta_lt_-0.5": 0.2835642402841016
+  },
+  "r<200__center_dist_lt": {
+    "N_sphere": 8782779,
+    "N_zero_fill": 2761626,
+    "fill_fraction": 0.3144364670908832,
+    "N_measured": 6021153,
+    "regional_mean_delta": 0.00877896360308216,
+    "frac_below_regional_mean": 0.6763242853984943,
+    "frac_delta_lt_0": 0.6723006374360525,
+    "frac_delta_lt_-0.3": 0.4798584257865562,
+    "frac_delta_lt_-0.5": 0.2215208615359882
+  },
+  "r<200__center_dist_le": {
+    "N_sphere": 8782785,
+    "N_zero_fill": 2761630,
+    "fill_fraction": 0.31443670771856536,
+    "N_measured": 6021155,
+    "regional_mean_delta": 0.008778871613161758,
+    "frac_below_regional_mean": 0.6763243929113268,
+    "frac_delta_lt_0": 0.6723007462853887,
+    "frac_delta_lt_-0.3": 0.47985826639573304,
+    "frac_delta_lt_-0.5": 0.22152078795513486
+  },
+  "below_mean_band_r100_r200": [
+    0.6142592614519756,
+    0.6723006374360525
+  ],
+  "below_mean_central": 0.643279949444014,
+  "paper1_bracket": [
+    0.5,
+    0.62
+  ],
+  "required_fv0": 0.64013
+}

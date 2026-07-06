@@ -1,0 +1,49 @@
+{
+  "n_sel": 1657,
+  "n_cal": 77,
+  "n_hf": 1580,
+  "lcdm_gate": {
+    "Om_best": 0.33250000000000024,
+    "q": -0.10675641760082118,
+    "MB": -19.243994782133054,
+    "chi2_min": 1452.017520006746,
+    "H0_anchored": 73.52741936221834,
+    "phaseF_value": 73.5274431482745,
+    "expected": "~73.5"
+  },
+  "free_fixed": {
+    "fv0": 0.64013,
+    "g_dress": 1.189183045456095,
+    "Hd0": 1.2575679214699604,
+    "S0": 0.7946988394415567,
+    "Hbar0_anchored": 58.3219404884768,
+    "H0_gdress": 69.35546280699597,
+    "H0_fullrate": 73.3438014761885,
+    "H0_local_slope": 73.38873242782164,
+    "chi2_min": 1452.0550858192146,
+    "phaseF": {
+      "g_dress": 1.189183045456095,
+      "Hd0": 1.2575679214699604,
+      "S0": 0.7946988394415567,
+      "Hbar0": 58.32194048848205,
+      "H0_gdress": 69.35546280700221,
+      "H0_fullrate": 73.3438014761951,
+      "H0_local_slope": 73.38873242782824
+    }
+  },
+  "local_excess": {
+    "Hbar0_anchored": 58.3219404884768,
+    "Hbar0_global": 53.794282522327265,
+    "excess_Hbar0": 0.08416615584138198,
+    "excess_fullrate": 0.0841661558413822,
+    "excess_gdress": 0.08416615584138198,
+    "phaseF_excess_fullrate": 0.08419761917976598,
+    "note": "excess reduces to Hbar0_anchored/Hbar0_global-1 (same fixed shape)."
+  },
+  "direction": {
+    "free_anchored_fullrate": 73.3438014761885,
+    "paper1_tracker_fresh_H0": 73.0,
+    "SH0ES_published": 73.04,
+    "moved_from_73": false
+  }
+}

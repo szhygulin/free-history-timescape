@@ -1,0 +1,177 @@
+{
+  "probe": "D -- observed void volume-fraction history f_v_obs(z)",
+  "definition": "timescape f_v = volume fraction of regions expanding faster than the volume-average ~ below-mean-density set {delta<0}. Definition systematic (threshold depth) carried as the dominant two-sided band.",
+  "z_nodes": [
+    0.0,
+    0.3,
+    0.7,
+    1.3,
+    2.33
+  ],
+  "z0_field_raw": {
+    "field": "2M++/Carrick+2015 delta_g* (lum-weighted, 4 Mpc/h Gaussian smoothing)",
+    "radii": {
+      "r<100": {
+        "N_sphere": 1097911,
+        "N_fill_exact_zero": 0,
+        "fill_fraction": 0.0,
+        "N_measured": 1097911,
+        "thresholds": {
+          "delta<+0.0": 0.6142592614519756,
+          "delta<-0.3": 0.44100478089754086,
+          "delta<-0.5": 0.283565789941079
+        },
+        "watershed_basin": 0.6142592614519756,
+        "n_below_mean_components": 1
+      },
+      "r<200": {
+        "N_sphere": 8782779,
+        "N_fill_exact_zero": 2761626,
+        "fill_fraction": 0.3144364670908832,
+        "N_measured": 6021153,
+        "thresholds": {
+          "delta<+0.0": 0.6723006374360525,
+          "delta<-0.3": 0.4798584257865562,
+          "delta<-0.5": 0.2215208615359882
+        },
+        "watershed_basin": 0.6723003052737574,
+        "n_below_mean_components": 2
+      }
+    }
+  },
+  "z0_anchor": {
+    "z": 0.0,
+    "below_mean_band": [
+      0.6142592614519756,
+      0.6723006374360525
+    ],
+    "below_mean_central": 0.643279949444014,
+    "below_mean_note": "delta<0 == 'faster than mean expanding' == timescape f_v; BIAS-INDEPENDENT (sign preserved under monotone galaxy bias). Band = reliable-volume systematic (r<100 core vs r<200 sphere).",
+    "definition_band": [
+      0.2215208615359882,
+      0.6723006374360525
+    ],
+    "definition_central": 0.44100478089754086,
+    "family": {
+      "delta<0_r100": 0.6142592614519756,
+      "delta<0_r200": 0.6723006374360525,
+      "delta<-0.3_r100": 0.44100478089754086,
+      "delta<-0.3_r200": 0.4798584257865562,
+      "delta<-0.5_r100": 0.283565789941079,
+      "delta<-0.5_r200": 0.2215208615359882,
+      "watershed_basin_r100": 0.6142592614519756,
+      "watershed_basin_r200": 0.6723003052737574
+    },
+    "percolation_note": "below-mean excursion set is a single connected component in the r<100 core (n_components=1); watershed-at-mean therefore fills the same volume as delta<0 (watershed_basin==delta<0).",
+    "probe4_bracket_ref": [
+      0.5,
+      0.62
+    ],
+    "probe4_check": "below-mean (0.61-0.67) sits at/above the Probe-4 top (0.62); the delta<-0.3..-0.5 definitions bracket it from below -- consistent."
+  },
+  "shape_model": {
+    "sigma0": 0.7344797420042518,
+    "anchored_to_below_mean": 0.643279949444014,
+    "delta<0_model": 0.643279949444014,
+    "delta<-0.3_model": 0.4528849114761276,
+    "delta<-0.3_measured_r100_r200": [
+      0.44100478089754086,
+      0.4798584257865562
+    ],
+    "delta<-0.5_model": 0.2821435277360892,
+    "delta<-0.5_measured_r100_r200": [
+      0.283565789941079,
+      0.2215208615359882
+    ],
+    "note": "single-sigma lognormal excursion set; reproduces measured -0.3,-0.5 thresholds to within the r100/r200 definition systematic -> calibrated shape proxy for the higher-z growth extrapolation (NOT a fit)."
+  },
+  "literature": [
+    {
+      "z": 0.044,
+      "value": 0.62,
+      "band": [
+        0.55,
+        0.66
+      ],
+      "direct": true,
+      "definition": "watershed VoidFinder filling fraction (SDSS DR7 main)",
+      "citation": "Pan, Vogeley, Hoyle, Choi, Park 2012, MNRAS 421, 926 (arXiv:1103.4156) -- voids fill ~62% of the volume",
+      "band_note": "assigned +-0.05 (survey/definition); central is the published 62%."
+    },
+    {
+      "z": 0.0,
+      "value": 0.558,
+      "band": [
+        0.5,
+        0.615
+      ],
+      "direct": true,
+      "definition": "numerical-relativity watershed void filling fraction",
+      "citation": "Williams et al. 2024 (NR watershed); filling fraction 50-61.5% (as tabulated in PLAN_void_history.md sec 4 / Paper-1 Probe 4; arXiv id not independently re-verified here)",
+      "band_note": "published range 0.50-0.615; central = midpoint. Also supplies the growth-shape prior for the higher-z extrapolation."
+    }
+  ],
+  "boss_eboss_note": "BOSS DR12 VIDE (Mao et al. 2017, arXiv:1602.02771) and eBOSS (Aubert et al. 2022, arXiv:2007.09013) provide void catalogs at z~0.2-0.7, but no clean published VOLUME filling fraction was extractable here without re-deriving from survey randoms; the z=0.3/0.7 points therefore use the declared growth-model extrapolation, per PLAN_void_history.md sec 4 fallback.",
+  "fv_obs_points": [
+    {
+      "z": 0.0,
+      "direct": true,
+      "central": 0.44100478089754086,
+      "lo": 0.2215208615359882,
+      "hi": 0.6723006374360525,
+      "below_mean": 0.643279949444014,
+      "source": "2M++ direct (this probe)"
+    },
+    {
+      "z": 0.3,
+      "direct": false,
+      "central": 0.3988862237526264,
+      "lo": 0.21377252998242396,
+      "hi": 0.6229320569236853,
+      "below_mean": 0.6229320569236853,
+      "growth_D": 0.8528228815484358,
+      "sigma_z": 0.6263811300150177,
+      "source": "growth-model extrapolation (lognormal excursion set, anchored to z~0 2M++ below-mean; declared, NOT a catalog measurement)"
+    },
+    {
+      "z": 0.7,
+      "direct": false,
+      "central": 0.32944751015893203,
+      "lo": 0.13584707279793207,
+      "hi": 0.6009407462040413,
+      "below_mean": 0.6009407462040413,
+      "growth_D": 0.6965007959546312,
+      "sigma_z": 0.5115657249185136,
+      "source": "growth-model extrapolation (lognormal excursion set, anchored to z~0 2M++ below-mean; declared, NOT a catalog measurement)"
+    },
+    {
+      "z": 1.3,
+      "direct": false,
+      "central": 0.23867461279276042,
+      "lo": 0.058633325336889135,
+      "hi": 0.577925237079892,
+      "below_mean": 0.577925237079892,
+      "growth_D": 0.5353137630293283,
+      "sigma_z": 0.39317711456110627,
+      "source": "growth-model extrapolation (lognormal excursion set, anchored to z~0 2M++ below-mean; declared, NOT a catalog measurement)"
+    },
+    {
+      "z": 2.33,
+      "direct": false,
+      "central": 0.12530658953923635,
+      "lo": 0.00905578557049733,
+      "hi": 0.5550878767923513,
+      "below_mean": 0.5550878767923513,
+      "growth_D": 0.3772101386353299,
+      "sigma_z": 0.27705320530626515,
+      "source": "growth-model extrapolation (lognormal excursion set, anchored to z~0 2M++ below-mean; declared, NOT a catalog measurement)"
+    }
+  ],
+  "systematics_ranked": [
+    "1. definition mapping (watershed/below-mean vs deep-void threshold) -- DOMINANT, carried as the two-sided band [delta<-0.5, delta<0].",
+    "2. survey-mask fill (delta==0 exactly): excluded; renormalised to measured volume; r<100 core (0% fill) cross-checks r<200 (31% fill).",
+    "3. tracer bias (galaxy delta_g* vs matter delta_m): the below-mean (delta<0) fraction is bias-INDEPENDENT; deeper thresholds are bias-dependent (sub-dominant to the definition band).",
+    "4. higher-z: no clean catalog filling fraction z>0.1 -> declared growth-model extrapolation, widened band, direct=False per point."
+  ],
+  "runtime_s": 2.6
+}

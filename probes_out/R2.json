@@ -1,0 +1,191 @@
+{
+  "probe": "R2 -- required vs available void history",
+  "inputs": {
+    "required": "modelV_probeR.json",
+    "observed": "phaseD_fvobs.json"
+  },
+  "z_nodes": [
+    0.0,
+    0.3,
+    0.7,
+    1.3,
+    2.33
+  ],
+  "required": {
+    "central": [
+      0.64013,
+      0.53112,
+      0.39578,
+      0.27945,
+      0.19359
+    ],
+    "lo": [
+      0.6382035628678454,
+      0.5207412856123229,
+      0.3843953251142039,
+      0.23139148068100684,
+      0.14819674287808113
+    ],
+    "hi": [
+      0.6412762899274248,
+      0.5334329084919353,
+      0.4068078899669497,
+      0.3182208616544595,
+      0.2314134334741064
+    ]
+  },
+  "observed": {
+    "lo": [
+      0.2215208615359882,
+      0.21377252998242396,
+      0.13584707279793207,
+      0.058633325336889135,
+      0.00905578557049733
+    ],
+    "hi": [
+      0.6723006374360525,
+      0.6229320569236853,
+      0.6009407462040413,
+      0.577925237079892,
+      0.5550878767923513
+    ],
+    "central": [
+      0.44100478089754086,
+      0.3988862237526264,
+      0.32944751015893203,
+      0.23867461279276042,
+      0.12530658953923635
+    ],
+    "below_mean": [
+      0.643279949444014,
+      0.6229320569236853,
+      0.6009407462040413,
+      0.577925237079892,
+      0.5550878767923513
+    ],
+    "direct": [
+      true,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "overlap_at_z0": {
+    "f_v_req_z0": 0.64013,
+    "f_v_req_z0_band": [
+      0.6382035628678454,
+      0.6412762899274248
+    ],
+    "vs_below_mean_band": {
+      "band": [
+        0.6142592614519756,
+        0.6723006374360525
+      ],
+      "inside": true,
+      "fractional_height": 0.446,
+      "note": "below-mean = 'faster than mean expanding' = timescape f_v (bias-independent). Required sits mid-band."
+    },
+    "vs_definition_band": {
+      "band": [
+        0.2215208615359882,
+        0.6723006374360525
+      ],
+      "inside": true,
+      "fractional_height": 0.929
+    },
+    "vs_watershed_literature_band": {
+      "band": [
+        0.5,
+        0.62
+      ],
+      "inside": false,
+      "band_widths_above_top": 0.168,
+      "note": "standard watershed filling fraction (Probe 4 / Pan+2012 / Williams+2024); required is just above its 0.62 top."
+    },
+    "tracker_demand_0.853": {
+      "below_mean_band_widths_above_top": 3.11,
+      "note": "tracker's SN-forced 0.853 is ~3 below-mean-band-widths above the observed top -- unavailable. Free-history 0.640 is inside."
+    }
+  },
+  "shape_agreement": {
+    "per_node": [
+      {
+        "z": 0.0,
+        "f_v_req": 0.6401,
+        "obs_band": [
+          0.2215,
+          0.6723
+        ],
+        "obs_central": 0.441,
+        "obs_below_mean": 0.6433,
+        "req_inside_obs_band": true,
+        "req_fractional_height_in_obs_band": 0.929,
+        "direct": true
+      },
+      {
+        "z": 0.3,
+        "f_v_req": 0.5311,
+        "obs_band": [
+          0.2138,
+          0.6229
+        ],
+        "obs_central": 0.3989,
+        "obs_below_mean": 0.6229,
+        "req_inside_obs_band": true,
+        "req_fractional_height_in_obs_band": 0.776,
+        "direct": false
+      },
+      {
+        "z": 0.7,
+        "f_v_req": 0.3958,
+        "obs_band": [
+          0.1358,
+          0.6009
+        ],
+        "obs_central": 0.3294,
+        "obs_below_mean": 0.6009,
+        "req_inside_obs_band": true,
+        "req_fractional_height_in_obs_band": 0.559,
+        "direct": false
+      },
+      {
+        "z": 1.3,
+        "f_v_req": 0.2794,
+        "obs_band": [
+          0.0586,
+          0.5779
+        ],
+        "obs_central": 0.2387,
+        "obs_below_mean": 0.5779,
+        "req_inside_obs_band": true,
+        "req_fractional_height_in_obs_band": 0.425,
+        "direct": false
+      },
+      {
+        "z": 2.33,
+        "f_v_req": 0.1936,
+        "obs_band": [
+          0.0091,
+          0.5551
+        ],
+        "obs_central": 0.1253,
+        "obs_below_mean": 0.5551,
+        "req_inside_obs_band": true,
+        "req_fractional_height_in_obs_band": 0.338,
+        "direct": false
+      }
+    ],
+    "req_inside_obs_definition_band_all_nodes": true,
+    "req_decline_z0_to_z233": 3.31,
+    "obs_below_mean_decline": 1.16,
+    "obs_moderate(delta<-0.3)_decline": 3.52,
+    "tension": "Required declines by x3.3 (0.640->0.194). The below-mean observed edge declines only x1.2 (matches z~0 normalisation but is too flat), while the moderate delta<-0.3 edge declines x3.5 (matches the required SHAPE but has a z~0 normalisation ~0.44, well below required 0.640). A single-threshold observed void population cannot match the z~0 NORMALISATION and the SHAPE simultaneously; the required history threads the upper part of the definition band, riding the permissive (below-mean) edge at z~0 and the moderate edge at high z."
+  },
+  "verdict": "MARGINAL_top_edge",
+  "verdict_reason": "Required present-day f_v(0)=0.640 sits INSIDE the bias-independent below-mean band [0.614,0.672] (mid-band, frac height 0.45) and inside the full 2M++ definition band [0.222,0.672]; under the below-mean = 'faster than mean expanding' definition (the timescape-correct f_v) the observed voids SUPPLY the required value. Against the STANDARD watershed filling fraction [0.50,0.62] (Probe 4 / Pan+2012 / Williams+2024) required 0.640 sits 0.17 band-widths ABOVE the 0.62 top -> a marginal, top-edge overlap. The required band is enveloped by the observed definition band at ALL five nodes. This is a qualitative reversal of the tracker, whose SN-forced 0.853 sits ~3 below-mean-band-widths above the observed top (unavailable at every definition). Verdict: the observed void population can supply the required history only at the permissive (below-mean) definition edge, sitting at the top edge of conventional watershed catalogs -- consistent with PLAN R2 'overlap at the most permissive definition edge -> run Phase F expecting a live model'.",
+  "figure": {
+    "pdf": "/Users/s/dev/science/free-history-timescape/fig_fvhistory.pdf",
+    "png": "/Users/s/dev/science/free-history-timescape/fig_fvhistory.png"
+  }
+}

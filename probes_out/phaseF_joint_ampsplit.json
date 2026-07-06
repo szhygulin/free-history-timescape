@@ -1,0 +1,128 @@
+{
+  "probe": "Phase F -- DESI DR2 joint refit + amplitude-split under free-history Model V",
+  "reading": "KINEMATIC (force f_v(z), dressed observables; integrability NOT enforced)",
+  "data": {
+    "sn": "harness.sn_chi2 (1580 Pantheon+ SNe, full stat+sys cov, offset marginalised)",
+    "bao_cmb": "DESI DR2 (probes_out/desi_dr2_rows.json, 13 BAO points) + Planck acoustic point (DM/rd=94.31613, err=0.05), alpha=c/(Hbar0 rd) marginalised, rd=147.09",
+    "note": "DR2 bao_cmb_chi2 built here mirrors harness.bao_cmb_chi2 exactly (same alpha marginalisation, same block-diagonal build_cov, same CMB value); only the DESI rows differ (DR1 -> DR2)."
+  },
+  "references_DR1_same_machinery": {
+    "LCDM": 1402.2372,
+    "w0waCDM": 1398.2856,
+    "tracker": 1469.2926,
+    "free_E": 1391.8498
+  },
+  "dr2_joint_refit": {
+    "free_history": {
+      "chi2": 1398.276852171868,
+      "chi2_SN": 1385.674705967307,
+      "chi2_BAOCMB": 12.602146204560995,
+      "alpha": 37.919963905012516,
+      "fv0": 0.6360375262749913,
+      "z_nodes": [
+        0.0,
+        0.3,
+        0.7,
+        1.3,
+        2.33
+      ],
+      "fv_nodes": [
+        0.63604,
+        0.52808,
+        0.40135,
+        0.25631,
+        0.17456
+      ],
+      "H0_dressed": 63.761817267505144,
+      "H0_dressed_gdress": 63.761817267505144,
+      "H0_dressed_Hd0": 67.43645796483844,
+      "Hbar0": 53.748907311750926,
+      "n_restarts": 12,
+      "de_used": false,
+      "ngrid_fit": 6000,
+      "ngrid_fine": 30000
+    },
+    "lcdm": {
+      "chi2": 1399.8050103238784,
+      "Om": 0.3037524377223003,
+      "H0": 68.68852363943756
+    },
+    "tracker": {
+      "chi2": 1514.1031164070591,
+      "chi2_SN": 1433.7362130209804,
+      "chi2_BAOCMB": 80.36690338607877,
+      "fv0": 0.6382930597792165,
+      "H0_dressed": 62.7900498732623
+    },
+    "deltas": {
+      "free_minus_lcdm": -1.5281581520102918,
+      "free_minus_tracker": -115.82626423519105,
+      "lcdm_minus_tracker": -114.29810608318076
+    },
+    "param_accounting": {
+      "free_history_node_params": 5,
+      "lcdm_cosmo_params": 1,
+      "extra_dof": 4,
+      "dchi2_free_vs_lcdm": 1.5281581520102918,
+      "wilks_p_free_vs_lcdm": 0.8216421726681582,
+      "reference_T1_free_E_DR1": {
+        "dchi2": 10.38740000000007,
+        "extra_dof": 4,
+        "wilks_p": 0.03438388259574515,
+        "reported_p_paper": "0.065"
+      },
+      "note": "free history has 5 monotone f_v nodes (4 extra vs LCDM's 1 Om); Wilks p = chi2.sf(dchi2, df=4). Both share 2 profiled nuisances (SN offset, BAO alpha)."
+    }
+  },
+  "amplitude_split": {
+    "definition": "f_v(z)=clip(A*shape(z)), shape=free DR2 nodes normalised to shape(0)=1, so A == f_v(0). A fit separately to SN-only and BAO+CMB-only. sigma = sqrt(delta chi2_join) (profile parameter-shift, 1 dof).",
+    "shape_nodes_norm": [
+      1.0,
+      0.83026,
+      0.63101,
+      0.40299,
+      0.27445
+    ],
+    "A_SN": 0.6351267060967557,
+    "A_BAOCMB": 0.6362768889802758,
+    "A_joint": 0.6360336162527199,
+    "chi2_SN_at_A_SN": 1385.6534342765808,
+    "chi2_BC_at_A_BC": 12.596490120049566,
+    "chi2_SN_at_A_joint": 1385.6745220273733,
+    "chi2_BC_at_A_joint": 12.602332247421145,
+    "joint_min": 1398.2768542747945,
+    "separate_min": 1398.2499243966304,
+    "delta_chi2_join": 0.026929878164082766,
+    "sigma": 0.1641032545810191,
+    "split_dissolves": true,
+    "tracker_sanity": {
+      "definition": "same statistic on the tracker's own parameter f_v0 (its shape==amplitude one-parameter family); reproduces paper 1's SN(high f_v0) vs BAO+CMB(low f_v0) split.",
+      "fv0_SN": 0.8526421236875386,
+      "fv0_BAOCMB": 0.6356091025309288,
+      "fv0_joint": 0.6382930597792165,
+      "chi2_SN_at_fv0SN": 1391.5451143682003,
+      "chi2_BC_at_fv0BC": 79.70663518691435,
+      "joint_min": 1514.1031164070591,
+      "separate_min": 1471.2517495551147,
+      "delta_chi2_join": 42.851366851944476,
+      "sigma": 6.546095542531019,
+      "paper1_reference": "0.85-vs-0.64 f_v0 split, 4.8-6.6 sigma"
+    },
+    "crosscheck_DR1_probeR_shape": {
+      "note": "amplitude split using the LITERAL DR1 Probe-R nodes as the shape",
+      "shape_nodes": [
+        0.64013,
+        0.53112,
+        0.39578,
+        0.27945,
+        0.19359
+      ],
+      "A_SN": 0.639690347724053,
+      "A_BAOCMB": 0.6391282056366472,
+      "A_joint": 0.6392449660569806,
+      "delta_chi2_join": 0.006626112852245569,
+      "sigma": 0.08140093889044259
+    }
+  },
+  "runtime_s": 40.3
+}

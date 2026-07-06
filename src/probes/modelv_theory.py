@@ -34,14 +34,25 @@ The tracker limit is exact: fed the tracker f_v(z) this reproduces
 SN chi2 = 1391.545176 (gates G-T, G-A; run `modelv_gates.py`).
 
 Variants:
-  lapse="algebraic"  (primary, adopted)
-  lapse="none"       (V0 control: gamma_bar == 1, pure Buchert, no clock dressing)
+  lapse="algebraic"   (primary, adopted)  gamma_bar = (2 + f_v)/2   -- pure fn of f_v
+  lapse="none"        (V0 control: gamma_bar == 1, pure Buchert, no clock dressing)
+  lapse="rate_ratio"  (LB systematic)     gamma_bar = Hbar/H_w = 1 + tau f_v'/(2(1-f_v))
+                      (Wiltshire09 Eq 14 / DNW13 Eq 16; NOTES_modelv_theory.md sec 3, LB).
 
-The rate-ratio lapse (gamma_bar = Hbar/H_w = 1 + tau f_v'/(2(1-f_v)), a declared
-Probe-R systematic) is deliberately NOT implemented here: it makes the redshift map
-itself depend on f_v', which is unreliable on the initial guess (z ~ 1e4, extrapolated
-node derivative) and blew up in the theory prototype. It should be added by Probe R
-with a robust analytic f_v'(tau) when that systematic is run.
+The rate-ratio lapse LB is f_v'-DEPENDENT, so the dressed redshift map itself depends on
+f_v' (Wiltshire09 Eq 37 with gamma_bar carrying the void-growth term). The naive tau-space
+fixed point is UNSTABLE (differentiating the iterated map amplifies grid noise -> it blew
+up in the prototype, NOTES risk 2), so `_solve_rate_ratio` recasts the map as a first-order
+ODE for tau(z) and integrates it with an ANALYTIC df_v/dz (MonotoneFv.deriv) -- the ODE
+trajectory is repelling forward but ATTRACTING backward, so a fixed-step RK4 run BACKWARD
+from a high-z EdS boundary is stable and kink-robust; the flat-dust tail (f_v below a
+threshold, gamma_bar -> LA) uses the closed-form LA map. LB COINCIDES with the algebraic
+lapse ON the tracker to machine precision (NOTES sec 7B) so the gate is reproduced exactly.
+Crucially the present lapse gamma_bar0 = gamma_bar(z=0) is NOT the tracker value (2+fv0)/2
+for a non-tracker history -- self-consistency (Wiltshire09 Eq 37) fixes it by shooting so
+that tau(0)=tau0. Because the observables carry the RATIO gamma_bar/gamma_bar0, this
+self-adjustment cancels most of the naive frozen-gamma_bar0 lapse-reading spread (the ~27%
+prototype figure), leaving a much smaller off-tracker systematic -- report the value found.
 
 Units: distances in c/Hbar0; tau = Hbar0 t dimensionless. The overall scale is
 degenerate with the SN offset and the BAO alpha = c/(Hbar0 r_d), both profiled by
@@ -54,6 +65,7 @@ import sys
 import numpy as np
 from scipy.integrate import cumulative_trapezoid
 from scipy.interpolate import PchipInterpolator
+from scipy.optimize import brentq
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
 _SRC = os.path.abspath(os.path.join(_HERE, ".."))
@@ -66,6 +78,13 @@ Z_NODES_DEFAULT = np.array([0.0, 0.3, 0.7, 1.3, 2.33])
 
 _FV_FLOOR = 1e-5
 _FV_CEIL = 1.0 - 1e-9
+
+# rate-ratio (LB) solver: z-grid ceiling (covers the CMB acoustic point z*=1089.8 with
+# headroom) and the f_v below which the LB lapse is replaced by the stable closed-form LA
+# map (the flat-dust tail where gamma_bar -> LA; sits ABOVE every BAO redshift, since
+# f_v(z<=2.33) >~ 0.19 for reconciling histories).
+_Z_MAX_RATE = 1200.0
+_FV_SWITCH_RATE = 0.10
 
 
 # ---------------------------------------------------------------------------
@@ -165,13 +184,22 @@ def tracker_fv_of_z(fv0, ntau=300000, tau_lo_frac=1e-8):
 # ---------------------------------------------------------------------------
 # core solver
 # ---------------------------------------------------------------------------
+_LAPSES = ("algebraic", "none", "rate_ratio")
+
+
 def _lapse_gamma(fv, lapse):
-    """Dressing lapse gamma_bar as a pure function of the forced f_v."""
+    """Dressing lapse gamma_bar for the derivative-free lapses (pure functions of f_v).
+
+    The rate-ratio lapse (lapse="rate_ratio") is f_v'-dependent; it is formed inside
+    modelv_solve (it needs the tau grid + df_v/dtau), never here.
+    """
     if lapse == "algebraic":
         return (2.0 + fv) / 2.0
     if lapse == "none":
         return np.ones_like(fv)
-    raise ValueError(f"unknown lapse {lapse!r} (use 'algebraic' or 'none')")
+    if lapse == "rate_ratio":
+        raise ValueError("rate_ratio lapse is f_v'-dependent; formed in modelv_solve")
+    raise ValueError(f"unknown lapse {lapse!r} (use one of {_LAPSES})")
 
 
 class ModelVSolution:
@@ -231,6 +259,143 @@ def _tau_grid(tau0, tau_lo_frac, Ngrid):
     ]))
 
 
+def _solve_rate_ratio(fv_of_z, fv0, floor, ceil, *, Ngrid, tau0,
+                      z_max=_Z_MAX_RATE, fv_switch=_FV_SWITCH_RATE):
+    """Self-consistent rate-ratio (LB) dressed geometry, solved with z as the variable.
+
+    The LB lapse gamma_bar = 1 + tau f_v'/(2(1-f_v)) makes the dressed redshift map
+    depend on f_v', so the tau-space fixed point is unstable (differentiating the iterated
+    map amplifies grid noise -> it blew up in the prototype, NOTES risk 2). With z as the
+    independent variable the map is a first-order ODE for tau(z):
+
+        1+z = (tau0/tau)^{2/3} ((1-f_v)/(1-fv0))^{1/3} gamma_bar/gamma_bar0,
+        gamma_bar = Phi(z,tau) = (1+z) gamma_bar0 (tau/tau0)^{2/3} ((1-fv0)/(1-f_v))^{1/3}
+        =>  dtau/dz = tau (df_v/dz) / (2 (1-f_v)(Phi-1))                       [LB region].
+
+    This trajectory is REPELLING forward but ATTRACTING backward, so it is integrated by a
+    fixed-step RK4 BACKWARD from a high-z EdS boundary (robust to the PCHIP node kinks;
+    cannot hang). Below f_v = fv_switch (the flat-dust tail, gamma_bar -> LA) the stable
+    CLOSED-FORM LA map tau_LA(z) is used -- also exact for the CMB D_M (a DM-only point).
+
+    Normalisation (the crux): the present lapse gamma_bar0 = gamma_bar(z=0) is NOT the
+    tracker value (2+fv0)/2 for a non-tracker history -- it is fixed by the present
+    void-growth rate f_v'(tau0). Self-consistency (Wiltshire09 Eq 37, gamma_bar0 =
+    gamma_bar(t0)) requires tau(0)=tau0, so gamma_bar0 is SHOT: root-find gamma_bar0 s.t.
+    the backward integration lands on tau(0)=tau0. On the tracker gamma_bar0=(2+fv0)/2
+    already yields tau(0)=tau0 (LB==LA), so the shot is a no-op and the gate holds exactly.
+    Because the observable distances carry the RATIO gamma_bar/gamma_bar0, this
+    self-adjustment CANCELS most of the naive (frozen-gamma_bar0) lapse-reading spread.
+    """
+    n_z = int(Ngrid)
+    z_grid = np.concatenate([[0.0], np.geomspace(1e-4, z_max, n_z)])
+    zc = z_grid
+    zm = 0.5 * (z_grid[:-1] + z_grid[1:])
+    fv_c = fv_of_z(zc)
+    fvz_c = fv_of_z.deriv(zc)
+    fv_m = fv_of_z(zm)
+    fvz_m = fv_of_z.deriv(zm)
+    cm_c = (fv_c <= floor * (1.0 + 1e-9)) | (fv_c >= ceil * (1.0 - 1e-9))
+    cm_m = (fv_m <= floor * (1.0 + 1e-9)) | (fv_m >= ceil * (1.0 - 1e-9))
+    fvz_c = np.where(cm_c, 0.0, fvz_c)
+    fvz_m = np.where(cm_m, 0.0, fvz_m)
+    # exact closed-form LA (algebraic-lapse) map: the tail and the backward-BC seed
+    tau_la_arr = tau0 * ((1.0 + zc) * (1.0 - fv0) ** (1.0 / 3.0) * (2.0 + fv0)
+                         / ((1.0 - fv_c) ** (1.0 / 3.0) * (2.0 + fv_c))) ** (-1.5)
+    use_lb = (fv_c >= fv_switch) & (~cm_c)
+    i_sw = int(np.max(np.nonzero(use_lb)[0])) if np.any(use_lb) else 0
+
+    def _sig(z, tau, fv, fvz, cm, g0):
+        if fv < fv_switch or cm:                      # LA lapse (stable linear ODE)
+            return -1.5 * tau * (1.0 / (1.0 + z) + fvz / (3.0 * (1.0 - fv)) - fvz / (2.0 + fv))
+        Phi = (1.0 + z) * g0 * (tau / tau0) ** (2.0 / 3.0) * ((1.0 - fv0) / (1.0 - fv)) ** (1.0 / 3.0)
+        d = Phi - 1.0
+        if abs(d) < 1e-12:
+            return -1.5 * tau / (1.0 + z)
+        return tau * fvz / (2.0 * (1.0 - fv) * d)
+
+    def _integrate(g0):
+        tau = tau_la_arr.copy()                       # tail (f_v < fv_switch) = exact LA
+        if i_sw > 0:
+            t = tau_la_arr[i_sw]                      # BC at the switch (exact LA)
+            tau[i_sw] = t
+            for i in range(i_sw, 0, -1):              # RK4 backward (attracting)
+                h = z_grid[i - 1] - z_grid[i]
+                k1 = _sig(zc[i], t, fv_c[i], fvz_c[i], cm_c[i], g0)
+                k2 = _sig(zm[i - 1], t + 0.5 * h * k1, fv_m[i - 1], fvz_m[i - 1], cm_m[i - 1], g0)
+                k3 = _sig(zm[i - 1], t + 0.5 * h * k2, fv_m[i - 1], fvz_m[i - 1], cm_m[i - 1], g0)
+                k4 = _sig(zc[i - 1], t + h * k3, fv_c[i - 1], fvz_c[i - 1], cm_c[i - 1], g0)
+                t = t + (h / 6.0) * (k1 + 2.0 * k2 + 2.0 * k3 + k4)
+                tau[i - 1] = t
+        return tau
+
+    def _r(g0):
+        tau = _integrate(g0)
+        if not np.all(np.isfinite(tau)) or tau[0] <= 0.0:
+            return np.nan
+        return tau[0] / tau0
+
+    # --- shoot gamma_bar0 so tau(0)=tau0 (self-consistency Phi(0,tau0)=gamma_bar0) -----
+    g0_la = (2.0 + fv0) / 2.0
+    r0 = _r(g0_la)
+    if not np.isfinite(r0):
+        raise FloatingPointError("rate_ratio backward integration diverged")
+    n_shoot = 1
+    if abs(r0 - 1.0) < 1e-7:
+        g0_star = g0_la                               # tracker / no LB region: no-op
+    else:
+        if r0 > 1.0:                                  # r decreases in gamma_bar0: root above
+            hi = g0_la
+            while _r(hi) > 1.0 and hi < 3.0:
+                hi *= 1.03
+                n_shoot += 1
+            lo = hi / 1.03
+        else:                                         # root below
+            lo = g0_la
+            while _r(lo) < 1.0 and lo > 0.5:
+                lo /= 1.03
+                n_shoot += 1
+            hi = lo * 1.03
+        if not (np.isfinite(_r(lo)) and np.isfinite(_r(hi)) and (_r(lo) - 1.0) * (_r(hi) - 1.0) <= 0.0):
+            raise FloatingPointError("rate_ratio gamma_bar0 shot found no bracket")
+        g0_star = brentq(lambda g: _r(g) - 1.0, lo, hi, xtol=1e-10, rtol=1e-13)
+        n_shoot += 12
+
+    tau = _integrate(g0_star)
+    resid = abs(tau[0] / tau0 - 1.0)
+    tau = tau * (tau0 / tau[0])                        # cleanup; ~no-op at g0_star
+
+    # --- dressed observables on the z-grid ------------------------------------------
+    z = z_grid
+    fv = fv_c
+    fvz = fvz_c
+    t23 = tau ** (2.0 / 3.0)
+    Phi = (1.0 + z) * g0_star * (tau / tau0) ** (2.0 / 3.0) * ((1.0 - fv0) / (1.0 - fv)) ** (1.0 / 3.0)
+    use_lb2 = (fv >= fv_switch) & (~cm_c)
+    gam = np.where(use_lb2, Phi, (2.0 + fv) / 2.0)
+    d_safe = np.where(np.abs(Phi - 1.0) < 1e-30, 1e-30, Phi - 1.0)
+    sig = np.where(use_lb2,
+                   tau * fvz / (2.0 * (1.0 - fv) * d_safe),
+                   -1.5 * tau * (1.0 / (1.0 + z) + fvz / (3.0 * (1.0 - fv)) - fvz / (2.0 + fv)))
+    fvp = fvz / sig                                    # df_v/dtau (analytic, no map deriv)
+    # d_A(z) = tau^{2/3} int_0^z (-sigma)/(gam tau'^{2/3}) dz'
+    integ = (-sig) / (gam * t23)
+    Jz = cumulative_trapezoid(integ, z, initial=0.0)
+    dA = t23 * Jz
+    DM = (1.0 + z) * dA
+    # gamma_bar'(tau) = (dgam/dz)/sigma ; dgam/dz analytic (LB: from Phi; LA: fvz/2)
+    dgam_dz = np.where(use_lb2,
+                       Phi * (1.0 / (1.0 + z) + fvz / (3.0 * (1.0 - fv))) + Phi * (2.0 / (3.0 * tau)) * sig,
+                       0.5 * fvz)
+    gamp = dgam_dz / sig
+    Hbar = 2.0 / (3.0 * tau) + fvp / (3.0 * (1.0 - fv))
+    Hd = gam * Hbar - gamp
+    DH = 1.0 / Hd
+
+    sol = ModelVSolution(z, tau, fv, DM, DH, Hd, fv0, n_shoot, resid)
+    sol.gamma_bar0 = float(g0_star)                    # self-consistent present lapse (LB)
+    return sol
+
+
 def modelv_solve(fv_of_z, *, lapse="algebraic", Ngrid=30000, tau0=None,
                  tau_lo_frac=1e-6, tol=1e-8, max_iter=100):
     """Solve the dressed geometry for a forced f_v(z) callable.
@@ -238,7 +403,11 @@ def modelv_solve(fv_of_z, *, lapse="algebraic", Ngrid=30000, tau0=None,
     fv_of_z : callable f_v(z); if it exposes .deriv(z) (a MonotoneFv), df_v/dtau is
         formed analytically in the z-direction (kinky at nodes taken analytically)
         and numerically in the smooth tau-direction; otherwise np.gradient(fv, tau).
-    lapse   : "algebraic" (adopted) | "none" (V0 control, gamma_bar==1).
+    lapse   : "algebraic" (adopted) | "none" (V0 control, gamma_bar==1) |
+        "rate_ratio" (LB systematic: gamma_bar = Hbar/H_w = 1 + tau f_v'/(2(1-f_v));
+        the redshift map becomes f_v'-dependent and is solved in z by a backward RK4 with
+        a self-consistent gamma_bar0 shot -- see `_solve_rate_ratio` / NOTES sec 3). For
+        rate_ratio, Ngrid is the z-grid size and tau_lo_frac / tol / max_iter are unused.
     Ngrid   : per-component tau-grid size (total ~2*Ngrid after the linspace-geomspace
         union); 30000 gives ~5e-8 distance error on the tracker (passes the gates).
     tau0    : present bare time; default (2+fv0)/3 (tracker value). The distance
@@ -248,21 +417,34 @@ def modelv_solve(fv_of_z, *, lapse="algebraic", Ngrid=30000, tau0=None,
 
     Returns a ModelVSolution.
     """
+    if lapse not in _LAPSES:
+        raise ValueError(f"unknown lapse {lapse!r} (use one of {_LAPSES})")
     fv0 = float(fv_of_z(0.0))
     if tau0 is None:
         tau0 = (2.0 + fv0) / 3.0
+
+    # rate-ratio (LB): f_v'-dependent lapse -> unstable tau-space fixed point; solved in
+    # z with a backward RK4 + gamma_bar0 shot (self-consistent present lapse). Requires
+    # an analytic df_v/dz (MonotoneFv.deriv).
+    if lapse == "rate_ratio":
+        if not hasattr(fv_of_z, "deriv"):
+            raise ValueError("rate_ratio lapse needs a callable with .deriv(z) (MonotoneFv)")
+        floor = float(getattr(fv_of_z, "floor", 0.0))
+        ceil = float(getattr(fv_of_z, "ceil", 1.0))
+        return _solve_rate_ratio(fv_of_z, fv0, floor, ceil, Ngrid=Ngrid, tau0=tau0)
+
+    # algebraic / none: gamma_bar is a pure function of f_v, so the redshift map is a
+    # stable tau-space fixed point.
     tau = _tau_grid(tau0, tau_lo_frac, Ngrid)
     t23 = tau ** (2.0 / 3.0)
     has_deriv = hasattr(fv_of_z, "deriv")
 
     def _fvp(fv, z):
+        # df_v/dtau = (df_v/dz)(dz/dtau); analytic df_v/dz (PCHIP) when available.
         if has_deriv:
             return fv_of_z.deriv(z) * np.gradient(z, tau)
         return np.gradient(fv, tau)
 
-    # ---- z <-> tau fixed-point iteration -----------------------------------
-    # The adopted lapses are pure functions of f_v (no derivative), so the redshift
-    # map is stable and needs no f_v' during the iteration.
     z = (tau0 / tau) ** (2.0 / 3.0) - 1.0        # EdS-like initial guess
     dz = np.inf
     it = 0

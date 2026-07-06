@@ -1,0 +1,63 @@
+{
+  "probe": "adversarial independent re-derivation of Phase-F amplitude split",
+  "chi2_impl_crosscheck_DR1": {
+    "chi2_mine": 14.808131333440542,
+    "chi2_harness": 14.808131333440542,
+    "dchi2": 0.0,
+    "dalpha": 0.0,
+    "ok": true
+  },
+  "dr2_joint_chi2": {
+    "lcdm": {
+      "Om": 0.3037490998835902,
+      "chi2": 1399.8050091085024,
+      "H0": 68.6888232445875
+    },
+    "tracker": {
+      "fv0": 0.6382930597792165,
+      "chi2": 1514.103116422426,
+      "chi2_SN": 1433.7362130209804,
+      "chi2_BAOCMB": 80.3669034014456
+    },
+    "free_at_reported_nodes": {
+      "chi2": 1398.2768532969058,
+      "chi2_SN": 1385.674647666514,
+      "chi2_BAOCMB": 12.602205630391836,
+      "fv0": 0.63604
+    },
+    "free_minus_lcdm": -1.5281558115966618,
+    "free_minus_tracker": -115.8262631255202
+  },
+  "free_amplitude_split": {
+    "shape_norm": [
+      1.0,
+      0.83026,
+      0.63101,
+      0.40298,
+      0.27445
+    ],
+    "A_SN": 0.6351377682063163,
+    "A_BAOCMB": 0.6362759249227754,
+    "A_joint": 0.6360374399034879,
+    "chi2_SN_at_A_SN": 1385.6535389721394,
+    "chi2_BC_at_A_BC": 12.596711394842714,
+    "joint_min": 1398.2768529374152,
+    "separate_min": 1398.250250366982,
+    "delta_chi2_join": 0.026602570433169603,
+    "sigma": 0.16310294428111838,
+    "split_dissolves": true
+  },
+  "tracker_sanity_split": {
+    "fv0_SN": 0.8526454696675984,
+    "fv0_BAOCMB": 0.6356033341000242,
+    "fv0_joint": 0.6382930597792165,
+    "chi2_SN_at_fv0SN": 1391.5451143532991,
+    "chi2_BC_at_fv0BC": 79.70663110818714,
+    "joint_min": 1514.103116422426,
+    "separate_min": 1471.2517454614863,
+    "delta_chi2_join": 42.851370960939676,
+    "sigma": 6.546095856381854,
+    "reproduces_paper1": true
+  },
+  "runtime_s": 2.2
+}

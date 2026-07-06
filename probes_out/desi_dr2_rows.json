@@ -1,0 +1,334 @@
+{
+ "name": "desi_dr2_rows",
+ "description": "Self-contained DESI DR2 BAO + Planck-CMB data for Model V Phase F. Rows are (z, kind, value, err, corr) in shared-harness format; the covariance is block diagonal by redshift bin.",
+ "provenance": {
+  "primary": "DESI DR2 official Gaussian BAO likelihood: github.com/CobayaSampler/bao_data desi_bao_dr2/desi_gaussian_bao_ALL_GCcomb_{mean,cov}.txt @ commit b7b8a36e9bcc (2025-03-20), fetched 2026-07-05; paper arXiv:2503.14738",
+  "crosscheck": "arXiv:2503.14738v2 summary table (rounded journal values), stored as table_rows; all 13 central values agree to <=0.001, errors to <=0.004",
+  "rd_for_H0": 147.09,
+  "note_rd_pivot": "DESI DR2 (eq. 2 of 2503.14738) pivots its rd fitting formula on 147.05 Mpc; using 147.09 shifts H0 by +0.03% (~0.02 km/s/Mpc), negligible",
+  "extracted_from": "paper 1 probes_out/dr2.json dr2_rows_used (reproduced from the embedded Cobaya mean+cov; cross-checked equal in this script)"
+ },
+ "rd": 147.09,
+ "rows": [
+  [
+   0.295,
+   "DV",
+   7.94167639,
+   0.07609196324185624,
+   null
+  ],
+  [
+   0.51,
+   "DM",
+   13.58758434,
+   0.16836678472905517,
+   -0.45156451597511
+  ],
+  [
+   0.51,
+   "DH",
+   21.86294686,
+   0.42886832478046216,
+   -0.45156451597511
+  ],
+  [
+   0.706,
+   "DM",
+   17.35069094,
+   0.17993122074837373,
+   -0.39525761496067274
+  ],
+  [
+   0.706,
+   "DH",
+   19.45534918,
+   0.33387003159912393,
+   -0.39525761496067274
+  ],
+  [
+   0.934,
+   "DM",
+   21.57563956,
+   0.1617815860968114,
+   -0.3472334325670801
+  ],
+  [
+   0.934,
+   "DH",
+   17.64149464,
+   0.20104324858099562,
+   -0.3472334325670801
+  ],
+  [
+   1.321,
+   "DM",
+   27.60085612,
+   0.32455587500459765,
+   -0.39834051635094414
+  ],
+  [
+   1.321,
+   "DH",
+   14.17602155,
+   0.22455135092000672,
+   -0.39834051635094414
+  ],
+  [
+   1.484,
+   "DM",
+   30.51190063,
+   0.763557644844186,
+   -0.49355207107146415
+  ],
+  [
+   1.484,
+   "DH",
+   12.81699964,
+   0.5180117691713191,
+   -0.49355207107146415
+  ],
+  [
+   2.33,
+   "DM",
+   38.988973961958784,
+   0.5316820280957407,
+   -0.4306382085569688
+  ],
+  [
+   2.33,
+   "DH",
+   8.631545674846294,
+   0.10106245296844917,
+   -0.4306382085569688
+  ]
+ ],
+ "n_bao": 13,
+ "mean_raw": [
+  [
+   0.295,
+   "DV",
+   7.94167639
+  ],
+  [
+   0.51,
+   "DM",
+   13.58758434
+  ],
+  [
+   0.51,
+   "DH",
+   21.86294686
+  ],
+  [
+   0.706,
+   "DM",
+   17.35069094
+  ],
+  [
+   0.706,
+   "DH",
+   19.45534918
+  ],
+  [
+   0.934,
+   "DM",
+   21.57563956
+  ],
+  [
+   0.934,
+   "DH",
+   17.64149464
+  ],
+  [
+   1.321,
+   "DM",
+   27.60085612
+  ],
+  [
+   1.321,
+   "DH",
+   14.17602155
+  ],
+  [
+   1.484,
+   "DM",
+   30.51190063
+  ],
+  [
+   1.484,
+   "DH",
+   12.81699964
+  ],
+  [
+   2.33,
+   "DM",
+   38.988973961958784
+  ],
+  [
+   2.33,
+   "DH",
+   8.631545674846294
+  ]
+ ],
+ "cov_blocks": [
+  {
+   "z": 0.295,
+   "var_first": 0.00578998687,
+   "var_DH": null,
+   "cov_DM_DH": null
+  },
+  {
+   "z": 0.51,
+   "var_first": 0.0283473742,
+   "var_DH": 0.18392804,
+   "cov_DM_DH": -0.0326062007
+  },
+  {
+   "z": 0.706,
+   "var_first": 0.0323752442,
+   "var_DH": 0.111469198,
+   "cov_DM_DH": -0.0237445646
+  },
+  {
+   "z": 0.934,
+   "var_first": 0.0261732816,
+   "var_DH": 0.0404183878,
+   "cov_DM_DH": -0.0112938006
+  },
+  {
+   "z": 1.321,
+   "var_first": 0.105336516,
+   "var_DH": 0.0504233092,
+   "cov_DM_DH": -0.0290308418
+  },
+  {
+   "z": 1.484,
+   "var_first": 0.583020277,
+   "var_DH": 0.268336193,
+   "cov_DM_DH": -0.195215562
+  },
+  {
+   "z": 2.33,
+   "var_first": 0.282685779,
+   "var_DH": 0.0102136194,
+   "cov_DM_DH": -0.0231395216
+  }
+ ],
+ "cov_note": "Full BAO covariance = block diagonal over redshift bins in `rows` order. For a (DM,DH) pair at one z: C[DM,DM]=err_DM^2, C[DH,DH]=err_DH^2, C[DM,DH]=corr*err_DM*err_DH. DV bins are 1x1 (err^2). No cross-bin correlation. timescape_baocmb.build_cov(rows) reproduces this exactly.",
+ "cmb_point": {
+  "zstar": 1089.8,
+  "kind": "DM",
+  "err": 0.05,
+  "value_headline": 94.29001253445936,
+  "value_harness": 94.31613346043332,
+  "value": 94.31613346043332,
+  "row": [
+   1089.8,
+   "DM",
+   94.31613346043332,
+   0.05,
+   null
+  ],
+  "row_headline": [
+   1089.8,
+   "DM",
+   94.29001253445936,
+   0.05,
+   null
+  ],
+  "note": "`value`/`row` use the consistent single-Planck-column pairing 144.43/147.09 = 94.316, which is what paper 2's src/harness.py bao_cmb_chi2 already hard-codes, so Phase F using that harness is consistent by construction. `value_headline`/`row_headline` (144.39/147.09 = 94.290) is the mixed-column value paper 1 reported its DR2+CMB headline fit with (its dr2_bao_cmb; the 144.43 pairing is paper 1's dr2_bao_cmb_planckfix variant). theta*=1.04109(30); error = theta*-propagated, floored at 0.05."
+ },
+ "table_rows": [
+  [
+   0.295,
+   "DV",
+   7.942,
+   0.075,
+   null
+  ],
+  [
+   0.51,
+   "DM",
+   13.588,
+   0.167,
+   -0.459
+  ],
+  [
+   0.51,
+   "DH",
+   21.863,
+   0.425,
+   -0.459
+  ],
+  [
+   0.706,
+   "DM",
+   17.351,
+   0.177,
+   -0.404
+  ],
+  [
+   0.706,
+   "DH",
+   19.455,
+   0.33,
+   -0.404
+  ],
+  [
+   0.934,
+   "DM",
+   21.576,
+   0.152,
+   -0.416
+  ],
+  [
+   0.934,
+   "DH",
+   17.641,
+   0.193,
+   -0.416
+  ],
+  [
+   1.321,
+   "DM",
+   27.601,
+   0.318,
+   -0.434
+  ],
+  [
+   1.321,
+   "DH",
+   14.176,
+   0.221,
+   -0.434
+  ],
+  [
+   1.484,
+   "DM",
+   30.512,
+   0.76,
+   -0.5
+  ],
+  [
+   1.484,
+   "DH",
+   12.817,
+   0.516,
+   -0.5
+  ],
+  [
+   2.33,
+   "DM",
+   38.988,
+   0.531,
+   -0.431
+  ],
+  [
+   2.33,
+   "DH",
+   8.632,
+   0.101,
+   -0.431
+  ]
+ ]
+}
