@@ -1,0 +1,132 @@
+{
+  "_meta": {
+    "seed": 20260706,
+    "ngrid_fine": 30000,
+    "ngrid_ms": 2500,
+    "ms_maxsec": 700.0,
+    "committed_json": "probes_out/modelV_probeR_LB.json"
+  },
+  "check1_control_LB": {
+    "my_joint": 1469.2929236129858,
+    "my_chi2_SN": 1431.6480435729027,
+    "my_chi2_BAOCMB": 37.64488004008308,
+    "committed_tracker_LB": 1469.2929236129858,
+    "ref_gate": 1469.2926,
+    "abs_err_vs_ref": 0.0003236129857668857,
+    "abs_err_vs_committed": 0.0,
+    "gamma_bar0": 1.3213,
+    "status": "PASS"
+  },
+  "check2_headline": {
+    "my_joint": 1406.9222243437544,
+    "my_chi2_SN": 1394.4163571447134,
+    "my_chi2_BAOCMB": 12.50586719904095,
+    "committed_chi2_min": 1406.9220895846374,
+    "committed_SN": 1394.410823509097,
+    "committed_BC": 12.511266075540334,
+    "abs_err": 0.0001347591169178486,
+    "my_fv0": 0.58786,
+    "committed_fv0": 0.5878612293793102,
+    "fv_nodes_used": [
+      0.58786,
+      0.49709,
+      0.38473,
+      0.2503,
+      0.12145
+    ],
+    "status": "PASS"
+  },
+  "check3_multistart": {
+    "n_starts_run": 12,
+    "n_random": 10,
+    "seed": 20260706,
+    "hit_wall_clock": true,
+    "ngrid_ms": 2500,
+    "best_joint_fitgrid": 1406.9063056786545,
+    "best_joint_headline": 1406.9720869916491,
+    "best_fv_nodes": [
+      0.58794,
+      0.49699,
+      0.38447,
+      0.24995,
+      0.12108
+    ],
+    "committed_polished_headline": 1406.9720869916491,
+    "committed_chi2_min": 1406.9220895846374,
+    "improvement_over_committed": -0.049997407011687756,
+    "beat_by_more_than_1": false,
+    "status": "PASS",
+    "note": "PASS = could not beat the committed optimum by >~0.3 (converged). improvement = committed_chi2_min - min(best headline, polished committed). A negative/near-zero value confirms the reported optimum is the basin floor."
+  },
+  "check4_verdict_twoscale": {
+    "my_chi2_repro": 1406.9222243437544,
+    "delta_vs_LCDM": 4.685024343754321,
+    "threshold_reconciles_le": 1412.2372,
+    "my_verdict": "RECONCILES_mechanism_flexible",
+    "committed_verdict": "RECONCILES_mechanism_flexible",
+    "verdict_match": true,
+    "my_two_scale_excess": 0.1768450501029764,
+    "committed_two_scale_excess": 0.17683285688029907,
+    "two_scale_abs_err": 1.2193222677342463e-05,
+    "two_scale_components": {
+      "gamma_bar0": 1.323629310240877,
+      "Hd0": 1.3125637270464434,
+      "Hv": 1.1983418817476226,
+      "Hbar": 1.022975261896453,
+      "Hv_minus_Hbar": 0.17536661985116964,
+      "fvp_dtau": 0.30927306343712563,
+      "tau0": 0.86262,
+      "fv0": 0.58786
+    },
+    "status": "PASS"
+  },
+  "check5_band_edges": {
+    "chi2_min_band_ref": 1407.1786787454039,
+    "ngrid_band": 1000,
+    "checked": {
+      "z=0": {
+        "edges": [
+          {
+            "edge_target": 0.5863424466257657,
+            "dchi2": -0.07166970428079367,
+            "node_val_reached": 0.5864138283647432
+          },
+          {
+            "edge_target": 0.6173433124732666,
+            "dchi2": 0.8242249512113631,
+            "node_val_reached": 0.6172027078660699
+          }
+        ],
+        "status": "PARTIAL"
+      },
+      "z=0.3": {
+        "edges": [
+          {
+            "edge_target": 0.4955669533460243,
+            "dchi2": -0.1703491727821529,
+            "node_val_reached": 0.49561497578615726
+          },
+          {
+            "edge_target": 0.5315582055772027,
+            "dchi2": 0.03303094021975994,
+            "node_val_reached": 0.5315126918861827
+          }
+        ],
+        "status": "PARTIAL"
+      }
+    },
+    "status": "PARTIAL"
+  },
+  "overall": {
+    "per_check_status": {
+      "check1_control_LB": "PASS",
+      "check2_headline": "PASS",
+      "check3_multistart": "PASS",
+      "check4_verdict_twoscale": "PASS",
+      "check5_band_edges": "PARTIAL"
+    },
+    "verdict": "SURVIVES_WITH_CAVEATS",
+    "summary": "LB Probe R adversarial re-derivation: control reproduces 1469.29 (ref 1469.2926); headline reproduces 1406.92 (committed 1406.92); independent multistart could not beat it (improvement -0.050); verdict RECONCILES_mechanism_flexible matches; two_scale 0.17685 matches 0.17683.",
+    "runtime_s": 883.2
+  }
+}
