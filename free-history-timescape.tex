@@ -61,7 +61,12 @@ end to end. \emph{Part~I (kinematic):} the freed $\fvz$ reconciles Pantheon$+$,
 DESI BAO, and the Planck acoustic scale at joint $\chi^2=1396.1$, below flat
 $\Lcdm$ ($1402.2$) and far below the tracker ($1469.3$), at a physically
 plausible $\fvo=0.640$; the amplitude split dissolves to $0.16\sigma$ (tracker:
-$6.5\sigma$). But this is the backreaction the Hubble diagram \emph{wants}---a
+$6.5\sigma$). This reconciliation uses the Pantheon$+$ stat$+$sys covariance;
+under the cosmology-independent covariance of Lane, Seifert et al.\
+\cite{Lane2025,Seifert2024} (the FLRW-fiducial bias correction removed) the
+supernova likelihood instead prefers $\Lcdm$ to the fixed free-history at every
+redshift cut ($\dBIC=+11$ to $+27$), so the kinematic shape-sufficiency is itself
+covariance-dependent. But this is the backreaction the Hubble diagram \emph{wants}---a
 kinematic target that violates Buchert integrability, not a proven solution.
 \emph{Part~II:} four independent falsification tests each fail. The required
 history must decline by $\times3.31$ over $0<z<2.33$ while the observed BOSS DR12
@@ -261,7 +266,15 @@ timescape tracker (1-param)           & $1$ & $1469.29$ & $+67.06$\\
 \end{ruledtabular}
 \footnotesize A no-lapse control (V0) gives $\chi^2=1396.49$, confirming the
 result is not an artifact of the lapse convention. An independent multistart
-re-derivation reproduces the headline $\chi^2=1396.06$ and cannot improve on it.
+re-derivation reproduces the headline $\chi^2=1396.06$ and cannot improve on it. Under the
+cosmology-independent Pantheon$+$ covariance of Ref.~\cite{Seifert2024}
+(FLRW-fiducial bias correction removed) the shape-sufficiency fails: the fixed
+free-history exceeds best-fit $\Lcdm$ by $\Delta(-2\ln\mathcal{L})=+18/+24/+35$ at
+$z_{\min}=0.055/0.033/0.010$ (all above the $+10$ threshold),
+$\dBIC(\mathrm{FH}-\Lcdm)=+11.1/+17.0/+27.2$ (fixed-history $k_{\rm cosmo}=0$;
+$+45.8/+52.3/+64.0$ under an SN-fitted-nodes upper bound); the tracker reproduces
+Ref.~\cite{Seifert2024}'s $\dBIC(\mathrm{TS}-\Lcdm)=+4.9/+1.5/-0.5$
+(\texttt{seifert\_covariance\_row.json}).
 \end{table}
 
 The freed history reaches joint $\chi^2=1396.06$, comfortably inside the
@@ -343,7 +356,13 @@ $\sim\!2\times10^{-6}$ pipeline floor, whereas the forced required history drift
 by $\sim\!152\%$ across its interior (Sec.~\ref{subsec:dynamical}). The freed
 history is therefore ``the backreaction the Hubble diagram wants''---a
 well-defined kinematic \emph{target}, not a demonstrated general-relativistic
-solution. Part~II asks, at full detail, whether that target is available in the
+solution. The geometric reconciliation is moreover specific to the supernova
+covariance: repeating the SN comparison under the cosmology-independent covariance
+of Refs.~\cite{Lane2025,Seifert2024}---which removes the FLRW-fiducial bias
+correction the timescape programme regards as circular---the fixed free-history is
+disfavoured relative to $\Lcdm$ at every redshift cut
+(Table~\ref{tab:jointchi2}, footnote), so the shape-sufficiency of
+Sec.~\ref{subsec:probeR} is not robust to that choice. Part~II asks, at full detail, whether that target is available in the
 sky, consistent as dynamics, and calibratable to the early Universe.
 
 % =====================================================================
@@ -737,7 +756,10 @@ void-fraction history from the one-parameter tracker removes the rigidity that
 Paper~I identified and reconciles the SN$+$BAO$+$CMB distance geometry at joint
 $\chi^2=1396.1$, below flat $\Lcdm$ ($1402.2$) and far below the tracker
 ($1469.3$), at a physically plausible $\fvo=0.640$, with the amplitude split
-dissolving to $0.16\sigma$. But that flexibility is kinematic, and it closes at
+dissolving to $0.16\sigma$ (and even this geometric reconciliation is
+covariance-dependent: under the cosmology-independent supernova covariance of
+Refs.~\cite{Lane2025,Seifert2024} the fixed free-history is disfavoured relative
+to $\Lcdm$ at every redshift cut). But that flexibility is kinematic, and it closes at
 every deeper physical test: availability (shape-unavailable, decline
 $\times3.31$ required vs $\times1.16$ observed), local bias ($+2.4\%$ predicted vs
 $+8.4\%$ required---the full admissible band below the target; pre-registered
