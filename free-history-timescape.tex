@@ -1,0 +1,738 @@
+% =====================================================================
+%  Free-history timescape: a data-driven void history reconciles the
+%  supernova--BAO--CMB geometry but does not resolve the Hubble tension.
+%
+%  Paper 2+3 (combined) of the free-history timescape program.
+%  DRAFT for arXiv (astro-ph.CO / gr-qc). Compile: pdflatex x2.
+%  Class: revtex4-2 (matches paper 1, timescape-hubble-tension.tex).
+%
+%  >>> BEFORE SUBMITTING <<<
+%   (1) Fill in affiliation (currently "Independent Researcher").
+%   (2) Machine-verify all arXiv ids vs live arXiv before submission;
+%       Wiltshire2009review / WiegandBuchert2010 / ShethvdW2004 /
+%       ClampittJain2015 carry arXiv-only (no volume/page asserted).
+%   (3) astro-ph.CO/gr-qc need an endorsement for a first-time submitter.
+% =====================================================================
+\documentclass[aps,prd,twocolumn,nofootinbib,superscriptaddress,floatfix]{revtex4-2}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newcommand{\Ho}{H_{0}}
+\newcommand{\Hbaro}{\bar H_{0}}
+\newcommand{\fvo}{f_{v0}}
+\newcommand{\fv}{f_{v}}
+\newcommand{\fvz}{f_{v}(z)}
+\newcommand{\kmsmpc}{\,\mathrm{km\,s^{-1}\,Mpc^{-1}}}
+\newcommand{\Lcdm}{\Lambda\mathrm{CDM}}
+\newcommand{\dBIC}{\Delta\mathrm{BIC}}
+\newcommand{\rd}{r_{d}}
+\newcommand{\bpred}{b_{\mathrm{pred}}}
+\newcommand{\breq}{b_{\mathrm{req}}}
+\newcommand{\Emax}{E_{\max}}
+\newcommand{\gdress}{g_{\mathrm{dress}}}
+\newcommand{\hmpc}{\,h^{-1}\mathrm{Mpc}}
+% Defensive: any unresolved value would surface as a visible tag.
+\newcommand{\todo}[1]{\textbf{[TODO: #1]}}
+
+\begin{document}
+
+\title{Free-history timescape: a data-driven void history reconciles the
+supernova--BAO--CMB geometry but does not resolve the Hubble tension}
+
+\author{Viacheslav Zhygulin}
+\email{s.zhygulin@gmail.com}
+\affiliation{Independent Researcher}
+\date{\today}
+
+\begin{abstract}
+Paper~I of this program showed that the timescape cosmology in its standard
+one-parameter tracker closure cannot fit type~Ia supernovae (SNe), baryon
+acoustic oscillations (BAO), and the cosmic microwave background (CMB) acoustic
+scale together: the SNe drive the present void fraction toward $\fvo\simeq0.85$
+while BAO$+$CMB demand $\simeq0.64$ (a $4.8$--$6.6\sigma$ split), yet a
+model-independent free-$E(z)$ check shows the data are not internally
+contradictory---the split is the tracker shape's rigidity, not a data conflict.
+Here we free the void-fraction history $\fvz$ from the attractor, keeping the
+Buchert two-phase average and the wall/void clock-rate dressing, and re-test
+end to end. \emph{Part~I (kinematic):} the freed $\fvz$ reconciles Pantheon$+$,
+DESI DR2 BAO, and the Planck acoustic scale at joint $\chi^2=1396.1$, below flat
+$\Lcdm$ ($1402.2$) and far below the tracker ($1469.3$), at a physically
+plausible $\fvo=0.640$; the amplitude split dissolves to $0.16\sigma$ (tracker:
+$6.5\sigma$). But this is the backreaction the Hubble diagram \emph{wants}---a
+kinematic target that violates Buchert integrability, not a proven solution.
+\emph{Part~II:} four independent falsification tests each fail. The required
+history must decline by $\times3.31$ over $0<z<2.33$ while the observed BOSS DR12
+void population declines only $\times1.16$ (shape-unavailable, by a floor
+theorem); the predicted local expansion-rate bias is $+2.4\%$ ($+1.6\%$
+lensing-physical) versus the $+8.4\%$ SH0ES requires ($4.2\sigma$,
+measurement-only); enforcing dynamical consistency collapses the three-phase
+Buchert solve to the tracker limit, missing the geometry model-comparison bar by
+$4953$; and the in-model sound horizon is $\rd=199.6$~Mpc ($+36\%$), driving the
+global bare $\Hbaro$ to $\sim\!40\kmsmpc$. Removing the tracker's rigidity
+reconciles the distance geometry, but the flexibility is kinematic: free-history
+timescape does not resolve the Hubble tension. Consistent with Paper~I,
+eliminating dark energy through inhomogeneity does not resolve the tension on
+present public data.
+\end{abstract}
+
+\maketitle
+
+% =====================================================================
+\section{Introduction}
+\label{sec:intro}
+
+The proposal that the apparent cosmic acceleration---and, by extension, the
+Hubble tension---reflects the inhomogeneity of the late Universe rather than a
+new energy component is the dark-energy-free inhomogeneity programme. The
+timescape cosmology of Wiltshire \cite{Wiltshire2007,Wiltshire2009,Wiltshire2009review}
+is its most developed member: the present, void-dominated Universe is modelled as
+a two-phase Buchert spatial average \cite{Buchert2000,WiegandBuchert2010} of
+spatially-flat ``walls'' (bound structures, where observers sit) and
+negatively-curved ``voids,'' with a quasilocal clock-rate gradient (``dressing'')
+so that a wall observer fitting Friedmann--Lema\^itre--Robertson--Walker (FLRW)
+infers ``dressed'' parameters distinct from the volume-average ``bare'' ones.
+Apparent acceleration follows without dark energy. Recent Pantheon$+$ reanalyses with a
+cosmology-independent covariance report strong Bayesian evidence for timescape
+over $\Lcdm$ \cite{Lane2025,Seifert2024}, reviving the question of whether the
+framework also addresses the Hubble tension.
+
+This is the second paper of a three-paper arc. Paper~I \cite{Paper1} subjected
+the standard timescape \emph{tracker}---the one-parameter late-time attractor
+that fixes the void-fraction history $\fvz$---to a uniform SN$+$BAO$+$CMB
+harness and found that no single tracker fits the three geometry probes together:
+the supernovae pull the present void fraction toward $\fvo\simeq0.85$ while the
+BAO$+$CMB geometry demands $\fvo\simeq0.64$, a $4.8$--$6.6\sigma$ parameter split.
+Crucially, a model-independent free-$E(z)$ spline fit to the same three datasets
+matches $\Lcdm$: the data are \emph{not} internally contradictory. Paper~I
+therefore diagnosed the tracker's one-parameter rigidity---not the timescape
+mechanism, and not a genuine SN-versus-BAO data conflict---as the cause of the
+combined-fit failure.
+
+The present paper asks the immediate follow-up question: \emph{is the timescape
+mechanism right but its tracker closure wrong?} We free the void history $\fvz$
+from the tracker attractor, retain the Buchert two-phase average and the
+wall/void clock-rate dressing unchanged, and re-test the framework end to
+end---first against the SN$+$BAO$+$CMB geometry, then against every deeper
+physical requirement the reconciling history must satisfy.
+
+We state the two-part answer up front. \textbf{Part~I} (Sec.~\ref{sec:reconcile}):
+freeing $\fvz$ \emph{does} reconcile the geometry. The freed history fits
+Pantheon$+$, DESI DR2 BAO, and the Planck acoustic scale at joint $\chi^2=1396.1$,
+below flat $\Lcdm$ ($1402.2$) and far below the tracker ($1469.3$), at a
+physically plausible present void fraction $\fvo=0.640$; the SN-versus-BAO$+$CMB
+amplitude split dissolves from the tracker's $6.5\sigma$ to $0.16\sigma$.
+Throughout we label this reconciliation \emph{kinematic}: it is a well-defined
+target the Hubble diagram wants, but the forced history need not satisfy the
+Buchert integrability conditions and is not, on its face, a general-relativistic
+solution. \textbf{Part~II} (Sec.~\ref{sec:partii}): four independent
+falsification tests ask whether the reconciling history is physically
+\emph{available}, dynamically \emph{consistent}, and early-Universe
+\emph{calibratable}. All four fail. The required history is not present in the
+observed void population (its decline is $\times3.31$ against an observed
+$\times1.16$; \emph{shape-unavailable}); it predicts a local expansion-rate bias
+of $+2.4\%$ against the $+8.4\%$ required, at $4.2\sigma$ (\emph{fails}); enforced
+onto a dynamical three-phase Buchert solve it collapses to the two-phase tracker
+limit and misses the geometry bar by $4953$ (\emph{closed}); and its in-model
+sound horizon is $\rd=199.6$~Mpc, $+36\%$ above the external ruler, driving the
+bare Hubble rate to $\sim\!40\kmsmpc$ (\emph{fails}). This is
+\emph{reconciliation without resolution}: removing the tracker's rigidity
+reconciles the distance geometry, but the flexibility is kinematic and closes at
+every physical test. The result corroborates and sharpens Paper~I's conclusion.
+
+Every quantitative claim below traces to a committed analysis script and its
+result file (Sec.~\ref{sec:avail}); each verdict is stated against a
+pre-registered threshold quoted before the verdict.
+
+% =====================================================================
+\section{Free-history timescape framework}
+\label{sec:framework}
+
+We use only what is needed; the derivations are in
+\cite{Wiltshire2007,Wiltshire2009,Duley2013} and the uniform harness in
+\cite{Paper1}. The void volume fraction $\fv(t)$ grows to a present value $\fvo$
+in a two-phase Buchert average of walls and voids
+\cite{Buchert2000,WiegandBuchert2010}. The lapse
+$\bar\gamma\equiv dt/d\tau_w$ relates volume-average time $t$ to wall proper time
+$\tau_w$; in the late-time tracker solution the dressed and bare Hubble
+parameters obey \cite[eq.~(B9)]{Wiltshire2009}
+\begin{equation}
+\Ho=\gdress(\fvo)\,\Hbaro,\qquad
+\gdress(\fvo)=\frac{4\fvo^{2}+\fvo+4}{2(2+\fvo)},
+\label{eq:dressed}
+\end{equation}
+with $\bar\gamma_0=\tfrac12(2+\fvo)$. The tracker is the \emph{one-parameter}
+closure that fixes the entire history $\fvz$ from $\fvo$ alone, and has been
+fitted to multiple probes at a low dressed $\Ho$ \cite{Leith2008,Nazer2015}. We
+drop it: we
+let $\fvz$ be a free function on a redshift grid, solve the dressed geometry
+(luminosity and transverse-comoving distances, following the DNW13 machinery
+\cite{Duley2013} and the dressed-distance implementation of \cite{Dam2017}) for
+each admissible history, and later confront the freed history with the observed
+void population.
+
+Freeing the history exposes a lapse-convention choice that the tracker hides. We
+carry two readings. \emph{LA (algebraic)} evaluates the lapse from the
+tracker-form combination $\tfrac12(2+\fv)$ node by node. \emph{LB (rate-ratio)}
+builds the lapse from the local expansion-rate ratio, so it depends on the
+history's slope $\fv'(z)$ and fixes a self-consistent $\bar\gamma_0$ by shooting.
+LA is the primary reading; LB, together with the no-lapse control (V0), brackets
+the required history as a lapse-reading systematic used in Part~II.
+
+\emph{Solver validation gate.} The general (non-tracker) dressed-geometry solver
+is a faithful superset of the validated tracker geometry: driven to the tracker
+history it reproduces the tracker limit to a maximum fractional transverse-distance
+error $1.7\times10^{-9}$ and an SN $\chi^2=1391.545$ (matching the Paper~I
+tracker value), the LB gate passes at joint tracker $\chi^2=1469.293$ against the
+reference $1469.293$, and it exhibits the genuine non-FLRW signature
+$dD_M/dz\neq D_H\equiv c/H(z)$, which collapses to equality only in the FLRW
+limit. This is the load-bearing statement that the machinery is correct before
+we ask what it prefers.
+
+% =====================================================================
+\section{Part~I: Geometric reconciliation}
+\label{sec:reconcile}
+
+All Part~I results are \emph{kinematic}: they establish that the timescape
+mechanism, with its history freed, has enough shape freedom to fit the distance
+geometry. Whether that shape is physically realised is the subject of Part~II.
+
+\subsection{Data and harness}
+\label{subsec:data}
+
+We reuse Paper~I's uniform harness and pipeline validation \cite{Paper1}. The
+supernova data are the Pantheon$+$ release \cite{Scolnic2022,Brout2022}; the
+cosmology sample is the $N=1580$ SNe with $z_{\mathrm{HD}}>0.01$ that are not
+Cepheid calibrators ($0.010<z<2.26$), analysed under the full public
+statistical$+$systematic covariance with the absolute-magnitude/$\Ho$ offset
+marginalised analytically (the supernova verdict has historically been sensitive
+to the light-curve fitter \cite{Smale2011}, which the uniform harness holds
+fixed across models). The BAO data are the DESI DR2 distances \cite{DESIDR2};
+the CMB enters only through the Planck 2018 acoustic-scale point
+\cite{Planck2018}. As in Paper~I, the sound-horizon ruler $\rd$ enters BAO$+$CMB
+only through the distance amplitude, so the redshift \emph{shape}---and hence the
+history $\fvz$---is independent of the $\rd$ calibration (a fact we exploit, and
+whose limits we probe, in Sec.~\ref{subsec:soundhorizon}).
+
+\subsection{The required void history (Probe~R)}
+\label{subsec:probeR}
+
+We fit the freed history jointly to SN$+$BAO$+$CMB and compare, on identical
+data, against the model-independent free-$E(z)$ spline, evolving dark energy
+($w_0w_a$CDM, the DESI-hinted thawing direction \cite{DESI2024}), flat $\Lcdm$,
+and the one-parameter tracker
+(Table~\ref{tab:jointchi2}). The pre-registered thresholds
+\cite{Paper1} are: \emph{reconciles} if joint $\chi^2\le1412.24$
+($=\chi^2_{\Lcdm}+10$); \emph{disfavoured} if $\le1427.24$;
+\emph{amplitude-dead} if $\ge1469.29$ (the tracker value).
+
+\begin{table}[t]
+\caption{Joint SN$+$BAO$+$CMB fit, identical data and harness: minimum $\chi^2$
+of each model. The freed history (headline row) fits below flat $\Lcdm$ and far
+below the one-parameter tracker; only the model-independent free-$E(z)$ spline
+does better. The pre-registered reconcile threshold is joint
+$\chi^2\le1412.24$. Column $\chi^2-\chi^2_{\Lcdm}$ is the difference from the
+$\Lcdm$ row.}
+\label{tab:jointchi2}
+\begin{ruledtabular}
+\begin{tabular}{lcc}
+Model & joint $\chi^2$ & $\chi^2-\chi^2_{\Lcdm}$\\
+\colrule
+free $E(z)$ spline (model-indep.)      & $1391.85$ & $-10.39$\\
+free-history TS ($\fvz$) \emph{[this work]} & $1396.06$ & $-6.18$\\
+$w_0w_a$CDM                            & $1398.29$ & $-3.95$\\
+flat $\Lcdm$                           & $1402.24$ & $0$\\
+timescape tracker (1-param)           & $1469.29$ & $+67.06$\\
+\end{tabular}
+\end{ruledtabular}
+\footnotesize A no-lapse control (V0) gives $\chi^2=1396.49$, confirming the
+result is not an artifact of the lapse convention. An independent multistart
+re-derivation reproduces the headline $\chi^2=1396.06$ and cannot improve on it.
+\end{table}
+
+The freed history reaches joint $\chi^2=1396.06$, comfortably inside the
+reconcile band and $6.18$ below flat $\Lcdm$; only the model-independent
+free-$E(z)$ spline ($1391.85$) does better, and the rigid tracker ($1469.29$) is
+$67$ worse. The preferred present void fraction is $\fvo=0.640$ (LA), a
+physically plausible value, coincident with the BAO$+$CMB-preferred value of
+Paper~I and with timescape's own Planck fits \cite{Nazer2015}. The associated
+Hubble rates are a dressed $\Ho=63.97\kmsmpc$ ($\gdress$ convention), a full-rate
+dressed $67.65\kmsmpc$, and a global bare $\Hbaro=53.79\kmsmpc$. The
+pre-registered verdict is \textbf{RECONCILES (mechanism flexible)}; an
+independent re-derivation returns the same verdict.
+
+The reconciliation is robust to the lapse convention. The LB (rate-ratio) sibling
+fits at $\chi^2=1406.92$ ($\fvo=0.588$; $+4.69$ above $\Lcdm$, still inside the
+reconcile band), and its four validation gates all pass. The required-history
+nodes for all three lapse readings are collected in Table~\ref{tab:fvnodes}: LA is
+the primary reading; LB and V0 bracket the systematic.
+
+\begin{table}[t]
+\caption{Required void-fraction history $f_v^{\mathrm{req}}(z)$ at the fit nodes,
+for the three lapse readings, from the joint SN$+$BAO$+$CMB fit. The last column
+is the LA $\Delta\chi^2\le1$ band. LA is the primary reading.}
+\label{tab:fvnodes}
+\begin{ruledtabular}
+\begin{tabular}{ccccc}
+$z$ & LA & LB & V0 & LA $\Delta\chi^2\!\le\!1$\\
+\colrule
+$0$    & $0.640$ & $0.588$ & $0.383$ & $[0.638,0.641]$\\
+$0.3$  & $0.531$ & $0.497$ & $0.250$ & $[0.521,0.533]$\\
+$0.7$  & $0.396$ & $0.385$ & $0.128$ & $[0.384,0.407]$\\
+$1.3$  & $0.279$ & $0.250$ & $0.072$ & $[0.231,0.318]$\\
+$2.33$ & $0.194$ & $0.121$ & $0.017$ & $[0.148,0.231]$\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\subsection{The amplitude split dissolves}
+\label{subsec:ampsplit}
+
+Paper~I's headline pathology was that the SN and BAO$+$CMB data, fitted through
+the rigid tracker, demand different present void-fraction \emph{amplitudes}. We
+repeat that split test with the history freed, on DESI DR2 (a free-history joint
+refit fits at $\chi^2=1398.28$, $\fvo=0.636$, versus $\Lcdm$ $1399.81$ and the
+tracker $1514.10$). Fitting a single amplitude $A$ to the SN sector and to the
+BAO$+$CMB sector separately, and jointly, gives $A_{\mathrm{SN}}=0.6351$,
+$A_{\mathrm{BAO+CMB}}=0.6363$, $A_{\mathrm{joint}}=0.6360$, with a joint
+excess $\Delta\chi^2=0.027$---an amplitude split of $\boldsymbol{0.16\sigma}$.
+The same statistic applied to the tracker as a sanity check reproduces Paper~I:
+$\fvo^{\mathrm{SN}}=0.853$ against $\fvo^{\mathrm{BAO+CMB}}=0.636$,
+$\Delta\chi^2=42.85$, a $\boldsymbol{6.5\sigma}$ split. The split
+\emph{dissolves} once the history shape is free; an independent adversarial
+re-derivation confirms the dissolution at $0.16\sigma$.
+
+The interpretation is exactly Paper~I's diagnosis, now demonstrated
+constructively: the SN and BAO$+$CMB data ``want'' the \emph{same} amplitude once
+the history is free to bend. The $0.85$-versus-$0.64$ split was the tracker
+parametrisation's rigidity, not a data conflict.
+
+\subsection{Why this is only a kinematic reconciliation}
+\label{subsec:kinematic}
+
+The reconciliation of Secs.~\ref{subsec:probeR}--\ref{subsec:ampsplit} is a
+statement about distance geometry, not about dynamics. The forced $\fvz$
+\emph{violates the Buchert integrability condition}. For a genuine single-phase
+two-scale GR solution the void curvature parameter
+$\alpha^{2}=-k_v\,f_{vi}^{2/3}$ must be constant in bare time
+(DNW13 Eq.~11 \cite{Duley2013}); on the tracker it is constant to the
+$\sim\!2\times10^{-6}$ pipeline floor, whereas the forced required history drifts
+by $\sim\!152\%$ across its interior (Sec.~\ref{subsec:dynamical}). The freed
+history is therefore ``the backreaction the Hubble diagram wants''---a
+well-defined kinematic \emph{target}, not a demonstrated general-relativistic
+solution. Part~II asks, at full detail, whether that target is available in the
+sky, consistent as dynamics, and calibratable to the early Universe.
+
+% =====================================================================
+\section{Part~II: Does the reconciliation survive?}
+\label{sec:partii}
+
+We report the four Part~II tests at the same length and specificity as the
+Part~I reconciliation. Each states its pre-registered threshold before its
+verdict. All four fail; the honest negative result is the value of the paper.
+
+\subsection{Availability: is the required history in the sky?}
+\label{subsec:availability}
+
+The reconciling history is a \emph{prediction} about the void population: the
+required $\fvz$ must decline steeply with redshift. Over $0<z<2.33$ the LA
+required history declines by a total factor $\times3.31$
+(Table~\ref{tab:decline}). We confront this with the \emph{observed} void volume
+fraction, measured from the BOSS DR12 galaxy sample with a watershed/ZOBOV void
+finder (Mao et al.\ 2017 \cite{Mao2017}), calibrated to the $z=0$ 2M$++$ field
+\cite{Carrick2015} and cross-checked against the watershed filling-fraction
+literature \cite{Pan2012,Williams2024}.
+
+\begin{table*}[t]
+\caption{Required versus observed void-fraction decline. $f_v^{\mathrm{req}}$ is
+the LA required history (Table~\ref{tab:fvnodes}); $r_{\mathrm{req}}$ is its
+pre-registered decline-ratio band $f_v(z)/f_v(0)$ (mapping forecast);
+$f_v^{\mathrm{obs}}$ and $r_{\mathrm{obs}}$ are the BOSS DR12 below-mean
+measurement at the required grid. The $z=0$ \emph{level} matches (observed
+$0.643$ inside the required band $[0.614,0.672]$); it is the \emph{shape}
+(decline) that is unavailable. The observed decline is flatter than the required
+band at every node above zero. Total decline $z\!=\!0\!\to\!2.33$: required
+$\times3.31$, observed $\times1.16$.}
+\label{tab:decline}
+\begin{ruledtabular}
+\begin{tabular}{cccccl}
+$z$ & $f_v^{\mathrm{req}}$ (LA) & $r_{\mathrm{req}}$ band & $f_v^{\mathrm{obs}}$ & $r_{\mathrm{obs}}$ & status\\
+\colrule
+$0$    & $0.640$ & --- (anchor)       & $0.643$ & --- (anchor) & LEVEL-PASS (band $[0.614,0.672]$)\\
+$0.3$  & $0.531$ & $[0.812,0.836]$     & $0.623$ & $0.968$      & FAIL: observed flatter\\
+$0.7$  & $0.396$ & $[0.599,0.637]$     & $0.601$ & $0.934$      & FAIL: observed flatter (gap $0.205$, $52\%$)\\
+$1.3$  & $0.279$ & $[0.361,0.499]$     & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} & FAIL: $r_{\mathrm{obs}}>r_{\mathrm{req}}^{\mathrm{hi}}$\\
+$2.33$ & $0.194$ & $[0.231,0.363]$     & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} & FAIL: $r_{\mathrm{obs}}>r_{\mathrm{req}}^{\mathrm{hi}}$\\
+\end{tabular}
+\end{ruledtabular}
+\footnotesize Observed $f_v$ measured on the primary below-mean route at $z=0.3$
+and $z=0.7$ (BOSS DR12, $R_s=4\hmpc$); the Rs-sensitivity band at $z=0.7$ is
+$[0.560,0.654]$ across $R_s\in\{2,4,8\}\hmpc$, all $\ge0.5$ (floor holds). At
+$z=1.3,2.33$ the observed ratio exceeds the required-hi edge at every node
+(pre-registered SHAPE test).
+\end{table*}
+
+The observed void fraction declines by a total factor of only $\times1.16$ over
+the same range---the population is far flatter than the required history. At the
+pivotal node $z=0.7$ the observed $f_v^{\mathrm{obs}}=0.601$ against a required
+$0.396$, a gap of $0.205$ ($\sim\!52\%$ relative). This gap is not a statistical
+undershoot: a \emph{floor theorem} on admissible void populations makes the
+required steepness unreachable, formalised by the negative significance
+$\sigma_{\mathrm{needed}}=-0.53$ that the observed value would need to move to the
+required one (impossible). The pre-registered SHAPE test declares the history
+\emph{supplied} only if the observed decline ratio lies inside the required band
+at every node; here the observed ratio exceeds the required-hi edge at every node
+above zero. The $z=0$ \emph{level} matches (observed $0.643$ inside
+$[0.614,0.672]$; required $\fvo=0.640$ passes), so it is specifically the
+\emph{shape}, not the amplitude, that is unavailable.
+
+\textbf{Verdict: SHAPE-UNAVAILABLE.} An independent re-derivation of the two-part
+telescope-forced test survives all four checks. A fit-space corroboration
+sharpens this: feeding the survey-measured history in with \emph{zero} free
+parameters ($\fvz=f_v^{\mathrm{obs}}(z)$ fixed) gives a forced joint
+$\chi^2=2845.6$ on DR2, missing the (one-fewer-parameter) BIC bar \cite{KassRaftery1995} of $1407.2$ by
+$1438$; the miss is $>1400$ under every covariance treatment tested, and an
+independent re-derivation passes $42/42$ checks. The observed void population
+supplies the required present-day level but categorically cannot supply the
+required decline shape.
+
+\subsection{The local expansion-rate bias $\bpred$}
+\label{subsec:bpred}
+
+For the model to resolve the Hubble tension \emph{as a local measurement bias},
+its own two-scale structure must predict that a wall observer on the second rung
+of the SH0ES distance ladder measures an apparent $\Ho$ high by a specific
+amount. Define the target from the model's internal ladder-versus-global bare
+Hubble offset,
+\begin{equation}
+\breq=\frac{\Hbaro^{\,\mathrm{anchored}}}{\Hbaro^{\,\mathrm{global}}}-1=+8.4\%
+\quad(\breq=0.0842),
+\label{eq:breq}
+\end{equation}
+which is the excess any local-bias mechanism must reproduce (the anchored fit
+that fixes the numerator passes an $\Lcdm$ validation gate at
+$\Ho=73.53\pm1.02\kmsmpc$, consistent with the SH0ES distance ladder
+\cite{Riess2022}).
+
+\emph{An in-programme derivation of the apparent-$\Ho$ window.} The maximum
+apparent-$\Ho$ excess a wall observer can register at the void scale is
+\begin{equation}
+\Emax(\fvo)=\frac{3/2}{\gdress(\fvo)}-1,
+\label{eq:emax}
+\end{equation}
+with $\gdress$ from Eq.~(\ref{eq:dressed}). This reproduces the Wiltshire
+$17$--$22\%$ apparent-$\Ho$ window from first principles: $\Emax(0.76)=0.171$ and
+$\Emax(0.695)=0.220$ (validation gate a, matching the literature window
+\cite{Wiltshire2009,Wiltshire2009review,Wiltshire2013}). At the LA reading the
+small-radius void-scale ceiling is $\Emax=0.3365$ (gate b; this corrects an
+earlier mislabeling of the volume-average $0.195$ as ``the maximum'').
+
+\emph{The SH0ES geometry dilutes the ceiling.} The second-rung Hubble-flow sample
+does not sit at the void-scale maximum; averaging $\Emax$ over the ladder geometry
+($n_{\mathrm{calib}}=77$ calibrators with mean void weight
+$\langle\varphi\rangle_{\mathrm{calib}}=0.994$, $n_{\mathrm{HF}}=277$
+Hubble-flow SNe with $\langle\varphi\rangle_{\mathrm{HF}}=0.071$) gives a
+survey-averaged central
+\begin{equation}
+\bpred^{\,\mathrm{survey}}=0.0240,
+\end{equation}
+a $14\times$ dilution of the ceiling $\Emax=0.3365$. The lensing-\emph{physical}
+void rate (calibrated to stacked void lensing densities \cite{ShethvdW2004,ClampittJain2015})
+gives $\bpred^{\,\mathrm{phys}}=0.0158$, band $[0.0150,0.0287]$. The entire
+admissible $\varphi$-band, $[0.0004,0.0720]$, lies \emph{below} $\breq=0.0842$: a
+one-sided under-prediction.
+
+\emph{Verdict against the pre-registered threshold.} The P3 threshold
+\cite{Paper1} is $|\bpred-\breq|\le1\sigma\Rightarrow$ RESOLVES;
+$\le2\sigma\Rightarrow$ PARTIAL; else FAILS. With
+$\bpred^{\,\mathrm{survey}}-\breq=-0.0602$, the measurement-only significance is
+$n\sigma_{\mathrm{meas}}=4.16$ (\textbf{FAILS}); the pre-registered significance,
+which inflates $\sigma$ with the wide $\varphi$-shape \emph{theoretical}
+systematic, is $n\sigma_{\mathrm{prereg}}=1.57$ (PARTIAL). We report both, and
+the robust reading \textbf{FAILS}: the PARTIAL survives only because the dominant
+$\varphi$-shape theoretical systematic inflates the denominator. Consistently,
+the profile-decay scale needed to reach $\breq$ is
+$r_{\mathrm{hom}}^{\ast}=140\hmpc$, outside the declared $[80,120]\hmpc$ range and
+beyond the $\sim\!137.5\hmpc$ 2M$++$ homogeneity scale.
+
+\emph{Catalog-forced cross-check (the symmetry rule).} Substituting the
+\emph{observed} void population (Sec.~\ref{subsec:availability}) for the joint-fit
+winner makes the mechanism fail harder, not softer: the anchored ceiling drops to
+$\Emax^{\mathrm{obs}}=0.0658$ and $\bpred^{\,\mathrm{survey,obs}}=0.0047$, while
+the forced global bare rate craters to $\Hbaro=50.8\kmsmpc$ (missing the BIC bar
+by $1438$). The under-prediction ratio $\breq/\bpred$ is $17.9\times$ against the
+fitted target and $68.1\times$ against the (larger) catalog-forced target. An
+independent re-derivation of both legs survives.
+
+\textbf{Verdict: FAILS.} The predicted local bias is an order of magnitude below
+the required $+8.4\%$ whether the void structure is fitted to the Hubble diagram
+or supplied by the telescope. A FAILS verdict here kills the local-bias
+resolution for this model family regardless of the joint-fit quality of Part~I.
+
+\subsection{Dynamical consistency: is the required history a GR solution?}
+\label{subsec:dynamical}
+
+Section~\ref{subsec:kinematic} noted that the forced history violates Buchert
+integrability; here we quantify it and make the honest attempt to \emph{restore}
+consistency. The invariant $\alpha^{2}=-k_v\,f_{vi}^{2/3}$ (DNW13 Eq.~11
+\cite{Duley2013}) must be constant in bare time for a genuine single-phase
+two-scale GR solution. Its fractional drift is $\sim\!152\%$ across the interior
+of the forced required history and $\sim\!5\times$ (span) for the observed
+history, against the tracker's $2\times10^{-6}$ pipeline floor---six-plus orders
+of magnitude worse. An exact-analytic transcription check drifts only at machine
+precision, so the drift is physical, not numerical. \emph{No consistent
+single-phase Buchert model tracks either history.}
+
+The honest attempt to make it consistent is a \emph{three-phase} Buchert solve
+(shallow void, deep void, wall), which adds the dynamical degrees of freedom that
+a single phase lacks. All four solver gates pass---G1 tracker-limit
+($\mathrm{SN}\,\chi^2=1391.545$), G2 integrability, G3 lapse-limit
+(agreement with $\tfrac12(2+\fv)$ to $4\times10^{-16}$), G4 numerics---and the
+stage verdict is GO. But the best fit is \emph{degenerate}: the extra void
+phase's amplitude drives to $\alpha_{s2}\to0$, i.e.\ the three-phase model
+collapses to the two-phase empty-void tracker with a single genuine void of
+fraction $f_{d0}\simeq0.27$. The tracking solution ``tracks'' only by becoming
+the tracker.
+
+The pre-registered geometry bar (DR2) is
+$\chi^2\le\chi^2_{\Lcdm}+\ln N\approx1407.2$. The zero-parameter ($k=0$)
+forced-geometry prediction of the best three-phase constants gives a joint
+$\chi^2=6360.2$, missing the bar by \textbf{4953}; a degeneracy check confirms
+this equals the tracker prediction at $\fvo=f_{d0}=0.274$ to $0.02$ in $\chi^2$.
+Even the never-a-claim \emph{constants-freed} diagnostic ceiling---which frees
+parameters the theory does not permit---misses the bar by $107$
+($\dBIC=+136$ versus $\Lcdm$).
+
+\textbf{Verdict: CLOSED} (a theory-level close-out, not a numerical failure). The
+required history is not a general-relativistic single-phase solution, and the
+dynamical three-phase attempt to build one collapses back to the tracker it was
+meant to generalise.
+
+\subsection{The sound horizon: does it survive to the early Universe?}
+\label{subsec:soundhorizon}
+
+Part~I's fit borrowed the external drag-epoch sound horizon $\rd=147.09$~Mpc as a
+ruler. WP-C replaces that crutch with the model's own bare-frame radiation-era
+physics (DNW13 machinery \cite{Duley2013}) and asks what $\rd$ free-history
+timescape actually predicts. The answer is
+\begin{equation}
+\rd^{\,\mathrm{in\text{-}model}}=199.6~\mathrm{Mpc},
+\end{equation}
+$+35.7\%$ above the external ruler ($r_{\mathrm{dec}}=195.9$~Mpc). The machinery
+is validated: its $\Lcdm$ gate returns $r_\star=144.3$~Mpc and
+$r_{\mathrm{drag}}=146.9$~Mpc, matching the expected values.
+
+Because the acoustic-scale $\chi^2$ fixes an \emph{angle}, it is
+$\rd$-independent, so Part~I's distance fit (Sec.~\ref{subsec:probeR}) is
+untouched: the acoustic ratio $r_\star/r_{\mathrm{drag}}$ matches Planck to
+$0.03\%$ ($0.9816$ vs $0.9819$), even though the absolute $\rd$ does not (the
+in-model compression gives $\ell_A=218.9$ vs Planck's $301.7$, bare shift
+$R=1.11$ vs $1.74$, and a BBN-$\eta$ baryon density $\omega_b=0.0186$ vs
+$0.0224$). But the \emph{absolute} Hubble rate is not $\rd$-independent. With the
+in-model $\rd$, the global bare rate drops from $\Hbaro=53.8$ to
+$39.6\kmsmpc$, and the self-consistent fixed point is
+$\Hbaro^{\ast}=32.4\kmsmpc$ (at $\rd^{\ast}=244.5$~Mpc), with the corresponding
+dressed rates falling to $47.2$ ($\gdress$) and $49.9\kmsmpc$ (full-rate)---far
+below both the reconciling band and SH0ES.
+
+The pre-registered question is whether the Part~I \emph{absolute}-$\Ho$ claim
+survives an in-model sound horizon; it does not
+($R1_{\mathrm{survives}}=\mathrm{false}$). An independent re-derivation
+reproduces every headline number. As in Paper~I, we distinguish resolution from
+recasting: driving the bare Hubble rate \emph{below} both canonical values is a
+recast of the tension, not a reconciliation near the local $\Ho$.
+
+\textbf{Verdict: FAILS} (as an absolute-$\Ho$ claim). The model's own
+early-Universe physics predicts a sound horizon $\sim\!36\%$ larger than the
+ruler it had borrowed; forcing self-consistency collapses the bare Hubble rate to
+$\sim\!32$--$40\kmsmpc$.
+
+\subsection{Self-inflicted tensions (WP-N)}
+\label{subsec:wpn}
+
+Table~\ref{tab:wpn} aggregates the program's tension ledger: for each tension,
+the free-history (kinematic) status, whether it is \emph{self-inflicted} by the
+kinematic reconciliation, and the source artifact. The tally is $6$ YES
+self-inflicted, $2$ partial, and $1$ target (the Hubble tension itself, which the
+model exists to resolve). The synthesis is that the mechanism is CLOSED at every
+level tested: the void geometry is shape-unavailable, the local SH0ES bias fails,
+the dynamical three-phase consistency is closed, and the sound-horizon
+absolute-$\Ho$ reconciliation fails.
+
+\begin{table*}[t]
+\caption{WP-N self-inflicted tensions of the free-history (kinematic) reading.
+``Self-inflicted?'' marks tensions created \emph{by} the kinematic
+reconciliation rather than inherited. Tally: $6$ YES, $2$ partial, $1$ target.
+The growth/$S_8$ row (8) is structurally, not numerically, undefined: with no
+perturbed metric the kinematic reading cannot even pose the $S_8$ question.}
+\label{tab:wpn}
+\begin{ruledtabular}
+\begin{tabular}{p{0.185\textwidth}p{0.42\textwidth}p{0.07\textwidth}p{0.185\textwidth}}
+Tension & Free-history (kinematic) status & Self-infl.? & Source\\
+\colrule
+Hubble (SH0ES vs.\ early) &
+FAILS: $\bpred^{\mathrm{survey}}$ ceiling $0.0240$ $+$ physical $0.0158$ vs.\
+$\breq=0.0842$ (meas.-only $n\sigma=4.16$ ceiling / $4.73$ physical) &
+no (target) & \texttt{bpred\_survey\_averaged.json}\\
+Required-vs-observed void shape (floor) &
+SHAPE-UNAVAILABLE (obs decline $\times1.16$ vs.\ required $\times3.31$; floor
+theorem) & YES & \texttt{R2\_final.json}\\
+WP-B dynamical three-phase &
+CLOSED: TRACKS degenerately but $k=0$ geometry misses BIC bar by $4953$; T1
+ceiling misses by $107$ ($\dBIC{+}136$) & YES & \texttt{threephase\_forced\_geometry.json}\\
+Buchert integrability &
+Not a single-phase GR solution: $\alpha^2$ drifts $\sim\!152\%$ (forced,
+interior) / $\sim\!5\times$ (observed, span) vs.\ tracker $\sim\!2\times10^{-6}$ &
+YES & \texttt{wpb\_integrability.json}\\
+Void--wall contrast budget (two-sided) &
+MARGINAL (field-mean $0.375$--$0.401$ $<$ required $0.474$ at $z=0$;
+deep-void$+$wall $0.46$--$0.57$ reaches/exceeds it) & partial &
+\texttt{contrast\_budget.json}\\
+Q-budget (Stage 0) &
+GATE=GO on empty/kinematic ceiling; physical budget $4$--$8\times$ short;
+required contrast exceeds empty-Milne ceiling $\times1.36$ & YES &
+\texttt{q\_budget.json}\\
+Sound horizon / $\rd$ &
+FAILS: in-model $\rd=199.6$~Mpc ($+36\%$); implied bare $\Hbaro$
+$53.8\to\sim\!40$ (fixed point $32.4$) & YES & \texttt{wpc\_sound\_horizon.json}\\
+Growth / $S_8$ &
+UNDEFINED-IN-KINEMATIC-READING (no perturbed metric $\Rightarrow$ no growth
+equation; measured $\sigma_m(z)$ is an input, not a prediction) & YES &
+\texttt{NOTES\_growth.md}\\
+$\bpred$ $z$-profile (P4) &
+predicts local $\Ho$ bump decaying by $r_{\mathrm{hom}}\sim\!100\hmpc$;
+$r_{\mathrm{hom}}^{\ast}=140$ to reach $\breq$ is outside declared $[80,120]$ and
+beyond 2M$++$ homogeneity $\sim\!137.5$ & partial &
+\texttt{bpred\_survey\_averaged.json}\\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+The growth/$S_8$ row deserves separate note: it is
+\emph{undefined-in-kinematic-reading}. The kinematic reconciliation has no
+perturbed metric, so there is no growth equation on the averaged
+background---$f\sigma_8$, RSD $\beta$, weak-lensing/$S_8$, cluster counts, and the
+ISW are none of them rigorously defined. The measured
+$\sigma_m(L=20\hmpc,z)$ count-in-cells amplitude ($A=0.444$, reduced
+$\chi^2\approx0.22$) is an \emph{input}, not a prediction. This is a structural
+boundary of the kinematic reading, not a computed defeat, and it is defined only
+after the (closed) dynamical WP-B reading is built.
+
+% =====================================================================
+\section{Discussion}
+\label{sec:discussion}
+
+The result is \emph{necessary but not sufficient}, made concrete. Paper~I's
+diagnosis was correct: the SN-versus-BAO$+$CMB split is the tracker's
+one-parameter rigidity, and removing that rigidity by freeing $\fvz$ reconciles
+the distance geometry below $\Lcdm$ at a plausible $\fvo=0.640$, with the
+amplitude split collapsing from $6.5\sigma$ to $0.16\sigma$
+(Sec.~\ref{sec:reconcile}). Yet the reconciling history is kinematic, and the
+kinematic/dynamic gap is the whole story: the history is \emph{not available} in
+the observed void population (Sec.~\ref{subsec:availability}; the required
+$\times3.31$ decline against an observed $\times1.16$, unbridgeable by a floor
+theorem), \emph{not a GR solution} (Sec.~\ref{subsec:dynamical}; the three-phase
+Buchert attempt collapses to the tracker and misses the geometry bar by $4953$),
+\emph{not early-Universe calibratable} (Sec.~\ref{subsec:soundhorizon}; an
+in-model $\rd$ that is $+36\%$ too large drives the bare rate to $\sim\!40$), and
+predicts \emph{the wrong local bias} (Sec.~\ref{subsec:bpred}; $+2.4\%$ against
+the required $+8.4\%$, at $4.2\sigma$ measurement-only, and failing harder when
+the observed catalog is forced in).
+
+A \emph{positive} result would have required, jointly and specifically: an
+observed void population steep enough to supply the $\times3.31$ decline (not the
+observed $\times1.16$); a required history that is a single-phase
+integrability-consistent Buchert solution (not one drifting $\sim\!152\%$ in
+$\alpha^2$); and an in-model sound horizon near $147$~Mpc (not $199.6$). None of
+these holds, and the local-bias prediction independently falls an order of
+magnitude short. The distinction between resolution and recasting from Paper~I
+recurs sharply here: even where the model can be pushed toward a lower absolute
+Hubble rate, that is a recast of the tension---both canonical values reinterpreted
+as biased relative to a lower global average---not a reconciliation near the local
+$\Ho$.
+
+The $S_8$/growth question is out of reach of the kinematic reading altogether: it
+has no perturbed metric and hence no growth equation, so it cannot pose the
+question, let alone answer it (Sec.~\ref{subsec:wpn}). We flag this as the
+boundary of the kinematic reading, not as a computed defeat; a dynamical reading
+that could pose it is exactly the (closed) three-phase construction of
+Sec.~\ref{subsec:dynamical}.
+
+% =====================================================================
+\section{Conclusions}
+\label{sec:concl}
+
+Free-history timescape does not resolve the Hubble tension. Freeing the
+void-fraction history from the one-parameter tracker removes the rigidity that
+Paper~I identified and reconciles the SN$+$BAO$+$CMB distance geometry at joint
+$\chi^2=1396.1$, below flat $\Lcdm$ ($1402.2$) and far below the tracker
+($1469.3$), at a physically plausible $\fvo=0.640$, with the amplitude split
+dissolving to $0.16\sigma$. But that flexibility is kinematic, and it closes at
+every deeper physical test: availability (shape-unavailable, decline
+$\times3.31$ required vs $\times1.16$ observed), local bias (fails at
+$4.2\sigma$, $+2.4\%$ predicted vs $+8.4\%$ required), dynamical consistency
+(closed; the three-phase Buchert solve collapses to the tracker and misses the
+geometry bar by $4953$), and the sound horizon (fails; in-model $\rd=199.6$~Mpc,
+$+36\%$, driving the bare rate to $\sim\!40\kmsmpc$). Reconciliation without
+resolution. This corroborates and sharpens Paper~I: on present public data,
+eliminating dark energy through inhomogeneity---whether through the rigid tracker
+or its fully freed history---does not resolve the Hubble tension.
+
+% =====================================================================
+\begin{acknowledgments}
+The author used the Claude large language model (Anthropic) as a
+research-assistance tool: for primary-literature retrieval, for implementing and
+running the analyses of Secs.~\ref{sec:reconcile}--\ref{sec:partii}, and for
+drafting. All sources, equations, code, and numerical results were verified by
+the author, who takes full responsibility for the content and any errors. This
+work received no funding.
+\end{acknowledgments}
+
+\section*{Data and code availability}
+\label{sec:avail}
+Every quantitative claim reproduces from a committed script under the discipline
+\emph{one number $\to$ one script $\to$ one result file}, with pre-registered
+thresholds fixed before each verdict. The supernova data are the public
+Pantheon$+$ release \cite{Scolnic2022,Brout2022}; the BAO and CMB inputs are
+DESI DR2 \cite{DESIDR2} and the Planck 2018 acoustic scale \cite{Planck2018}; the
+observed void population is from BOSS DR12 \cite{Mao2017} and the 2M$++$ field
+\cite{Carrick2015}. This repository, \texttt{free-history-timescape}, holds the
+Part~I geometry-reconciliation code at the root and the Part~II tension-test code
+under \texttt{tensions/}; the former \texttt{free-history-timescape-tensions}
+repository is archived read-only on GitHub as the per-commit history of record.
+The code is released under the MIT license and will be deposited publicly on
+publication.
+
+\begin{thebibliography}{99}
+\bibitem{Paper1} V.~Zhygulin, ``Can eliminating dark energy resolve the Hubble tension? A uniform test of void and backreaction cosmologies against supernovae, baryon acoustic oscillations, and the CMB acoustic scale'' (2026), companion paper (Paper~I of this program).
+\bibitem{Riess2022} A.~G.~Riess \emph{et al.}, Astrophys.\ J.\ Lett.\ \textbf{934}, L7 (2022), arXiv:2112.04510.
+\bibitem{Planck2018} Planck Collaboration, Astron.\ Astrophys.\ \textbf{641}, A6 (2020), arXiv:1807.06209.
+\bibitem{DESI2024} DESI Collaboration (2024), arXiv:2404.03002.
+\bibitem{DESIDR2} DESI Collaboration, ``DESI DR2 Results II: Measurements of Baryon Acoustic Oscillations and Cosmological Constraints'' (2025), arXiv:2503.14738.
+\bibitem{Wiltshire2007} D.~L.~Wiltshire, Phys.\ Rev.\ Lett.\ \textbf{99}, 251101 (2007), arXiv:0709.0732.
+\bibitem{Wiltshire2009} D.~L.~Wiltshire, Phys.\ Rev.\ D \textbf{80}, 123512 (2009), arXiv:0909.0749.
+\bibitem{Wiltshire2009review} D.~L.~Wiltshire (2009), arXiv:0912.5234.
+\bibitem{Buchert2000} T.~Buchert, Gen.\ Relativ.\ Gravit.\ \textbf{32}, 105 (2000), arXiv:gr-qc/9906015.
+\bibitem{WiegandBuchert2010} A.~Wiegand, T.~Buchert (2010), arXiv:1002.3912.
+\bibitem{Leith2008} B.~M.~Leith, S.~C.~C.~Ng, D.~L.~Wiltshire, Astrophys.\ J.\ Lett.\ \textbf{672}, L91 (2008), arXiv:0709.2535.
+\bibitem{Duley2013} J.~A.~G.~Duley, M.~A.~Nazer, D.~L.~Wiltshire, Class.\ Quantum Grav.\ \textbf{30}, 175006 (2013), arXiv:1306.3208.
+\bibitem{Nazer2015} M.~A.~Nazer, D.~L.~Wiltshire, Phys.\ Rev.\ D \textbf{91}, 063519 (2015), arXiv:1410.3470.
+\bibitem{Smale2011} P.~R.~Smale, D.~L.~Wiltshire, Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{413}, 367 (2011), arXiv:1009.5855.
+\bibitem{Wiltshire2013} D.~L.~Wiltshire, P.~R.~Smale, T.~Mattsson, R.~Watkins, Phys.\ Rev.\ D \textbf{88}, 083529 (2013), arXiv:1201.5371.
+\bibitem{Dam2017} L.~H.~Dam, A.~Heinesen, D.~L.~Wiltshire, Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{472}, 835 (2017), arXiv:1706.07236.
+\bibitem{Lane2025} Z.~G.~Lane, A.~Seifert, R.~Ridden-Harper, D.~L.~Wiltshire, Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{536}, 1752 (2025), arXiv:2311.01438.
+\bibitem{Seifert2024} A.~Seifert, Z.~G.~Lane, M.~Galoppo, R.~Ridden-Harper, D.~L.~Wiltshire, Mon.\ Not.\ R.\ Astron.\ Soc.\ Lett.\ \textbf{537}, L55 (2025), arXiv:2412.15143.
+\bibitem{Scolnic2022} D.~Scolnic \emph{et al.}, Astrophys.\ J.\ \textbf{938}, 113 (2022), arXiv:2112.03863.
+\bibitem{Brout2022} D.~Brout \emph{et al.}, Astrophys.\ J.\ \textbf{938}, 110 (2022), arXiv:2202.04077.
+\bibitem{Mao2017} Q.~Mao \emph{et al.}, Astrophys.\ J.\ \textbf{835}, 161 (2017), arXiv:1602.02771.
+\bibitem{Pan2012} D.~C.~Pan, M.~S.~Vogeley, F.~Hoyle, Y.-Y.~Choi, C.~Park, Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{421}, 926 (2012), arXiv:1103.4156.
+\bibitem{ShethvdW2004} R.~K.~Sheth, R.~van de Weygaert (2004), arXiv:astro-ph/0311260.
+\bibitem{ClampittJain2015} J.~Clampitt, B.~Jain (2015), arXiv:1404.1834.
+\bibitem{Williams2024} M.~J.~Williams, H.~J.~Macpherson, D.~L.~Wiltshire, C.~Stevens, Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{536}, 2645 (2025), arXiv:2403.15134.
+\bibitem{Carrick2015} J.~Carrick, S.~J.~Turnbull, G.~Lavaux, M.~J.~Hudson, Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{450}, 317 (2015), arXiv:1504.04627.
+\bibitem{KassRaftery1995} R.~E.~Kass, A.~E.~Raftery, J.\ Am.\ Stat.\ Assoc.\ \textbf{90}, 773 (1995).
+\end{thebibliography}
+
+\end{document}
