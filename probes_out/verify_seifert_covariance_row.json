@@ -1,0 +1,54 @@
+{
+  "name": "verify_seifert_covariance_row",
+  "target_artifact": "probes_out/seifert_covariance_row.json",
+  "zcut": 0.055,
+  "N": 1032,
+  "independence": {
+    "likelihood": "numpy.linalg.slogdet + explicit inverse + own 3x3 GLS (vs seifert.py cho_factor/cho_solve)",
+    "profiler": "scipy Nelder-Mead (vs production Powell)",
+    "free_history_distance": "from-scratch algebraic-lapse dressed d_A on a fresh tau-grid (Ngrid=18000, vs 30000)",
+    "lcdm_distance": "from-scratch comoving integral + minimize_scalar over Om",
+    "data_sort": "independently-built block permutation"
+  },
+  "independent_solver_tracker_maxdev": 3.6152121296595396e-09,
+  "checks": {
+    "neg2lnL_FH": {
+      "mine": -820.1089083641118,
+      "artifact": -820.1085991296522,
+      "dabs": 0.0003092344595643226
+    },
+    "neg2lnL_LCDM": {
+      "mine": -838.1870267725144,
+      "artifact": -838.1828157536551,
+      "dabs": 0.004211018859336946
+    },
+    "neg2lnL_TS": {
+      "mine": -833.2456685098014,
+      "artifact": -833.2451175783873,
+      "dabs": 0.0005509314140681454
+    },
+    "dBIC_FH_minus_LCDM": {
+      "mine": 11.138864462361084,
+      "artifact": 11.134962677961312,
+      "dabs": 0.003901784399772623
+    },
+    "dBIC_TS_minus_LCDM": {
+      "mine": 4.941358262713038,
+      "artifact": 4.937698175267769,
+      "dabs": 0.0036600874452688004
+    },
+    "reconciliation_excess": {
+      "mine": 18.078118408402588,
+      "artifact": 18.074216624002815,
+      "dabs": 0.003901784399772623
+    }
+  },
+  "tol": 0.1,
+  "reconciliation_robust_mine": false,
+  "reconciliation_robust_artifact": false,
+  "reconciliation_robust_agree": true,
+  "Om_best": 0.4152505271293377,
+  "fv0_best": 0.6794792277457785,
+  "verdict_of_verification": "CONFIRMED",
+  "runtime_s": 674.8
+}

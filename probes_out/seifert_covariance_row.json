@@ -1,0 +1,152 @@
+{
+  "name": "seifert_covariance_row",
+  "part_ii_independent": true,
+  "part_ii_independent_note": "This row is a covariance-robustness / referee-hardening cross-check under the Seifert cosmology-independent covariance. The Part II (free-history) verdicts -- reconciliation under the committed Pantheon+ stat+sys covariance + DESI BAO + Planck CMB -- are computed elsewhere (modelV_probeR.json, R2_final.json) and do NOT depend on this row.",
+  "provenance": {
+    "script": "free-history-timescape/src/probes/seifert_covariance_row.py",
+    "covariance": "Seifert et al. (2025, MNRAS Lett. 537, L55; arXiv:2412.15143) cosmology-independent P+1690 covariance, Zenodo doi:10.5281/zenodo.12729746 (PP_1690_COVd 5070x5070, N=1690, NO BBC bias correction); input PP_1690_input.txt from antosft/SNe-PantheonPlus-Analysis",
+    "likelihood": "NGS/DHW hierarchical Gaussian, REUSED verbatim from timescape-hubble-tension/src/probes/seifert.py (build_case, neg2lnL, profile_point); nuisances alpha,beta,M0,X0,C0,Vx,Vc,VM profiled (M0,X0,C0 analytic GLS; rest Powell)",
+    "free_history_distance": "D_shape_freehistory(z)=ModelVSolution.D_M(z), lapse=algebraic, Ngrid=30000, built from FIXED nodes fv_nodes=[0.64013,0.53112,0.39578,0.27945,0.19359] at z_nodes=[0.0,0.3,0.7,1.3,2.33] (modelV_probeR.json ['V'], Probe R joint SN+BAO+CMB fit); Probe-R high-z bridge fv_last*((1+2.33)/(1+z))^1.5",
+    "paper1_reference": "timescape-hubble-tension/probes_out/seifert.json (tracker-timescape + LCDM neg2lnL, dBIC at same z-cuts)",
+    "sign": "dBIC>0 favours LCDM; dBIC<0 favours the other model",
+    "data_env": "SEIFERT_DATA / SEIFERT_REPO (uncommitted high-volume data)"
+  },
+  "k_counting": {
+    "note": "k = k_cosmo + 8 nuisances (alpha,beta,M0,X0,C0,Vx,Vc,VM). The 5 free-history nodes were fitted on the JOINT SN+BAO+CMB data then HELD FIXED here, so for the SN-ONLY likelihood k_cosmo(FH)=0 is the 'fixed-history' reading (PRIMARY: 0 dof spent on THIS dataset). k_cosmo(FH)=5 (k=13) is the hostile-referee 'as-if the 5 nodes were SN-fitted' UPPER BOUND, reported alongside so both bounds are visible. LCDM and tracker each have k_cosmo=1 (k=9).",
+    "primary": "fixed-history: k_FH=8, k_LCDM=9, k_TS=9",
+    "upper_bound": "as-if-SN-fitted: k_FH=13 (k_cosmo=5), k_LCDM=9, k_TS=9",
+    "primary_rationale": "k_cosmo=0 is primary because the nodes consumed their degrees of freedom against SN+BAO+CMB jointly; re-charging all 5 to the SN-only fit double-counts information the SN data did not itself supply."
+  },
+  "pre_registered": {
+    "reconciliation_criterion": "neg2lnL_FH <= neg2lnL_LCDM + 10 at EVERY z-cut",
+    "reconciliation_robust": false,
+    "reconciliation_per_cut": {
+      "z>=0.055": {
+        "excess_FH_over_LCDM": 18.074216624002815,
+        "margin_headroom_to_plus10": -8.074216624002815,
+        "passes": false
+      },
+      "z>=0.033": {
+        "excess_FH_over_LCDM": 24.06502362548258,
+        "margin_headroom_to_plus10": -14.065023625482581,
+        "passes": false
+      },
+      "z>=0.010": {
+        "excess_FH_over_LCDM": 34.51860550099781,
+        "margin_headroom_to_plus10": -24.518605500997808,
+        "passes": false
+      }
+    },
+    "bic_ordering_FH_vs_LCDM": "LCDM favored over free-history by BIC (dBIC>0) at every cut",
+    "bic_ordering_note": "Pre-registered: the dBIC(FH-LCDM) ordering MAY flip relative to the Pantheon+ stat+sys covariance result. Reported here as computed, not massaged.",
+    "part_ii_independent": true
+  },
+  "sanity_gates": {
+    "tracker_limit": {
+      "fv0": 0.6426,
+      "ratio_mean": 1.0000000003231928,
+      "ratio_constancy_maxdev": 6.4376184383263535e-09,
+      "ratio_offset_from_one": 3.2319280585113574e-10,
+      "passes": true,
+      "criterion": "ratio D_M_solver/D_shape_TS constant to <1e-4"
+    },
+    "joint_sn_chi2": {
+      "chi2_SN_recomputed": 1386.2687973678112,
+      "chi2_SN_ref_V": 1386.269718207419,
+      "residual": -0.0009208396077156067,
+      "passes": true,
+      "criterion": "|chi2_SN_recomputed - V.chi2_SN(1386.2697)| < 0.5 (residual is the 5-decimal node rounding)"
+    }
+  },
+  "zcuts": {
+    "z>=0.055": {
+      "zcut": 0.055,
+      "N": 1032,
+      "lnN": 6.939253946041508,
+      "neg2lnL_FH": -820.1085991296522,
+      "neg2lnL_LCDM": -838.1828157536551,
+      "neg2lnL_TS": -833.2451175783873,
+      "k_FH": 8,
+      "k_LCDM": 9,
+      "k_TS": 9,
+      "k_FH_upper_bound": 13,
+      "BIC_FH": -764.5945675613202,
+      "BIC_LCDM": -775.7295302392815,
+      "BIC_TS": -770.7918320640138,
+      "BIC_FH_upper_bound": -729.8982978311126,
+      "dBIC_FH_minus_LCDM": 11.134962677961312,
+      "dBIC_FH_minus_LCDM_upper_bound": 45.831232408168944,
+      "dBIC_TS_minus_LCDM": 4.937698175267769,
+      "reconciliation_excess_FH_over_LCDM": 18.074216624002815,
+      "reconciliation_margin_headroom": -8.074216624002815,
+      "reconciliation_robust": false,
+      "neg2lnL_TS_source": "reproduced",
+      "neg2lnL_LCDM_source": "reproduced",
+      "reproduces_paper1_TS_LCDM": true,
+      "cross_check_TS_maxabs": 0.0010021127436630195,
+      "cross_check_LCDM_maxabs": 0.0006305014958343236,
+      "dBIC_TS_minus_LCDM_paper1": 4.938069410605522
+    },
+    "z>=0.033": {
+      "zcut": 0.033,
+      "N": 1169,
+      "lnN": 7.063903961472068,
+      "neg2lnL_FH": -752.7110856627187,
+      "neg2lnL_LCDM": -776.7761092882013,
+      "neg2lnL_TS": -775.2595304222755,
+      "k_FH": 8,
+      "k_LCDM": 9,
+      "k_TS": 9,
+      "k_FH_upper_bound": 13,
+      "BIC_FH": -696.1998539709422,
+      "BIC_LCDM": -713.2009736349527,
+      "BIC_TS": -711.6843947690269,
+      "BIC_FH_upper_bound": -660.8803341635818,
+      "dBIC_FH_minus_LCDM": 17.001119664010503,
+      "dBIC_FH_minus_LCDM_upper_bound": 52.320639471370896,
+      "dBIC_TS_minus_LCDM": 1.5165788659257942,
+      "reconciliation_excess_FH_over_LCDM": 24.06502362548258,
+      "reconciliation_margin_headroom": -14.065023625482581,
+      "reconciliation_robust": false,
+      "neg2lnL_TS_source": "reproduced",
+      "neg2lnL_LCDM_source": "reproduced",
+      "reproduces_paper1_TS_LCDM": true,
+      "cross_check_TS_maxabs": 0.0013467726130329538,
+      "cross_check_LCDM_maxabs": 0.00016777952077973168,
+      "dBIC_TS_minus_LCDM_paper1": 1.517779112869789
+    },
+    "z>=0.010": {
+      "zcut": 0.01,
+      "N": 1578,
+      "lnN": 7.363913501405819,
+      "neg2lnL_FH": -355.6704467179334,
+      "neg2lnL_LCDM": -390.1890522189312,
+      "neg2lnL_TS": -390.71534026982783,
+      "k_FH": 8,
+      "k_LCDM": 9,
+      "k_TS": 9,
+      "k_FH_upper_bound": 13,
+      "BIC_FH": -296.7591387066868,
+      "BIC_LCDM": -323.9138307062788,
+      "BIC_TS": -324.44011875717547,
+      "BIC_FH_upper_bound": -259.93957119965773,
+      "dBIC_FH_minus_LCDM": 27.15469199959199,
+      "dBIC_FH_minus_LCDM_upper_bound": 63.97425950662108,
+      "dBIC_TS_minus_LCDM": -0.5262880508966532,
+      "reconciliation_excess_FH_over_LCDM": 34.51860550099781,
+      "reconciliation_margin_headroom": -24.518605500997808,
+      "reconciliation_robust": false,
+      "neg2lnL_TS_source": "paper1_reused_maxsec",
+      "neg2lnL_LCDM_source": "reproduced",
+      "reproduces_paper1_TS_LCDM": false,
+      "cross_check_TS_maxabs": null,
+      "cross_check_LCDM_maxabs": 0.00044810644249082543,
+      "dBIC_TS_minus_LCDM_paper1": -0.5263842644660599
+    }
+  },
+  "draft_text_sec_III": {
+    "sentence": "Under the Seifert et al. cosmology-independent Pantheon+ covariance (FLRW-fiducial BBC bias correction removed) the fixed free-history distance -- 0 free cosmological parameters, history nodes held at the joint SN+BAO+CMB fit -- fits the supernova Hubble diagram WORSE than the best-fit flat-LCDM by Delta(-2lnL) = +18 to +35 across the z-cuts (all exceeding the +10 shape-sufficiency threshold), so the free-history SN reconciliation obtained under the Pantheon+ stat+sys covariance is NOT robust to removal of the bias correction; the corresponding Delta BIC favours LCDM over free-history at every cut (under both the fixed-history k_cosmo=0 and the hostile-referee k_cosmo=5 accounting).",
+    "footnote": "Free-history vs LCDM Delta BIC under the Seifert cosmology-independent covariance (fixed-history k_cosmo=0 -> k_FH=8; LCDM, tracker k=9; k = k_cosmo + 8 profiled nuisances): z_cut=0.055 (N=1032) dBIC(FH-LCDM)=+11.1 [hostile-referee upper bound k_cosmo=5: +45.8], dBIC(TS-LCDM)=+4.9; z_cut=0.033 (N=1169) dBIC(FH-LCDM)=+17.0 [hostile-referee upper bound k_cosmo=5: +52.3], dBIC(TS-LCDM)=+1.5; z_cut=0.010 (N=1578) dBIC(FH-LCDM)=+27.2 [hostile-referee upper bound k_cosmo=5: +64.0], dBIC(TS-LCDM)=-0.5. Sign convention: dBIC>0 favours LCDM. The tracker dBIC(TS-LCDM) reproduces Seifert-covariance Paper 1 to <1e-2. This covariance-robustness row is a referee-hardening cross-check; the Part II reconciliation verdicts (Pantheon+ stat+sys covariance + DESI BAO + Planck CMB) do not depend on it."
+  },
+  "runtime_s": 0.7
+}
