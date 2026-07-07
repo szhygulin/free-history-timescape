@@ -1,0 +1,107 @@
+{
+ "probe": "wpc_sound_horizon",
+ "purpose": "In-model radiation-era bare-frame sound horizon r_d (DNW13 arXiv:1306.3208), replacing the external r_d=147.09 Mpc used at harness.py:35,54 and timescape_baocmb.py:73-75. Compression-level CMB (l_A, shift R, omega_b) + self-consistency of the R1 joint fit.",
+ "inputs": {
+  "fv0": 0.6401279536221243,
+  "Hbar0": 53.794282522327265,
+  "alpha_V": 37.88797860347935,
+  "g_dress": 1.1891815949755753,
+  "Hd0_rate": 1.257531426937754,
+  "eta_Bgamma": 5.1e-10,
+  "gstar": 3.36,
+  "T0_CMB_K": 2.725,
+  "z_star_adopted": 1089.8,
+  "z_drag_adopted": 1059.94,
+  "omega_b_anchor": "BBN eta=5.1e-10 -> omega_b_std=eta10/273.9 (NOT the Planck omega_b=0.0224; stated per task)"
+ },
+ "bare_parameters": {
+  "gamma_bar0": 1.320063976811062,
+  "Omega_M0_bar": 0.20651811574526202,
+  "Omega_k0_bar": 0.826531388959216,
+  "omega_m_bar_phys": 0.059762725162048176,
+  "omega_r_bar_phys": 1.3681016122896446e-05,
+  "omega_gamma_bar_phys": 8.143461977914551e-06,
+  "omega_b_bar_phys": 0.00809455921657799,
+  "Omega_B0_bar": 0.02797183549885561,
+  "z_eq_bare": 4368.2957921546285,
+  "note": "bare matter density omega_m_bar=0.060 is ~0.42x the LCDM 0.143 (low bare matter density is the dominant driver of a large r_d); radiation carries a gamma_bar0^-4 suppression (bare frame cooler, T_bar=T0/gamma_bar0=2.064 K) which partly compensates via earlier matter-radiation equality."
+ },
+ "r_d_in_model": 199.5612258893033,
+ "r_dec": 195.89268303008296,
+ "z_star": 1089.8,
+ "z_drag": 1059.94,
+ "l_A": 218.93579751960547,
+ "shift_R": 1.1132164440193866,
+ "omega_b": 0.018619934282584884,
+ "compression_detail": {
+  "DM_star_dimensionless": 2.4496302476272156,
+  "DM_star_Mpc": 13651.649184511525,
+  "l_A_in_model_rs": 218.93579751960547,
+  "l_A_if_external_rs": 291.8750610428591,
+  "l_A_Planck": 301.7,
+  "shift_R_bare_OmM0": 1.1132164440193866,
+  "shift_R_dressed_OmM0_alt": 1.6883873227603452,
+  "shift_R_Planck": 1.7448,
+  "omega_b_BBN_eta": 0.018619934282584884,
+  "omega_b_bare_frame": 0.00809455921657799,
+  "omega_b_Planck": 0.02237,
+  "note": "l_A and R use the BARE Omega_M0 / in-model r_s per the task spec; both are convention-dependent in timescape (bare vs dressed) and sit well below Planck because r_s is inflated / Omega_M0_bar is low. DM_star is the tracker-limit distance; the node history shifts it <2%."
+ },
+ "external_147p09_comparison": {
+  "r_d_external": 147.09,
+  "r_d_in_model": 199.5612258893033,
+  "ratio_inmodel_over_external": 1.3567287095608356,
+  "delta_percent": 35.67287095608356,
+  "r_star_over_r_drag_in_model": 0.9816169556842907,
+  "r_star_over_r_drag_Planck": 0.9819158338432252,
+  "ratio_note": "the in-model r_star/r_drag=0.98162 matches Planck 0.98192 to 0.03%; the acoustic RATIO (what enters the CMB data point) is preserved, only the ABSOLUTE scale shifts -- this is why the marginalised chi2 is unmoved.",
+  "verdict": "in-model r_d is 35.7% LARGER than 147.09 -- the external ruler is NOT reproduced from the model's own bare densities"
+ },
+ "self_consistency": {
+  "chi2_is_rd_independent": true,
+  "explanation": "harness.bao_cmb_chi2 marginalises alpha=c/(Hbar0 r_d) analytically, so the BAO+CMB chi2 and the R1 verdict (RECONCILES, chi2_min_V=1396.06) DO NOT change when r_d is swapped; r_d only sets the ABSOLUTE Hbar0=c/(alpha r_d).",
+  "invariant_c_over_alphaV_Mpc_kms": 7912.601016209118,
+  "Hbar0_global_with_147": 53.794282522327265,
+  "Hbar0_implied_with_inmodel_rd": 39.649992031008274,
+  "Hbar0_self_consistent_fixed_point": 32.36326372127159,
+  "r_d_at_fixed_point": 244.49329761441047,
+  "H0_dressed_global": 63.97117069046785,
+  "H0_dressed_implied": 47.15104076420327,
+  "H0_fullrate_implied": 49.86111105682441,
+  "R1_survives": false,
+  "verdict": "R1 RECONCILES (the chi2 fit) SURVIVES trivially -- it is r_d-independent. But the ABSOLUTE-H0 reconciliation, the actual point of WP-C/H-C, does NOT: the in-model r_d=200 Mpc drives the implied bare Hbar0 from 53.79 down to 39.6 (dressed H0 47.2 g_dress / 49.9 full-rate), and the fully self-consistent fixed point sits at Hbar0*=32.4, r_d*=244 Mpc. Both are far below the reconciling band (~54 / dressed ~64-68) and catastrophically below SH0ES 73. The external r_d=147.09 was doing real work pinning H0; the model's own early-Universe physics predicts a ~35% larger sound horizon."
+ },
+ "lcdm_validation_gate": {
+  "passed": true,
+  "r_star": 144.29392336494914,
+  "r_drag": 146.93931243803257,
+  "expected": "r_star~144.4, r_drag~147.1 (Planck 2018)"
+ },
+ "dnw13_selfcheck": {
+  "params": "fv0=0.698, Hbar0=50.1 (DNW13 canonical: dressed H0=61.7, OmM0=0.410)",
+  "Omega_M0_bar": 0.16595221125826398,
+  "Omega_B0_bar": 0.030218078362731382,
+  "Omega_B0_bar_DNW13_quoted": 0.0303,
+  "gamma_bar0": 1.349,
+  "r_drag_at_DNW13_params": 212.97726776208407,
+  "note": "baryon relation reproduces DNW13 Omega_B0_bar=0.0303 at eta=5.1e-10 (check: 0.0302). At DNW13's own params r_drag=213 Mpc, i.e. their timescape also has a large physical r_d; DNW13 reconcile the DIMENSIONLESS acoustic scale theta*/D_V-r_d ratios (as the harness does via alpha), not a physical r_d=147."
+ },
+ "provenance": {
+  "source": "arXiv:1306.3208 (Duley, Nazer & Wiltshire 2013), ar5iv HTML",
+  "verified_equations": {
+   "Eq10_bare_Friedmann_with_radiation": "confirmed",
+   "Eq20_21_tracker_OmM0_Omk0": "OmM0_bar=4(1-fv0)/(2+fv0)^2, Omk0_bar=9fv0/(2+fv0)^2",
+   "Eq22_region_gamma_bar0": "gamma_bar0=(2+fv0)/2 (tracker); T_bar=gamma_bar^-1 T",
+   "Eq31_sound_horizon": "D_bar_s integral -- transcribed verbatim, label (31) verified",
+   "Eq49_drag_depth": "c tau_d ~=1, tau_d=INT sigma_T n_bar_e/(a_bar R)dt -- label (49) verified",
+   "Omega_R0_bar": "kappa g_* T0^4/(Hbar0^2 gamma_bar0^4), g_*=3.36, T0=2.725K"
+  },
+  "residual_uncertainties": [
+   "z_star/z_drag adopted at Planck values; the full Saha-Peebles ionization ODE (needed to evaluate c tau_d=1 rigorously) is OUT OF SCOPE (WP-B gate). Impact on r_d: ~1-2% (r_drag/r_star ratio).",
+   "omega_b from BBN eta=5.1e-10 (DNW13), NOT Planck 0.0224; a Planck omega_b would raise baryon loading and lower r_d by a few %.",
+   "DM_star uses the tracker-limit timescape distance, not the 5-node V history (<2% shift); l_A/R are compression-level.",
+   "l_A and shift R are convention-dependent (bare vs dressed Omega_M0); reported with the bare parameters per the task spec, dressed alternative flagged.",
+   "At DNW13's own params my faithful Eq-31 integral gives r_drag~207-213 Mpc, consistent with the low-bare-matter mechanism; DNW13's Fig-2 'matching' is in dimensionless acoustic-scale space, so no direct physical-Mpc cross-check exists."
+  ]
+ }
+}

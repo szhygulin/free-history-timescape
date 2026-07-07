@@ -1,0 +1,288 @@
+{
+ "probe": "hb_catalog_forced",
+ "purpose": "Catalog-forced twin of the paper-3 anchored-H0 + survey-b_pred pipeline: fix the void history to the telescope-measured below-mean f_v^obs(z) and rerun both legs. Concrete experiment required by the paper-3 symmetry rule.",
+ "reading": "KINEMATIC (force f_v(z)=f_v^obs; integrability not enforced).",
+ "fvobs_history": {
+  "definition": "f_v^obs(z) = Phi(sigma0*D(z)/2), sigma0=0.734480 (2M++ 4 Mpc/h below-mean anchor), flat-LCDM growth D(z), Om=0.315.",
+  "z_nodes": [
+   0.0,
+   0.3,
+   0.7,
+   1.3,
+   2.33
+  ],
+  "D_of_z": [
+   1.0,
+   0.852823,
+   0.696501,
+   0.535314,
+   0.37721
+  ],
+  "sigma_Rs4": [
+   0.73448,
+   0.626381,
+   0.511566,
+   0.393177,
+   0.277053
+  ],
+  "fv_nodes": [
+   0.64328,
+   0.622932,
+   0.600941,
+   0.577925,
+   0.555088
+  ],
+  "source": "probes_out/telescope_fvobs.json PRIMARY_below_mean_Rs4 (paper-2 sibling)",
+  "validation_vs_telescope": {
+   "z=0": {
+    "computed": 0.643279949444014,
+    "committed": 0.643279949444014,
+    "abs_diff": 0.0
+   },
+   "z=0.3": {
+    "computed": 0.6229320569236853,
+    "committed": 0.6229320569236853,
+    "abs_diff": 0.0
+   },
+   "z=0.7": {
+    "computed": 0.6009407462040413,
+    "committed": 0.6009407462040413,
+    "abs_diff": 0.0
+   }
+  },
+  "max_abs_diff_vs_committed": 0.0,
+  "extrapolated_nodes": {
+   "z=1.3": {
+    "z": 1.3,
+    "D_z": 0.5353137630293283,
+    "sigma_Rs4": 0.39317711456110627,
+    "fv": 0.577925237079892,
+    "above_floor": true
+   },
+   "z=2.33": {
+    "z": 2.33,
+    "D_z": 0.3772101386353299,
+    "sigma_Rs4": 0.27705320530626515,
+    "fv": 0.5550878767923513,
+    "above_floor": true
+   }
+  },
+  "floor_all_above_0p5": true,
+  "declared_systematic": "z={1.3,2.33} EXTRAPOLATE the below-mean floor Phi(sigma0*D(z)/2) beyond the BOSS reach (z<~0.7); both stay >=0.5 by the floor theorem. Carried as a declared systematic. z={0,0.3,0.7} are the committed telescope PRIMARY nodes."
+ },
+ "part_a_anchored_H0_and_b_req_obs": {
+  "anchored": {
+   "variant": "main_z001 (paper-1 cosmology cut ~zHD>0.01)",
+   "anchored_bare_Hbar0": 67.0542485193126,
+   "anchored_bare_Hbar0_err": 0.9185895098415102,
+   "anchored_FULLRATE_H0": 69.9051894954148,
+   "anchored_gdress_H0": 79.88981244789451,
+   "anchored_local_slope_H0": 70.0072715333158,
+   "fv0": 0.643279949444014,
+   "g_dress": 1.1914205917151557,
+   "Hd0": 1.0425169327679678,
+   "S0": 0.9578183387336001,
+   "anchored_chi2_min": 1947.4005390405655,
+   "anchored_dof": 1654,
+   "anchored_chi2_per_dof": 1.177388475840729,
+   "fullrate_shape_robust_check": {
+    "anchored_fullrate": 69.9051894954148,
+    "fitted_fullrate": 73.3438014761951,
+    "abs_shift_vs_fitted": 3.438611980780294,
+    "note": "anchored FULL-RATE H0 ~ 70 for the forced f_v^obs vs 73.3 for the fitted V: the SH0ES ladder measures the ~shape-robust LOCAL Hubble slope, so both land near the SH0ES value, but the flat f_v^obs fits the low-z Hubble diagram slightly worse (anchored chi2/dof 1.18 vs fitted 0.88), pulling the anchored local rate ~3 below the fitted value. The residual is small vs the local-minus-global gap: even the forced ~70 towers over the forced GLOBAL full-rate 52.98."
+   },
+   "all_variants": {
+    "main_z001": {
+     "anchored_Hbar0": 67.0542485193126,
+     "anchored_Hbar0_err": 0.9185895098415102,
+     "fullrate": 69.9051894954148,
+     "gdress": 79.88981244789451,
+     "local_slope": 70.0072715333158,
+     "anchored_chi2_per_dof": 1.177388475840729,
+     "n": 1657,
+     "n_cal": 77,
+     "n_hf": 1580
+    },
+    "shoes_hf_flag": {
+     "anchored_Hbar0": 68.83240737769776,
+     "anchored_Hbar0_err": 0.9813348151757779,
+     "fullrate": 71.7589502144327,
+     "gdress": 82.00834752711532,
+     "local_slope": 71.86373928557893,
+     "anchored_chi2_per_dof": 0.8834263687088364,
+     "n": 354,
+     "n_cal": 77,
+     "n_hf": 277
+    },
+    "hf_z_gt_010": {
+     "anchored_Hbar0": 64.38413350158093,
+     "anchored_Hbar0_err": 0.9134208811321223,
+     "fullrate": 67.12154937699151,
+     "gdress": 76.70858243352113,
+     "local_slope": 67.2195664855486,
+     "anchored_chi2_per_dof": 1.0800362134503643,
+     "n": 1037,
+     "n_cal": 77,
+     "n_hf": 960
+    }
+   }
+  },
+  "lcdm_validation_gate": {
+   "H0": 73.52744314831641,
+   "sigma": 1.0170376117773188,
+   "passed": true,
+   "expected": "~73.5 (71.5-75); confirms the GLS anchoring machinery is intact under the forced shape."
+  },
+  "global_joint_fit": {
+   "source": "paper-2 forced_joint_fit.json (SN+BAO+CMB, DESI DR2 headline; f_v^obs FIXED, 0 shape params)",
+   "global_bare_Hbar0": 50.81535724695566,
+   "global_FULLRATE_H0": 52.97587037460473,
+   "global_gdress_H0": 60.54246299938493,
+   "fv0": 0.643279949444014,
+   "joint_chi2": 2845.6305977874435,
+   "N_data": 1594,
+   "n_fitted_params": 2,
+   "n_fitted_params_note": "SN offset + BAO alpha profiled; ZERO fitted cosmological shape params (f_v FIXED)",
+   "dof": 1592,
+   "joint_chi2_per_dof": 1.7874564056453792,
+   "joint_chi2_nsigma_above_dof": 22.216879219872087,
+   "lcdm_refit_chi2": 1399.805009110365,
+   "lcdm_dof": 1591,
+   "lcdm_chi2_per_dof": 0.8798271584603174,
+   "bic_bar_dr2": 1407.1790109697151,
+   "miss_bic_bar_by": 1438.4515868177284,
+   "clears_bic_bar": false,
+   "fit_quality": "BAD",
+   "note": "The forced f_v^obs joint fit is CATASTROPHICALLY bad: chi2/dof=1.787 (~22 sigma above its dof), vs LCDM chi2/dof=0.880. It misses the (most-generous, one-fewer-parameter) BIC bar by 1438 chi2 -> paper-2 verdict FORCED_FVOBS_FAILS_BIC_BAR. This is why the global Hbar0 lands LOW (50.82 vs fitted 53.79): the flat high-z tail cannot bend the SN+BAO+CMB Hubble diagram."
+  },
+  "b_req_obs": {
+   "b_req_obs": 0.31956660647760793,
+   "formula": "anchored bare Hbar0 / global bare Hbar0 - 1",
+   "crosscheck_fullrate_convention": 0.3195666064776077,
+   "crosscheck_gdress_convention": 0.31956660647760793,
+   "convention_max_abs_err": 2.220446049250313e-16,
+   "note": "b_req^obs is convention-independent (same fixed shape -> same g_dress, Hd0; reduces to the Hbar0 ratio). It is LARGER than the fitted b_req=0.08417 because the forced global fit craters to a lower Hbar0 -- i.e. the required local bias is even bigger for the observed shape, which the mechanism (part b) fails to supply by an even wider margin."
+  }
+ },
+ "part_b_survey_b_pred": {
+  "E_max_obs": {
+   "E_max": 0.06574386689340406,
+   "gamma_bar0": 1.321639974722007,
+   "Hv_over_Hbar0": 0.8406645130840311,
+   "Hdress_over_Hbar0": 1.0425167437845506,
+   "gamma_bar_dot": 0.028923242235731908,
+   "fvprime0_dfv_dtau": 0.057846484471463816,
+   "fvprime0_note": "df_v/dtau at z=0 (=2*gamma_bar_dot). This LOW-z slope, not the high-z tail, sets E_max; it is ~5x smaller for the flat f_v^obs than for the steep fitted V, which is why E_max and b_pred_survey drop ~5x. E_max->0 as the history flattens.",
+   "E_dress_void_volume_average": 0.03800019523712478,
+   "E_max_via_identity": 0.06574386689340397,
+   "identity_abs_err": 8.326672684688674e-17,
+   "formula": "E_max = gamma_bar0*H_v0/Hdress0 - 1 (void-scale apparent-H0 maximum, pure clock conv.)",
+   "vs_fitted": {
+    "fitted_E_max": 0.3364976454450088,
+    "obs_E_max": 0.06574386689340406,
+    "ratio_obs_over_fitted": 0.1953769002052291,
+    "smaller_than_fitted": true,
+    "note": "E_max(f_v^obs) < fitted 0.33650: f_v^obs is FLATTER at low z, so |f_v'(0)| (hence the void-growth term driving the apparent-H0 maximum) is smaller. E_max=0 for a perfectly flat history; f_v^obs sits near that limit."
+   }
+  },
+  "survey_geometry": {
+   "n_calibrators": 77,
+   "n_hubble_flow": 277,
+   "phi_calib_mean": 0.9940403452757023,
+   "phi_hf_mean": 0.07134331849835682,
+   "hf_frac_inside_r_hom": 0.4151624548736462,
+   "note": "identical SH0ES geometry to the fitted WP-H2' run; only E_max changes with the shape."
+  },
+  "b_pred_survey": {
+   "b_pred_survey_central": 0.004690385635089702,
+   "definition": "b_pred_survey = E_max * <phi>_Hubble-flow (LA/obs, raised_cosine, r_void=30, r_hom=100, zCMB)",
+   "phi_shape_band": {
+    "lo": 0.00018159130065263039,
+    "hi": 0.014069040622814612,
+    "half_range": 0.006943724661080991
+   },
+   "alternative_differential": 0.06066167051138948,
+   "diagnostic_whole_survey": 0.017885155774572722,
+   "vs_fitted": {
+    "fitted_b_pred_survey": 0.02400685869293041,
+    "obs_b_pred_survey": 0.004690385635089702,
+    "ratio_obs_over_fitted": 0.19537690020522913,
+    "note": "b_pred_survey(f_v^obs)=0.0047 is ~5x SMALLER than the fitted 0.024 -- both are set by the low-z slope |f_v'(0)|, which is ~5x smaller for the flat f_v^obs. Both are far below b_req (0.084): the mechanism FAILS for either shape, harder for the observed one."
+   }
+  },
+  "comparison_to_b_req": {
+   "vs_fitted_b_req": {
+    "b_req": 0.08416615584147968,
+    "b_pred_survey": 0.004690385635089702,
+    "under_predicts_central": true,
+    "under_predicts_full_band": true,
+    "b_req_over_b_pred": 17.94439996827042,
+    "verdict": "FAILS"
+   },
+   "vs_catalog_forced_b_req_obs": {
+    "b_req": 0.31956660647760793,
+    "b_pred_survey": 0.004690385635089702,
+    "under_predicts_central": true,
+    "under_predicts_full_band": true,
+    "b_req_over_b_pred": 68.13226701166467,
+    "verdict": "FAILS"
+   },
+   "note": "b_pred_survey UNDER-predicts b_req across the ENTIRE phi-shape band against BOTH the fitted requirement (0.08417) and the catalog-forced requirement b_req^obs. FAILS."
+  }
+ },
+ "comparison_to_fitted_case": {
+  "fitted": {
+   "anchored_Hbar0": 58.32194048848205,
+   "anchored_fullrate": 73.3438014761951,
+   "global_Hbar0": 53.794282522327265,
+   "b_req": 0.08416615584147968,
+   "E_max": 0.3364976454450088,
+   "b_pred_survey": 0.02400685869293041,
+   "fv_nodes_V": [
+    0.64013,
+    0.53112,
+    0.39578,
+    0.27945,
+    0.19359
+   ],
+   "joint_fit_quality": "GOOD (winner V; chi2/dof ~ 0.88)"
+  },
+  "catalog_forced": {
+   "anchored_Hbar0": 67.0542485193126,
+   "anchored_fullrate": 69.9051894954148,
+   "global_Hbar0": 50.81535724695566,
+   "b_req_obs": 0.31956660647760793,
+   "E_max": 0.06574386689340406,
+   "b_pred_survey": 0.004690385635089702,
+   "fv_nodes_obs": [
+    0.64328,
+    0.62293,
+    0.60094,
+    0.57793,
+    0.55509
+   ],
+   "joint_fit_quality": "BAD (FORCED_FVOBS_FAILS_BIC_BAR; chi2/dof ~ 1.79)"
+  },
+  "where_shapes_differ": {
+   "low_z_z0_value": {
+    "fitted_fv0": 0.64013,
+    "obs_fv0": 0.643279949444014,
+    "diff": 0.003149949444014033
+   },
+   "low_z_slope": {
+    "fitted_slope_0_to_0p3": -0.3633666666666665,
+    "obs_slope_0_to_0p3": -0.06782630840109587,
+    "note": "|df_v/dz| near z=0 is ~5x smaller for f_v^obs -> ~5x smaller E_max/b_pred."
+   },
+   "high_z_z233": {
+    "fitted_fv": 0.19359,
+    "obs_fv": 0.5550878767923513,
+    "diff": 0.36149787679235124
+   },
+   "note": "The two shapes AGREE in VALUE at z=0 (both ~0.64) but differ everywhere else: f_v^obs is far FLATTER in slope from the start (|f_v'(0)| ~5x smaller) and diverges enormously at high z (fitted V plunges to 0.194 by z=2.33 while f_v^obs stays at 0.555 on the below-mean floor). The z=0 VALUE fixes g_dress (identical); the low-z SLOPE sets Hd0 and E_max; the high-z TAIL sets the joint-fit quality. The SH0ES low-z ladder pins the measured local RATE ~shape-robustly (~70-73; the model absorbs the slope difference into the Hbar0/Hd0 split), but E_max -- the slope-driven void-growth term -- drops ~5x, and the joint fit craters on the flat high-z tail."
+  }
+ },
+ "verdict": "FAILS",
+ "finding": "The catalog-forced mechanism FAILS identically to the fitted case. Substituting the exact survey-measured void history f_v^obs(z) for the joint-fit winner V and rerunning BOTH legs: (a) the anchored FULL-RATE H0 barely moves (69.91 vs fitted 73.3) -- the SH0ES low-z ladder pins the measured local rate ~shape-robustly (the model absorbs the shape difference into the Hbar0/Hd0 split; anchored chi2/dof 1.18 vs fitted 0.88). But the global joint SN+BAO+CMB fit of the flat f_v^obs is CATASTROPHIC (chi2/dof=1.79, ~22 sigma, misses the BIC bar by 1438) and craters to a low global Hbar0=50.82, so b_req^obs=0.320 (>> the fitted 0.08417). (b) the survey b_pred DROPS ~5x: E_max(f_v^obs)=0.0657 << fitted 0.336 and b_pred_survey=0.0047 << fitted 0.024 (both set by |f_v'(0)|, ~5x smaller for the flat shape) -- so it FAILS HARDER (17.9x below the fitted b_req, 68x below b_req^obs). FINDING: the fitted and observed shapes agree in VALUE at z=0 (fv0~0.64) but the fitted V is far steeper and plunges to 0.19 by z=2.33 while f_v^obs stays at 0.56 on the below-mean floor. That high-z divergence is nearly INVISIBLE to the low-z SH0ES ladder (anchored H0 ~70 either way) yet FATAL to the joint fit (global Hbar0 craters); and the low-z survey-averaged b_pred cannot supply b_req for EITHER shape (0.024 and 0.0047, both far below 0.084). The mechanism fails identically whether the void structure is FITTED to the Hubble diagram or TELESCOPE-supplied: b_pred_survey stays an order of magnitude below b_req in both.",
+ "runtime_s": 3.4
+}

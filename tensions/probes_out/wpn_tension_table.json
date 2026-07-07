@@ -1,0 +1,165 @@
+{
+  "probe": "wpn_tension_table",
+  "purpose": "WP-N SELF-INFLICTED TENSIONS TABLE (PLAN.md sec 7 + PLAN_void_content_audit.md sec 5). Pure aggregation of committed verdicts -- no new physics. One structured row per tension with the load-bearing numbers pulled from each source artifact's cited fields.",
+  "reading": "AGGREGATION ONLY -- every number is read verbatim from a committed artifact field (path cited per row).",
+  "columns": [
+    "Tension",
+    "LCDM status",
+    "Free-history (kinematic) status",
+    "Self-inflicted?",
+    "Artifact"
+  ],
+  "rows": [
+    {
+      "tension": "Hubble (SH0ES vs early)",
+      "lcdm_status": "~5sigma / dchi2~25 / no mechanism",
+      "free_history_status": "FAILS: b_pred_survey CEILING 0.0240 + PHYSICAL 0.0158 vs b_req 0.08417 (measurement-only nsigma 4.16 ceiling / 4.73 physical; under-predicts across the entire admissible band)",
+      "self_inflicted": "no (the target)",
+      "artifact": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/bpred_survey_averaged.json",
+      "key_numbers": {
+        "b_req [b_req.b_req]": 0.08416615584147968,
+        "b_pred_survey_CEILING [b_pred_survey.b_pred_survey_central]": 0.02400685869293041,
+        "b_pred_PHYSICAL [b_pred_survey_PHYSICAL.b_pred_physical_central]": 0.01584618444482631,
+        "nsigma_meas_ceiling [nsigma_measurement_only]": 4.162970173637018,
+        "nsigma_meas_physical [b_pred_survey_PHYSICAL.nsigma_physical.central_field_mean.nsigma_measurement_only]": 4.727681616454204,
+        "verdict_robust [verdict.verdict_robust]": "FAILS"
+      }
+    },
+    {
+      "tension": "Required-vs-observed void shape (floor)",
+      "lcdm_status": "N/A",
+      "free_history_status": "SHAPE-UNAVAILABLE (obs decline x1.16 vs required x3.31; floor theorem: below-mean Phi(sigma/2)>=0.5, gap definitionally unbridgeable)",
+      "self_inflicted": "YES",
+      "artifact": "/home/szhygulin/dev/science/free-history-timescape/probes_out/R2_final.json",
+      "key_numbers": {
+        "verdict [verdict]": "SHAPE-UNAVAILABLE",
+        "obs_total_decline_x [two_part_test.part2_shape_decline.obs_total_decline_x]": 1.1589,
+        "req_total_decline_x [two_part_test.part2_shape_decline.req_total_decline_x]": 3.3066274084405185,
+        "z07_gap_absolute [z07_gap.gap_absolute]": 0.20516074620404123,
+        "floor_impossible [z07_gap.floor_theorem.impossible]": true
+      }
+    },
+    {
+      "tension": "WP-B dynamical three-phase",
+      "lcdm_status": "N/A",
+      "free_history_status": "CLOSED: TRACKS degenerately but k=0 geometry misses BIC bar by 4953 (collapses to two-phase empty-void tracker); T1 ceiling misses by 107 (dBIC +136 vs LCDM). Collapse lemma dynamically confirmed",
+      "self_inflicted": "YES",
+      "artifact": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/threephase_forced_geometry.json",
+      "key_numbers": {
+        "track_verdict [track_verdict_from_step12]": "TRACKS",
+        "k0_forced_miss [STEP3_k0_forced_prediction.margin_or_miss]": 4953.005854302423,
+        "T1_ceiling_miss [STEP4_T1_diagnostic_ceiling.margin_or_miss]": 106.9241847902183,
+        "T1_deltaBIC_vs_LCDM [k4_sensitivity_accounting.T1_deltaBIC_vs_LCDM]": 136.42019222761886,
+        "clears_bar_k0 [STEP3_k0_forced_prediction.clears_bar]": false,
+        "clears_bar_T1 [STEP4_T1_diagnostic_ceiling.clears_bar]": false
+      }
+    },
+    {
+      "tension": "Buchert integrability",
+      "lcdm_status": "consistent GR",
+      "free_history_status": "NOT a single-phase GR solution: alpha^2 drifts ~152% (forced, interior) / ~5x (observed, span) vs tracker ~2e-06 (6+ orders of magnitude contrast; K5 violated)",
+      "self_inflicted": "YES",
+      "artifact": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/wpb_integrability.json",
+      "key_numbers": {
+        "tracker_drift [histories.tracker.fractional_drift]": 2.215789722370687e-06,
+        "forced_required_drift_interior [histories.forced_required.fractional_drift_interior_0.1_1.8]": 1.5159222941362485,
+        "observed_below_mean_drift_span [histories.observed_below_mean.fractional_drift]": 5.413206521016891,
+        "verdict_summary [verdict.summary]": "THEORY-LEVEL CLOSE-OUT (a result, not a failure). No consistent single-phase two-scale (constant-alpha^2) Buchert model tracks either the REQUIRED (forced_required) or the OBSERVED (observed_below_mean) history: both drift by O(100%)-O(1000%) while the tracker is constant to the ~1e-6 pipeline floor (6+ orders of magnitude contrast)."
+      }
+    },
+    {
+      "tension": "Void-wall contrast budget (two-sided)",
+      "lcdm_status": "N/A",
+      "free_history_status": "MARGINAL (field-mean two-sided 0.375-0.401 < required 0.474 at z=0; deep-void+wall 0.46-0.57 reaches/exceeds it -- neither refuted nor withdrawn)",
+      "self_inflicted": "partial",
+      "artifact": "/home/szhygulin/dev/science/free-history-timescape/probes_out/contrast_budget.json",
+      "key_numbers": {
+        "verdict [verdict]": "MARGINAL",
+        "field_mean_two_sided_z0_band [available_field_averaged.band_excess_z0]": [
+          0.375,
+          0.40102
+        ],
+        "required_two_sided_z0_central [required.central[0]]": 0.47409,
+        "deep_void_dm-0.8_two_sided_z0_band [available_grid[2].two_sided_excess_z0_band]": [
+          0.46392,
+          0.54405
+        ],
+        "best_case_measured_z0 [ceilings.best_case_measured.excess_z0]": 0.56788
+      }
+    },
+    {
+      "tension": "Q-budget (Stage 0)",
+      "lcdm_status": "N/A",
+      "free_history_status": "GATE=GO on the empty/kinematic ceiling, but the PHYSICAL (lensing-capped) budget is 4-8x short (physical/req ~0.16 at z=0.7); the required contrast EXCEEDS the empty-Milne ceiling by x1.36 -- unattainable by any physical void",
+      "self_inflicted": "YES",
+      "artifact": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/q_budget.json",
+      "key_numbers": {
+        "gate [gate]": "GO",
+        "ratio_physical_over_req_z07 [q_at_nodes.z=0.7.ratio_physical_over_req]": 0.1574,
+        "required_over_empty_ceiling [physicality_strike_A1.required_over_empty_ceiling]": 1.361,
+        "required_over_physical_dm-0.5 [physicality_strike_A1.required_over_physical_dm-0.5]": 2.723
+      }
+    },
+    {
+      "tension": "Sound horizon / r_d",
+      "lcdm_status": "computed from early physics",
+      "free_history_status": "FAILS: in-model r_d=199.6 Mpc (+36% vs 147.09); the absolute-H0 reconciliation does NOT survive -- implied bare Hbar0 falls 53.8->40 (fixed point 32.4), far below the reconciling band and SH0ES 73",
+      "self_inflicted": "YES",
+      "artifact": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/wpc_sound_horizon.json",
+      "key_numbers": {
+        "r_d_in_model [r_d_in_model]": 199.5612258893033,
+        "delta_percent_vs_147p09 [external_147p09_comparison.delta_percent]": 35.67287095608356,
+        "Hbar0_global_with_147 [self_consistency.Hbar0_global_with_147]": 53.794282522327265,
+        "Hbar0_implied_with_inmodel_rd [self_consistency.Hbar0_implied_with_inmodel_rd]": 39.649992031008274,
+        "R1_survives [self_consistency.R1_survives]": false
+      }
+    },
+    {
+      "tension": "Growth / S8",
+      "lcdm_status": "fits (~2-3sigma)",
+      "free_history_status": "UNDEFINED-IN-KINEMATIC-READING (no perturbed metric -> no growth equation; the measured sigma_m(z) is an observable fed in as an INPUT, its z-shape FLRW-fit, not a model prediction). Defined only after the dynamical WP-B layer",
+      "self_inflicted": "YES",
+      "artifact": "/home/szhygulin/dev/science/free-history-timescape-tensions/NOTES_growth.md",
+      "key_numbers": {
+        "status": "UNDEFINED-IN-KINEMATIC-READING",
+        "reason [NOTES_growth.md sec 1]": "no delta / no D / no f; gamma~0.55 is an FLRW fit; Omega_m bare-vs-dressed ambiguous",
+        "input_that_exists [NOTES_growth.md sec 3]": "sigma_m(z) BOSS DR12 count-in-cells, amplitude A=0.4443, fit to FLRW template A*D(z) -- INPUT not prediction"
+      }
+    },
+    {
+      "tension": "b_pred z-profile (P4)",
+      "lcdm_status": "N/A",
+      "free_history_status": "predicts a local H0 bump decaying by r_hom~100 Mpc/h; r_hom*=140 (to reach b_req) is OUTSIDE the declared [80,120] band and at/beyond the 2M++ homogeneity scale ~137.5 -- excluded",
+      "self_inflicted": "partial",
+      "artifact": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/bpred_survey_averaged.json",
+      "key_numbers": {
+        "r_hom_star [r_hom_star.r_hom_star]": 139.96790561003817,
+        "declared_r_hom_range [radial_profile.r_hom_range]": [
+          80.0,
+          120.0
+        ],
+        "outside_declared_range [r_hom_star.outside_declared_range]": true,
+        "twompp_homogeneity_scale [r_hom_star.twompp_homogeneity_scale]": 137.5,
+        "excluded_by_2Mpp [r_hom_star.excluded_by_2Mpp]": true
+      }
+    }
+  ],
+  "synthesis": "The Hubble-tension mechanism is CLOSED at every level tested: the void geometry is SHAPE-UNAVAILABLE (observed decline x1.16 vs required x3.31, floor theorem), the local SH0ES bias FAILS (b_pred 0.024 ceiling / 0.016 physical vs b_req 0.084, measurement-only nsigma 4.2-4.7), the dynamical three-phase consistency is CLOSED (k=0 geometry misses the BIC bar by 4953, T1 ceiling by 107, dBIC +136; Buchert integrability violated), and the sound-horizon absolute-H0 reconciliation FAILS (in-model r_d=199.6 Mpc, +36%; implied Hbar0 53.8->~40). Growth/S8 is UNDEFINED-IN-KINEMATIC-READING. Of the nine rows, six are self-inflicted (YES), two partial, one is the Hubble target.",
+  "markdown": "| Tension | LCDM status | Free-history (kinematic) status | Self-inflicted? | Artifact |\n|---|---|---|---|---|\n| Hubble (SH0ES vs early) | ~5sigma / dchi2~25 / no mechanism | FAILS: b_pred_survey CEILING 0.0240 + PHYSICAL 0.0158 vs b_req 0.08417 (measurement-only nsigma 4.16 ceiling / 4.73 physical; under-predicts across the entire admissible band) | no (the target) | `bpred_survey_averaged.json` |\n| Required-vs-observed void shape (floor) | N/A | SHAPE-UNAVAILABLE (obs decline x1.16 vs required x3.31; floor theorem: below-mean Phi(sigma/2)>=0.5, gap definitionally unbridgeable) | YES | `R2_final.json` |\n| WP-B dynamical three-phase | N/A | CLOSED: TRACKS degenerately but k=0 geometry misses BIC bar by 4953 (collapses to two-phase empty-void tracker); T1 ceiling misses by 107 (dBIC +136 vs LCDM). Collapse lemma dynamically confirmed | YES | `threephase_forced_geometry.json` |\n| Buchert integrability | consistent GR | NOT a single-phase GR solution: alpha^2 drifts ~152% (forced, interior) / ~5x (observed, span) vs tracker ~2e-06 (6+ orders of magnitude contrast; K5 violated) | YES | `wpb_integrability.json` |\n| Void-wall contrast budget (two-sided) | N/A | MARGINAL (field-mean two-sided 0.375-0.401 < required 0.474 at z=0; deep-void+wall 0.46-0.57 reaches/exceeds it -- neither refuted nor withdrawn) | partial | `contrast_budget.json` |\n| Q-budget (Stage 0) | N/A | GATE=GO on the empty/kinematic ceiling, but the PHYSICAL (lensing-capped) budget is 4-8x short (physical/req ~0.16 at z=0.7); the required contrast EXCEEDS the empty-Milne ceiling by x1.36 -- unattainable by any physical void | YES | `q_budget.json` |\n| Sound horizon / r_d | computed from early physics | FAILS: in-model r_d=199.6 Mpc (+36% vs 147.09); the absolute-H0 reconciliation does NOT survive -- implied bare Hbar0 falls 53.8->40 (fixed point 32.4), far below the reconciling band and SH0ES 73 | YES | `wpc_sound_horizon.json` |\n| Growth / S8 | fits (~2-3sigma) | UNDEFINED-IN-KINEMATIC-READING (no perturbed metric -> no growth equation; the measured sigma_m(z) is an observable fed in as an INPUT, its z-shape FLRW-fit, not a model prediction). Defined only after the dynamical WP-B layer | YES | `NOTES_growth.md` |\n| b_pred z-profile (P4) | N/A | predicts a local H0 bump decaying by r_hom~100 Mpc/h; r_hom*=140 (to reach b_req) is OUTSIDE the declared [80,120] band and at/beyond the 2M++ homogeneity scale ~137.5 -- excluded | partial | `bpred_survey_averaged.json` |",
+  "self_inflicted_tally": {
+    "YES": 6,
+    "partial": 2,
+    "no_target": 1,
+    "total_rows": 9
+  },
+  "sources": {
+    "bpred_survey_averaged": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/bpred_survey_averaged.json",
+    "R2_final": "/home/szhygulin/dev/science/free-history-timescape/probes_out/R2_final.json",
+    "threephase_forced_geometry": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/threephase_forced_geometry.json",
+    "wpb_integrability": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/wpb_integrability.json",
+    "contrast_budget": "/home/szhygulin/dev/science/free-history-timescape/probes_out/contrast_budget.json",
+    "q_budget": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/q_budget.json",
+    "wpc_sound_horizon": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/wpc_sound_horizon.json",
+    "NOTES_growth": "/home/szhygulin/dev/science/free-history-timescape-tensions/NOTES_growth.md"
+  }
+}

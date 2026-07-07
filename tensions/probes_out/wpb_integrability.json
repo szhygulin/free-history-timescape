@@ -1,0 +1,315 @@
+{
+  "probe": "WP-B integrability / dynamical-consistency close-out -- Buchert invariant alpha^2=-k_v f_vi^{2/3} (DNW13 Eq 11) along three void histories",
+  "rehomes": "paper-2 NOTES_modelv_theory.md sec 8 (quoted from the deleted proto_modelv4.py; no committed generator existed until this script)",
+  "reading": "KINEMATIC forced-f_v histories vs the constant-alpha^2 (single-phase two-scale) Buchert invariant; a large fractional drift => integrability (K5) violated.",
+  "equation": {
+    "definition": "alpha^2 = -k_v * f_vi^{2/3}  (DNW13 Eq 11; MUST be constant in tau for a genuine single-phase Buchert two-scale solution)",
+    "transcription": "alpha^2(tau) = (2 abar^2 / (3 f_v^{1/3} (1-f_v))) * [ f_v'' + f_v'^2 (2 f_v - 1)/(2 f_v (1-f_v)) + 3 (abar'/abar) f_v' ]",
+    "source_line": "NOTES_modelv_theory.md ~line 262",
+    "primes": "d/dtau (bare time)",
+    "abar": "bare volume-average scale factor = tau^{2/3} (1-f_v)^{-1/3}; abar'/abar = 2/(3 tau) + (1/3) f_v'/(1-f_v) = bare Hubble rate",
+    "normalisation_convention": "abar(tau0)=1; alpha^2 carries abar^2 so its ABSOLUTE scale is this convention, but the fractional spread max|a2|/min|a2|-1 is convention-INVARIANT (the overall abar^2 constant cancels).",
+    "transcription_flag": "UNAMBIGUOUS as transcribed. Two reading choices were checked and are pinned by the tracker: (a) primes are d/dtau in BARE time (so abar'/abar is the bare Hubble rate that closes the map); (b) abar is the BARE volume-average scale factor tau^{2/3}(1-f_v)^{-1/3}, not the wall a_w=tau^{2/3}. Both readings are the ones for which the exact analytic tracker gives a machine-precision constant alpha^2 (exact_analytic_fractional_drift=2e-15 below) -> the copy is faithful."
+  },
+  "growth_reproduction": {
+    "Om": 0.315,
+    "max_frac_diff_vs_json_Dz": 0.0,
+    "note": "flat-LCDM linear-growth D(z) reproduces telescope_fvobs.json D_z column exactly; used to place the below-mean f_v_obs at the required-grid z=1.3, 2.33.",
+    "checks": [
+      {
+        "z": 0.0,
+        "D_json": 1.0,
+        "D_mine": 1.0,
+        "frac_diff": 0.0
+      },
+      {
+        "z": 0.2,
+        "D_json": 0.8991955079430879,
+        "D_mine": 0.8991955079430879,
+        "frac_diff": 0.0
+      },
+      {
+        "z": 0.3,
+        "D_json": 0.8528228815484358,
+        "D_mine": 0.8528228815484358,
+        "frac_diff": 0.0
+      },
+      {
+        "z": 0.35,
+        "D_json": 0.8307364919280124,
+        "D_mine": 0.8307364919280124,
+        "frac_diff": 0.0
+      },
+      {
+        "z": 0.5,
+        "D_json": 0.7689224493997115,
+        "D_mine": 0.7689224493997115,
+        "frac_diff": 0.0
+      },
+      {
+        "z": 0.65,
+        "D_json": 0.7135846239815111,
+        "D_mine": 0.7135846239815111,
+        "frac_diff": 0.0
+      },
+      {
+        "z": 0.7,
+        "D_json": 0.6965007959546312,
+        "D_mine": 0.6965007959546312,
+        "frac_diff": 0.0
+      }
+    ]
+  },
+  "observed_nodes_check": {
+    "z0_anchor": {
+      "mine": 0.643279949444014,
+      "json": 0.643279949444014
+    },
+    "z0.3": {
+      "mine": 0.6229320569236853,
+      "json": 0.6229320569236853
+    },
+    "z0.7": {
+      "mine": 0.6009407462040413,
+      "json": 0.6009407462040413
+    }
+  },
+  "windows": {
+    "primary_span": [
+      0.0,
+      2.33
+    ],
+    "interior": [
+      0.1,
+      1.8
+    ],
+    "metric": "fractional spread = max|alpha^2| / min|alpha^2| - 1"
+  },
+  "histories": {
+    "tracker": {
+      "fractional_drift": 2.215789722370687e-06,
+      "fractional_drift_interior_0.1_1.8": 2.104005360825667e-06,
+      "fractional_drift_0.3_1.3": 1.9339412884455953e-06,
+      "alpha2_mean_over_span": 0.959040789374667,
+      "extremes_over_span": {
+        "min_abs_alpha2": 0.9590397444167366,
+        "argmin_z": 0.012392492315380327,
+        "max_abs_alpha2": 0.9590418694471455,
+        "argmax_z": 0.012168383424805368,
+        "sign_change": false
+      },
+      "z_sample": [
+        0.0,
+        0.1,
+        0.3,
+        0.5,
+        0.7,
+        1.0,
+        1.3,
+        1.8,
+        2.33
+      ],
+      "alpha2_sample": [
+        0.9590402959196319,
+        0.9590408846135834,
+        0.9590408993498387,
+        0.959041347556075,
+        0.95904077303371,
+        0.9590407780943889,
+        0.959040918610262,
+        0.9590404638741408,
+        0.9590407058728023
+      ],
+      "fv_sample": [
+        0.6401279536221243,
+        0.6117540946203562,
+        0.5590218233515951,
+        0.5114070593960444,
+        0.4685681844030254,
+        0.41242123620702276,
+        0.3648092462482629,
+        0.30094947765065233,
+        0.2495109198637736
+      ],
+      "solver_n_iter": 9,
+      "solver_dz_resid": 2.7847117944901356e-09,
+      "analytic_dzdtau_vs_solver_maxfrac": 0.00013586172467228153,
+      "desc": "TRACKER f_v(z) (modelv_theory.tracker_fv_of_z) -- exact Buchert solution",
+      "fv0": 0.6401279536221243,
+      "representation": "dense analytic-tracker samples (modelv_theory MonotoneFv)"
+    },
+    "forced_required": {
+      "fractional_drift": 15.500057761745808,
+      "fractional_drift_interior_0.1_1.8": 1.5159222941362485,
+      "fractional_drift_0.3_1.3": 1.048474621227684,
+      "alpha2_mean_over_span": 1.2495210547827467,
+      "extremes_over_span": {
+        "min_abs_alpha2": 0.12051339909949775,
+        "argmin_z": 2.3288731822553492,
+        "max_abs_alpha2": 1.9884780462060383,
+        "argmax_z": 0.6999042480129497,
+        "sign_change": false
+      },
+      "z_sample": [
+        0.0,
+        0.1,
+        0.3,
+        0.5,
+        0.7,
+        1.0,
+        1.3,
+        1.8,
+        2.33
+      ],
+      "alpha2_sample": [
+        1.1376218678572843,
+        1.1218085351033575,
+        1.0865771909719555,
+        1.5579830496516514,
+        1.9884276135816004,
+        1.4572434956510512,
+        0.9705554919157245,
+        0.7903360747590694,
+        0.11825937330107424
+      ],
+      "fv_sample": [
+        0.640129765835529,
+        0.6038188601860304,
+        0.5311199999866498,
+        0.45955391146461183,
+        0.3957800044483748,
+        0.32577985513601226,
+        0.2794500055943103,
+        0.2290305005644422,
+        0.19359000000746357
+      ],
+      "solver_n_iter": 11,
+      "solver_dz_resid": 8.795050909782276e-09,
+      "analytic_dzdtau_vs_solver_maxfrac": 0.00014613752666492452,
+      "desc": "FORCED required f_v(z): LA Probe-R fitted nodes (modelV_probeR.json V.fv_nodes)",
+      "fv0": 0.6401279536221243,
+      "representation": "C2 natural cubic spline through the 5 fitted nodes",
+      "fv_nodes": [
+        0.64013,
+        0.53112,
+        0.39578,
+        0.27945,
+        0.19359
+      ],
+      "representation_sensitivity": {
+        "note": "the 5-node forced history under-determines f_v'' -> the drift MAGNITUDE is representation-dependent; every reading is >> the tracker's ~1e-6.",
+        "pchip_literal_fractional_drift_span": 21.53623050758769,
+        "pchip_literal_note": "the solver's monotone C1 PCHIP: f_v'' has spurious jumps at the nodes -> ~20x inflation vs the C2 reading; sign of the violation, not its size.",
+        "c2_full_span_note": "the C2 full-span drift is inflated by the natural-BC endpoint at z=2.33 (min|alpha^2| sits at the boundary); the interior windows are BC-robust. The max|alpha^2| ~2x the tracker value sits at z~0.7 and is representation-stable."
+      }
+    },
+    "observed_below_mean": {
+      "fractional_drift": 5.413206521016891,
+      "fractional_drift_interior_0.1_1.8": 2.9395910437362733,
+      "fractional_drift_0.3_1.3": 0.8181153719300138,
+      "alpha2_mean_over_span": 0.2326101987396261,
+      "extremes_over_span": {
+        "min_abs_alpha2": 0.061684081183432174,
+        "argmin_z": 9.687407649795316e-05,
+        "max_abs_alpha2": 0.3955927516885225,
+        "argmax_z": 1.3876764609682584,
+        "sign_change": false
+      },
+      "z_sample": [
+        0.0,
+        0.1,
+        0.3,
+        0.5,
+        0.7,
+        1.0,
+        1.3,
+        1.8,
+        2.33
+      ],
+      "alpha2_sample": [
+        0.06165208350463234,
+        0.10038259402094427,
+        0.21658019918628746,
+        0.25723530339225376,
+        0.2906847129970307,
+        0.3498559086446189,
+        0.3939052816022027,
+        0.3510047164350551,
+        0.10931677155413719
+      ],
+      "fv_sample": [
+        0.643279949444014,
+        0.636295378624006,
+        0.6229320571041582,
+        0.61114510968737,
+        0.6009407464195646,
+        0.5881441112526927,
+        0.5779252382987095,
+        0.5652610719224535,
+        0.5550878767940273
+      ],
+      "solver_n_iter": 19,
+      "solver_dz_resid": 5.995348217879837e-09,
+      "analytic_dzdtau_vs_solver_maxfrac": 0.00016142321861400966,
+      "desc": "OBSERVED f_v_obs(z)=Phi(sigma0 D(z)/2), below-mean route (telescope_fvobs PRIMARY)",
+      "fv0": 0.643279949444014,
+      "representation": "C2 natural cubic spline through the 5 below-mean nodes at the required grid",
+      "fv_nodes": [
+        0.643279949444014,
+        0.6229320569236853,
+        0.6009407462040413,
+        0.577925237079892,
+        0.5550878767923513
+      ],
+      "representation_sensitivity": {
+        "note": "the observed history is genuinely smooth (Phi(sigma0 D(z)/2)) -> representation-ROBUST: the analytic-form and PCHIP readings agree with the C2-node reading.",
+        "analytic_form_fractional_drift_span": 5.127814996138636,
+        "analytic_form_fractional_drift_interior": 2.0652467126113017,
+        "pchip_literal_fractional_drift_span": 5065.561482723578
+      }
+    }
+  },
+  "transcription_validation": {
+    "tracker_pipeline_fractional_drift_span": 2.215789722370687e-06,
+    "tracker_pipeline_fractional_drift_interior": 2.104005360825667e-06,
+    "exact_analytic_fractional_drift": 2.4424906541753444e-15,
+    "tracker_validates": true,
+    "note": "tracker_pipeline drift is the FULL solver+np.gradient pipeline noise floor (NOTES sec-8 quoted 3.9e-7 from the deleted prototype; same order); exact_analytic drift tests the transcription with closed-form derivatives (no solver, no numeric differentiation) -> machine-precision constant confirms the Eq-11 copy is faithful and the void-curvature invariant is genuinely constant on the tracker."
+  },
+  "verdict": {
+    "summary": "THEORY-LEVEL CLOSE-OUT (a result, not a failure). No consistent single-phase two-scale (constant-alpha^2) Buchert model tracks either the REQUIRED (forced_required) or the OBSERVED (observed_below_mean) history: both drift by O(100%)-O(1000%) while the tracker is constant to the ~1e-6 pipeline floor (6+ orders of magnitude contrast).",
+    "tracker_drift": 2.215789722370687e-06,
+    "forced_required_drift_span": 15.500057761745808,
+    "forced_required_drift_interior": 1.5159222941362485,
+    "observed_below_mean_drift_span": 5.413206521016891,
+    "observed_below_mean_drift_interior": 2.9395910437362733,
+    "note_on_81pct": "NOTES sec-8's '81%' was the deleted prototype's illustrative smooth forced history, NOT the final Probe-R V.fv_nodes; the actual required history is a stronger deformation and drifts more (interior ~1.5x; span dominated by the BC-sensitive z=2.33 endpoint). The magnitude is representation-sensitive; the qualitative verdict (>> tracker, non-constant) is representation-INDEPENDENT."
+  },
+  "inputs": {
+    "solver": "/home/szhygulin/dev/science/free-history-timescape/src/probes/modelv_theory.py",
+    "probeR_json": "/home/szhygulin/dev/science/free-history-timescape/probes_out/modelV_probeR.json",
+    "telescope_json": "/home/szhygulin/dev/science/free-history-timescape/probes_out/telescope_fvobs.json",
+    "z_nodes": [
+      0.0,
+      0.3,
+      0.7,
+      1.3,
+      2.33
+    ],
+    "fv_nodes_forced": [
+      0.64013,
+      0.53112,
+      0.39578,
+      0.27945,
+      0.19359
+    ],
+    "fv_nodes_observed": [
+      0.643279949444014,
+      0.6229320569236853,
+      0.6009407462040413,
+      0.577925237079892,
+      0.5550878767923513
+    ],
+    "fv0_tracker": 0.6401279536221243
+  }
+}

@@ -1,0 +1,422 @@
+{
+  "probe": "WP-B Stage 0 -- Q-budget pre-gate (analytic; exact kinematic identities, no solver)",
+  "spec": "PLAN_WPB_threephase.md sec 2 + amendment A1",
+  "reading": "Q_req is the KINEMATIC-forced requirement (paper-2 modelV_probeR derived_backreaction_V); Q_avail is the exact Buchert multi-phase identity Q = 6 sum_i f_i (H_i-Hbar)^2 with H_i-Hbar = fdot_i/(3 f_i) applied to the MEASURED three-phase void population.  Both share one bare-time foliation tau(z)=2/(3 H_w) from the committed background.  ORDER-OF-MAGNITUDE go/no-go, NOT a verdict.",
+  "gate": "GO",
+  "gate_z_range": [
+    0.3,
+    1.0
+  ],
+  "gate_rule": "NO-GO iff Q_avail_CEILING(z) < Q_req(z)/3 for ALL 0.3<=z<=1.0 (most-permissive Q_avail); else GO",
+  "gate_evaluation": {
+    "NO-GO_at_most_permissive_ceiling": false,
+    "NO-GO_at_central_ceiling": false,
+    "NO-GO_at_least_permissive_ceiling": false,
+    "NO-GO_at_empty_Milne_bound": false,
+    "per_z": [
+      {
+        "z": 0.3,
+        "Q_req_over3": 0.2785,
+        "Q_req_over3_upperband": 0.3047,
+        "Q_avail_ceiling_central": 0.4965,
+        "Q_avail_ceiling_least_permissive": 0.2594,
+        "Q_avail_empty_Milne": 0.3869,
+        "ceiling_clears_req3": true,
+        "empty_Milne_clears_req3": true,
+        "empty_Milne_clears_req3_upperband": true
+      },
+      {
+        "z": 0.5,
+        "Q_req_over3": 0.3693,
+        "Q_req_over3_upperband": 0.4979,
+        "Q_avail_ceiling_central": 0.8267,
+        "Q_avail_ceiling_least_permissive": 0.4466,
+        "Q_avail_empty_Milne": 0.5682,
+        "ceiling_clears_req3": true,
+        "empty_Milne_clears_req3": true,
+        "empty_Milne_clears_req3_upperband": true
+      },
+      {
+        "z": 0.7,
+        "Q_req_over3": 0.4281,
+        "Q_req_over3_upperband": 0.6348,
+        "Q_avail_ceiling_central": 1.2861,
+        "Q_avail_ceiling_least_permissive": 0.7319,
+        "Q_avail_empty_Milne": 0.8084,
+        "ceiling_clears_req3": true,
+        "empty_Milne_clears_req3": true,
+        "empty_Milne_clears_req3_upperband": true
+      },
+      {
+        "z": 1.0,
+        "Q_req_over3": 0.4484,
+        "Q_req_over3_upperband": 0.6461,
+        "Q_avail_ceiling_central": 2.0225,
+        "Q_avail_ceiling_least_permissive": 1.2891,
+        "Q_avail_empty_Milne": 1.3029,
+        "ceiling_clears_req3": true,
+        "empty_Milne_clears_req3": true,
+        "empty_Milne_clears_req3_upperband": true
+      }
+    ],
+    "note": "GO is robust: even the least-permissive 3-phase ceiling and the physical empty-Milne bound clear Q_req/3 (and Q_req_upperband/3) at z>=0.5; NO-GO requires failure at ALL z in [0.3,1.0].  Only the depth-capped PHYSICAL budget falls below Q_req/3 -- but the gate is pre-registered on the CEILING."
+  },
+  "z_report": [
+    0.0,
+    0.3,
+    0.5,
+    0.7,
+    1.0
+  ],
+  "q_at_nodes": {
+    "z=0": {
+      "Q_req_central": 0.3675,
+      "Q_req_band_dchi2le1": [
+        0.3905,
+        0.4654
+      ],
+      "Q_req_over3_gate": 0.1225,
+      "Q_avail_ceiling_3phase_kinematic": 0.1761,
+      "Q_avail_ceiling_band": [
+        0.0903,
+        0.1859
+      ],
+      "Q_avail_ceiling_deep_dm<-0.3": 0.0903,
+      "Q_avail_empty_Milne_bound": 0.1975,
+      "Q_avail_empty_band_r100_r200": [
+        0.1896,
+        0.204
+      ],
+      "Q_avail_physical_dm-0.5": 0.0494,
+      "Q_avail_physical_band_dm-0.3_-0.8": [
+        0.0178,
+        0.1264
+      ],
+      "ratio_ceiling_over_req": 0.4791,
+      "ratio_empty_over_req": 0.5375,
+      "ratio_physical_over_req": 0.1344
+    },
+    "z=0.3": {
+      "Q_req_central": 0.8356,
+      "Q_req_band_dchi2le1": [
+        0.7817,
+        0.9141
+      ],
+      "Q_req_over3_gate": 0.2785,
+      "Q_avail_ceiling_3phase_kinematic": 0.4965,
+      "Q_avail_ceiling_band": [
+        0.2594,
+        0.5045
+      ],
+      "Q_avail_ceiling_deep_dm<-0.3": 0.2594,
+      "Q_avail_empty_Milne_bound": 0.3869,
+      "Q_avail_empty_band_r100_r200": [
+        0.3756,
+        0.396
+      ],
+      "Q_avail_physical_dm-0.5": 0.0967,
+      "Q_avail_physical_band_dm-0.3_-0.8": [
+        0.0348,
+        0.2476
+      ],
+      "ratio_ceiling_over_req": 0.5942,
+      "ratio_empty_over_req": 0.463,
+      "ratio_physical_over_req": 0.1158
+    },
+    "z=0.5": {
+      "Q_req_central": 1.1079,
+      "Q_req_band_dchi2le1": [
+        0.8581,
+        1.4937
+      ],
+      "Q_req_over3_gate": 0.3693,
+      "Q_avail_ceiling_3phase_kinematic": 0.8267,
+      "Q_avail_ceiling_band": [
+        0.4466,
+        0.8267
+      ],
+      "Q_avail_ceiling_deep_dm<-0.3": 0.4466,
+      "Q_avail_empty_Milne_bound": 0.5682,
+      "Q_avail_empty_band_r100_r200": [
+        0.5546,
+        0.5791
+      ],
+      "Q_avail_physical_dm-0.5": 0.142,
+      "Q_avail_physical_band_dm-0.3_-0.8": [
+        0.0511,
+        0.3636
+      ],
+      "ratio_ceiling_over_req": 0.7462,
+      "ratio_empty_over_req": 0.5129,
+      "ratio_physical_over_req": 0.1282
+    },
+    "z=0.7": {
+      "Q_req_central": 1.2842,
+      "Q_req_band_dchi2le1": [
+        0.9166,
+        1.9045
+      ],
+      "Q_req_over3_gate": 0.4281,
+      "Q_avail_ceiling_3phase_kinematic": 1.2861,
+      "Q_avail_ceiling_band": [
+        0.7319,
+        1.2861
+      ],
+      "Q_avail_ceiling_deep_dm<-0.3": 0.7319,
+      "Q_avail_empty_Milne_bound": 0.8084,
+      "Q_avail_empty_band_r100_r200": [
+        0.7925,
+        0.821
+      ],
+      "Q_avail_physical_dm-0.5": 0.2021,
+      "Q_avail_physical_band_dm-0.3_-0.8": [
+        0.0728,
+        0.5173
+      ],
+      "ratio_ceiling_over_req": 1.0015,
+      "ratio_empty_over_req": 0.6295,
+      "ratio_physical_over_req": 0.1574
+    },
+    "z=1": {
+      "Q_req_central": 1.3451,
+      "Q_req_band_dchi2le1": [
+        1.0353,
+        1.9384
+      ],
+      "Q_req_over3_gate": 0.4484,
+      "Q_avail_ceiling_3phase_kinematic": 2.0225,
+      "Q_avail_ceiling_band": [
+        1.2891,
+        2.0889
+      ],
+      "Q_avail_ceiling_deep_dm<-0.3": 1.2891,
+      "Q_avail_empty_Milne_bound": 1.3029,
+      "Q_avail_empty_band_r100_r200": [
+        1.2834,
+        1.3184
+      ],
+      "Q_avail_physical_dm-0.5": 0.3257,
+      "Q_avail_physical_band_dm-0.3_-0.8": [
+        0.1173,
+        0.8338
+      ],
+      "ratio_ceiling_over_req": 1.5037,
+      "ratio_empty_over_req": 0.9686,
+      "ratio_physical_over_req": 0.2422
+    }
+  },
+  "Q_req_central": {
+    "z=0": 0.3675,
+    "z=0.3": 0.8356,
+    "z=0.5": 1.1079,
+    "z=0.7": 1.2842,
+    "z=1": 1.3451
+  },
+  "Q_req_band_dchi2le1": {
+    "z=0": [
+      0.3905,
+      0.4654
+    ],
+    "z=0.3": [
+      0.7817,
+      0.9141
+    ],
+    "z=0.5": [
+      0.8581,
+      1.4937
+    ],
+    "z=0.7": [
+      0.9166,
+      1.9045
+    ],
+    "z=1": [
+      1.0353,
+      1.9384
+    ]
+  },
+  "Q_avail_ceiling_3phase_kinematic": {
+    "z=0": 0.1761,
+    "z=0.3": 0.4965,
+    "z=0.5": 0.8267,
+    "z=0.7": 1.2861,
+    "z=1": 2.0225
+  },
+  "Q_avail_ceiling_band": {
+    "z=0": [
+      0.0903,
+      0.1859
+    ],
+    "z=0.3": [
+      0.2594,
+      0.5045
+    ],
+    "z=0.5": [
+      0.4466,
+      0.8267
+    ],
+    "z=0.7": [
+      0.7319,
+      1.2861
+    ],
+    "z=1": [
+      1.2891,
+      2.0889
+    ]
+  },
+  "Q_avail_empty_Milne_bound": {
+    "z=0": 0.1975,
+    "z=0.3": 0.3869,
+    "z=0.5": 0.5682,
+    "z=0.7": 0.8084,
+    "z=1": 1.3029
+  },
+  "Q_avail_physical": {
+    "z=0": 0.0494,
+    "z=0.3": 0.0967,
+    "z=0.5": 0.142,
+    "z=0.7": 0.2021,
+    "z=1": 0.3257
+  },
+  "Q_avail_physical_note": "depth-capped at lensing delta_m=-0.5 (kappa=0.25); band delta_m in [-0.3,-0.8].  ~4x below the empty-Milne bound and ~5-6x below the (partly super-physical) kinematic ceiling.",
+  "physicality_strike_A1": {
+    "statement": "The committed kinematic requirement demands a void-wall Hubble contrast (H_v-H_w)/Hbar0 = 0.5156 at z=0, which EXCEEDS the empty-void (Milne) ceiling 0.5*H_w/Hbar0 = 0.3788 by x1.36 -- unattainable by ANY physical void, empty or not.  Lensing-calibrated depths delta_m~-0.3..-0.5 cap the contrast at 0.5|delta_m|*H_w/Hbar0 = 0.1136..0.1894, a factor 2.7..4.5 below the requirement.",
+    "required_HvHw_over_Hbar0_z0": 0.5156,
+    "empty_Milne_max_HvHw_over_Hbar0_z0": 0.3788,
+    "required_over_empty_ceiling": 1.361,
+    "physical_max_HvHw_over_Hbar0_z0": {
+      "dm=-0.3": 0.1136,
+      "dm=-0.5": 0.1894,
+      "dm=-0.8": 0.303
+    },
+    "required_over_physical_dm-0.5": 2.723,
+    "per_phase_measured_deep_vs_Milne": [
+      {
+        "z": 0.0,
+        "deep_(H_d-H_w)_over_H_w": 0.4402,
+        "shallow_(H_s-H_w)_over_H_w": -0.1044,
+        "empty_Milne_ceiling_over_H_w": 0.5,
+        "deep_exceeds_Milne": false
+      },
+      {
+        "z": 0.3,
+        "deep_(H_d-H_w)_over_H_w": 0.6029,
+        "shallow_(H_s-H_w)_over_H_w": -0.1083,
+        "empty_Milne_ceiling_over_H_w": 0.5,
+        "deep_exceeds_Milne": true
+      },
+      {
+        "z": 0.5,
+        "deep_(H_d-H_w)_over_H_w": 0.7157,
+        "shallow_(H_s-H_w)_over_H_w": -0.1005,
+        "empty_Milne_ceiling_over_H_w": 0.5,
+        "deep_exceeds_Milne": true
+      },
+      {
+        "z": 0.7,
+        "deep_(H_d-H_w)_over_H_w": 0.846,
+        "shallow_(H_s-H_w)_over_H_w": -0.0882,
+        "empty_Milne_ceiling_over_H_w": 0.5,
+        "deep_exceeds_Milne": true
+      },
+      {
+        "z": 1.0,
+        "deep_(H_d-H_w)_over_H_w": 1.0261,
+        "shallow_(H_s-H_w)_over_H_w": -0.061,
+        "empty_Milne_ceiling_over_H_w": 0.5,
+        "deep_exceeds_Milne": true
+      }
+    ],
+    "measured_deep_exceeds_Milne_for_z_ge": 0.3
+  },
+  "mao_edge_deep_growth_crosscheck": {
+    "source": "telescope_fvobs.json EDGE_fixed_density_Mao (delta_min<-0.5 ZOBOV, Reff<=100)",
+    "caveat": "Mao decline conflates real growth with LOWZ->CMASS tracer/sampling change (overstates the decline) -> permissive edge only, not primary.",
+    "implied_deep_contrast": [
+      {
+        "z": 0.3,
+        "f_deep_Mao": 0.3112,
+        "(H_d-Hbar)_over_Hbar0": 1.3812,
+        "over_H_w": 1.3181
+      },
+      {
+        "z": 0.5,
+        "f_deep_Mao": 0.1948,
+        "(H_d-Hbar)_over_Hbar0": 1.432,
+        "over_H_w": 1.1342
+      }
+    ],
+    "note": "the direct deep-void fractions decline even steeper than the excursion-set shape model, so they imply an even LARGER (more super-Milne) deep-phase contrast -- strengthens the physicality strike, does not relieve it."
+  },
+  "phases": {
+    "deep_d": "delta_m < -0.5 (primary; -0.3 sensitivity), lognormal excursion set",
+    "shallow_s": "below-mean minus deep",
+    "walls_w": "1 - below-mean",
+    "below_mean_definition": "P(delta_m<0)=Phi(sigma/2), bias-INDEPENDENT (telescope Rs=4)",
+    "f_i_at_report_z": {
+      "z=0": {
+        "f_deep": 0.2821,
+        "f_shallow": 0.3611,
+        "f_walls": 0.3567,
+        "f_below_mean": 0.6433
+      },
+      "z=0.3": {
+        "f_deep": 0.2138,
+        "f_shallow": 0.4092,
+        "f_walls": 0.3771,
+        "f_below_mean": 0.6229
+      },
+      "z=0.5": {
+        "f_deep": 0.1723,
+        "f_shallow": 0.4388,
+        "f_walls": 0.3888,
+        "f_below_mean": 0.6112
+      },
+      "z=0.7": {
+        "f_deep": 0.1358,
+        "f_shallow": 0.4651,
+        "f_walls": 0.3991,
+        "f_below_mean": 0.6009
+      },
+      "z=1": {
+        "f_deep": 0.0913,
+        "f_shallow": 0.4968,
+        "f_walls": 0.4118,
+        "f_below_mean": 0.5882
+      }
+    }
+  },
+  "caveats": [
+    "Stage 0 is an ORDER-OF-MAGNITUDE go/no-go, NOT a verdict (spec sec 2).",
+    "Both sides reading-dependent: Q_req is the kinematic-forced requirement; the DYNAMICAL requirement differs because Q back-reacts on Hbar via the Hamiltonian constraint.",
+    "GATE=GO is on the CEILING (kinematic identity / empty-void budget); the PHYSICAL (lensing-capped) budget is 4-8x below Q_req and falls below Q_req/3 at every z.",
+    "The 3-phase kinematic ceiling is itself PARTLY SUPER-PHYSICAL: the measured deep phase's implied (H_d-H_w) exceeds the empty-Milne 0.5*H_w ceiling for z>=0.3 (physicality strike).",
+    "The committed requirement's (H_v-H_w)/Hbar0=0.516 at z=0 already exceeds the empty-Milne ceiling (x1.36) -- an independent physicality strike, contrast-side, population-free.",
+    "z>0 below-mean uses the telescope survey-derived / growth-model curve (validated LCDM growth, reduced chi2~1); the deep-phase z-evolution is the excursion-set model, cross-checked (permissively) by the Mao EDGE direct fractions.",
+    "dz/dtau reconstructed from the committed background reproduces the published Q_req at the clean fv-anchor nodes to ~5-15%% (Stage-0 foliation systematic); ratio uses committed Q_req."
+  ],
+  "provenance": {
+    "Q_req_source": "free-history-timescape/probes_out/modelV_probeR.json :: derived_backreaction_V",
+    "below_mean_source": "free-history-timescape/probes_out/telescope_fvobs.json :: PRIMARY_below_mean_Rs4 (bias-independent) + measured_growth (BOSS CIC, reduced chi2~1)",
+    "threshold_family_source": "free-history-timescape/probes_out/phaseD_fvobs.json :: z0_anchor.family, shape_model",
+    "deep_edge_source": "telescope_fvobs.json :: EDGE_fixed_density_Mao (delta_min<-0.5)",
+    "tau_of_z": "tau=2/(3 H_w), H_w_over_Hbar0 from derived_backreaction_V; PCHIP analytic dz/dtau",
+    "growth": "flat-LCDM Om=0.315 linear growing mode, validated to <1e-3 vs telescope D(z) nodes",
+    "sigma0": 0.7344797420042518,
+    "tracer_bias_band": {
+      "LOWZ": 1.85,
+      "CMASS": 2.0,
+      "uncert_frac": 0.1,
+      "refs": "Parejko+2013 (LOWZ); White+2011 / Reid+2014 (CMASS)"
+    },
+    "reliable_volume_band_below_mean": [
+      0.6142592614519756,
+      0.6723006374360525
+    ],
+    "Q_req_reconstruction_relerr_clean_nodes": {
+      "0.0": 0.04340726643466988,
+      "0.3": 0.0712457952200892,
+      "0.7": 0.1944943167896452
+    },
+    "identity": "Q = 6 sum_i f_i (H_i-Hbar)^2 = (2/3) sum_i fdot_i^2/f_i ; H_i-Hbar = fdot_i/(3 f_i)"
+  }
+}

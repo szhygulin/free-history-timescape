@@ -1,0 +1,155 @@
+{
+  "probe": "verify_wpn_tension_table",
+  "purpose": "Spot-check / trace-to-source verification of WP-N (probes_out/wpn_tension_table.json). For each of the 9 rows, the cited free-history numbers were opened in the named source artifact at the cited JSON field path and confirmed to appear verbatim; each verdict word was checked against the artifact's own verdict field.",
+  "method": "READ-ONLY. Each row's key_numbers path was resolved in the source artifact and the value compared exactly (floats compared at full committed precision; rounded prose values checked as consistent roundings). No new physics, no recomputation of any model quantity.",
+  "verdict": "SURVIVES",
+  "numbers_trace_to_artifacts": true,
+  "rows_checked": 9,
+  "rows_passing": 9,
+  "rows_failing": 0,
+  "per_row": [
+    {
+      "row": 1,
+      "tension": "Hubble (SH0ES vs early)",
+      "artifact": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/bpred_survey_averaged.json",
+      "trace": "PASS",
+      "checks": [
+        {"cited": "b_req 0.08416615584147968", "field": "b_req.b_req", "found": 0.08416615584147968, "match": true},
+        {"cited": "b_pred_survey_CEILING 0.02400685869293041", "field": "b_pred_survey.b_pred_survey_central", "found": 0.02400685869293041, "match": true},
+        {"cited": "b_pred_PHYSICAL 0.01584618444482631", "field": "b_pred_survey_PHYSICAL.b_pred_physical_central", "found": 0.01584618444482631, "match": true},
+        {"cited": "nsigma_meas_ceiling 4.162970173637018", "field": "nsigma_measurement_only (top-level)", "found": 4.162970173637018, "match": true},
+        {"cited": "nsigma_meas_physical 4.727681616454204", "field": "b_pred_survey_PHYSICAL.nsigma_physical.central_field_mean.nsigma_measurement_only", "found": 4.727681616454204, "match": true},
+        {"cited": "verdict FAILS", "field": "verdict.verdict_robust", "found": "FAILS", "match": true}
+      ],
+      "verdict_check": "OK -- verdict.verdict_robust='FAILS'; prose 'under-predicts across the entire admissible band' matches verdict.under_prediction.b_pred_below_b_req_across_full_band=true"
+    },
+    {
+      "row": 2,
+      "tension": "Required-vs-observed void shape (floor)",
+      "artifact": "/home/szhygulin/dev/science/free-history-timescape/probes_out/R2_final.json",
+      "trace": "PASS",
+      "checks": [
+        {"cited": "verdict SHAPE-UNAVAILABLE", "field": "verdict", "found": "SHAPE-UNAVAILABLE", "match": true},
+        {"cited": "obs decline x1.16", "field": "two_part_test.part2_shape_decline.obs_total_decline_x", "found": 1.1589, "match": true, "note": "1.1589 rounds to x1.16"},
+        {"cited": "required x3.31", "field": "two_part_test.part2_shape_decline.req_total_decline_x", "found": 3.3066274084405185, "match": true, "note": "3.3066 rounds to x3.31"},
+        {"cited": "z07_gap_absolute 0.20516074620404123", "field": "z07_gap.gap_absolute", "found": 0.20516074620404123, "match": true},
+        {"cited": "floor_impossible true", "field": "z07_gap.floor_theorem.impossible", "found": true, "match": true}
+      ],
+      "verdict_check": "OK -- floor theorem 'below-mean Phi(sigma/2)>=0.5' matches z07_gap.floor_theorem.statement"
+    },
+    {
+      "row": 3,
+      "tension": "WP-B dynamical three-phase",
+      "artifact": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/threephase_forced_geometry.json",
+      "trace": "PASS",
+      "checks": [
+        {"cited": "track_verdict TRACKS", "field": "track_verdict_from_step12", "found": "TRACKS", "match": true},
+        {"cited": "k=0 geometry misses BIC bar by 4953", "field": "STEP3_k0_forced_prediction.margin_or_miss", "found": 4953.005854302423, "match": true},
+        {"cited": "T1 ceiling misses by 107", "field": "STEP4_T1_diagnostic_ceiling.margin_or_miss", "found": 106.9241847902183, "match": true, "note": "106.92 rounds to 107"},
+        {"cited": "dBIC +136 vs LCDM", "field": "k4_sensitivity_accounting.T1_deltaBIC_vs_LCDM", "found": 136.42019222761886, "match": true, "note": "136.42 rounds to +136"},
+        {"cited": "clears_bar_k0 false", "field": "STEP3_k0_forced_prediction.clears_bar", "found": false, "match": true},
+        {"cited": "clears_bar_T1 false", "field": "STEP4_T1_diagnostic_ceiling.clears_bar", "found": false, "match": true}
+      ],
+      "verdict_check": "OK -- 'collapses to two-phase empty-void tracker' matches degeneracy_check.finding; 4953 miss internally consistent (joint_chi2 6360.18 - bar 1407.18). 'CLOSED' is the aggregation label for clears_bar=false at both k=0 and T1 ceiling; consistent, not asserted in source verbatim."
+    },
+    {
+      "row": 4,
+      "tension": "Buchert integrability",
+      "artifact": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/wpb_integrability.json",
+      "trace": "PASS",
+      "checks": [
+        {"cited": "tracker ~2e-06", "field": "histories.tracker.fractional_drift", "found": 2.215789722370687e-06, "match": true},
+        {"cited": "alpha^2 drifts ~152% (forced, interior)", "field": "histories.forced_required.fractional_drift_interior_0.1_1.8", "found": 1.5159222941362485, "match": true, "note": "1.5159 = 151.6% ~ 152%"},
+        {"cited": "~5x (observed, span)", "field": "histories.observed_below_mean.fractional_drift", "found": 5.413206521016891, "match": true, "note": "5.41 ~ 5x"},
+        {"cited": "verdict summary", "field": "verdict.summary", "found": "THEORY-LEVEL CLOSE-OUT ... no consistent single-phase two-scale (constant-alpha^2) Buchert model tracks either the REQUIRED or the OBSERVED history; 6+ orders of magnitude contrast", "match": true}
+      ],
+      "verdict_check": "OK -- '6+ orders of magnitude contrast' matches (5.41/2.2e-6 ~ 2.4e6). 'NOT a single-phase GR solution' is a faithful restatement of verdict.summary."
+    },
+    {
+      "row": 5,
+      "tension": "Void-wall contrast budget (two-sided)",
+      "artifact": "/home/szhygulin/dev/science/free-history-timescape/probes_out/contrast_budget.json",
+      "trace": "PASS",
+      "checks": [
+        {"cited": "verdict MARGINAL", "field": "verdict", "found": "MARGINAL", "match": true},
+        {"cited": "field-mean two-sided 0.375-0.401", "field": "available_field_averaged.band_excess_z0", "found": [0.375, 0.40102], "match": true},
+        {"cited": "required 0.474", "field": "required.central[0]", "found": 0.47409, "match": true},
+        {"cited": "deep-void dm-0.8 band 0.46-0.54", "field": "available_grid[2].two_sided_excess_z0_band", "found": [0.46392, 0.54405], "match": true},
+        {"cited": "best-case measured 0.568", "field": "ceilings.best_case_measured.excess_z0", "found": 0.56788, "match": true}
+      ],
+      "verdict_check": "OK -- prose 'deep-void+wall 0.46-0.57 reaches/exceeds it' combines deep-void band lo 0.464 with best_case 0.568; 'neither refuted nor withdrawn' matches verdict_reasoning."
+    },
+    {
+      "row": 6,
+      "tension": "Q-budget (Stage 0)",
+      "artifact": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/q_budget.json",
+      "trace": "PASS",
+      "checks": [
+        {"cited": "GATE=GO", "field": "gate", "found": "GO", "match": true},
+        {"cited": "physical/req ~0.16 at z=0.7", "field": "q_at_nodes.z=0.7.ratio_physical_over_req", "found": 0.1574, "match": true, "note": "0.1574 ~ 0.16"},
+        {"cited": "required EXCEEDS empty-Milne ceiling by x1.36", "field": "physicality_strike_A1.required_over_empty_ceiling", "found": 1.361, "match": true},
+        {"cited": "required_over_physical_dm-0.5 2.723", "field": "physicality_strike_A1.required_over_physical_dm-0.5", "found": 2.723, "match": true},
+        {"cited": "physical budget 4-8x short", "field": "caveats[2] / Q_avail_physical_note", "found": "4-8x below Q_req", "match": true}
+      ],
+      "verdict_check": "OK -- gate='GO' on ceiling; '4-8x short' stated in caveats[2]; x1.36 physicality strike present."
+    },
+    {
+      "row": 7,
+      "tension": "Sound horizon / r_d",
+      "artifact": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/wpc_sound_horizon.json",
+      "trace": "PASS",
+      "checks": [
+        {"cited": "in-model r_d=199.6 Mpc", "field": "r_d_in_model", "found": 199.5612258893033, "match": true},
+        {"cited": "+36% vs 147.09", "field": "external_147p09_comparison.delta_percent", "found": 35.67287095608356, "match": true, "note": "35.67% rounds to +36%"},
+        {"cited": "Hbar0 53.8", "field": "self_consistency.Hbar0_global_with_147", "found": 53.794282522327265, "match": true},
+        {"cited": "->40", "field": "self_consistency.Hbar0_implied_with_inmodel_rd", "found": 39.649992031008274, "match": true, "note": "39.65 rounds to 40"},
+        {"cited": "fixed point 32.4", "field": "self_consistency.Hbar0_self_consistent_fixed_point", "found": 32.36326372127159, "match": true, "note": "prose-only; traces to artifact"},
+        {"cited": "R1_survives false", "field": "self_consistency.R1_survives", "found": false, "match": true}
+      ],
+      "verdict_check": "OK -- 'absolute-H0 reconciliation does NOT survive' matches self_consistency.verdict; 'SH0ES 73' matches the artifact verdict prose."
+    },
+    {
+      "row": 8,
+      "tension": "Growth / S8",
+      "artifact": "/home/szhygulin/dev/science/free-history-timescape-tensions/NOTES_growth.md",
+      "trace": "PASS",
+      "checks": [
+        {"cited": "status UNDEFINED-IN-KINEMATIC-READING", "field": "Thesis + sec 5", "found": "S8 column of the tension table is UNDEFINED-IN-KINEMATIC-READING", "match": true},
+        {"cited": "reason: no delta/no D/no f; gamma~0.55 FLRW fit; Omega_m bare-vs-dressed ambiguous", "field": "sec 1 (three reasons)", "found": "1. No delta, no D, no f; 2. gamma~0.55 is an FLRW fit; 3. Omega_m convention-ambiguous (bare vs dressed)", "match": true},
+        {"cited": "input: sigma_m(z) BOSS DR12 count-in-cells, A=0.4443, fit to FLRW A*D(z)", "field": "sec 3", "found": "Count-in-cells on BOSS DR12; amplitude A=0.4443; fit to FLRW template sigma_m(z)=A*D(z)", "match": true}
+      ],
+      "verdict_check": "OK -- markdown memo (no numeric JSON field), cited textually; all quoted content present. Note memo sec 3 flags source's 'reduced chi2 ~1' as loose (actual reduced chi2 ~0.22), but the table does not quote that figure, so no mis-statement is carried."
+    },
+    {
+      "row": 9,
+      "tension": "b_pred z-profile (P4)",
+      "artifact": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/bpred_survey_averaged.json",
+      "trace": "PASS",
+      "checks": [
+        {"cited": "r_hom_star=140 (139.97)", "field": "r_hom_star.r_hom_star", "found": 139.96790561003817, "match": true},
+        {"cited": "declared band [80,120]", "field": "radial_profile.r_hom_range", "found": [80.0, 120.0], "match": true},
+        {"cited": "outside_declared_range true", "field": "r_hom_star.outside_declared_range", "found": true, "match": true},
+        {"cited": "2M++ homogeneity scale ~137.5", "field": "r_hom_star.twompp_homogeneity_scale", "found": 137.5, "match": true},
+        {"cited": "excluded_by_2Mpp true", "field": "r_hom_star.excluded_by_2Mpp", "found": true, "match": true}
+      ],
+      "verdict_check": "OK -- 'r_hom*=140 OUTSIDE [80,120] and at/beyond 2M++ ~137.5 -- excluded' matches r_hom_star.note."
+    }
+  ],
+  "self_inflicted_tally_check": {
+    "reported": {"YES": 6, "partial": 2, "no_target": 1, "total_rows": 9},
+    "recomputed_from_rows": {"YES": 6, "partial": 2, "no_target": 1, "total_rows": 9},
+    "match": true,
+    "yes_rows": ["void shape", "three-phase geometry", "Buchert integrability", "Q-budget", "sound horizon", "growth/S8"],
+    "partial_rows": ["contrast budget", "b_pred z-profile"],
+    "target_row": ["Hubble"]
+  },
+  "discrepancies": [],
+  "notes": [
+    "All 9 rows: every quoted free-history number resolves verbatim (full committed precision) to the cited JSON field path in the named source artifact; all rounded prose values (x1.16, x3.31, ~152%, ~5x, +36%, ~0.16, x1.36, 199.6) are faithful roundings of the underlying committed values.",
+    "All 8 verdict words trace to their artifact's own verdict/gate field: FAILS (bpred verdict.verdict_robust), SHAPE-UNAVAILABLE (R2_final verdict), TRACKS + clears_bar=false (threephase), THEORY-LEVEL CLOSE-OUT (wpb verdict.summary), MARGINAL (contrast_budget verdict), GO (q_budget gate), R1_survives=false (wpc), UNDEFINED-IN-KINEMATIC-READING (NOTES_growth). No mis-stated verdict found.",
+    "Two source artifacts are correctly located in the paper-2 sibling repo (R2_final.json, contrast_budget.json); the other seven are in the tensions repo, matching the table's 'sources' map.",
+    "Self-inflicted tally recomputed independently from the rows: 6 YES / 2 partial / 1 target = 9, matching the reported tally (the corrected count; an earlier 'five' miscount noted in the build summary is not present in the committed artifact).",
+    "The LCDM-status column entries (e.g. '~5sigma / dchi2~25', 'fits (~2-3sigma)', 'computed from early physics', 'consistent GR') are contextual LCDM-side descriptors, not free-history numbers, and are outside the trace-to-source scope of this verification.",
+    "Row-3 T1_deltaBIC_vs_LCDM: artifact carries both k4_sensitivity_accounting.T1_deltaBIC_vs_LCDM=136.42019222761886 and T1_ceiling_miss_vs_k4_bar=136.42019222761883 (differ in last digit); the table quotes the former (136.42019222761886) -- correct field, exact match."
+  ]
+}

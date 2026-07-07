@@ -1,0 +1,497 @@
+{
+ "probe": "bpred_survey_averaged",
+ "purpose": "Survey-averaged b_pred: the void-scale apparent-H0 MAXIMUM E_max averaged over a radial apparent-H0 profile dH(<r)/Hdress = E_max*phi(r) with the SH0ES calibrator+Hubble-flow survey geometry, its systematic band, and the pre-registered P3 verdict vs b_req.",
+ "reading": "KINEMATIC (forced f_v(z); integrability not enforced).",
+ "gate_a_tracker_window": {
+  "PASS": true,
+  "E_max_tracker_fv0_0p76": 0.17107942973523405,
+  "target_0p76": 0.171,
+  "E_max_tracker_fv0_0p695": 0.21999064447495886,
+  "target_0p695": 0.22,
+  "down_side_wall_floor_0p76": 0.21928038017651053,
+  "target_down": 0.219,
+  "pairing_up_endpoints": {
+   "up_at_0p76": 0.17107942973523405,
+   "up_at_0p695": 0.21999064447495886,
+   "reading": "up-side excess at the two tracker endpoints -> the 17-22% window as an fv0-range [0.76,0.695]"
+  },
+  "pairing_up_down_at_0p76": {
+   "up_at_0p76": 0.17107942973523405,
+   "down_at_0p76": -0.21928038017651053,
+   "reading": "up/down apparent-Hubble variance at a single fv0=0.76 -> +0.171 / -0.219 (the '22% present-epoch variance')"
+  },
+  "km_s_Mpc_check": {
+   "dressed_global_H0": 61.7,
+   "H0_up_side_0p76": 72.25560081466395,
+   "H0_down_side_0p76": 75.22959945689071,
+   "note": "61.7*(1+E_max): up-side->72.3, down-side->75.2 km/s/Mpc; the down-side matches Wiltshire's ~75 km/s/Mpc maximal local value."
+  },
+  "identity": "E_max(fv0) = (3/2)/g_dress(fv0) - 1 = 3(2+fv0)/(4 fv0^2 + fv0 + 4) - 1",
+  "references": [
+   "Wiltshire 2009 arXiv:0909.0749",
+   "review arXiv:0912.5234"
+  ],
+  "note": "Both pairings reported, neither chosen: the historical '17-22%' is EITHER the up-side excess across the tracker fv0 endpoints [0.76->0.171, 0.695->0.220] OR the up/down apparent-Hubble variance at fv0=0.76 [+0.171/-0.219]."
+ },
+ "E_max": {
+  "tracker": {
+   "fv0_0p76": 0.17107942973523405,
+   "fv0_0p695": 0.21999064447495886
+  },
+  "LA": {
+   "E_max": 0.3364976454450088,
+   "gamma_bar0": 1.320065,
+   "Hv_over_Hbar0": 1.273221990771736,
+   "Hdress_over_Hbar0": 1.2575673387650923,
+   "gamma_bar_dot": 0.1781920607260283,
+   "E_dress_void_volume_average": 0.194801805203953,
+   "E_max_via_identity": 0.3364976454450088,
+   "identity_abs_err": 0.0,
+   "formula": "E_max = gamma_bar0*H_v0/Hdress0 - 1 (pure clock conversion, NO gamma_bar_dot subtraction)"
+  },
+  "LB": {
+   "E_max": 0.20837738917989013,
+   "gamma_bar0": 1.3236247572964668,
+   "Hv_over_Hbar0": 1.1983344389865043,
+   "Hdress_over_Hbar0": 1.3126239742370596,
+   "gamma_bar_dot": 0.04140610935253841,
+   "E_dress_void_volume_average": 0.17683285688029907,
+   "E_max_via_identity": 0.20837738917989004,
+   "identity_abs_err": 8.326672684688674e-17,
+   "source": "sibling_artifact:../free-history-timescape/probes_out/modelV_probeR_LB.json"
+  }
+ },
+ "gate_b_small_r_ceiling": {
+  "PASS": true,
+  "phi_at_r0": 1.0,
+  "small_r_limit": 0.3364976454450088,
+  "target_E_max_LA": 0.3365,
+  "E_max_LA": 0.3364976454450088,
+  "identity_crosscheck": {
+   "E_max": 0.3364976454450088,
+   "E_dress_void_plus_gammadot_over_Hdress": 0.3364976454450088,
+   "abs_err": 0.0,
+   "identity": "E_max = E_dress_void + gamma_bar_dot/Hdress"
+  },
+  "reconciliation": "0.19480 = VOLUME-AVERAGE excess E_dress_void = (Hvoid_app-Hdress)/Hdress with Hvoid_app = gamma_bar0*H_v - gamma_bar_dot (subtracts the global dressed-scale-factor term). 0.33650 = VOID-SCALE MAXIMUM E_max = gamma_bar0*H_v0/Hdress0 - 1 (pure wall-observer clock conversion, NO subtraction). They differ by exactly gamma_bar_dot/Hdress = 0.14170. The committed Wave-1b b_pred (bpred_local_excess.json) mislabeled the volume-average 0.19480 as 'the maximum'; the robust-FAILS verdict there is UNCHANGED and STRENGTHENED by the larger true ceiling."
+ },
+ "gate_c_large_r_limit": {
+  "PASS": true,
+  "phi_at_r_hom": 0.0,
+  "phi_beyond_r_hom": 0.0,
+  "large_r_limit": 0.0,
+  "r_hom": 100.0,
+  "note": "dH(<r)/Hdress -> 0 past the homogeneity scale r_hom~100 h^-1 Mpc: the survey averages over the global dressed rate there (no local void bump)."
+ },
+ "gates_summary": {
+  "gate_a": true,
+  "gate_b": true,
+  "gate_c": true,
+  "all_pass": true
+ },
+ "radial_profile": {
+  "form_central": "raised_cosine",
+  "r_void_central": 30.0,
+  "r_hom_central": 100.0,
+  "r_void_range": [
+   20.0,
+   40.0
+  ],
+  "r_hom_range": [
+   80.0,
+   120.0
+  ],
+  "forms_tested": [
+   "raised_cosine",
+   "linear",
+   "smootherstep",
+   "cosine_no_plateau"
+  ],
+  "prescription": "phi(0)=1 (void-interior maximum), plateau to r_void, smooth monotone decline to 0 by r_hom; Wiltshire radial apparent-H0 prescription (cf. Wiltshire, Smale, Mattsson & Watson 2013 arXiv:1201.5371). (r_void,r_hom) & form are DECLARED SYSTEMATICS, not fitted.",
+  "phi_at_check_radii": {
+   "r0": 1.0,
+   "r_void": 1.0,
+   "r50": 0.8117449009293668,
+   "r_hom": 0.0
+  }
+ },
+ "survey_geometry": {
+  "n_calibrators": 77,
+  "n_hubble_flow": 277,
+  "calib_z_range_zCMB": [
+   0.00122,
+   0.01646
+  ],
+  "hf_z_range_zCMB": [
+   0.0222,
+   0.14882
+  ],
+  "calib_r_range_zCMB": [
+   3.6574679876,
+   49.34583858679999
+  ],
+  "hf_r_range_zCMB": [
+   66.553925676,
+   446.1511359956
+  ],
+  "calib_frac_inside_r_hom": 1.0,
+  "hf_frac_inside_r_hom": 0.4151624548736462,
+  "hf_frac_inside_r_void": 0.0,
+  "r_mapping": "r_i = c*z_i/100 [h^-1 Mpc]; zCMB first-order (primary), zHD (P4 systematic)."
+ },
+ "b_pred_survey": {
+  "b_pred_survey_central": 0.02400685869293041,
+  "E_max_used": 0.3364976454450088,
+  "lapse": "LA",
+  "phi_hf_mean": 0.07134331849835682,
+  "phi_calib_mean": 0.9940403452757023,
+  "phi_survey_mean": 0.2720429542663105,
+  "definition": "b_pred_survey = E_max * <phi>_Hubble-flow. The ladder's H0 = cz/d_L over the Hubble-flow SNe traces the LOCAL apparent rate at the HF SNe = Hdress*(1+E_max*phi(r_hf)); M_B is fixed by geometric Cepheid distances (unbiased by the local apparent rate), so the calibrator apparent rate does NOT enter. Fractional bias vs the global dressed rate = E_max*<phi>_HF, the analogue of b_req = Hbar0_anchored/Hbar0_global - 1.",
+  "alternative_differential": {
+   "b_calib_minus_hf": 0.310485376969687,
+   "note": "ALTERNATIVE, NOT primary: E_max*(<phi>_calib - <phi>_HF). Would apply only IF the calibrator anchoring were itself biased by the local apparent rate; it is not (Cepheid distances are geometric). Reported for transparency: because calibrators sit deep in the void (<phi>_calib=0.994) this OVERSHOOTS to 0.31049 -- physically inapplicable, shown only to bracket the definitional choice."
+  },
+  "diagnostic_whole_survey": {
+   "b_all": 0.09154181357051769,
+   "note": "Diagnostic only: E_max*<phi> over calibrators+HF together (no physical basis for co-averaging the two populations)."
+  },
+  "conventions": "LA E_max, raised_cosine phi, r_void=30, r_hom=100 h^-1 Mpc, zCMB."
+ },
+ "b_pred_survey_PHYSICAL": {
+  "role": "LENSING-PHYSICAL sensitivity row (audit sec.3). The CEILING row (E_max=0.33650, b_pred_survey=0.02401) above is UNCHANGED -- the ceiling/physical PAIRING is the point.",
+  "formula": "E_max_physical = gamma_bar0 * h_v_phys / Hdress0 - 1 ; b_pred_physical = E_max_physical * <phi>_HF. h_v_phys = sec.2 spherical-patch void rate H_v/H_bg (paper-2 contrast_budget.json), substituted for the model's DERIVED Hv_over_Hbar0 (=1.27322). gamma_bar0=1.32007, Hdress0=1.25757, <phi>_HF=0.071343 held FIXED from the ceiling row (survey dilution unchanged).",
+  "sec2_source": "sibling_artifact:../free-history-timescape/probes_out/contrast_budget.json",
+  "physical_contrast_used": {
+   "two_sided_contrast_definition": "(H_v-H_w)/<H> at z=0 (paper-2 audit sec.2)",
+   "field_mean_two_sided_z0_band": [
+    0.375,
+    0.40102
+   ],
+   "deep_void_center_m0p8_two_sided_z0": 0.50223,
+   "required_two_sided_z0_central": 0.47409,
+   "empty_void_ceiling_hv": 1.5,
+   "note": "sec.2 two-sided budget: self-consistent field-mean 0.375-0.401 (r200-r100), deep delta_m=-0.8 void x field-effective wall 0.502; required 0.474; strike MARGINAL. The PHYSICAL row caps the void RATE h_v by these measured contents; the model's derived void rate h_v=1.27322 is deeper than the field-mean (h_v~1.153-1.176), so the field-mean cap REDUCES E_max and STRENGTHENS the FAILS."
+  },
+  "void_anchors": {
+   "field_mean_r200_conservative": {
+    "h_v_phys": 1.1527073299823296,
+    "E_max_physical": 0.20999373524391518,
+    "b_pred_physical": 0.014981649936166257
+   },
+   "field_mean_midpoint_PRIMARY": {
+    "h_v_phys": 1.1642515596904586,
+    "E_max_physical": 0.2221116816312838,
+    "b_pred_physical": 0.01584618444482631
+   },
+   "field_mean_r100": {
+    "h_v_phys": 1.1757957893985875,
+    "E_max_physical": 0.23422962801865244,
+    "b_pred_physical": 0.016710718953486362
+   },
+   "deep_void_center_m0p8_generous": {
+    "h_v_phys": 1.3361087210110663,
+    "E_max_physical": 0.40250967437930063,
+    "b_pred_physical": 0.028716375897912337
+   }
+  },
+  "E_max_physical_central": 0.2221116816312838,
+  "E_max_physical_band": [
+   0.20999373524391518,
+   0.40250967437930063
+  ],
+  "E_max_physical_band_note": "[field-mean r200 conservative, deep-void delta_m=-0.8 generous]",
+  "b_pred_physical_central": 0.01584618444482631,
+  "b_pred_physical_band": [
+   0.014981649936166257,
+   0.028716375897912337
+  ],
+  "b_pred_physical_band_note": "[field-mean r200 conservative, deep-void delta_m=-0.8 generous]",
+  "ceiling_reference": {
+   "E_max_ceiling": 0.3364976454450088,
+   "b_pred_survey_ceiling": 0.02400685869293041,
+   "note": "derived/EMPTY-void maximum -- UNCHANGED by this row."
+  },
+  "nsigma_physical": {
+   "sigma_measurement_only": 0.014451051686491075,
+   "sigma_total": 0.03836580865488502,
+   "sigma_note": "ceiling sigma budget reused (measurement-only + total); computed at the larger ceiling E_max so it CONSERVATIVELY over-estimates the physical row's systematics (sigma_phi, sigma_lapse ~ E_max) -> upper-bound sigma -> lower-bound strengthening.",
+   "central_field_mean": {
+    "b_pred_physical": 0.01584618444482631,
+    "diff_vs_b_req": -0.06831997139665337,
+    "nsigma_measurement_only": 4.727681616454204,
+    "verdict_measurement_only": "FAILS",
+    "nsigma_preregistered": 1.7807515022351643,
+    "verdict_preregistered": "PARTIAL"
+   },
+   "field_mean_r200_conservative": {
+    "b_pred_physical": 0.014981649936166257,
+    "diff_vs_b_req": -0.06918450590531343,
+    "nsigma_measurement_only": 4.78750664008679,
+    "verdict_measurement_only": "FAILS",
+    "nsigma_preregistered": 1.8032854859819132,
+    "verdict_preregistered": "PARTIAL"
+   },
+   "field_mean_r100": {
+    "b_pred_physical": 0.016710718953486362,
+    "diff_vs_b_req": -0.06745543688799333,
+    "nsigma_measurement_only": 4.667856592821618,
+    "verdict_measurement_only": "FAILS",
+    "nsigma_preregistered": 1.7582175184884157,
+    "verdict_preregistered": "PARTIAL"
+   },
+   "deep_void_center_m0p8_generous": {
+    "b_pred_physical": 0.028716375897912337,
+    "diff_vs_b_req": -0.05544977994356735,
+    "nsigma_measurement_only": 3.8370757469092798,
+    "verdict_measurement_only": "FAILS",
+    "nsigma_preregistered": 1.4452915730868368,
+    "verdict_preregistered": "PARTIAL"
+   },
+   "ceiling_comparison": {
+    "nsigma_measurement_only_ceiling": 4.162970173637018,
+    "nsigma_preregistered_ceiling": 1.5680445495025253,
+    "note": "ceiling: meas-only nsigma=4.163 (FAILS), pre-reg nsigma=1.568 (PARTIAL)."
+   }
+  },
+  "verdict_physical": {
+   "verdict_measurement_only": "FAILS",
+   "verdict_preregistered": "PARTIAL",
+   "whole_band_measurement_verdict": "FAILS",
+   "deep_void_generous_reaches_b_req": false,
+   "direction_preserving": "FAILS only strengthens",
+   "headline": "LENSING-PHYSICAL row: capping the void rate by sec.2's two-sided contrast gives b_pred_physical central 0.01585 (field-mean, band [0.01498,0.02872] conservative->generous) vs ceiling 0.02401 vs b_req 0.08417. Measurement-only nsigma central=4.73 (FAILS), STRENGTHENED from the ceiling's 4.16; the ENTIRE physical band FAILS on measurement-only sigma (generous deep-void edge 3.84 sigma). The pre-registered nsigma stays PARTIAL (softened only by the wide phi theoretical systematic). Even the GENEROUS deep-void delta_m=-0.8 edge (b_pred 0.02872) UNDER-predicts b_req by 2.9x -- dilution dominates; the falsifier (generous >= b_req) is NOT tripped.",
+   "note": "Ceiling row (E_max=0.33650, b_pred_survey=0.02401) UNCHANGED; this is the lensing-physical sensitivity row that pairs with it."
+  }
+ },
+ "systematic_band": {
+  "phi_shape_band": {
+   "lo": 0.0009294409956442243,
+   "hi": 0.07200974428418158,
+   "half_range": 0.03554015164426868,
+   "note": "DOMINANT systematic: sweep phi form {raised_cosine, linear, smootherstep, cosine_no_plateau} x r_void{20,30,40} x r_hom{80,100,120}, LA E_max, zCMB."
+  },
+  "zHD_vs_zCMB_shift": {
+   "b_zCMB": 0.02400685869293041,
+   "b_zHD": 0.0219609472345414,
+   "abs_shift": 0.0020459114583890083,
+   "note": "P4 systematic: zHD carries LCDM/2M++ peculiar-velocity corrections; zCMB is the first-order primary."
+  },
+  "lapse_LA_LB": {
+   "b_LA": 0.02400685869293041,
+   "b_LB": 0.014866334444116953,
+   "half_range": 0.004570262124406728,
+   "note": "LA/LB lapse-reading spread; V0 EXCLUDED (no-dressing null control)."
+  },
+  "full_envelope": {
+   "lo": 0.0004102835720042392,
+   "hi": 0.07200974428418158
+  }
+ },
+ "b_req": {
+  "b_req": 0.08416615584147968,
+  "Hbar0_anchored": 58.32194048848205,
+  "Hbar0_global": 53.794282522327265,
+  "formula": "Hbar0_anchored / Hbar0_global - 1",
+  "crosscheck_adv_anchored_h0": 0.08416615584138198,
+  "crosscheck_abs_err": 9.769962616701378e-14,
+  "crosscheck_phaseF": 0.08416615584147968
+ },
+ "r_hom_star": {
+  "r_hom_star": 139.96790561003817,
+  "target_phi_hf": 0.2501240557869945,
+  "formula": "<phi>_HF(r_void=30, r_hom_star) = b_req/E_max(LA); monotone root-find over the 277 USED_IN_SH0ES_HF SNe (zCMB, raised_cosine primary).",
+  "by_form": {
+   "raised_cosine": 139.96790561003817,
+   "linear": 135.81230050026815,
+   "smootherstep": 141.08763887766113
+  },
+  "declared_r_hom_range": [
+   80.0,
+   120.0
+  ],
+  "outside_declared_range": true,
+  "twompp_homogeneity_scale": 137.5,
+  "excluded_by_2Mpp": true,
+  "note": "r_hom_star=140.0 h^-1 Mpc is the profile decay scale that would lift b_pred_survey to b_req. It lies OUTSIDE Wiltshire's declared r_hom band [80,120] (the robust exclusion) and at/beyond the 2M++ (Carrick+15) homogeneity scale (~137.5 h^-1 Mpc, where the cumulative overdensity |delta(<r)|<0.02, margin thin): the density field is already homogeneous there, so an apparent-H0 bump persisting to r_hom_star has no source. The admissible r_hom (~100, band [80,120]) keeps the ENTIRE phi band below b_req."
+ },
+ "sigma_components": {
+  "anchored_scale": 0.013699199232349347,
+  "anchored_scale_note": "phaseF free_fixed scale_err_sym / Hbar0_anchored (SH0ES/SN anchoring).",
+  "global_fit": 0.0005268200378202213,
+  "global_fit_method": "sigma(alpha)/alpha from the JOINT SN+BAO+CMB chi2 curvature vs the BAO/CMB scale alpha at the LA best-fit history (SN flat in alpha; parabola about alpha_best; sigma(alpha)=1/sqrt(0.5 d2chi2/dalpha2)); paper-2 harness bao_cmb_chi2. Replaces the prior 0.010 ESTIMATE.",
+  "global_fit_detail": {
+   "alpha_best": 37.938235773747294,
+   "sigma_alpha": 0.019986622805158023,
+   "Hbar0_glob_from_alpha": 53.723020684209914,
+   "phaseF_Hbar0_global": 53.794282522327265,
+   "d2chi2_dalpha2": 5006.695314010916
+  },
+  "global_fit_note": "COMPUTED (was ESTIMATE 0.010): fractional Hbar0 scale error from the joint chi2 curvature vs alpha; subdominant to sigma_phi and sigma_lapse.",
+  "lapse_LA_LB_halfrange": 0.004570262124406728,
+  "lapse_note": "LA/LB lapse-reading spread on b_pred_survey; V0 excluded (no-dressing control).",
+  "phi_shape_halfrange": 0.03554015164426868,
+  "phi_shape_flag": "DOMINANT",
+  "phi_shape_note": "Dominant systematic: the radial-profile form + (r_void, r_hom) band."
+ },
+ "sigma_total": 0.03836580865488502,
+ "sigma_measurement_only": 0.014451051686491075,
+ "diff": {
+  "b_pred_survey_minus_b_req": -0.06015929714854927
+ },
+ "nsigma": 1.5680445495025253,
+ "nsigma_measurement_only": 4.162970173637018,
+ "verdict": {
+  "verdict_preregistered": "PARTIAL",
+  "verdict_robust": "FAILS",
+  "verdict_measurement_sigma_only": "FAILS",
+  "robust": true,
+  "envelope_one_sided": true,
+  "r_hom_star": 139.96790561003817,
+  "r_hom_star_excluded_by_2Mpp": true,
+  "headline": "UNDER-PREDICTS -> FAILS. b_pred_survey (central 0.02401) < b_req (0.08417) at the central value AND across the ENTIRE admissible phi band (max 0.07201 < b_req): the mechanism under-predicts the required survey-averaged local bias for EVERY admissible phi (one-sided). ROBUST statement = measurement-only sigma (0.01445, excluding the theoretical phi band) -> nsigma=4.16 -> FAILS. The pre-registered nsigma=1.57 (PARTIAL) is softened ONLY by the wide phi-shape THEORETICAL systematic (half-range 0.03554) inflating sigma, not by any agreement -- and NO per-corner nsigma is formed by dividing a phi-band edge by sigma_total (that double-counts sigma_phi and is what spuriously printed RESOLVES). Matching b_req would require r_hom_star=140.0 h^-1 Mpc, outside the declared r_hom band [80,120] and at/beyond the 2M++ homogeneity scale (~137.5) -- physically excluded.",
+  "basis": "P3 equality test |b_pred_survey - b_req| = 0.06016. ROBUST (measurement-only) sigma = 0.01445 -> nsigma = 4.163 -> FAILS. Pre-registered (phi-inflated) sigma = 0.03837 -> nsigma = 1.568 -> PARTIAL. b_pred_survey = 0.02401 (LA, raised_cosine, r_void=30, r_hom=100, zCMB); b_req = 0.08417.",
+  "thresholds": "RESOLVES nsigma<=1 ; PARTIAL <=2 ; FAILS >2 (PLAN P3).",
+  "envelope_check": {
+   "b_env_lo": 0.0004102835720042392,
+   "b_env_hi": 0.07200974428418158,
+   "b_req": 0.08416615584147968,
+   "envelope_one_sided": true,
+   "r_hom_star": 139.96790561003817,
+   "r_hom_star_target_phi_hf": 0.2501240557869945,
+   "r_hom_star_by_form": {
+    "raised_cosine": 139.96790561003817,
+    "linear": 135.81230050026815,
+    "smootherstep": 141.08763887766113
+   },
+   "declared_r_hom_range": [
+    80.0,
+    120.0
+   ],
+   "r_hom_star_outside_declared_range": true,
+   "twompp_homogeneity_scale": 137.5,
+   "r_hom_star_excluded_by_2Mpp": true,
+   "note": "ONE-SIDED: the ENTIRE admissible phi band [0.00041, 0.07201] lies below b_req=0.08417, so the mechanism under-predicts for EVERY admissible phi. NO per-corner nsigma is formed from a band-edge / sigma_total ratio -- that double-counts sigma_phi (the phi variation already IS the band edge) and spuriously printed RESOLVES (~0.31 sigma) at the high corner. Robust statement = measurement-only sigma -> FAILS at nsigma=4.16. Matching b_req needs r_hom_star=140.0 h^-1 Mpc, OUTSIDE the declared r_hom band [80,120] and at/beyond the 2M++ homogeneity scale (~137.5)."
+  },
+  "under_prediction": {
+   "b_pred_below_b_req_at_central": true,
+   "b_pred_below_b_req_across_full_band": true,
+   "note": "b_pred_survey UNDER-predicts b_req at the central value AND across the ENTIRE systematic band (max 0.07201 < b_req 0.08417): one-sided under-prediction for every admissible phi. This is a DIRECTIONAL FAILS; the pre-registered nsigma is softened only by the wide phi-shape systematic, not by agreement, and the measurement-only sigma gives FAILS at 4.16 sigma."
+  },
+  "dilution_finding": "The void-scale MAXIMUM E_max(LA)=0.33650 is diluted to b_pred_survey=0.02401 (14.0x) because the ladder's H0 traces the apparent rate at the Hubble-flow SNe: <phi>_HF=0.071 (r~69-450, ~58% past r_hom -> phi->0). The calibrators sit deep in the bump (<phi>_calib=0.994) but only fix M_B via geometric distances, so their enhancement does not enter the bias."
+ },
+ "twompp_crosscheck": {
+  "available": true,
+  "lg_overdensity": 0.2918596514282739,
+  "radii": [
+   2.5,
+   7.5,
+   12.5,
+   17.5,
+   22.5,
+   27.5,
+   32.5,
+   37.5,
+   42.5,
+   47.5,
+   52.5,
+   57.5,
+   62.5,
+   67.5,
+   72.5,
+   77.5,
+   82.5,
+   87.5,
+   92.5,
+   97.5,
+   102.5,
+   107.5,
+   112.5,
+   117.5,
+   122.5,
+   127.5,
+   132.5,
+   137.5,
+   142.5,
+   147.5,
+   152.5,
+   157.5
+  ],
+  "cumulative_delta": [
+   0.33612,
+   0.50315,
+   0.53381,
+   0.36479,
+   0.22217,
+   0.14388,
+   0.07423,
+   0.03694,
+   0.05743,
+   0.10272,
+   0.12833,
+   0.12201,
+   0.09912,
+   0.08118,
+   0.0721,
+   0.07,
+   0.07043,
+   0.07069,
+   0.06953,
+   0.06442,
+   0.05841,
+   0.05251,
+   0.04715,
+   0.04157,
+   0.03504,
+   0.02817,
+   0.02069,
+   0.01627,
+   0.01534,
+   0.01513,
+   0.01554,
+   0.01788
+  ],
+  "shell_delta": [
+   0.33643,
+   0.53049,
+   0.54568,
+   0.23801,
+   0.07289,
+   0.03559,
+   -0.04176,
+   -0.03866,
+   0.10574,
+   0.22555,
+   0.2051,
+   0.10079,
+   0.01475,
+   0.00942,
+   0.03231,
+   0.06027,
+   0.07258,
+   0.07208,
+   0.0629,
+   0.03384,
+   0.02029,
+   0.01327,
+   0.00944,
+   0.00064,
+   -0.01527,
+   -0.02673,
+   -0.04177,
+   -0.02184,
+   0.00694,
+   0.01312,
+   0.01952,
+   0.04117
+  ],
+  "r_homogeneity_est_cum_lt_0p02": 137.5,
+  "note": "Cumulative volume-averaged 2M++ (Carrick+15) overdensity around the LG. |delta(<r)|<0.02 first reached near r_homogeneity_est -- consistent with the adopted r_hom~100 h^-1 Mpc to order-of-magnitude. CROSS-CHECK ONLY; r_void/r_hom are Wiltshire's declared values, not fitted here."
+ },
+ "machinery_status": {
+  "gates_all_pass": true,
+  "window_IS_derivable": true,
+  "supersedes": "The Wiltshire 17-22% window IS DERIVABLE from the two-scale structure via E_max(fv0)=(3/2)/g_dress-1 (gate a) -- this SUPERSEDES the paper-1-issue premise that freshH0 has no window-computing machinery, FOR THE DERIVATION. The prior finding that freshH0's WINDOW=(0.17,0.22) is a HARD-CODED literal remains a provenance issue for that script, but the number itself is now reproduced from first principles.",
+  "prior_bpred_note": "bpred_local_excess.json used the VOLUME-AVERAGE E_dress_void (0.19480 LA) and mislabeled it 'the maximum'. Corrected here: E_max(LA)=0.33650 is the void-scale maximum; its robust-FAILS conclusion is unchanged and strengthened by the larger ceiling.",
+  "survey_averaged_bpred": "COMPUTED (this artifact) -- was OUT_OF_SCOPE in Wave-1b."
+ }
+}

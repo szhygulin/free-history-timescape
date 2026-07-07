@@ -1,0 +1,249 @@
+{
+  "probe": "verify_q_budget -- adversarial independent recompute of WP-B Stage-0 Q-budget",
+  "target": "probes_out/q_budget.json",
+  "method": "independent derivative pipeline: numerical np.gradient of f_i(tau) on a 60k grid with CubicSpline Hw(z); build uses analytic normal-CDF derivative x analytic PCHIP of tau. Q_req re-read RAW from derived_backreaction_V and via build's smoothed curve.",
+  "verdict": "SURVIVES_WITH_CAVEATS",
+  "gate_build": "GO",
+  "gate_recomputed": {
+    "raw_published_Qreq": "GO",
+    "build_smoothed_Qreq": "GO"
+  },
+  "gate_agrees": true,
+  "gate_evaluation": {
+    "raw_published": {
+      "per_z": [
+        {
+          "z": 0.3,
+          "Q_avail_ceiling": 0.4972,
+          "Q_req_over3": 0.2785,
+          "clears": true
+        },
+        {
+          "z": 0.5,
+          "Q_avail_ceiling": 0.8273,
+          "Q_req_over3": 0.5187,
+          "clears": true
+        },
+        {
+          "z": 0.7,
+          "Q_avail_ceiling": 1.2219,
+          "Q_req_over3": 0.4281,
+          "clears": true
+        },
+        {
+          "z": 1.0,
+          "Q_avail_ceiling": 2.0009,
+          "Q_req_over3": 0.5972,
+          "clears": true
+        }
+      ],
+      "NO-GO_all_fail": false,
+      "gate": "GO"
+    },
+    "build_smoothed": {
+      "per_z": [
+        {
+          "z": 0.3,
+          "Q_avail_ceiling": 0.4972,
+          "Q_req_over3": 0.2785,
+          "clears": true
+        },
+        {
+          "z": 0.5,
+          "Q_avail_ceiling": 0.8273,
+          "Q_req_over3": 0.3693,
+          "clears": true
+        },
+        {
+          "z": 0.7,
+          "Q_avail_ceiling": 1.2219,
+          "Q_req_over3": 0.4281,
+          "clears": true
+        },
+        {
+          "z": 1.0,
+          "Q_avail_ceiling": 2.0009,
+          "Q_req_over3": 0.4484,
+          "clears": true
+        }
+      ],
+      "NO-GO_all_fail": false,
+      "gate": "GO"
+    }
+  },
+  "empty_Milne_clears_rawQreq3": {
+    "0.3": true,
+    "0.5": true,
+    "0.7": true,
+    "1.0": true
+  },
+  "physical_below_rawQreq3": {
+    "0.0": true,
+    "0.3": true,
+    "0.5": true,
+    "0.7": true,
+    "1.0": true
+  },
+  "per_node": {
+    "z=0": {
+      "mine": {
+        "f_deep": 0.2821,
+        "f_below": 0.6433,
+        "f_walls": 0.3567,
+        "Q_avail_ceiling_recompute": 0.1704,
+        "Q_avail_empty_Milne": 0.1975,
+        "Q_avail_physical_dm-0.5": 0.0494,
+        "Q_req_raw_published": 0.3675,
+        "Q_req_build_smoothed": 0.3675
+      },
+      "build": {
+        "Q_avail_ceiling_3phase_kinematic": 0.1761,
+        "Q_avail_empty_Milne_bound": 0.1975,
+        "Q_avail_physical_dm-0.5": 0.0494,
+        "Q_req_central": 0.3675
+      }
+    },
+    "z=0.3": {
+      "mine": {
+        "f_deep": 0.2138,
+        "f_below": 0.6229,
+        "f_walls": 0.3771,
+        "Q_avail_ceiling_recompute": 0.4972,
+        "Q_avail_empty_Milne": 0.3869,
+        "Q_avail_physical_dm-0.5": 0.0967,
+        "Q_req_raw_published": 0.8356,
+        "Q_req_build_smoothed": 0.8356
+      },
+      "build": {
+        "Q_avail_ceiling_3phase_kinematic": 0.4965,
+        "Q_avail_empty_Milne_bound": 0.3869,
+        "Q_avail_physical_dm-0.5": 0.0967,
+        "Q_req_central": 0.8356
+      }
+    },
+    "z=0.5": {
+      "mine": {
+        "f_deep": 0.1723,
+        "f_below": 0.6112,
+        "f_walls": 0.3888,
+        "Q_avail_ceiling_recompute": 0.8273,
+        "Q_avail_empty_Milne": 0.5682,
+        "Q_avail_physical_dm-0.5": 0.142,
+        "Q_req_raw_published": 1.5561,
+        "Q_req_build_smoothed": 1.1079
+      },
+      "build": {
+        "Q_avail_ceiling_3phase_kinematic": 0.8267,
+        "Q_avail_empty_Milne_bound": 0.5682,
+        "Q_avail_physical_dm-0.5": 0.142,
+        "Q_req_central": 1.1079
+      }
+    },
+    "z=0.7": {
+      "mine": {
+        "f_deep": 0.1358,
+        "f_below": 0.6009,
+        "f_walls": 0.3991,
+        "Q_avail_ceiling_recompute": 1.2219,
+        "Q_avail_empty_Milne": 0.8084,
+        "Q_avail_physical_dm-0.5": 0.2021,
+        "Q_req_raw_published": 1.2842,
+        "Q_req_build_smoothed": 1.2842
+      },
+      "build": {
+        "Q_avail_ceiling_3phase_kinematic": 1.2861,
+        "Q_avail_empty_Milne_bound": 0.8084,
+        "Q_avail_physical_dm-0.5": 0.2021,
+        "Q_req_central": 1.2842
+      }
+    },
+    "z=1": {
+      "mine": {
+        "f_deep": 0.0913,
+        "f_below": 0.5882,
+        "f_walls": 0.4118,
+        "Q_avail_ceiling_recompute": 2.0009,
+        "Q_avail_empty_Milne": 1.3029,
+        "Q_avail_physical_dm-0.5": 0.3257,
+        "Q_req_raw_published": 1.7916,
+        "Q_req_build_smoothed": 1.3451
+      },
+      "build": {
+        "Q_avail_ceiling_3phase_kinematic": 2.0225,
+        "Q_avail_empty_Milne_bound": 1.3029,
+        "Q_avail_physical_dm-0.5": 0.3257,
+        "Q_req_central": 1.3451
+      }
+    }
+  },
+  "A1_physicality_strike": {
+    "required_HvHw_over_Hbar0_z0": 0.5156,
+    "empty_Milne_ceiling_z0": 0.3788,
+    "required_over_empty": 1.3613,
+    "strike_fires": true,
+    "required_over_physical_dm-0.5": 2.723
+  },
+  "deep_phase_super_Milne": {
+    "z=0": {
+      "(H_d-H_w)/H_w": 0.4331,
+      "super_Milne": false
+    },
+    "z=0.3": {
+      "(H_d-H_w)/H_w": 0.6033,
+      "super_Milne": true
+    },
+    "z=0.5": {
+      "(H_d-H_w)/H_w": 0.716,
+      "super_Milne": true
+    },
+    "z=0.7": {
+      "(H_d-H_w)/H_w": 0.8246,
+      "super_Milne": true
+    },
+    "z=1": {
+      "(H_d-H_w)/H_w": 1.0206,
+      "super_Milne": true
+    }
+  },
+  "Qreq_foliation_reconstruction": {
+    "z=0": {
+      "Q_rec": 0.3711,
+      "Q_pub": 0.3675,
+      "relerr": 0.0099
+    },
+    "z=0.3": {
+      "Q_rec": 0.8965,
+      "Q_pub": 0.8356,
+      "relerr": 0.0728
+    },
+    "z=0.7": {
+      "Q_rec": 1.4574,
+      "Q_pub": 1.2842,
+      "relerr": 0.1349
+    }
+  },
+  "Hbar_closure_max_abs_sum_fdot": 6.912159733474255e-11,
+  "checks": [
+    "ceiling z=0.0: mine=0.1704 build=0.1761 relerr=0.032",
+    "empty-Milne z=0.0: mine=0.1975 build=0.1975 relerr=0.0000",
+    "ceiling z=0.3: mine=0.4972 build=0.4965 relerr=0.001",
+    "empty-Milne z=0.3: mine=0.3869 build=0.3869 relerr=0.0000",
+    "ceiling z=0.5: mine=0.8273 build=0.8267 relerr=0.001",
+    "empty-Milne z=0.5: mine=0.5682 build=0.5682 relerr=0.0000",
+    "ceiling z=0.7: mine=1.2219 build=1.2861 relerr=0.050",
+    "empty-Milne z=0.7: mine=0.8084 build=0.8084 relerr=0.0000",
+    "ceiling z=1.0: mine=2.0009 build=2.0225 relerr=0.011",
+    "empty-Milne z=1.0: mine=1.3029 build=1.3029 relerr=0.0000",
+    "gate(raw_published): every gate-node ceiling clears Q_req/3 -> GO (nogo_all_fail=False)",
+    "gate(build_smoothed): every gate-node ceiling clears Q_req/3 -> GO (nogo_all_fail=False)",
+    "empty-Milne clears raw Q_req/3 at all gate z: True {0.3: True, 0.5: True, 0.7: True, 1.0: True}",
+    "physical (dm=-0.5) below raw Q_req/3 at every z: True {0.0: True, 0.3: True, 0.5: True, 0.7: True, 1.0: True}",
+    "A1 strike: required (Hv-Hw)/Hbar0(z=0)=0.5156 EXCEEDS empty-Milne 0.3788 (x1.361) -> even an empty void cannot source it",
+    "deep-phase implied (H_d-H_w)/H_w > 0.5 (super-Milne) for z>=0.3 -- confirms the 3-phase ceiling is partly super-physical",
+    "Hbar-closure: max|sum_i fdot_i| = 6.91e-11 (~0) -> partition/identity self-consistent"
+  ],
+  "discrepancies": [
+    "Q_req z=0.5: build reports smoothed 1.1079 vs RAW published 1.5561 (dep 28.80%) -- build smooths PCHIP jitter at interleaved nodes",
+    "Q_req z=1.0: build reports smoothed 1.3451 vs RAW published 1.7916 (dep 24.92%) -- build smooths PCHIP jitter at interleaved nodes"
+  ]
+}

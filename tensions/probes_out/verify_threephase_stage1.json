@@ -1,0 +1,128 @@
+{
+  "probe": "ADVERSARIAL verify of WP-B Stage-1 Phase B (threephase_dynamics + threephase_forced_geometry)",
+  "spec": "PLAN_WPB_threephase.md sec 4(ii): from-scratch harness recompute, >=2 constant sets",
+  "verdict": "SURVIVES",
+  "track_agrees": true,
+  "bar_agrees": true,
+  "STEP0_measured_centrals": {
+    "max_abs_diff_vs_JSON": 2.2754187423146277e-11,
+    "reproduced": true,
+    "note": "growth D(z) + lognormal excursion-set f(delta<th) recomputed independently; matches q_budget authoritative population"
+  },
+  "STEP1_track": {
+    "claimed_best": {
+      "p_[fs0,fd0,rs,rd]": [
+        0.38058387450914133,
+        0.2737060794771459,
+        1.2093782396497507e-07,
+        1.0
+      ],
+      "max_resid_halfwidths_primary": 0.2474534751783437,
+      "max_resid_bandwidths_primary": 0.12372673758917185,
+      "max_resid_halfwidths_incl_z1": 0.8577717552548649,
+      "per_node_shallow_hw": [
+        0.18615423643505022,
+        0.09242659265201116,
+        0.043103567184772276,
+        0.20430741481325532,
+        0.4485740623477026
+      ],
+      "per_node_deep_hw": [
+        0.1562867282426104,
+        0.2474534751783437,
+        0.06545318510092155,
+        0.24745346142814295,
+        0.8577717552548649
+      ],
+      "TRACKS": true
+    },
+    "independent_DE_fit": {
+      "p": [
+        0.3784667318327597,
+        0.2736349521427419,
+        0.0011733681694211543,
+        0.9999881635436301
+      ],
+      "max_resid_halfwidths_primary": 0.2478127480413684,
+      "TRACKS": true,
+      "degenerate_alpha_s2_to_0": true,
+      "alpha_s2_over_ceiling": 0.0011733681694211543
+    },
+    "genuine_differentiated_set": {
+      "p": [
+        0.36,
+        0.28,
+        0.5420799999999999,
+        0.9292799999999999
+      ],
+      "max_resid_halfwidths_primary": 1.533854754492343,
+      "TRACKS": false,
+      "df_shallow_z0_to_z1": -0.02865875276878488,
+      "measured_df_shallow_z0_to_z1": 0.13568660848550662
+    },
+    "verdict_track": "TRACKS",
+    "JSON_track_verdict": "TRACKS"
+  },
+  "STEP2_geometry": {
+    "LCDM_DR2_refit": {
+      "Om": 0.3037481689453125,
+      "chi2_LCDM": 1399.8050089450553,
+      "N": 1594,
+      "lnN": 7.374001859350161,
+      "bar": 1407.1790108044054,
+      "JSON_bar": 1407.1790108044054,
+      "JSON_chi2_LCDM": 1399.8050089450553,
+      "match": true
+    },
+    "joint_at_tracked": {
+      "joint_chi2": 6360.1848651068285,
+      "chi2_SN": 1853.7695480436087,
+      "chi2_DR2_BAOCMB": 4506.41531706322,
+      "H0": 52.78075799835421,
+      "JSON_joint_chi2": 6360.1848651068285,
+      "match": true,
+      "clears_bar": false,
+      "miss": 4953.005854302423,
+      "JSON_clears_bar": false
+    }
+  },
+  "STEP3_degeneracy": {
+    "geom_best": 6360.1848651068285,
+    "tracker_fv0_eq_fd0": {
+      "fv0": 0.2737060794771459,
+      "joint_chi2": 6360.203300623223,
+      "H0": 45.21281477144307
+    },
+    "tracker_fv0_eq_fs0_plus_fd0": {
+      "fv0": 0.6542899539862872,
+      "joint_chi2": 1539.322742568329,
+      "H0": 53.42023590582791
+    },
+    "collapse_gap_abschi2": 0.018435516394674778,
+    "collapse_confirmed": true,
+    "twophase_geometry_ceiling": {
+      "fv0_best": 0.6382812499999999,
+      "joint_chi2": 1514.1031080437824,
+      "H0": 52.85839561398103,
+      "misses_bar_by": 106.92409723937703
+    },
+    "shallow_Om_s": 0.5677579101417958,
+    "H_w0_squared": 0.5677580029755919,
+    "flatdust_shallow_eq_walls": true
+  },
+  "coherence_with_stage0_and_phaseA": true,
+  "checks": [
+    "measured centrals reproduced from growth+lognormal: max|diff vs JSON|=2.28e-11 (OK)",
+    "claimed-best per-node residuals reproduced: my max_prim=0.2475 vs JSON 0.2475 (OK)",
+    "independent DE fit: max_prim=0.2478 (TRACKS=True); best p=[np.float64(0.3785), np.float64(0.2736), np.float64(0.0012), np.float64(1.0)]; degenerate(alpha_s2->0,alpha_d2->ceiling)=True",
+    "genuine matter-differentiated set (a_s2=0.70,a_d2=1.20): max_prim=1.534 (TRACKS=False); df_shallow(z0->z1)=-0.0287 (measured rises +0.1357)",
+    "LCDM/DR2 refit: Om=0.3037 chi2_LCDM=1399.8050 (JSON 1399.8050); N=1594 lnN=7.3740 bar=1407.1790 (JSON 1407.1790) (OK)",
+    "joint chi2 @ tracked constants (my pipeline): 6360.185 (SN=1853.770+DR2BAOCMB=4506.415) vs JSON 6360.185 (OK); H0=52.78",
+    "clears_bar: joint 6360.2 vs bar 1407.2 -> False (miss=4953.0); JSON clears_bar=False (AGREE)",
+    "degeneracy: geom(best)=6360.185 == tracker(f_v0=f_d0=0.2737)=6360.203 |gap|=0.018; tracker(f_v0=f_s0+f_d0=0.6543)=1539.323",
+    "two-phase geometry ceiling: best f_v0=0.6383 joint=1514.103 H0=52.86 (still MISSES bar 1407.2 by 106.9)",
+    "coherence: degenerate shallow Om_s=0.5678 == H_w0^2=0.5678 (OK flat-dust=walls); Om_d=0.00e+00 (empty Milne)"
+  ],
+  "discrepancies": [],
+  "runtime_s": 77.86
+}

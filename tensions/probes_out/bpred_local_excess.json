@@ -1,0 +1,247 @@
+{
+ "probe": "bpred_local_excess",
+ "purpose": "b_pred (predicted local Hubble bias, wall observer) from the free-history two-scale structure in its three lapse readings (LA/LB/V0), the recomputed b_req, and the pre-registered P3 equality-test verdict with its sigma sensitivity.",
+ "reading": "KINEMATIC (forced f_v(z); integrability not enforced).",
+ "wiltshire_window": [
+  0.17,
+  0.22
+ ],
+ "tracker_validation": {
+  "fv0=0.695": {
+   "fv0": 0.6950000000000001,
+   "tau0": 0.8983333333333334,
+   "fvp_dtau": 0.23597021410512736,
+   "Hw_over_Hbar0": 0.7421150278293135,
+   "Hv_over_Hbar0": 1.1131811348468508,
+   "Hbar_over_Hbar0": 1.0000059722065018,
+   "Hv_minus_Hw_over_Hbar0": 0.37106610701753734,
+   "gamma_bar": 1.3475000000000001,
+   "gamma_bar_dot": 0.11798510705256368,
+   "Hdress_over_Hbar0": 1.2295229404956975,
+   "Hd0_solver_check": 1.2295240824501534,
+   "Hvoid_app_over_Hbar0": 1.3820264721535678,
+   "E_dress_void_PRIMARY": 0.12403471837327941,
+   "E_bare_void": 0.11317448673894345,
+   "E_contrast_HvHw_over_Hbar": 0.37106389094735526,
+   "E_lapse_boost": 0.34750000000000014
+  },
+  "fv0=0.76": {
+   "fv0": 0.76,
+   "tau0": 0.9199999999999999,
+   "fvp_dtau": 0.198265890023709,
+   "Hw_over_Hbar0": 0.7246376811594204,
+   "Hv_over_Hbar0": 1.0869656965536254,
+   "Hbar_over_Hbar0": 1.0000069728590162,
+   "Hv_minus_Hw_over_Hbar0": 0.36232801539420506,
+   "gamma_bar": 1.38,
+   "gamma_bar_dot": 0.0991329450118545,
+   "Hdress_over_Hbar0": 1.2808766775335876,
+   "Hd0_solver_check": 1.2808776950752128,
+   "Hvoid_app_over_Hbar0": 1.4008797162321485,
+   "E_dress_void_PRIMARY": 0.0936882065255764,
+   "E_bare_void": 0.08695811734791664,
+   "E_contrast_HvHw_over_Hbar": 0.36232548894965266,
+   "E_lapse_boost": 0.3799999999999999
+  },
+  "fv0=0.8": {
+   "fv0": 0.8000000000000002,
+   "tau0": 0.9333333333333335,
+   "fvp_dtau": 0.17143314170116303,
+   "Hw_over_Hbar0": 0.7142857142857142,
+   "Hv_over_Hbar0": 1.071438092829804,
+   "Hbar_over_Hbar0": 1.0000076171209862,
+   "Hv_minus_Hw_over_Hbar0": 0.3571523785440899,
+   "gamma_bar": 1.4000000000000001,
+   "gamma_bar_dot": 0.08571657085058151,
+   "Hdress_over_Hbar0": 1.3142940931187992,
+   "Hd0_solver_check": 1.3142949965767288,
+   "Hvoid_app_over_Hbar0": 1.4142967591111442,
+   "E_dress_void_PRIMARY": 0.07608849991484039,
+   "E_bare_void": 0.07142993161838661,
+   "E_contrast_HvHw_over_Hbar": 0.357149658091934,
+   "E_lapse_boost": 0.40000000000000013
+  },
+  "fv0=0.85": {
+   "fv0": 0.85,
+   "tau0": 0.9500000000000001,
+   "fvp_dtau": 0.13421432813723322,
+   "Hw_over_Hbar0": 0.7017543859649122,
+   "Hv_over_Hbar0": 1.0526415183498357,
+   "Hbar_over_Hbar0": 1.000008448492097,
+   "Hv_minus_Hw_over_Hbar0": 0.3508871323849234,
+   "gamma_bar": 1.425,
+   "gamma_bar_dot": 0.06710716406861661,
+   "Hdress_over_Hbar0": 1.357904875032622,
+   "Hd0_solver_check": 1.3579055999004541,
+   "Hvoid_app_over_Hbar0": 1.4329069995798993,
+   "E_dress_void_PRIMARY": 0.0552337103476969,
+   "E_bare_void": 0.05263262519142066,
+   "E_contrast_HvHw_over_Hbar": 0.3508841679428036,
+   "E_lapse_boost": 0.42500000000000004
+  }
+ },
+ "tracker_validation_primary": {
+  "fv0=0.695": 0.12403471837327941,
+  "fv0=0.76": 0.0936882065255764,
+  "fv0=0.8": 0.07608849991484039,
+  "fv0=0.85": 0.0552337103476969
+ },
+ "tracker_validation_in_window": {
+  "fv0=0.695": false,
+  "fv0=0.76": false,
+  "fv0=0.8": false,
+  "fv0=0.85": false
+ },
+ "free_history_LA": {
+  "fv0": 0.64013,
+  "tau0": 0.8800433333333334,
+  "fvp_dtau": 0.3563841214520566,
+  "Hw_over_Hbar0": 0.7575384545457988,
+  "Hv_over_Hbar0": 1.273221990771736,
+  "Hbar_over_Hbar0": 1.0876429565901078,
+  "Hv_minus_Hw_over_Hbar0": 0.5156835362259371,
+  "gamma_bar": 1.320065,
+  "gamma_bar_dot": 0.1781920607260283,
+  "Hdress_over_Hbar0": 1.2575673387650923,
+  "Hd0_solver_check": 1.2575679214679143,
+  "Hvoid_app_over_Hbar0": 1.5025437265220634,
+  "E_dress_void_PRIMARY": 0.194801805203953,
+  "E_bare_void": 0.17062495836266053,
+  "E_contrast_HvHw_over_Hbar": 0.47412943107972433,
+  "E_lapse_boost": 0.32006500000000004
+ },
+ "free_history_LB": {
+  "fv0": 0.5878612293793102,
+  "tau0": 0.8626204097931035,
+  "fvp_dtau": 0.3092676448241328,
+  "Hw_over_Hbar0": 0.7728389672887109,
+  "Hv_over_Hbar0": 1.1983344389865043,
+  "Hbar_over_Hbar0": 1.022971258376305,
+  "Hv_minus_Hw_over_Hbar0": 0.4254954716977933,
+  "gamma_bar0_LB": 1.3236247572964668,
+  "gamma_bar_dot_LB": 0.04140610935253841,
+  "Hdress_over_Hbar0": 1.3126239742370596,
+  "Hvoid_app_over_Hbar0": 1.5447390216109709,
+  "E_dress_void_PRIMARY": 0.17683285688029907,
+  "E_bare_void": 0.17142532517339892,
+  "E_contrast_HvHw_over_Hbar": 0.4159407883787021,
+  "E_lapse_boost": 0.3236247572964668,
+  "note": "LB two-scale excess at z=0; gamma_bar0 (present lapse, shot) and Hd0 (dressed present rate) taken from the LB solution. E_dress_void_PRIMARY = gamma_bar0*(H_v-Hbar)/Hd0 is the field paper-3 b_pred reads.",
+  "Hd0_solver_check": 1.3126239742370596,
+  "_source": "sibling_artifact:../free-history-timescape/probes_out/modelV_probeR_LB.json",
+  "_fallback_agrees_abs": 0.0
+ },
+ "free_history_V0_nolapse": {
+  "fv0": 0.38292,
+  "tau0": 0.7943066666666666,
+  "fvp_dtau": 0.5744909318137207,
+  "Hw_over_Hbar0": 0.8393063971933594,
+  "Hv_over_Hbar0": 1.6497305991941826,
+  "Hbar_over_Hbar0": 1.1496340326235146,
+  "Hv_minus_Hw_over_Hbar0": 0.8104242020008232,
+  "gamma_bar": 1.0,
+  "gamma_bar_dot": 0.0,
+  "Hdress_over_Hbar0": 1.1496340326235146,
+  "Hd0_solver_check": 1.1496365069924688,
+  "Hvoid_app_over_Hbar0": 1.6497305991941826,
+  "E_dress_void_PRIMARY": 0.4350050123598255,
+  "E_bare_void": 0.4350050123598255,
+  "E_contrast_HvHw_over_Hbar": 0.7049410325400686,
+  "E_lapse_boost": 0.0
+ },
+ "lb_recompute_status": {
+  "converged": false,
+  "Hd0_recomputed": -3815169365.468052,
+  "Hd_finite_fraction": 0.8761292043068102,
+  "note": "paper-3 modelv_solve(lapse='rate_ratio') on the LB free-history nodes: the coupled z<->tau Picard DIVERGES (Hd0 overflows, non-finite entries in Hd). LB is therefore READ from the 1b-A artifact, not recomputed here."
+ },
+ "recompute_checks": {
+  "LA_recomputed": 0.194801805203953,
+  "LA_committed": 0.19480180520559792,
+  "LA_abs_err": 1.6449341888602476e-12,
+  "V0_recomputed": 0.4350050123598255,
+  "V0_committed": 0.4350050123598255,
+  "V0_abs_err": 0.0,
+  "LB_source": "sibling_artifact",
+  "LB_value": 0.17683285688029907
+ },
+ "b_req": {
+  "b_req": 0.08416615584147968,
+  "Hbar0_anchored": 58.32194048848205,
+  "Hbar0_global": 53.794282522327265,
+  "formula": "Hbar0_anchored / Hbar0_global - 1 (same fixed shape -> dressing cancels; a pure ratio of the SH0ES-anchored vs BAO+CMB-anchored bare scales)",
+  "crosscheck_adv_anchored_h0": 0.08416615584138198,
+  "crosscheck_abs_err": 9.769962616701378e-14,
+  "crosscheck_phaseF": 0.08416615584147968
+ },
+ "b_pred": {
+  "b_pred": 0.194801805203953,
+  "reading": "LA (algebraic lapse) two-scale excess at z=0 -- the primary point prediction.",
+  "caveat_BOUND": "KINEMATIC two-scale BOUND: the void-scale apparent-H0 MAXIMUM at z->0 from the smooth volume-average, NOT the survey-averaged local bias the P3 equality test needs. The SH0ES ladder samples mostly ABOVE the void scale, so the true survey-averaged bias is a dilution of this maximum toward b_req; computing that dilution needs the radial apparent-H0 decay profile (out of scope).",
+  "caveat_tracker_window_FAIL": "This BOUND is NOT validated: fed the tracker at f_v0~0.7-0.8 the same construction yields ~9-12%% (decreasing with f_v0), never the cited Wiltshire 17-22%% -> it fails the window validation gate, so it MIS-represents the survey-averaged local bias.",
+  "alt_measures_LA": {
+   "bare_void": 0.17062495836266053,
+   "contrast_HvHw_over_Hbar": 0.47412943107972433,
+   "lapse_boost": 0.32006500000000004
+  },
+  "three_lapse_readings": {
+   "LA": 0.194801805203953,
+   "LB": 0.17683285688029907,
+   "V0_nolapse": 0.4350050123598255
+  }
+ },
+ "sigma_components": {
+  "anchored_scale": 0.013699199232349347,
+  "anchored_scale_note": "phaseF free_fixed scale_err_sym / Hbar0_anchored (SH0ES/SN anchoring).",
+  "global_fit": 0.0005268200378202213,
+  "global_fit_method": "sigma(alpha)/alpha from the JOINT SN+BAO+CMB chi2 curvature vs the BAO/CMB scale alpha at the LA best-fit history (SN flat in alpha; parabola about alpha_best; sigma(alpha)=1/sqrt(0.5 d2chi2/dalpha2)); paper-2 harness bao_cmb_chi2. Replaces the prior 0.010 ESTIMATE.",
+  "global_fit_detail": {
+   "alpha_best": 37.938235773747294,
+   "sigma_alpha": 0.019986622805158023,
+   "Hbar0_glob_from_alpha": 53.723020684209914,
+   "phaseF_Hbar0_global": 53.794282522327265,
+   "d2chi2_dalpha2": 5006.695314010916
+  },
+  "global_fit_note": "COMPUTED (was ESTIMATE 0.010): the Hbar0 SCALE error of the joint SN+BAO+CMB fit. b_req uses the SAME fixed shape in numerator and denominator, so the dressing/shape (g_dress, Hd0, S0) CANCELS in the ratio; the relevant residual uncertainty is this scale error, read from the joint chi2 curvature vs alpha. Subdominant to sigma_lapse.",
+  "lapse_LA_LB_V0": {
+   "half_range": 0.12908607773976322,
+   "std_population": 0.11769703370979895,
+   "std_sample": 0.14414883841407924,
+   "primary_convention": "half_range",
+   "note": "Pre-registered PLAN P3 spread of the three lapse readings LA/LB/V0. Half-range adopted as primary (matches prior committed abs(hi-lo)/2); std reported too. DOMINATED by V0 (LA-V0 gap 0.240 vs LA-LB gap 0.018)."
+  },
+  "lapse_LA_LB_only": {
+   "half_range": 0.00898447416182696,
+   "note": "SENSITIVITY: the genuine algebraic-vs-rate-ratio lapse ambiguity ONLY (V0, the no-lapse control, is arguably not a lapse-reading of the DRESSING mechanism). Small because LA=0.19480 ~ LB=0.17683."
+  }
+ },
+ "sigma_total": {
+  "preregistered_LA_LB_V0_halfrange": 0.1298120220364664,
+  "preregistered_LA_LB_V0_stdpop": 0.11849277337899303,
+  "sensitivity_LA_LB_only_halfrange": 0.016391045571420577
+ },
+ "diff": {
+  "b_pred_minus_b_req": 0.1106356493624733,
+  "note": "|b_pred(LA bound) - b_req| ; b_pred is a BOUND, not the survey-averaged value."
+ },
+ "nsigma": {
+  "preregistered_LA_LB_V0_halfrange": 0.8522758341395673,
+  "preregistered_LA_LB_V0_stdpop": 0.9336911121880056,
+  "sensitivity_LA_LB_only_halfrange": 6.749761562214042
+ },
+ "verdict": {
+  "verdict_preregistered": "RESOLVES_FRAGILE_phenomenological",
+  "verdict_robust_lapse_only": "FAILS",
+  "basis": "P3 equality test |b_pred - b_req| = 0.11064 vs 1sigma = 0.12981 (nsigma = 0.852) under the pre-registered LA/LB/V0 lapse spread (half-range). Std convention gives nsigma = 0.934 -- also RESOLVES.",
+  "reading": "KINEMATIC; b_pred is the LA two-scale BOUND (void-scale maximum).",
+  "verdict_sensitivity": "FRAGILE -- the RESOLVES is an ARTIFACT of an inflated sigma, not a robust prediction:\n  (1) FLIPS TO FAILS at nsigma = 6.75 (> 2sigma) under the LA/LB-only lapse systematic, i.e. as soon as the V0 no-lapse control is excluded. V0 is the no-dressing control, arguably NOT a genuine lapse-reading of the dressing mechanism; including it inflates sigma_lapse ~14x (half-range 0.129 vs LA/LB-only 0.009).\n  (2) sigma_lapse dominates sigma_total (~10x sigma_anch, ~13x sigma_glob) and is itself dominated by the LA-V0 gap (0.240) not the genuine LA-LB gap (0.018).\n  (3) b_pred is a void-scale-MAXIMUM two-scale BOUND that FAILS the tracker window validation (gives ~9-12% on the tracker, not the cited 17-22%), so it OVER-states the survey-averaged local bias. The near-1sigma 'agreement' is not evidence the mechanism predicts b_req.",
+  "what_is_established": "controls reproduce (LCDM anchored 73.53+-1.02, tracker 73.06); b_req=0.08417 recomputed exactly (adv/phaseF cross-checks agree to <1e-9) and is convention-independent; the three lapse readings LA=0.19480, LB=0.17683, V0=0.43501 bracket b_req, i.e. the two-scale expansion variance is AMPLE (mechanism not shown incapable -> NOT a hard FAILS of the mechanism). But the survey-averaged point prediction that would make RESOLVES robust is not computable here (machinery_status)."
+ },
+ "machinery_status": {
+  "tracker_validation_gate_pass": false,
+  "freshH0_window_machinery": "NONE",
+  "finding": "Paper-1's freshH0.py has NO window-COMPUTING machinery: WINDOW=(0.17,0.22) is a HARD-CODED Wiltshire(2009) apparent-Hubble-variance LITERATURE citation, used only as a membership-test target; freshH0 never derives a window from survey geometry or f_v0. The one computable expansion-variance object -- the exact two-scale kinematic decomposition -- does NOT reproduce it (gives ~9-12%% on the tracker, never in [0.17,0.22]). The smooth volume-average carries no void-scale apparent-H0 bump; that bump is a SPATIAL-inhomogeneity effect (radial apparent-H0 profile / observer environment).",
+  "survey_averaged_bpred": "OUT_OF_SCOPE",
+  "out_of_scope_note": "A DECISIVE survey-averaged b_pred -- the point prediction that turns the two-scale bound into a survey-weighted local bias -- requires the radial apparent-H0 / spatial expansion-variance profile and the SH0ES calibrator+Hubble-flow survey geometry. Declared OUT OF SCOPE: PLAN.md sec 8; P4 flow-correction re-derivation (first-order treatment only)."
+ }
+}

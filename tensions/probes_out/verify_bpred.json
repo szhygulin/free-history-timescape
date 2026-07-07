@@ -1,0 +1,188 @@
+{
+ "probe": "verify_bpred",
+ "role": "ADVERSARIAL clean-room independent re-derivation (refute-by-default) of bpred_local_excess.json's b_pred / b_req / sigma / P3 verdict.",
+ "method": "MV2 = paper-2 robust solver (rate_ratio via backward-RK4 + gamma_bar0 shot) drives LA/V0/LB/tracker; own two_scale_z0(). MV3 = paper-3 solver, used only to confirm its rate_ratio diverges on the LB nodes.",
+ "check1_b_req": {
+  "my_b_req": 0.08416615584147968,
+  "committed_b_req": 0.08416615584147968,
+  "abs_err": 0.0,
+  "Hbar0_anchored": 58.32194048848205,
+  "Hbar0_global": 53.794282522327265,
+  "crosscheck_adv_anchored_h0": 0.08416615584138198,
+  "adv_abs_err": 9.769962616701378e-14,
+  "crosscheck_phaseF": 0.08416615584147968,
+  "phaseF_abs_err": 0.0,
+  "crosschecks_agree": true,
+  "verdict": "PASS",
+  "note": "b_req = 58.32194/53.79428 - 1; pure ratio of SH0ES-anchored vs BAO+CMB-anchored bare scales (same fixed shape -> dressing cancels). Convention-independent."
+ },
+ "check2_LA_V0": {
+  "LA_my": 0.194801805203953,
+  "LA_committed": 0.194801805203953,
+  "LA_abs_err": 0.0,
+  "LA_verdict": "PASS",
+  "V0_my": 0.4350050123598255,
+  "V0_committed": 0.4350050123598255,
+  "V0_abs_err": 0.0,
+  "V0_verdict": "PASS",
+  "LA_block": {
+   "fv0": 0.64013,
+   "tau0": 0.8800433333333334,
+   "fvp_dtau": 0.3563841214520566,
+   "Hw_over_Hbar0": 0.7575384545457988,
+   "Hv_over_Hbar0": 1.273221990771736,
+   "Hbar_over_Hbar0": 1.0876429565901078,
+   "Hv_minus_Hw_over_Hbar0": 0.5156835362259371,
+   "gamma_bar0": 1.320065,
+   "gamma_bar_dot": 0.1781920607260283,
+   "Hdress_over_Hbar0": 1.2575673387650923,
+   "Hd0_solver_check": 1.2575679214679143,
+   "Hvoid_app_over_Hbar0": 1.5025437265220634,
+   "E_dress_void": 0.194801805203953,
+   "E_bare_void": 0.17062495836266053
+  },
+  "V0_block": {
+   "fv0": 0.38292,
+   "tau0": 0.7943066666666666,
+   "fvp_dtau": 0.5744909318137207,
+   "Hw_over_Hbar0": 0.8393063971933594,
+   "Hv_over_Hbar0": 1.6497305991941826,
+   "Hbar_over_Hbar0": 1.1496340326235146,
+   "Hv_minus_Hw_over_Hbar0": 0.8104242020008232,
+   "gamma_bar0": 1.0,
+   "gamma_bar_dot": 0.0,
+   "Hdress_over_Hbar0": 1.1496340326235146,
+   "Hd0_solver_check": 1.1496365069924688,
+   "Hvoid_app_over_Hbar0": 1.6497305991941826,
+   "E_dress_void": 0.4350050123598255,
+   "E_bare_void": 0.4350050123598255
+  },
+  "note": "Driven through the paper-2 solver (independent of the paper-3 solver that produced the committed values); algebraic/none paths are shared code so an exact match is expected and is a genuine cross-implementation check."
+ },
+ "check3_LB": {
+  "LB_my": 0.1768450523566336,
+  "LB_committed": 0.17683285688029907,
+  "LB_abs_err": 1.2195476334520006e-05,
+  "LB_sibling_artifact": 0.17683285688029907,
+  "verdict": "PASS",
+  "mv2_rate_ratio_status": {
+   "mv2_converged": true,
+   "gamma_bar0": 1.3236682983641144,
+   "Hd0": 1.3127605204664439,
+   "Hd_finite_fraction": 1.0
+  },
+  "LB_block": {
+   "fv0": 0.58786,
+   "tau0": 0.86262,
+   "fvp_dtau": 0.30931032598287245,
+   "Hw_over_Hbar0": 0.7728393344307651,
+   "Hv_over_Hbar0": 1.1983931481203178,
+   "Hbar_over_Hbar0": 1.0230053993463055,
+   "Hv_minus_Hw_over_Hbar0": 0.42555381368955264,
+   "gamma_bar0": 1.3236682983641144,
+   "gamma_bar_dot": 0.041359295703581545,
+   "Hdress_over_Hbar0": 1.3127605204664439,
+   "Hd0_solver_check": 1.3127605204664439,
+   "Hvoid_app_over_Hbar0": 1.5449157234400537,
+   "E_dress_void": 0.1768450523566336,
+   "E_bare_void": 0.17144361983434697
+  },
+  "note": "THE STRONG CHECK. The committed LB is READ from the sibling artifact because the PAPER-3 rate_ratio solver diverges. Here the ROBUST PAPER-2 rate_ratio solver recomputes it end-to-end from the LB nodes; matching 0.17683 cross-validates both the stored value AND the divergence workaround. atol=5e-4 absorbs the 5-dp node rounding (committed used unrounded v_best, fv0=0.5878612 vs 0.58786 here)."
+ },
+ "check3b_paper3_divergence": {
+  "diverges": true,
+  "Hd0_recomputed": -3815169365.468052,
+  "Hd_finite_fraction": 0.8761292043068102,
+  "committed_Hd0": -3815169365.468052,
+  "committed_converged": false,
+  "verdict": "PASS"
+ },
+ "check4_sigma_verdict": {
+  "b_pred": 0.194801805203953,
+  "b_req": 0.08416615584147968,
+  "diff": 0.1106356493624733,
+  "sig_anchored": 0.013699199232349347,
+  "sig_global_PLACEHOLDER": 0.01,
+  "sig_lapse": {
+   "half_range_LA_LB_V0": 0.12907998000159598,
+   "std_pop_LA_LB_V0": 0.11769385457837275,
+   "half_range_LA_LB_only": 0.0089783764236597
+  },
+  "sigma_total": {
+   "prereg_halfrange": 0.13018951300630946,
+   "prereg_stdpop": 0.11890967776057067,
+   "sensitivity_LA_LB_only": 0.019190604545259362
+  },
+  "nsigma_my": {
+   "prereg_halfrange": 0.8498046179580647,
+   "prereg_stdpop": 0.9304175357807508,
+   "sensitivity_LA_LB_only": 5.765094533710431
+  },
+  "nsigma_committed": {
+   "preregistered_LA_LB_V0_halfrange": 0.8497651563526087,
+   "preregistered_LA_LB_V0_stdpop": 0.9303929154219113,
+   "sensitivity_LA_LB_only_halfrange": 5.764237404506108
+  },
+  "verdict_of": {
+   "prereg_halfrange": "RESOLVES",
+   "prereg_stdpop": "RESOLVES",
+   "sensitivity_LA_LB_only": "FAILS"
+  },
+  "arithmetic_reproduced": "PASS",
+  "adversarial_position_V0_in_sigma": "The half-range sigma_lapse (0.129) is DOMINATED by the LA-V0 gap (0.24), not the genuine algebraic-vs-rate-ratio ambiguity (LA-LB gap 0.018). V0 sets gamma_bar==1, i.e. it DELETES the clock-dressing mechanism entirely -- it is a NULL/no-dressing control, not a second reading of the SAME dressing lapse. Putting the null control inside the systematic that is supposed to quantify lapse-CONVENTION ambiguity inflates sigma ~14x and is NOT defensible as a lapse systematic. The honest lapse-reading systematic is LA/LB-only (half-range 0.009).",
+  "adversarial_position_RESOLVES": "RESOLVES is an ARTIFACT of the V0-inflated sigma. Excluding V0 (LA/LB-only) the SAME b_pred vs b_req gap sits at nsigma=5.77 (FAILS, >2sigma). The verdict FLIPS on the single discretionary choice of whether to fold the no-dressing control into the lapse sigma. A result that flips RESOLVES<->FAILS on that choice is not robust."
+ },
+ "check5_tracker_window": {
+  "wiltshire_window": [
+   0.17,
+   0.22
+  ],
+  "readings": {
+   "fv0=0.695": {
+    "E_dress_void_my": 0.12403471837327941,
+    "committed": 0.12403471837327941,
+    "abs_err": 0.0,
+    "in_wiltshire_window": false
+   },
+   "fv0=0.76": {
+    "E_dress_void_my": 0.0936882065255764,
+    "committed": 0.0936882065255764,
+    "abs_err": 0.0,
+    "in_wiltshire_window": false
+   },
+   "fv0=0.8": {
+    "E_dress_void_my": 0.07608849991484039,
+    "committed": 0.07608849991484039,
+    "abs_err": 0.0,
+    "in_wiltshire_window": false
+   },
+   "fv0=0.85": {
+    "E_dress_void_my": 0.0552337103476969,
+    "committed": 0.0552337103476969,
+    "abs_err": 0.0,
+    "in_wiltshire_window": false
+   }
+  },
+  "any_reading_in_window": false,
+  "reproduces_committed": true,
+  "verdict": "PASS",
+  "adversarial_note": "CONFIRMED: the two-scale bound gives 0.124/0.094/0.076/0.055 on the tracker (fv0=0.695/0.76/0.80/0.85), monotonically BELOW the Wiltshire 17-22% window it is meant to reproduce. So the smooth two-scale kinematic decomposition genuinely FAILS the window validation -- it is NOT the survey-averaged apparent-Hubble bump. b_pred (the LA reading at 0.19480, which DOES fall in [0.17,0.22]) is thus in the window only by coincidence of the fitted LA history, not because the construction reproduces the Wiltshire variance -- it over-states the survey-averaged local bias."
+ },
+ "overall": {
+  "numbers_reproduced": true,
+  "per_check": {
+   "c1_b_req": "PASS",
+   "c2_LA": "PASS",
+   "c2_V0": "PASS",
+   "c3_LB": "PASS",
+   "c3b_paper3_diverges": "PASS",
+   "c4_sigma_arith": "PASS",
+   "c5_tracker_window": "PASS"
+  },
+  "verdict": "The COMPUTATION survives: every load-bearing number reproduces independently (b_req exactly; LA/V0 to machine precision through a second solver; LB end-to-end through the ROBUST paper-2 rate_ratio solver, confirming the paper-3 divergence workaround is legitimate; the tracker-window FAIL is real). The FRAMING is the issue, and the committed artifact handles it HONESTLY -- but fragilely.",
+  "v0_in_sigma_position": "V0 does NOT belong in the lapse sigma. It is the no-dressing NULL control (gamma_bar==1), not a second convention for reading the same dressing lapse. Its inclusion inflates sigma_lapse ~14x and is the sole reason nsigma drops below 1.",
+  "resolves_robust_or_artifact": "ARTIFACT. RESOLVES holds only because V0 inflates the denominator; on the genuine LA/LB lapse ambiguity the gap is 5.76 sigma (FAILS). Not a robust prediction.",
+  "framing_honesty": "HONEST but exploitable. The JSON's verdict.verdict_preregistered field bakes in the bare token 'RESOLVES_phenomenological', which CAN be quoted out of context; the fragility lives in a SEPARATE verdict_sensitivity field rather than in the headline verdict string. That said, verdict_sensitivity, caveat_BOUND, caveat_tracker_window_FAIL, the global_fit ESTIMATE flag, and machinery_status(OUT_OF_SCOPE) are all present, explicit, and self-incriminating -- the artifact does not hide the weakness. Recommendation: the primary verdict field should read RESOLVES_FRAGILE (or INCONCLUSIVE) so a bare 'RESOLVES' cannot be lifted from verdict_preregistered."
+ },
+ "verdict_of_verification": "SURVIVES_WITH_CAVEATS"
+}

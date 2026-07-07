@@ -1,0 +1,292 @@
+{
+  "probe": "WP-B Stage-1 Phase-B STEP 1+2: three-phase structure fit + TRACK verdict",
+  "spec": "PLAN_WPB_threephase.md sec 3 (outcomes 1-2); fit structure curves ONLY",
+  "residual_metric": "half-widths: |f_model - f_central| / (0.5*(band_hi-band_lo)); <=1 => model inside band. 'band-widths' (full) = half-widths/2.",
+  "track_tolerance_halfwidths": 1.0,
+  "measured_curves": {
+    "z": [
+      0.0,
+      0.3,
+      0.5,
+      0.7,
+      1.0
+    ],
+    "D": [
+      1.0,
+      0.852822881578815,
+      0.7689224494509473,
+      0.6965007960244853,
+      0.6067538190723365
+    ],
+    "sigma": [
+      0.7344797420042518,
+      0.6263811300373306,
+      0.5647579622940092,
+      0.51156572496982,
+      0.44564838849234417
+    ],
+    "f_below": [
+      0.643279949444014,
+      0.622932056927923,
+      0.6111735349542708,
+      0.600940746213946,
+      0.588163831462416
+    ],
+    "f_below_lo": [
+      0.5990349900280542,
+      0.5800866307623821,
+      0.569136862936851,
+      0.5596078880227134,
+      0.5477097727349802
+    ],
+    "f_below_hi": [
+      0.7000001702517596,
+      0.6778581335881906,
+      0.6650628220126011,
+      0.6539277728531044,
+      0.6400242732817384
+    ],
+    "f_deep": [
+      0.2821435277360892,
+      0.21377252999715252,
+      0.1723406800743838,
+      0.13584707283315722,
+      0.09134080126898458
+    ],
+    "f_deep_lo": [
+      0.2215208615359882,
+      0.16784037329394985,
+      0.13531076269623163,
+      0.10421075931557516,
+      0.06573412382271535
+    ],
+    "f_deep_hi": [
+      0.32949481881079234,
+      0.2585113594162449,
+      0.2145166327849385,
+      0.1748287248846666,
+      0.12460945845607445
+    ],
+    "f_shallow": [
+      0.3611364217079248,
+      0.40915952693077046,
+      0.43883285487988705,
+      0.4650936733807888,
+      0.49682303019343144
+    ],
+    "f_shallow_lo": [
+      0.2695401712172618,
+      0.32157527134613717,
+      0.35462023015191246,
+      0.38477916313804683,
+      0.42310031427890576
+    ],
+    "f_shallow_hi": [
+      0.47847930871577143,
+      0.5100177602942407,
+      0.5297520593163695,
+      0.5497170135375293,
+      0.574290149459023
+    ]
+  },
+  "measured_curves_sensitivity_z1.3_2.33": {
+    "z": [
+      1.3,
+      2.33
+    ],
+    "D": [
+      0.5353137631453884,
+      0.3772101387393749
+    ],
+    "sigma": [
+      0.39317711464635,
+      0.27705320538268413
+    ],
+    "f_below": [
+      0.5779252370965703,
+      0.5550878768074491
+    ],
+    "f_below_lo": [
+      0.5381753915077298,
+      0.5169087906990386
+    ],
+    "f_below_hi": [
+      0.6288829065946138,
+      0.6040318971634907
+    ],
+    "f_deep": [
+      0.058633325386591245,
+      0.009055785588295557
+    ],
+    "f_deep_lo": [
+      0.0391601970608969,
+      0.004318368532836452
+    ],
+    "f_deep_hi": [
+      0.0856226807393814,
+      0.01796353771736853
+    ],
+    "f_shallow": [
+      0.519291911709979,
+      0.5460320912191535
+    ],
+    "f_shallow_lo": [
+      0.45255271076834835,
+      0.4989452529816701
+    ],
+    "f_shallow_hi": [
+      0.5897227095337169,
+      0.5997135286306543
+    ]
+  },
+  "best_constants": {
+    "f_s0": 0.38058387450914133,
+    "f_d0": 0.2737060794771459,
+    "f_w0": 0.3457100460137128,
+    "f_v0": 0.6542899539862872,
+    "alpha_s2": 1.5449268919177783e-07,
+    "alpha_d2": 1.2774555066950817,
+    "alpha_s2_over_ceiling": 1.2093782396497507e-07,
+    "alpha_d2_over_ceiling": 1.0,
+    "common_bang_ceiling_1_over_tau0^2": 1.2774555066950817,
+    "tau0": 0.8847633179954291,
+    "Om_shallow": 0.5677579101417958,
+    "Om_deep": 0.0,
+    "f_s_at_z100": 0.5238197304415473,
+    "f_d_at_z100": 0.0003593025341919071,
+    "note": "constants equivalently pinned at z~100 or z=0 (deterministic dynamics); fit reports present fractions + z~100 equivalents."
+  },
+  "best_L2_constants": {
+    "f_s0": 0.3828995758110573,
+    "f_d0": 0.27632982192238914,
+    "r_s": 0.02,
+    "r_d": 1.0,
+    "L2_sumsq_halfwidths": 0.24398437610405588
+  },
+  "per_node": [
+    {
+      "z": 0.0,
+      "f_shallow_model": 0.38058387450914133,
+      "f_shallow_meas": 0.3611364217079248,
+      "f_shallow_band": [
+        0.2695401712172618,
+        0.47847930871577143
+      ],
+      "f_shallow_resid_halfwidths": 0.18615423643505022,
+      "f_deep_model": 0.2737060794771459,
+      "f_deep_meas": 0.2821435277360892,
+      "f_deep_band": [
+        0.2215208615359882,
+        0.32949481881079234
+      ],
+      "f_deep_resid_halfwidths": 0.1562867282426104,
+      "in_band": true
+    },
+    {
+      "z": 0.3,
+      "f_shallow_model": 0.4178680755129392,
+      "f_shallow_meas": 0.40915952693077046,
+      "f_shallow_band": [
+        0.32157527134613717,
+        0.5100177602942407
+      ],
+      "f_shallow_resid_halfwidths": 0.09242659265201116,
+      "f_deep_model": 0.20255410469024787,
+      "f_deep_meas": 0.21377252999715252,
+      "f_deep_band": [
+        0.16784037329394985,
+        0.2585113594162449
+      ],
+      "f_deep_resid_halfwidths": 0.2474534751783437,
+      "in_band": true
+    },
+    {
+      "z": 0.5,
+      "f_shallow_model": 0.43505845159759593,
+      "f_shallow_meas": 0.43883285487988705,
+      "f_shallow_band": [
+        0.35462023015191246,
+        0.5297520593163695
+      ],
+      "f_shallow_resid_halfwidths": 0.043103567184772276,
+      "f_deep_model": 0.16974854183638596,
+      "f_deep_meas": 0.1723406800743838,
+      "f_deep_band": [
+        0.13531076269623163,
+        0.2145166327849385
+      ],
+      "f_deep_resid_halfwidths": 0.06545318510092155,
+      "in_band": true
+    },
+    {
+      "z": 0.7,
+      "f_shallow_model": 0.4482446604708019,
+      "f_shallow_meas": 0.4650936733807888,
+      "f_shallow_band": [
+        0.38477916313804683,
+        0.5497170135375293
+      ],
+      "f_shallow_resid_halfwidths": 0.20430741481325532,
+      "f_deep_model": 0.14458440284269977,
+      "f_deep_meas": 0.13584707283315722,
+      "f_deep_band": [
+        0.10421075931557516,
+        0.1748287248846666
+      ],
+      "f_deep_resid_halfwidths": 0.24745346142814295,
+      "in_band": true
+    },
+    {
+      "z": 1.0,
+      "f_shallow_model": 0.46291311091721904,
+      "f_shallow_meas": 0.49682303019343144,
+      "f_shallow_band": [
+        0.42310031427890576,
+        0.574290149459023
+      ],
+      "f_shallow_resid_halfwidths": 0.4485740623477026,
+      "f_deep_model": 0.11659160083382157,
+      "f_deep_meas": 0.09134080126898458,
+      "f_deep_band": [
+        0.06573412382271535,
+        0.12460945845607445
+      ],
+      "f_deep_resid_halfwidths": 0.8577717552548649,
+      "in_band": true
+    }
+  ],
+  "per_node_sensitivity": [
+    {
+      "z": 1.3,
+      "f_shallow_model": 0.4734914158654149,
+      "f_shallow_meas": 0.519291911709979,
+      "f_shallow_resid_halfwidths": 0.6677917366304948,
+      "f_deep_model": 0.09640430181389241,
+      "f_deep_meas": 0.058633325386591245,
+      "f_deep_resid_halfwidths": 1.6258698819749866
+    },
+    {
+      "z": 2.33,
+      "f_shallow_model": 0.49396919296313224,
+      "f_shallow_meas": 0.5460320912191535,
+      "f_shallow_resid_halfwidths": 1.0333192251374224,
+      "f_deep_model": 0.057325164162022255,
+      "f_deep_meas": 0.009055785588295557,
+      "f_deep_resid_halfwidths": 7.074940284132792
+    }
+  ],
+  "max_resid_halfwidths_primary_z_le_0.7": 0.2474534751783437,
+  "max_resid_halfwidths_incl_z1.0": 0.8577717552548649,
+  "max_resid_bandwidths_primary": 0.12372673758917185,
+  "track_verdict": "TRACKS",
+  "tracks": true,
+  "structural_diagnosis": {
+    "measured_f_shallow_rises_z0_to_z1": 0.13568660848550662,
+    "model_best_f_shallow_change_z0_to_z1": 0.08232923640807771,
+    "measured_f_deep_decline_z0_to_z1": -0.1908027264671046,
+    "model_best_f_deep_change_z0_to_z1": -0.15711447864332434,
+    "how_it_tracks": "The measured shallow fraction RISES with z. A GENUINE matter-differentiated three-phase split (both phases actual under-dense voids, alpha_j^2 within [0,ceiling]) reproduces at most df_s=+0.055 (shape scan) and FAILS. The fit tracks ONLY in the DEGENERATE limit alpha_s2->0: the shallow phase becomes spatially FLAT (Om_s=H_w0^2), dynamically indistinguishable from the walls, so f_s rises as the empty deep void dilutes the volume at low z. This is the homothetic ceiling (NOTES sec 5): the tracking solution collapses the three-phase model to the two-phase empty-void tracker with a single genuine void of fraction f_d0~0.27. Tracking is therefore real but PHYSICALLY DEGENERATE, and it pins the effective void fraction to f_d0 (see threephase_forced_geometry.json).",
+    "genuine_threephase_max_df_shallow_rise": 0.055
+  },
+  "runtime_s": 262.36
+}

@@ -1,0 +1,71 @@
+{
+ "gate_a": {
+  "E_max_0p76": 0.17107942973523405,
+  "E_max_0p695": 0.21999064447495886,
+  "down_0p76": 0.21928038017651053,
+  "hits_017": true,
+  "hits_022": true,
+  "hits_down_022": true,
+  "km_s_down": 75.22959945689071,
+  "PASS": true
+ },
+ "gate_b": {
+  "E_max_LA": 0.3364976454450088,
+  "target": 0.3365,
+  "hits": true,
+  "identity": 0.3364976454450088,
+  "identity_abs_err": 0.0,
+  "E_dress_void_volume_avg": 0.194801805203953,
+  "PASS": true
+ },
+ "E_max_LB": 0.20837738917989013,
+ "crux_definition": {
+  "n_calib": 77,
+  "n_hf": 277,
+  "mean_phi_hf": 0.07134331849835682,
+  "mean_phi_cal": 0.9940403452757023,
+  "frac_hf_past_rhom": 0.5848375451263538,
+  "b_pred_survey_EmaxTimesPhiHF": 0.02400685869293041,
+  "b_pred_differential_REJECTED": 0.310485376969687,
+  "physics": "SH0ES M_B is fixed by GEOMETRIC Cepheid distances (parallax/maser/DEB), expansion-rate-independent -> unbiased; so only the HF SNe's local apparent rate biases the inferred H0. Ladder H0 = Hdress*(1+E_max*<phi>_HF). Calibrator apparent rate does NOT enter -> the differential is physically wrong. b_req is a fractional scale ratio (bare); g_dress cancels so bare==dressed fractional excess -> b_pred and b_req are the same quantity, comparable."
+ },
+ "physical_sensitivity_recompute": {
+  "sec2_source": "sibling_contrast_budget",
+  "h_v_field_mean_midpoint": 1.1642515596904586,
+  "h_v_deep_void_m0p8": 1.3361087210110663,
+  "E_max_physical_central": 0.2221116816312838,
+  "b_pred_physical_central": 0.01584618444482631,
+  "b_pred_physical_band": [
+   0.014981649936166257,
+   0.028716375897912337
+  ],
+  "b_pred_physical_band_note": "[field-mean r200 conservative, deep-void delta_m=-0.8 generous]",
+  "ceiling_b_pred_survey": 0.02400685869293041,
+  "physics": "Cap the void rate H_v by sec.2's two-sided lensing contrast: field-mean primary b_pred 0.01585 < ceiling 0.02401 < b_req -> FAILS STRENGTHENS; even the generous deep-void -0.8 edge 0.02872 under-predicts b_req (dilution dominates)."
+ },
+ "verdict": {
+  "b_req": 0.08416615584147968,
+  "b_pred_survey": 0.02400685869293041,
+  "diff": -0.06015929714854927,
+  "sigma_measurement_only": 0.014451051686491075,
+  "sigma_total": 0.03836580865488502,
+  "nsigma_measurement_only": 4.162970173637018,
+  "nsigma_total": 1.5680445495025253,
+  "band_max_below_breq": true,
+  "measurement_verdict": "FAILS",
+  "preregistered_verdict": "PARTIAL",
+  "headline": "UNDER-PREDICTS: b_pred 0.024 < b_req 0.084 at central and across the whole phi band; measurement-only nsigma=3.4 FAILS; PARTIAL only via the wide phi theoretical systematic."
+ },
+ "reproduces_artifact": {
+  "gate_a_0p76": true,
+  "gate_a_0p695": true,
+  "gate_b_LA": true,
+  "E_max_LB": true,
+  "mean_phi_hf": true,
+  "b_pred_survey": true,
+  "nsigma_meas": true,
+  "b_pred_physical": true
+ },
+ "overall": "SURVIVES",
+ "verdict_of_verification": "SURVIVES"
+}

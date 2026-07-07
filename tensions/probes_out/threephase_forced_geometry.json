@@ -1,0 +1,87 @@
+{
+  "probe": "WP-B Stage-1 Phase-B STEP 3+4: three-phase geometry scoring + T1 ceiling",
+  "spec": "PLAN_WPB_threephase.md sec 3 (outcomes 2-3, accounting; T1 diagnostic)",
+  "track_verdict_from_step12": "TRACKS",
+  "data": {
+    "sn": "harness.sn_chi2 (1580 Pantheon+, full stat+sys cov, offset marginalised)",
+    "bao_cmb": "DESI DR2 (13 BAO, desi_dr2_rows.json) + Planck acoustic point, alpha marginalised, rd=147.09 (mirror of harness.bao_cmb_chi2)"
+  },
+  "bic_bar_dr2": {
+    "chi2_LCDM_dr2": 1399.8050089450553,
+    "Om_lcdm": 0.3037481689453125,
+    "N": 1594,
+    "lnN": 7.374001859350161,
+    "bar": 1407.1790108044054,
+    "crosscheck_forced_joint_fit_chi2_LCDM_dr2": 1399.805009110365,
+    "crosscheck_forced_joint_fit_bar_dr2": 1407.1790109697151
+  },
+  "accounting": "primary k=0 (four constants pinned by structure data, external-calibration status; band-widths -> systematic on predicted chi2); sensitivity row k=4.",
+  "STEP3_k0_forced_prediction": {
+    "scored": true,
+    "k": 0,
+    "joint_chi2": 6360.1848651068285,
+    "chi2_SN": 1853.7695480436087,
+    "chi2_BAOCMB_DR2": 4506.41531706322,
+    "bic_bar_dr2": 1407.1790108044054,
+    "chi2_LCDM_dr2": 1399.8050089450553,
+    "lnN": 7.374001859350161,
+    "N": 1594,
+    "clears_bar": false,
+    "margin_or_miss": 4953.005854302423,
+    "H0_dressed_from_alpha": 52.78075799835421
+  },
+  "degeneracy_check": {
+    "finding": "The structure-tracking constants collapse the model to the two-phase empty-void tracker: alpha_s2->0 (shallow spatially FLAT, Om_s=H_w0^2, dynamically walls) and alpha_d2=ceiling (deep EMPTY Milne). The single genuine void fraction is f_d0, NOT f_s0+f_d0. This is the homothetic ceiling (NOTES_threephase sec 5) realized by the fit.",
+    "geometry_best_config_joint_chi2": 6360.1848651068285,
+    "tracker_fv0_eq_fd0": {
+      "fv0": 0.2737060794771459,
+      "joint_chi2": 6360.203300623223,
+      "H0": 45.21281477144307
+    },
+    "tracker_fv0_eq_fs0_plus_fd0": {
+      "fv0": 0.6542899539862872,
+      "joint_chi2": 1539.322742568329,
+      "H0": 53.42023590582791
+    },
+    "match_best_vs_tracker_fd0_abschi2": 0.018435516394674778,
+    "note_match": "geometry(best 3-phase) == tracker(f_v0=f_d0) confirms the flat-dust shallow is geometrically walls; the effective void fraction is ~f_d0.",
+    "twophase_tracker_geometry_ceiling": {
+      "fv0_best_fit_to_DR2": 0.6382812499999999,
+      "joint_chi2": 1514.1031080437824,
+      "H0": 52.85839561398103,
+      "note": "best the two-phase empty-void tracker can do vs SN+DR2+CMB (free f_v0); the structure fit forbids this f_v0 (~0.6-0.7) because the measured deep fraction pins f_d0~0.27 and the shallow supplies NO backreaction."
+    }
+  },
+  "STEP4_T1_diagnostic_ceiling": {
+    "note": "CEILING ONLY -- constants freed to fit the cosmology data (the structure fit forbids this); reported to bound what the three-phase dressed geometry could reach, never as a claim.",
+    "best_constants": {
+      "f_s0": 0.6382474258753638,
+      "f_d0": 0.022382269239965853,
+      "alpha_s2": 1.2713749247886474,
+      "alpha_d2": 7.294838442753596e-07,
+      "alpha_s2_over_ceiling": 1.0,
+      "alpha_d2_over_ceiling": 5.737755480718078e-07,
+      "f_w0": 0.33937030488467035,
+      "Om_shallow": 0.0,
+      "Om_deep": 0.5650550845070283
+    },
+    "joint_chi2": 1514.1031955946237,
+    "chi2_SN": 1433.758680433035,
+    "chi2_BAOCMB_DR2": 80.34451516158879,
+    "bic_bar_dr2": 1407.1790108044054,
+    "clears_bar": false,
+    "margin_or_miss": 106.9241847902183,
+    "H0_dressed_from_alpha": 53.30567304544461,
+    "k_sensitivity_row_note": "T1 uses k=4 fitted constants; even the ceiling (best possible) does not license a claim -- it is the geometry's floor on chi2."
+  },
+  "runtime_s": 149.12,
+  "k4_sensitivity_accounting": {
+    "note": "PLAN sec 3 sensitivity row: if the four constants were charged as cosmology-fitted (k=4) rather than structure-pinned (k=0), the BIC bar drops by 3 lnN. Both the forced k=0 prediction and the T1 ceiling still miss it; the verdict is accounting-robust.",
+    "bar_k4_vs_LCDM_k1": 1377.6830033670049,
+    "forced_prediction_k0_joint_chi2": 6360.1848651068285,
+    "forced_prediction_miss_vs_k4_bar": 4982.501861739824,
+    "T1_ceiling_joint_chi2": 1514.1031955946237,
+    "T1_ceiling_miss_vs_k4_bar": 136.42019222761883,
+    "T1_deltaBIC_vs_LCDM": 136.42019222761886
+  }
+}
