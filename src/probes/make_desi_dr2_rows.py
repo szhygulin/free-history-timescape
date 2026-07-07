@@ -20,7 +20,7 @@ import os
 import json
 import numpy as np
 
-OUT = "/Users/s/dev/science/free-history-timescape/probes_out/desi_dr2_rows.json"
+OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "probes_out", "desi_dr2_rows.json")
 
 # ----------------------------------------------------------------- DR2 primary --
 # Exact DESI DR2 means (Cobaya bao_data, desi_gaussian_bao_ALL_GCcomb_mean.txt)

@@ -7,10 +7,11 @@ count the below-mean (delta<0) volume fraction, with exact-zero (survey-mask fil
 cells excluded and the remaining volume renormalised. Deeper thresholds computed as
 cross-checks. No import of the authors' probe script.
 """
+import os
 import json
 import numpy as np
 
-FIELD = "/Users/s/dev/science/free-history-timescape/external_data/twompp_density.npy"
+FIELD = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "external_data", "twompp_density.npy")
 
 # Coordinate system straight from external_data/twompp_README.txt:
 #   X=(i-128)*400/256, cell centres -200..+200, spacing 1.5625 Mpc/h.
@@ -71,7 +72,7 @@ def main():
     out["paper1_bracket"] = [0.50, 0.62]
     out["required_fv0"] = 0.64013
 
-    with open("/Users/s/dev/science/free-history-timescape/probes_out/adv_void_fraction.json", "w") as f:
+    with open(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "probes_out", "adv_void_fraction.json"), "w") as f:
         json.dump(out, f, indent=2)
 
     print(json.dumps(out, indent=2))

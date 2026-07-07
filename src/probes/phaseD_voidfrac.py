@@ -54,7 +54,7 @@ if _HERE not in sys.path:
     sys.path.insert(0, _HERE)
 import los_common as LC
 
-WT = "/Users/s/dev/science/free-history-timescape"
+WT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 OUT = os.path.join(WT, "probes_out", "phaseD_fvobs.json")
 
 SOFT_WALL_S = float(os.environ.get("PHASED_MAXSEC", "1200"))

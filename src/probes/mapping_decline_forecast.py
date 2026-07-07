@@ -28,7 +28,7 @@ from scipy.stats import norm
 from scipy.integrate import quad
 from scipy.optimize import brentq, minimize_scalar
 
-WT = "/Users/s/dev/science/free-history-timescape"
+WT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 OUT = os.path.join(WT, "probes_out", "mapping_decline_forecast.json")
 PROBER = os.path.join(WT, "probes_out", "modelV_probeR.json")
 PHASED = os.path.join(WT, "probes_out", "phaseD_fvobs.json")

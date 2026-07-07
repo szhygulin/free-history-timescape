@@ -162,7 +162,7 @@ def main():
         "moved_from_73": bool(abs(Hd0 * Hbar0 - 73.0) > 1.0),
     }
 
-    with open("/Users/s/dev/science/free-history-timescape/probes_out/adv_anchored_h0.json", "w") as fo:
+    with open(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "probes_out", "adv_anchored_h0.json"), "w") as fo:
         json.dump(out, fo, indent=2)
     print(json.dumps(out, indent=2))
 

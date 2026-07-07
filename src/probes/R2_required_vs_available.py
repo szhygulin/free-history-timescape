@@ -17,7 +17,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-WT = "/Users/s/dev/science/free-history-timescape"
+WT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 PROBER = os.path.join(WT, "probes_out", "modelV_probeR.json")
 PHASED = os.path.join(WT, "probes_out", "phaseD_fvobs.json")
 OUT_JSON = os.path.join(WT, "probes_out", "R2.json")

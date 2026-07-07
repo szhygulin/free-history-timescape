@@ -14,7 +14,7 @@ import numpy as np
 from scipy.integrate import cumulative_trapezoid
 from scipy.ndimage import map_coordinates
 
-WT = "/Users/s/dev/science/free-history-timescape"
+WT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 FIELD = os.path.join(WT, "external_data", "twompp_density.npy")
 DATA = os.path.join(WT, "src", "data", "PantheonSH0ES.dat")
 
