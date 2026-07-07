@@ -24,7 +24,7 @@ import os
 import sys
 import subprocess
 
-WT = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))), "timescape-hubble-tension")
+WT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DEST = os.path.join(WT, "external_data")
 BASE = "https://cosmicflows.iap.fr/assets/data"
 
