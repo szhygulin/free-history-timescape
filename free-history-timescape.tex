@@ -364,7 +364,14 @@ required history declines by a total factor $\times3.31$
 fraction, measured from the BOSS DR12 galaxy sample with a watershed/ZOBOV void
 finder (Mao et al.\ 2017 \cite{Mao2017}), calibrated to the $z=0$ 2M$++$ field
 \cite{Carrick2015} and cross-checked against the watershed filling-fraction
-literature \cite{Pan2012,Williams2024}.
+literature \cite{Pan2012,Williams2024}. The measurement chain is insensitive to
+the standard void observational systematics: the $z=0$ anchor is the
+real-space-reconstructed 2M$++$ field; the $z>0$ route uses the growth
+\emph{ratio}, in which the redshift-space--distortion boost cancels to first
+order; the light-cone gradient across an individual void (its far wall seen
+$\sim\!2\times10^{8}$~yr earlier) is $<0.2\%$ in the volume fraction; and
+per-sightline propagation effects are bounded by Paper~I's line-of-sight nulls
+($\lesssim 0.05$~mag RMS).
 
 \begin{table*}[t]
 \caption{Required versus observed void-fraction decline. $f_v^{\mathrm{req}}$ is
@@ -748,9 +755,11 @@ or its fully freed history---does not resolve the Hubble tension.
 The author used the Claude large language model (Anthropic) as a
 research-assistance tool: for primary-literature retrieval, for implementing and
 running the analyses of Secs.~\ref{sec:reconcile}--\ref{sec:partii}, and for
-drafting. All sources, equations, code, and numerical results were verified by
-the author, who takes full responsibility for the content and any errors. This
-work received no funding.
+drafting. Every headline number was checked by an independent adversarial
+re-derivation pass (itself AI-assisted) against thresholds registered before the
+comparison, with the per-check records committed alongside the code; the author
+reviewed the analysis chain and takes full responsibility for the content and
+any errors. This work received no funding.
 \end{acknowledgments}
 
 \section*{Data and code availability}
