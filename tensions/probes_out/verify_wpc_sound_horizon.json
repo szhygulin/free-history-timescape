@@ -1,7 +1,8 @@
 {
  "probe": "verify_wpc_sound_horizon",
  "purpose": "Adversarial clean-room verification of wpc_sound_horizon.json (in-model DNW13 bare sound horizon).",
- "verdict": "SURVIVES_WITH_CAVEATS",
+ "verdict": "SURVIVES",
+ "verdict_of_verification": "SURVIVES",
  "recomputed": {
   "r_d_quad": 199.5612258893033,
   "r_d_trap": 199.56122588931447,
@@ -87,12 +88,10 @@
   "low-bare-matter is dominant NET driver? True (matter +29.5 vs net-gamma +19.7 vs baryon +3.1)",
   "chi2 r_d-independence: chi2=36.7767 (unchanged=True), alpha=38.5058 (unchanged=True) -> CONFIRMED",
   "H0(bare) from harness alpha: with 147.09=52.931  with in-model r_d=39.014",
-  "NOTE harness bao_cmb_chi2 alpha (tracker grid)=38.506; probe uses modelV V alpha=37.888 (5-node forced) -- distinct fits, expected"
+  "NOTE harness bao_cmb_chi2 alpha (tracker grid)=38.506; probe uses modelV V alpha=37.888 (5-node forced) -- distinct fits, expected",
+  "artifact-prose consistency (bare_parameters.note vs derived mechanism): OK"
  ],
- "discrepancies": [
-  "SUMMARY-CAVEAT WORDING: bare z_eq (4368) > LCDM (3421) so equality is EARLIER, not 'delayed' as one summary caveat states; the JSON bare_parameters note ('earlier matter-radiation equality') is correct. r_s inflation is driven by lower H throughout (both om_m and om_r down), not by delayed equality. Mechanism conclusion unaffected.",
-  "MECHANISM-WORDING ERROR: the JSON bare_parameters note and the summary caveat say the 'gamma_bar0^-4 radiation suppression partly compensates/offsets'. The physically-consistent decomposition shows the OPPOSITE SIGN: radiation suppression alone INFLATES r_d by +65.2 Mpc (it is the single largest sub-effect). The genuine partial COMPENSATOR is the x_dec=1/(gam0(1+z_dec)) bare-decoupling limit (-45.5 Mpc), a distinct gamma effect. NET gamma-frame = +19.7 Mpc (mild inflation). Low bare matter (+29.5) remains the dominant NET driver, so the headline mechanism and the +35.7% number are UNAFFECTED; only the causal attribution of the gamma terms is stated with the wrong sign."
- ],
+ "discrepancies": [],
  "equation_number_verification": {
   "source_checked": "ar5iv.labs.arxiv.org/abs/1306.3208 (via WebFetch small-model read; partial content, treat as indicative not exhaustive)",
   "Eq31_sound_horizon": "CONFIRMED -- source: Eq (31) defines D_bar_s 'the volume-average sound horizon scale at any epoch'. Matches probe.",
@@ -102,6 +101,5 @@
   "Eq10_bare_Friedmann_with_radiation": "NOT CONFIRMED -- source's read attributes the radiation Friedmann (first Buchert eq with Om_M+Om_R) to Eq (2), with density-parameter forms in (18)-(21); 'Eq 10' specifically could not be located and may be a mislabel. The FORM (H_bar^2=H_bar0^2[OmM0 x^-3+OmR0 x^-4], drop Q&curvature as fv->0) is standard and numerically validated regardless.",
   "quoted_params_confirmed": "eta_Bgamma=(5.1+/-0.5)e-10 CONFIRMED; g_*=3.36 CONFIRMED. Omega_B0_bar/T0/z_dec vary across the paper's numerical solutions (no single universal value in the source read); probe's DNW13 self-check reproduces Omega_B0_bar=0.0303 numerically.",
   "verdict": "FORMS all standard & numerically validated (LCDM gate passes, DNW13 self-check reproduces 0.0303, R frame-invariant). Eq 31 & Eq 49 labels CONFIRMED; Eq 22 confirmed as lapse; Eq 10 and Eq 20-21 labels NOT verbatim-confirmable (Eq 10 likely should be Eq 2). Citation-precision issue only; does not affect any number."
- },
- "verdict_of_verification": "SURVIVES_WITH_CAVEATS"
+ }
 }

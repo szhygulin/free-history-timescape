@@ -24,7 +24,7 @@
   "omega_b_bar_phys": 0.00809455921657799,
   "Omega_B0_bar": 0.02797183549885561,
   "z_eq_bare": 4368.2957921546285,
-  "note": "bare matter density omega_m_bar=0.060 is ~0.42x the LCDM 0.143 (low bare matter density is the dominant driver of a large r_d); radiation carries a gamma_bar0^-4 suppression (bare frame cooler, T_bar=T0/gamma_bar0=2.064 K) which partly compensates via earlier matter-radiation equality."
+  "note": "bare matter density omega_m_bar=0.060 is ~0.42x the LCDM 0.143; low bare matter density is the dominant NET driver of the large r_d (single-input decomposition: +29.5 Mpc). The gamma_bar0^-4 radiation suppression (bare frame cooler, T_bar=T0/gamma_bar0=2.064 K) does NOT compensate: lowering the bare radiation density lowers the early-time expansion rate throughout, so on its own it INFLATES r_d by +65.2 Mpc -- the single largest sub-effect (it also pushes matter-radiation equality EARLIER, z_eq_bare=4368 > LCDM ~3418). The genuine partial compensator is instead the bare-decoupling limit x_dec=1/(gamma_bar0(1+z_dec)), which shortens the integration range by -45.5 Mpc; net gamma-frame effect +19.7 Mpc."
  },
  "r_d_in_model": 199.5612258893033,
  "r_dec": 195.89268303008296,

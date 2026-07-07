@@ -484,9 +484,9 @@
     "untouched": "R2 (availability / SHAPE-UNAVAILABLE) and WP-H2' (survey dilution)"
   },
   "provenance": {
-    "field": "/home/szhygulin/dev/science/free-history-timescape/external_data/twompp_density.npy",
+    "field": "external_data/twompp_density.npy",
     "field_coord": "X=(i-128)*400/256, spacing 1.5625 Mpc/h, LG at [128,128,128]",
-    "required_source": "/home/szhygulin/dev/science/free-history-timescape/probes_out/modelV_probeR.json -> derived_backreaction_V",
+    "required_source": "probes_out/modelV_probeR.json -> derived_backreaction_V",
     "void_lensing": "Clampitt & Jain 2015 (DES) central delta_m in {-0.3,-0.5,-0.8} +/-0.1",
     "wall_field": "2M++/Carrick+2015 delta_g* (bias-calibrated), mass balance over delta>0",
     "normalization": "(h_v-h_w)/(f_v h_v+(1-f_v)h_w), h=H/H_bg; identical on both sides",

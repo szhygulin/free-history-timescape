@@ -213,12 +213,8 @@ def main():
     earlier = bool(z_eq_bare > z_eq_L)
     checks.append(f"z_eq_bare={z_eq_bare:.0f} vs z_eq_LCDM={z_eq_L:.0f}: bare equality is "
                   + ("EARLIER (higher z)" if earlier else "LATER (lower z)"))
-    if earlier:
-        disc.append("SUMMARY-CAVEAT WORDING: bare z_eq (4368) > LCDM (3421) so equality "
-                    "is EARLIER, not 'delayed' as one summary caveat states; the JSON "
-                    "bare_parameters note ('earlier matter-radiation equality') is correct. "
-                    "r_s inflation is driven by lower H throughout (both om_m and om_r down), "
-                    "not by delayed equality. Mechanism conclusion unaffected.")
+    # (the z_eq-direction wording is audited in check (10), parsing the committed JSON note
+    #  directly, so it is a real falsifiable test rather than an always-on flag.)
 
     # ---------- (7) self-consistency arithmetic ----------
     inv = C / ALPHA_V
@@ -267,18 +263,11 @@ def main():
     matter_dominant = bool(abs(d_matter) >= abs(d_gammaframe) and abs(d_matter) >= abs(d_baryon))
     checks.append(f"low-bare-matter is dominant NET driver? {matter_dominant} "
                   f"(matter {d_matter:+.1f} vs net-gamma {d_gammaframe:+.1f} vs baryon {d_baryon:+.1f})")
-    # WORDING CHECK: the JSON/summary say radiation gamma^-4 suppression 'partly compensates/offsets'.
-    # Decomposition: radiation suppression alone INFLATES by d_radsupp; the COMPENSATOR is x_dec.
-    if d_radsupp > 0:
-        disc.append(f"MECHANISM-WORDING ERROR: the JSON bare_parameters note and the summary caveat "
-                    f"say the 'gamma_bar0^-4 radiation suppression partly compensates/offsets'. The "
-                    f"physically-consistent decomposition shows the OPPOSITE SIGN: radiation suppression "
-                    f"alone INFLATES r_d by {d_radsupp:+.1f} Mpc (it is the single largest sub-effect). "
-                    f"The genuine partial COMPENSATOR is the x_dec=1/(gam0(1+z_dec)) bare-decoupling limit "
-                    f"({d_xdec:+.1f} Mpc), a distinct gamma effect. NET gamma-frame = {d_gammaframe:+.1f} Mpc "
-                    f"(mild inflation). Low bare matter ({d_matter:+.1f}) remains the dominant NET driver, so "
-                    f"the headline mechanism and the +35.7% number are UNAFFECTED; only the causal attribution "
-                    f"of the gamma terms is stated with the wrong sign.")
+    # The mechanism-sign wording (radiation suppression INFLATES, x_dec compensates) is audited
+    # against the committed JSON note in check (10). Guard the physical invariant it rests on:
+    assert d_radsupp > 0 and d_xdec < 0, (
+        f"decomposition sign regression: radiation suppression must INFLATE (got {d_radsupp:+.1f}) "
+        f"and x_dec must COMPENSATE (got {d_xdec:+.1f})")
 
     # ---------- (9) chi2 r_d-independence, direct ----------
     _cwd = os.getcwd()
@@ -311,12 +300,33 @@ def main():
     checks.append(f"NOTE harness bao_cmb_chi2 alpha (tracker grid)={alpha_a:.3f}; probe uses "
                   f"modelV V alpha={ALPHA_V:.3f} (5-node forced) -- distinct fits, expected")
 
+    # ---------- (10) artifact-prose consistency (falsifiable audit of the committed JSON note) ----------
+    # Replaces the two former always-on wording flags: parse bare_parameters.note and require it to
+    # MATCH the derived mechanism (equality EARLIER not delayed; the gamma^-4 radiation suppression
+    # INFLATES r_d; x_dec is the genuine compensator). Fires ONLY if the prose regresses -> real guard.
+    note_txt = json.load(open(os.path.join(_ROOT, "probes_out", "wpc_sound_horizon.json")))["bare_parameters"]["note"].lower()
+    prose_issues = []
+    if "delay" in note_txt:
+        prose_issues.append(f"note implies a DELAYED matter-radiation equality, but bare z_eq={z_eq_bare:.0f} "
+                            f"> LCDM {z_eq_L:.0f} means equality is EARLIER")
+    if "inflat" not in note_txt:
+        prose_issues.append(f"note must state the gamma^-4 radiation suppression INFLATES r_d "
+                            f"({d_radsupp:+.1f} Mpc, the largest sub-effect), not that it compensates")
+    if "x_dec" not in note_txt:
+        prose_issues.append(f"note must name x_dec=1/(gam0(1+z_dec)) as the genuine partial compensator "
+                            f"({d_xdec:+.1f} Mpc)")
+    checks.append("artifact-prose consistency (bare_parameters.note vs derived mechanism): "
+                  + ("OK" if not prose_issues else "REGRESSED"))
+    for _pi in prose_issues:
+        disc.append("PROSE REGRESSION: " + _pi)
+
     verdict = "SURVIVES" if not disc else "SURVIVES_WITH_CAVEATS"
 
     out = {
         "probe": "verify_wpc_sound_horizon",
         "purpose": "Adversarial clean-room verification of wpc_sound_horizon.json (in-model DNW13 bare sound horizon).",
         "verdict": verdict,
+        "verdict_of_verification": verdict,
         "recomputed": {
             "r_d_quad": rq, "r_d_trap": rt, "r_d_subst": rsub, "r_dec": rdec_q,
             "delta_percent_vs_147p09": delta_pct,

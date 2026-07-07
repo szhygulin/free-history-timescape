@@ -286,9 +286,9 @@
     "note_on_81pct": "NOTES sec-8's '81%' was the deleted prototype's illustrative smooth forced history, NOT the final Probe-R V.fv_nodes; the actual required history is a stronger deformation and drifts more (interior ~1.5x; span dominated by the BC-sensitive z=2.33 endpoint). The magnitude is representation-sensitive; the qualitative verdict (>> tracker, non-constant) is representation-INDEPENDENT."
   },
   "inputs": {
-    "solver": "/home/szhygulin/dev/science/free-history-timescape/src/probes/modelv_theory.py",
-    "probeR_json": "/home/szhygulin/dev/science/free-history-timescape/probes_out/modelV_probeR.json",
-    "telescope_json": "/home/szhygulin/dev/science/free-history-timescape/probes_out/telescope_fvobs.json",
+    "solver": "src/probes/modelv_theory.py",
+    "probeR_json": "probes_out/modelV_probeR.json",
+    "telescope_json": "probes_out/telescope_fvobs.json",
     "z_nodes": [
       0.0,
       0.3,

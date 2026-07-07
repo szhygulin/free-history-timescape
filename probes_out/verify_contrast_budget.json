@@ -447,9 +447,9 @@
   "verdict_reasoning": "Independent re-solve reproduces the committed delta->h map to 3.5e-09 (two decorrelated integrators), the turnaround to 9.9e-12, and every 2M++ field statistic. Required z0=0.4741 (band_lo=0.4339). Self-consistent field-averaged two-sided contrast = 0.375-0.401 (< band_lo), plan-central = 0.405 (short by 0.069), void-only(-0.8)=0.277 (decisive STANDS if walls not credited), but best-case measured (deepest lensing void -0.9 + densest wall) = 0.568 reaches/exceeds required. Neither cleanly refuted nor withdrawn -> MARGINAL, matching the committed verdict.",
   "discrepancies": [],
   "provenance": {
-    "field": "/home/szhygulin/dev/science/free-history-timescape/external_data/twompp_density.npy",
-    "required_source": "/home/szhygulin/dev/science/free-history-timescape/probes_out/modelV_probeR.json",
-    "committed": "/home/szhygulin/dev/science/free-history-timescape/probes_out/contrast_budget.json",
+    "field": "external_data/twompp_density.npy",
+    "required_source": "probes_out/modelV_probeR.json",
+    "committed": "probes_out/contrast_budget.json",
     "script": "src/probes/verify_contrast_budget.py"
   }
 }

@@ -267,6 +267,15 @@ for a genuine Buchert solution:
 - FORCED non-tracker `f_v`: `α²(τ)` varies by **81%** — the forced history violates
   the Buchert dynamics/integrability.
 
+  > **Reconciliation with the paper's ~152%.** This 81% is the (now-deleted) prototype
+  > `proto_modelv4.py` evaluated on an *illustrative smooth* forced history; the production
+  > paper quotes **~152%**, the interior drift (`τ∈[0.1,1.8]`) of the *actual fitted* Probe-R
+  > `V.fv_nodes` (`tensions/probes_out/wpb_integrability.json`, adjudicated in
+  > `verify_wpb_integrability.json §7`), which in fact drift *more* than the prototype (the
+  > specific 81% does not reproduce for the fitted nodes). The gap is a difference of input
+  > history, not a contradiction: the load-bearing claim — forced drift ≫ tracker, grossly
+  > non-constant — is representation-independent.
+
 **Consequence.** Probe R's forced-`f_v` machinery is the KINEMATIC reading: it yields
 a well-posed dressed expansion history and dressed observables, but the implied
 `(Q, ⟨R⟩)` do not satisfy (K5), so the void phase's density/curvature is not a

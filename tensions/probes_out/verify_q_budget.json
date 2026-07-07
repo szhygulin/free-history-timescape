@@ -2,6 +2,7 @@
   "probe": "verify_q_budget -- adversarial independent recompute of WP-B Stage-0 Q-budget",
   "target": "probes_out/q_budget.json",
   "method": "independent derivative pipeline: numerical np.gradient of f_i(tau) on a 60k grid with CubicSpline Hw(z); build uses analytic normal-CDF derivative x analytic PCHIP of tau. Q_req re-read RAW from derived_backreaction_V and via build's smoothed curve.",
+  "verdict_of_verification": "SURVIVES_WITH_CAVEATS",
   "verdict": "SURVIVES_WITH_CAVEATS",
   "gate_build": "GO",
   "gate_recomputed": {

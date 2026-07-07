@@ -1,6 +1,7 @@
 {
   "probe": "ADVERSARIAL verification of forced_joint_fit.json (independent re-implementation)",
   "method": "Rebuilt f_v^obs, forced Model-V geometry (modelv_theory.modelv_solve, algebraic), harness.sn_chi2, from-scratch DR2 BAO+CMB chi2, independent LCDM refit + BIC bars. forced_joint_fit.py NOT imported.",
+  "verdict_of_verification": "SURVIVES",
   "verdict": "SURVIVES",
   "n_checks_pass": 42,
   "n_checks_total": 42,

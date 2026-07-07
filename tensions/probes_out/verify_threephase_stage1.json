@@ -1,6 +1,7 @@
 {
   "probe": "ADVERSARIAL verify of WP-B Stage-1 Phase B (threephase_dynamics + threephase_forced_geometry)",
   "spec": "PLAN_WPB_threephase.md sec 4(ii): from-scratch harness recompute, >=2 constant sets",
+  "verdict_of_verification": "SURVIVES",
   "verdict": "SURVIVES",
   "track_agrees": true,
   "bar_agrees": true,

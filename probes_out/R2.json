@@ -185,7 +185,7 @@
   "verdict": "MARGINAL_top_edge",
   "verdict_reason": "Required present-day f_v(0)=0.640 sits INSIDE the bias-independent below-mean band [0.614,0.672] (mid-band, frac height 0.45) and inside the full 2M++ definition band [0.222,0.672]; under the below-mean = 'faster than mean expanding' definition (the timescape-correct f_v) the observed voids SUPPLY the required value. Against the STANDARD watershed filling fraction [0.50,0.62] (Probe 4 / Pan+2012 / Williams+2024) required 0.640 sits 0.17 band-widths ABOVE the 0.62 top -> a marginal, top-edge overlap. The required band is enveloped by the observed definition band at ALL five nodes. This is a qualitative reversal of the tracker, whose SN-forced 0.853 sits ~3 below-mean-band-widths above the observed top (unavailable at every definition). Verdict: the observed void population can supply the required history only at the permissive (below-mean) definition edge, sitting at the top edge of conventional watershed catalogs -- consistent with PLAN R2 'overlap at the most permissive definition edge -> run Phase F expecting a live model'.",
   "figure": {
-    "pdf": "/Users/s/dev/science/free-history-timescape/fig_fvhistory.pdf",
-    "png": "/Users/s/dev/science/free-history-timescape/fig_fvhistory.png"
+    "pdf": "fig_fvhistory.pdf",
+    "png": "fig_fvhistory.png"
   }
 }

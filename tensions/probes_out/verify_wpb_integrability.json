@@ -1,7 +1,7 @@
 {
  "probe": "ADVERSARIAL verification of wpb_integrability.json (DNW13 Eq-11 Buchert invariant alpha^2 constancy on the tracker vs forced/observed histories)",
- "target": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/wpb_integrability.json",
- "notes_source": "/home/szhygulin/dev/science/free-history-timescape/NOTES_modelv_theory.md",
+ "target": "tensions/probes_out/wpb_integrability.json",
+ "notes_source": "NOTES_modelv_theory.md",
  "1_transcription": {
   "notes_line_262_raw": "`\u03b1\u00b2(\u03c4) = (2\u0101\u00b2/(3 f_v^{1/3}(1\u2212f_v))) [ f_v\u2033 + f_v\u2032\u00b2(2f_v\u22121)/(2f_v(1\u2212f_v)) + 3(\u0101\u2032/\u0101)f_v\u2032 ]`",
   "notes_normalized": "(2abar^2/(3fv^(1/3)(1-fv)))[fv''+fv'^2(2fv-1)/(2fv(1-fv))+3(abar'/abar)fv']",

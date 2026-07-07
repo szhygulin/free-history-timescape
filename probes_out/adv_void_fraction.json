@@ -1,5 +1,5 @@
 {
-  "field": "/Users/s/dev/science/free-history-timescape/external_data/twompp_density.npy",
+  "field": "external_data/twompp_density.npy",
   "coord": "X=(i-128)*400/256, spacing 1.5625, LG at [128,128,128]",
   "r<100__center_dist_lt": {
     "N_sphere": 1097911,

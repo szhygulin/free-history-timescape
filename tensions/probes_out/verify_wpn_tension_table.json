@@ -2,6 +2,7 @@
   "probe": "verify_wpn_tension_table",
   "purpose": "Spot-check / trace-to-source verification of WP-N (probes_out/wpn_tension_table.json). For each of the 9 rows, the cited free-history numbers were opened in the named source artifact at the cited JSON field path and confirmed to appear verbatim; each verdict word was checked against the artifact's own verdict field.",
   "method": "READ-ONLY. Each row's key_numbers path was resolved in the source artifact and the value compared exactly (floats compared at full committed precision; rounded prose values checked as consistent roundings). No new physics, no recomputation of any model quantity.",
+  "verdict_of_verification": "SURVIVES",
   "verdict": "SURVIVES",
   "numbers_trace_to_artifacts": true,
   "rows_checked": 9,
@@ -11,7 +12,7 @@
     {
       "row": 1,
       "tension": "Hubble (SH0ES vs early)",
-      "artifact": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/bpred_survey_averaged.json",
+      "artifact": "tensions/probes_out/bpred_survey_averaged.json",
       "trace": "PASS",
       "checks": [
         {"cited": "b_req 0.08416615584147968", "field": "b_req.b_req", "found": 0.08416615584147968, "match": true},
@@ -26,7 +27,7 @@
     {
       "row": 2,
       "tension": "Required-vs-observed void shape (floor)",
-      "artifact": "/home/szhygulin/dev/science/free-history-timescape/probes_out/R2_final.json",
+      "artifact": "probes_out/R2_final.json",
       "trace": "PASS",
       "checks": [
         {"cited": "verdict SHAPE-UNAVAILABLE", "field": "verdict", "found": "SHAPE-UNAVAILABLE", "match": true},
@@ -40,7 +41,7 @@
     {
       "row": 3,
       "tension": "WP-B dynamical three-phase",
-      "artifact": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/threephase_forced_geometry.json",
+      "artifact": "tensions/probes_out/threephase_forced_geometry.json",
       "trace": "PASS",
       "checks": [
         {"cited": "track_verdict TRACKS", "field": "track_verdict_from_step12", "found": "TRACKS", "match": true},
@@ -55,7 +56,7 @@
     {
       "row": 4,
       "tension": "Buchert integrability",
-      "artifact": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/wpb_integrability.json",
+      "artifact": "tensions/probes_out/wpb_integrability.json",
       "trace": "PASS",
       "checks": [
         {"cited": "tracker ~2e-06", "field": "histories.tracker.fractional_drift", "found": 2.215789722370687e-06, "match": true},
@@ -68,7 +69,7 @@
     {
       "row": 5,
       "tension": "Void-wall contrast budget (two-sided)",
-      "artifact": "/home/szhygulin/dev/science/free-history-timescape/probes_out/contrast_budget.json",
+      "artifact": "probes_out/contrast_budget.json",
       "trace": "PASS",
       "checks": [
         {"cited": "verdict MARGINAL", "field": "verdict", "found": "MARGINAL", "match": true},
@@ -82,7 +83,7 @@
     {
       "row": 6,
       "tension": "Q-budget (Stage 0)",
-      "artifact": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/q_budget.json",
+      "artifact": "tensions/probes_out/q_budget.json",
       "trace": "PASS",
       "checks": [
         {"cited": "GATE=GO", "field": "gate", "found": "GO", "match": true},
@@ -96,7 +97,7 @@
     {
       "row": 7,
       "tension": "Sound horizon / r_d",
-      "artifact": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/wpc_sound_horizon.json",
+      "artifact": "tensions/probes_out/wpc_sound_horizon.json",
       "trace": "PASS",
       "checks": [
         {"cited": "in-model r_d=199.6 Mpc", "field": "r_d_in_model", "found": 199.5612258893033, "match": true},
@@ -111,7 +112,7 @@
     {
       "row": 8,
       "tension": "Growth / S8",
-      "artifact": "/home/szhygulin/dev/science/free-history-timescape-tensions/NOTES_growth.md",
+      "artifact": "tensions/NOTES_growth.md",
       "trace": "PASS",
       "checks": [
         {"cited": "status UNDEFINED-IN-KINEMATIC-READING", "field": "Thesis + sec 5", "found": "S8 column of the tension table is UNDEFINED-IN-KINEMATIC-READING", "match": true},
@@ -123,7 +124,7 @@
     {
       "row": 9,
       "tension": "b_pred z-profile (P4)",
-      "artifact": "/home/szhygulin/dev/science/free-history-timescape-tensions/probes_out/bpred_survey_averaged.json",
+      "artifact": "tensions/probes_out/bpred_survey_averaged.json",
       "trace": "PASS",
       "checks": [
         {"cited": "r_hom_star=140 (139.97)", "field": "r_hom_star.r_hom_star", "found": 139.96790561003817, "match": true},
