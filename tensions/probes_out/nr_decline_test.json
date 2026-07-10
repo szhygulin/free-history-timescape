@@ -1,0 +1,40 @@
+{
+  "probe": "Task 2 -- NR watershed void-fraction decline test (feasibility)",
+  "question": "Does Williams et al. 2024 (arXiv:2403.15134) report the watershed void volume fraction at >1 redshift/snapshot, so an NR decline ratio can be compared to the required x3.31 decline?",
+  "source": {
+    "arxiv": "2403.15134",
+    "citation": "Williams, Macpherson, Wiltshire, Stevens 2024 (MNRAS 536, 2645; arXiv:2403.15134)",
+    "read_method": "full-text via ar5iv HTML, 2026-07-10",
+    "section": "4.2",
+    "verbatim_quote": "In the 4 h^-1 Mpc resolution simulation, 61.5% of the volume is in cells marked as being part of a void, and for the 12 h^-1 Mpc resolution simulation this fraction is 50%.",
+    "figure_eyeballed": false,
+    "note": "Both values are at the single final z~0 snapshot. No table or figure in the paper gives the void fraction versus redshift/time; the abstract's z~0 statistics (void expansion 10-30% above global average; curvature density 60-80% in void centres) are also single-snapshot."
+  },
+  "williams_published_points": [
+    {
+      "z_approx": 0.0,
+      "resolution": "4 h^-1 Mpc",
+      "void_volume_fraction": 0.615
+    },
+    {
+      "z_approx": 0.0,
+      "resolution": "12 h^-1 Mpc",
+      "void_volume_fraction": 0.5
+    }
+  ],
+  "distinct_redshift_snapshots_reported": [
+    0.0
+  ],
+  "n_distinct_redshift_snapshots": 1,
+  "needed_for_decline_ratio": 2,
+  "feasible_from_published_paper": false,
+  "nr_decline_ratio_over_covered_range": null,
+  "required_decline_for_reference": {
+    "source": "probes_out/R2_final.json",
+    "req_total_decline_x_0_to_2p33": 3.3066,
+    "note": "Reference only: the required LA decline over 0<z<2.33. No NR counterpart can be formed because the NR paper covers a single redshift (z~0), so no over-range comparison is possible."
+  },
+  "verdict": "NOT-FEASIBLE",
+  "verdict_reason": "The published Williams et al. paper reports the watershed void volume fraction only at the single z~0 snapshot (61.5% at 4 h^-1 Mpc, 50% at 12 h^-1 Mpc; Sec. 4.2). A decline ratio needs >=2 redshift snapshots, so the commensurable NR decline test cannot be run from the paper alone. The simulation is itself a time evolution, so f_v(z) is extractable in principle from its earlier snapshots (re-analysis of the catalogs, not done here) -- consistent with the tex claim that the measurement is 'within reach' in the NR catalogs and 'sharpenable', which this finding does not contradict.",
+  "tex_change": "NONE. The availability-section sentence does not overpromise: it claims measurability in the NR catalogs (true; a time evolution) and explicitly hedges 'we claim no such recomputation here, only that the measurement is sharpenable'."
+}
