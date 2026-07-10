@@ -1,5 +1,7 @@
 # Free-history timescape vs. the cosmological tensions
 
+> **Note:** this README predates execution — Part II is complete and merged into the parent paper (`free-history-timescape.tex`), which reports the final verdicts; this file is retained as the planning record.
+
 **Does a data-driven void history resolve not just the Hubble tension, but the full suite of ΛCDM tensions?**
 
 Author: **Viacheslav Zhygulin**
