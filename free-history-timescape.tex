@@ -452,8 +452,29 @@ $D(z)$ growth ratio), not direct measurements; at both nodes the observed ratio
 exceeds the required-hi edge (pre-registered SHAPE test).
 \end{table*}
 
+\begin{figure}[t]
+\includegraphics[width=\columnwidth]{fig_fv_required_vs_observed.pdf}
+\caption{Required versus observed void volume fraction $f_v(z)$, all in the
+bias-independent below-mean ($\delta<0$) definition. Solid blue: the primary LA
+required history $f_v^{\mathrm{req}}(z)$ with its $\Delta\chi^2\!\le\!1$ band; the
+LB and V0 lapse readings (dashed, dotted) bracket the systematic. Black: the
+observed below-mean fraction---the $z=0$ 2M$++$ anchor (with its measured band)
+and the $z\le0.7$ BOSS DR12 measurement as filled circles with a solid connector,
+and the $z=1.3,2.33$ $\Lcdm$-growth extrapolations as open circles with a dashed
+connector. The hatched region marks the below-mean floor $f_v\ge0.5$, forbidden to
+any real-field observable (floor theorem, Sec.~\ref{subsec:availability}). The
+required history declines by $\times3.31$ over $0<z<2.33$ while the observed
+population declines only $\times1.16$ and stays pinned at the floor; the required
+curve crosses \emph{into} the excluded region for $z\gtrsim0.7$, so no admissible
+below-mean population can supply its shape. Values are the committed availability
+artifact \texttt{probes\_out/R2\_final.json} (verdict SHAPE-UNAVAILABLE), which
+also backs Tables~\ref{tab:fvnodes} and~\ref{tab:decline}.}
+\label{fig:fvhistory}
+\end{figure}
+
 The observed void fraction declines by a total factor of only $\times1.16$ over
-the same range---the population is far flatter than the required history. At the
+the same range (Fig.~\ref{fig:fvhistory})---the population is far flatter than the
+required history. At the
 pivotal node $z=0.7$ the observed $f_v^{\mathrm{obs}}=0.601$ against a required
 $0.396$, a gap of $0.205$ ($\sim\!52\%$ relative). This gap is not a statistical
 undershoot but a \emph{floor theorem}: the below-mean void fraction---the volume
