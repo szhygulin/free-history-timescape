@@ -36,7 +36,7 @@ Four independent tests ask whether the kinematic history is physically **availab
 | Test | Result |
 |---|---|
 | **Availability** (observed void population vs required) | **SHAPE-UNAVAILABLE** — required decline ×3.31 vs observed ×1.16 (floor theorem) |
-| **Local bias** `b_pred` (SH0ES-ladder H₀ excess) | **FAILS** — predicts +2.4% vs the +8.4% required (4.2σ, measurement-only) |
+| **Local bias** `b_pred` (SH0ES-ladder H₀ excess) | **PARTIAL** (pre-registered, 1.57σ) **/ FAILS** (one-sided envelope + catalog-forced) — predicts +2.4% vs the +8.4% required; 4.16σ measurement-only (systematic-excluded) |
 | **Dynamical consistency** (three-phase Buchert solve) | **CLOSED** — collapses to the two-phase tracker; k=0 geometry misses the BIC bar by 4953 |
 | **Sound horizon** `r_d` (in-model early-Universe) | **FAILS** — r_d = 199.6 Mpc (+36%), driving the bare H̄₀ to ~40 km/s/Mpc |
 
